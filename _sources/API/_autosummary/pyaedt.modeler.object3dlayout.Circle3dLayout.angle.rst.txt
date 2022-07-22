@@ -1,0 +1,6 @@
+angle
+=====
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoproperty:: Circle3dLayout.angle

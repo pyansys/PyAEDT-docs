@@ -1,0 +1,6 @@
+mesh
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.mesh

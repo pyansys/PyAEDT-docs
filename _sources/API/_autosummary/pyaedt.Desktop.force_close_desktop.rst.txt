@@ -1,0 +1,6 @@
+force\_close\_desktop
+=====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Desktop.force_close_desktop

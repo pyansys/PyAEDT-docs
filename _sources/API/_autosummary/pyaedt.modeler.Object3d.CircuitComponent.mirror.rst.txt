@@ -1,0 +1,6 @@
+mirror
+======
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: CircuitComponent.mirror

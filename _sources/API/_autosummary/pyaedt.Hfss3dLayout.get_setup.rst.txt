@@ -1,0 +1,6 @@
+get\_setup
+==========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.get_setup

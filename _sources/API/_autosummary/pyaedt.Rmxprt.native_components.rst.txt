@@ -1,0 +1,6 @@
+native\_components
+==================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.native_components

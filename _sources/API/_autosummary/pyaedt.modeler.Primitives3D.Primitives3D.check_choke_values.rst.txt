@@ -1,0 +1,6 @@
+check\_choke\_values
+====================
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.check_choke_values

@@ -1,0 +1,6 @@
+create\_line
+============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesNexxim
+
+.. automethod:: NexximComponents.create_line

@@ -1,0 +1,6 @@
+create\_interface\_port
+=======================
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.create_interface_port

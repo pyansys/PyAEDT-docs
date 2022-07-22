@@ -1,0 +1,6 @@
+get\_sweeps
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.get_sweeps

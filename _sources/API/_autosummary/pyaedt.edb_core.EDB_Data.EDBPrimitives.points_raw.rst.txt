@@ -1,0 +1,6 @@
+points\_raw
+===========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPrimitives.points_raw

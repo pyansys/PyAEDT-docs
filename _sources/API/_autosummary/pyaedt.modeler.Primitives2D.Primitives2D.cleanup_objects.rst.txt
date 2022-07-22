@@ -1,0 +1,6 @@
+cleanup\_objects
+================
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. automethod:: Primitives2D.cleanup_objects

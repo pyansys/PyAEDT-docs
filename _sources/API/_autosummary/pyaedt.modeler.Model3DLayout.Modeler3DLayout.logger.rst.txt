@@ -1,0 +1,6 @@
+logger
+======
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.logger

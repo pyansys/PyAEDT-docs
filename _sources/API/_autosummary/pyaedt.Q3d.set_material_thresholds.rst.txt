@@ -1,0 +1,6 @@
+set\_material\_thresholds
+=========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.set_material_thresholds

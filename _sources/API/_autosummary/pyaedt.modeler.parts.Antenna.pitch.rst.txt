@@ -1,0 +1,6 @@
+pitch
+=====
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Antenna.pitch

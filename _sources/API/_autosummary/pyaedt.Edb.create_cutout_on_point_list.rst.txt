@@ -1,0 +1,6 @@
+create\_cutout\_on\_point\_list
+===============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Edb.create_cutout_on_point_list

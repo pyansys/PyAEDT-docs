@@ -1,0 +1,6 @@
+delete\_setup
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.delete_setup

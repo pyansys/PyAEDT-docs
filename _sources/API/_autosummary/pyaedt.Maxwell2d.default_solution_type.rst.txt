@@ -1,0 +1,6 @@
+default\_solution\_type
+=======================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.default_solution_type

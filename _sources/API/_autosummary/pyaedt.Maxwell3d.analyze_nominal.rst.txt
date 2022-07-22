@@ -1,0 +1,6 @@
+analyze\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell3d.analyze_nominal

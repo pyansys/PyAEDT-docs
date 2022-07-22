@@ -1,0 +1,6 @@
+get\_all\_sources
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.get_all_sources

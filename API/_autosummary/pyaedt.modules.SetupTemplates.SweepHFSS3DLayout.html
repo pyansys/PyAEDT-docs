@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.modules.SetupTemplates.SweepHFSS3DLayout &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="add_subrange" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.add_subrange.html" />
+    <link rel="prev" title="is_solved" href="pyaedt.modules.SetupTemplates.SweepHFSS.is_solved.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Setup.html" accesskey="U">Setup</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.modules.SetupTemplates.SweepHFSS3DLayout</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-modules-setuptemplates-sweephfss3dlayout">
+<h1>pyaedt.modules.SetupTemplates.SweepHFSS3DLayout<a class="headerlink" href="#pyaedt-modules-setuptemplates-sweephfss3dlayout" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modules.SetupTemplates.</span></span><span class="sig-name descname"><span class="pre">SweepHFSS3DLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setupname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweepname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweeptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interpolating'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/SetupTemplates.html#SweepHFSS3DLayout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout" title="Permalink to this definition">#</a></dt>
+<dd><p>Initializes, creates, and updates sweeps in HFSS 3D Layout.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>oanaysis</strong></dt><dd></dd>
+<dt><strong>setupname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the setup.</p>
+</dd>
+<dt><strong>sweepname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the sweep.</p>
+</dd>
+<dt><strong>sweeptype</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Type of the sweep. Options are <code class="docutils literal notranslate"><span class="pre">&quot;Interpolating&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Discrete&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">&quot;Interpolating&quot;</span></code>.</p>
+</dd>
+<dt><strong>save_fields</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to save the fields. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+<dt><strong>props</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Dictionary of the properties. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which
+case the default properties are retrieved.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.add_subrange.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.add_subrange" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.add_subrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.add_subrange</span></code></a>(rangetype, start)</p></td>
+<td><p>Add a subrange to the sweep.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_range.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_range" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.change_range</span></code></a>(rangetype, start)</p></td>
+<td><p>Change the range of the sweep.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_type.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_type" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.change_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.change_type</span></code></a>(sweeptype)</p></td>
+<td><p>Change the type of the sweep.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.create.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.create" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.create</span></code></a>()</p></td>
+<td><p>Create a sweep.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.set_save_fields.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.set_save_fields" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.set_save_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.set_save_fields</span></code></a>(save_fields)</p></td>
+<td><p>Choose whether the fields are saved.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.update.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.update" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.update</span></code></a>()</p></td>
+<td><p>Update the sweep.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.combined_name.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.combined_name" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.combined_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.combined_name</span></code></a></p></td>
+<td><p>Compute the setupname : sweepname string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.is_solved.html#pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.is_solved" title="pyaedt.modules.SetupTemplates.SweepHFSS3DLayout.is_solved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SweepHFSS3DLayout.is_solved</span></code></a></p></td>
+<td><p>Verify if solutions are available for given sweep.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

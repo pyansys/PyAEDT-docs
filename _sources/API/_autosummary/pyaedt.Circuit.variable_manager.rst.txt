@@ -1,0 +1,6 @@
+variable\_manager
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.variable_manager

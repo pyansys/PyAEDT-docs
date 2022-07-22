@@ -1,0 +1,6 @@
+release\_desktop
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.release_desktop

@@ -1,0 +1,6 @@
+assign\_uniform\_convection
+===========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.assign_uniform_convection

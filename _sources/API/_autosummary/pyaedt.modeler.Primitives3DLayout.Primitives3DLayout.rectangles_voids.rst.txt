@@ -1,0 +1,6 @@
+rectangles\_voids
+=================
+
+.. currentmodule:: pyaedt.modeler.Primitives3DLayout
+
+.. autoproperty:: Primitives3DLayout.rectangles_voids

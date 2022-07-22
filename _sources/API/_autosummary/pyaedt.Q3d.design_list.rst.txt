@@ -1,0 +1,6 @@
+design\_list
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.design_list

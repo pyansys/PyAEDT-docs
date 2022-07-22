@@ -1,0 +1,6 @@
+move
+====
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.move

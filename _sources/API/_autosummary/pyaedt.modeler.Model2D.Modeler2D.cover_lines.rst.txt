@@ -1,0 +1,6 @@
+cover\_lines
+============
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.cover_lines

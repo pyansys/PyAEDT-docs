@@ -1,0 +1,6 @@
+project\_list
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.project_list

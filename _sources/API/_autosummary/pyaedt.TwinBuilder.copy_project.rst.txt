@@ -1,0 +1,6 @@
+copy\_project
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.copy_project

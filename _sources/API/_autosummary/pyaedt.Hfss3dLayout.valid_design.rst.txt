@@ -1,0 +1,6 @@
+valid\_design
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.valid_design

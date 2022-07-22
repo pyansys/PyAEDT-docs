@@ -1,0 +1,6 @@
+assign\_current
+===============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.assign_current

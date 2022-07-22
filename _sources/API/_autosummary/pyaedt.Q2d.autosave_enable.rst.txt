@@ -1,0 +1,6 @@
+autosave\_enable
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.autosave_enable

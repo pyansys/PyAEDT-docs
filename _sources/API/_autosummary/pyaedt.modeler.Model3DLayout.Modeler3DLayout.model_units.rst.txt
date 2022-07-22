@@ -1,0 +1,6 @@
+model\_units
+============
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.model_units

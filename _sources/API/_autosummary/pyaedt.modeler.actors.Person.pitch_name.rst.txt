@@ -1,0 +1,6 @@
+pitch\_name
+===========
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Person.pitch_name

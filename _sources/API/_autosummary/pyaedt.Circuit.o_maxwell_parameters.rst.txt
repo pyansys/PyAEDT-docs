@@ -1,0 +1,6 @@
+o\_maxwell\_parameters
+======================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.o_maxwell_parameters

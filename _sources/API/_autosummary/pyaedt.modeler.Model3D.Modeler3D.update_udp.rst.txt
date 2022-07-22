@@ -1,0 +1,6 @@
+update\_udp
+===========
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.update_udp

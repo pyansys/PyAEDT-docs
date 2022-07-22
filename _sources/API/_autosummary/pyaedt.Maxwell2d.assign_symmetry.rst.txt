@@ -1,0 +1,6 @@
+assign\_symmetry
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.assign_symmetry

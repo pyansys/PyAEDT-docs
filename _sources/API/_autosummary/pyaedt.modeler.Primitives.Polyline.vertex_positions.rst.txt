@@ -1,0 +1,6 @@
+vertex\_positions
+=================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.vertex_positions

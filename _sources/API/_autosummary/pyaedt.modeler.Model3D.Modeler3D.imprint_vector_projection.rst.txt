@@ -1,0 +1,6 @@
+imprint\_vector\_projection
+===========================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.imprint_vector_projection

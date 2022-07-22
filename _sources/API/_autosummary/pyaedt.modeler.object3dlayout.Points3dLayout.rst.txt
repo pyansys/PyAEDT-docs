@@ -1,0 +1,37 @@
+﻿pyaedt.modeler.object3dlayout.Points3dLayout
+============================================
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoclass:: Points3dLayout
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Points3dLayout.move
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Points3dLayout.is_arc
+      
+      
+      Points3dLayout.position
+      
+   
+   

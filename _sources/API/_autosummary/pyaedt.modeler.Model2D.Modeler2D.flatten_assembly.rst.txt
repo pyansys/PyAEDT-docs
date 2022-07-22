@@ -1,0 +1,6 @@
+flatten\_assembly
+=================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.flatten_assembly

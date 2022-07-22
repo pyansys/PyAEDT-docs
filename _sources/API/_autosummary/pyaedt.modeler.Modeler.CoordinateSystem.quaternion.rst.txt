@@ -1,0 +1,6 @@
+quaternion
+==========
+
+.. currentmodule:: pyaedt.modeler.Modeler
+
+.. autoproperty:: CoordinateSystem.quaternion

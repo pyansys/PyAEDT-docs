@@ -1,0 +1,6 @@
+logger
+======
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerNexxim.logger

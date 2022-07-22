@@ -1,0 +1,6 @@
+clean\_proj\_folder
+===================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.clean_proj_folder

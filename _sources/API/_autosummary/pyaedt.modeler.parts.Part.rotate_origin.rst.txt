@@ -1,0 +1,6 @@
+rotate\_origin
+==============
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Part.rotate_origin

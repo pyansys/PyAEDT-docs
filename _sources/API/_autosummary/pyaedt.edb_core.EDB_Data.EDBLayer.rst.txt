@@ -1,0 +1,79 @@
+﻿pyaedt.edb\_core.EDB\_Data.EDBLayer
+===================================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoclass:: EDBLayer
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EDBLayer.init_vals
+      
+      
+      EDBLayer.plot
+      
+      
+      EDBLayer.set_elevation
+      
+      
+      EDBLayer.update_layer_vals
+      
+      
+      EDBLayer.update_layers
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EDBLayer.etch_factor
+      
+      
+      EDBLayer.filling_material_name
+      
+      
+      EDBLayer.id
+      
+      
+      EDBLayer.layer_type
+      
+      
+      EDBLayer.lower_elevation
+      
+      
+      EDBLayer.material_name
+      
+      
+      EDBLayer.name
+      
+      
+      EDBLayer.negative_layer
+      
+      
+      EDBLayer.roughness_enabled
+      
+      
+      EDBLayer.thickness_value
+      
+      
+      EDBLayer.top_bottom_association
+      
+      
+      EDBLayer.upper_elevation
+      
+   
+   

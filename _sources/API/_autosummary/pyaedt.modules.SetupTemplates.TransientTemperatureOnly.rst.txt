@@ -1,0 +1,6 @@
+﻿TransientTemperatureOnly
+========================
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: TransientTemperatureOnly

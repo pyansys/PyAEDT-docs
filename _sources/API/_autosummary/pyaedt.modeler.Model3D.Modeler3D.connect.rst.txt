@@ -1,0 +1,6 @@
+connect
+=======
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.connect

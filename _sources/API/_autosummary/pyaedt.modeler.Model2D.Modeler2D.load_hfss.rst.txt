@@ -1,0 +1,6 @@
+load\_hfss
+==========
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.load_hfss

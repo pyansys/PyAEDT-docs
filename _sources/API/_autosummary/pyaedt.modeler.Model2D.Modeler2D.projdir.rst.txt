@@ -1,0 +1,6 @@
+projdir
+=======
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. autoproperty:: Modeler2D.projdir

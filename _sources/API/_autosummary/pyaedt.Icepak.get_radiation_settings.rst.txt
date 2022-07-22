@@ -1,0 +1,6 @@
+get\_radiation\_settings
+========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.get_radiation_settings

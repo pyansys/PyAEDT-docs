@@ -1,0 +1,6 @@
+is3dcomponent
+=============
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: UserDefinedComponent.is3dcomponent

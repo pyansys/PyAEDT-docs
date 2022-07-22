@@ -1,0 +1,6 @@
+autosave\_disable
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.autosave_disable

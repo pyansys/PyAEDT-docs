@@ -1,0 +1,6 @@
+logger
+======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.logger

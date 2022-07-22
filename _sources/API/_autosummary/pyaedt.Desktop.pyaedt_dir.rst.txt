@@ -1,0 +1,6 @@
+pyaedt\_dir
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Desktop.pyaedt_dir

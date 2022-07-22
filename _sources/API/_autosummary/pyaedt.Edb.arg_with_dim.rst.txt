@@ -1,0 +1,6 @@
+arg\_with\_dim
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Edb.arg_with_dim

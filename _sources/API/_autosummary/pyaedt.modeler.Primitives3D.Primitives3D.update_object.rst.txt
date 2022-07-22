@@ -1,0 +1,6 @@
+update\_object
+==============
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.update_object

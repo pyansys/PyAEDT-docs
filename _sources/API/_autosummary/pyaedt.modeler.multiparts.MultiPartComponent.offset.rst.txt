@@ -1,0 +1,6 @@
+offset
+======
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: MultiPartComponent.offset

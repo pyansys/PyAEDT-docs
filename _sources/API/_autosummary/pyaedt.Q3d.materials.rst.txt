@@ -1,0 +1,6 @@
+materials
+=========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.materials

@@ -1,0 +1,6 @@
+mirror
+======
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: Object3d.mirror

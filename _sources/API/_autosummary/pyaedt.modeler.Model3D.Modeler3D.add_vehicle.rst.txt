@@ -1,0 +1,6 @@
+add\_vehicle
+============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.add_vehicle

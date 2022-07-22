@@ -1,0 +1,6 @@
+yaw\_name
+=========
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Environment.yaw_name

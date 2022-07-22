@@ -1,0 +1,6 @@
+existing\_analysis\_setups
+==========================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.existing_analysis_setups

@@ -1,0 +1,6 @@
+pins
+====
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: CircuitComponent.pins

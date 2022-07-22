@@ -1,0 +1,6 @@
+hidden\_variable
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.hidden_variable

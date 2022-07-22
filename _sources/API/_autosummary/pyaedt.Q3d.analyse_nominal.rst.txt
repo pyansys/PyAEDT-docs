@@ -1,0 +1,6 @@
+analyse\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.analyse_nominal

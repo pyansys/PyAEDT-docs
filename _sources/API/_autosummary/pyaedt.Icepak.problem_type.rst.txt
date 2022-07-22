@@ -1,0 +1,6 @@
+problem\_type
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.problem_type

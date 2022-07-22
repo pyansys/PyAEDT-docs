@@ -1,0 +1,6 @@
+points
+======
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.points

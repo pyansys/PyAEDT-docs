@@ -1,0 +1,6 @@
+excitations
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.excitations

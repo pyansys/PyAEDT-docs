@@ -1,0 +1,6 @@
+set\_etching\_layers
+====================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.set_etching_layers

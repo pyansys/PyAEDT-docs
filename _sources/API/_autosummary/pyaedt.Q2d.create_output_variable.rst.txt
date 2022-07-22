@@ -1,0 +1,6 @@
+create\_output\_variable
+========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.create_output_variable

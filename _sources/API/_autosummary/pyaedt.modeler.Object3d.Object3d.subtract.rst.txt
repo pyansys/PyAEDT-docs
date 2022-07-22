@@ -1,0 +1,6 @@
+subtract
+========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: Object3d.subtract

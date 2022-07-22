@@ -1,0 +1,6 @@
+m\_Editor
+=========
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.m_Editor

@@ -1,0 +1,6 @@
+arg\_with\_dim
+==============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.arg_with_dim

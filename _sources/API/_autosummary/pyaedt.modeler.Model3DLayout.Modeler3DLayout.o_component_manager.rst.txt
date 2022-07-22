@@ -1,0 +1,6 @@
+o\_component\_manager
+=====================
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.o_component_manager

@@ -1,0 +1,6 @@
+import\_idf
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.import_idf

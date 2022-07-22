@@ -1,0 +1,6 @@
+roughness\_enabled
+==================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBLayer.roughness_enabled

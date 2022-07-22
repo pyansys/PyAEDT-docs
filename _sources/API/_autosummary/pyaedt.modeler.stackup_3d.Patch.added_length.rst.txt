@@ -1,0 +1,6 @@
+added\_length
+=============
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. autoproperty:: Patch.added_length

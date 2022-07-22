@@ -1,0 +1,6 @@
+create\_region
+==============
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. automethod:: Primitives2D.create_region

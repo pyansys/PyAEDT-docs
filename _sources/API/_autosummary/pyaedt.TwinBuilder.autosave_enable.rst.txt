@@ -1,0 +1,6 @@
+autosave\_enable
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.autosave_enable

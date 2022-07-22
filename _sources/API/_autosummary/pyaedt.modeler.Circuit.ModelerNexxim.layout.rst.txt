@@ -1,0 +1,6 @@
+layout
+======
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerNexxim.layout

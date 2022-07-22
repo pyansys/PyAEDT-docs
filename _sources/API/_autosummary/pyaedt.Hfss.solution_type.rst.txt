@@ -1,0 +1,6 @@
+solution\_type
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss.solution_type

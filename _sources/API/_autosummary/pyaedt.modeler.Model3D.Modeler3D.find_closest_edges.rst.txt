@@ -1,0 +1,6 @@
+find\_closest\_edges
+====================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.find_closest_edges

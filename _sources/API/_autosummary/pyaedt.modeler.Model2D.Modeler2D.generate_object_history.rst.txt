@@ -1,0 +1,6 @@
+generate\_object\_history
+=========================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.generate_object_history

@@ -1,0 +1,6 @@
+close\_desktop
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.close_desktop

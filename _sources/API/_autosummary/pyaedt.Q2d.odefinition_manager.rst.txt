@@ -1,0 +1,6 @@
+odefinition\_manager
+====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.odefinition_manager

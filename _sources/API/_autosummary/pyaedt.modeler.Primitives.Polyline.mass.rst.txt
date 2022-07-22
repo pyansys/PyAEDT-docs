@@ -1,0 +1,6 @@
+mass
+====
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.mass

@@ -1,0 +1,6 @@
+change\_license\_type
+=====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Desktop.change_license_type

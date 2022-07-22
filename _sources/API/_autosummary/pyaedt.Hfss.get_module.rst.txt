@@ -1,0 +1,6 @@
+get\_module
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.get_module

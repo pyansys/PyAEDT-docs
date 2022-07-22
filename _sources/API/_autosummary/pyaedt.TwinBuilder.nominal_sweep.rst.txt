@@ -1,0 +1,6 @@
+nominal\_sweep
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: TwinBuilder.nominal_sweep

@@ -1,0 +1,6 @@
+modeler
+=======
+
+.. currentmodule:: pyaedt.modeler.Primitives3DLayout
+
+.. autoproperty:: Primitives3DLayout.modeler

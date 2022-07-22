@@ -1,0 +1,6 @@
+name
+====
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Person.name

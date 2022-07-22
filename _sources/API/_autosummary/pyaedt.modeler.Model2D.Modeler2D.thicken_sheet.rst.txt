@@ -1,0 +1,6 @@
+thicken\_sheet
+==============
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.thicken_sheet

@@ -1,0 +1,6 @@
+create\_component\_from\_touchstonmodel
+=======================================
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.create_component_from_touchstonmodel

@@ -1,0 +1,1371 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyaedt.edb_core.stackup &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.edb_core.stackup</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyaedt.edb_core.stackup</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the `EdbStackup` class.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
+
+<span class="kn">import</span> <span class="nn">difflib</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">pyaedt.edb_core.EDB_Data</span> <span class="kn">import</span> <span class="n">EDBLayers</span>
+<span class="kn">from</span> <span class="nn">pyaedt.edb_core.EDB_Data</span> <span class="kn">import</span> <span class="n">SimulationConfiguration</span>
+<span class="kn">from</span> <span class="nn">pyaedt.edb_core.general</span> <span class="kn">import</span> <span class="n">convert_py_list_to_net_list</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">is_ironpython</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">clr</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This module requires the PythonNET package.&quot;</span><span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EdbStackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.html#pyaedt.edb_core.stackup.EdbStackup">[docs]</a><span class="k">class</span> <span class="nc">EdbStackup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Manages EDB methods for stackup and material management accessible from `Edb.core_stackup` property.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyaedt import Edb</span>
+<span class="sd">    &gt;&gt;&gt; edbapp = Edb(&quot;myaedbfolder&quot;, edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; edb_stackup = edbapp.core_stackup</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_edb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span> <span class="o">=</span> <span class="n">p_edb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layer_dict</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">builder</span>
+
+    <span class="k">def</span> <span class="nf">_get_edb_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_edb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edb</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_active_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">active_layout</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">cell</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">db</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">logger</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">stackup_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stackup layers.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.edb_core.EDBData.EDBLayers`</span>
+<span class="sd">            Dictionary of stackup layers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer_dict</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_layer_dict</span> <span class="o">=</span> <span class="n">EDBLayers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer_dict</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">signal_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dictionary of all signal layers.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict[str, :class:`pyaedt.edb_core.EDB_Data.EDBLayer`]</span>
+<span class="sd">            List of signal layers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">signal_layers</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">layer_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Layer types.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Types of layers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">materials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Materials.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary of materials.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mats</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">edbutils</span><span class="o">.</span><span class="n">MaterialSetupInfo</span><span class="o">.</span><span class="n">GetFromLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">active_layout</span><span class="p">):</span>
+            <span class="n">mats</span><span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">Name</span><span class="p">]</span> <span class="o">=</span> <span class="n">el</span>
+        <span class="k">return</span> <span class="n">mats</span>
+
+<div class="viewcode-block" id="EdbStackup.create_dielectric"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_dielectric.html#pyaedt.edb_core.stackup.EdbStackup.create_dielectric">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_dielectric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">permittivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss_tangent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a dielectric with simple properties.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the dielectic.</span>
+<span class="sd">        permittivity : float, optional</span>
+<span class="sd">            Permittivity of the dielectric. The default is ``1``.</span>
+<span class="sd">        loss_tangent : float, optional</span>
+<span class="sd">            Loss tangent for the material. The default is ``0``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Material definition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
+            <span class="n">material_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">material_def</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Permittivity</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">permittivity</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">material_def</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">DielectricLossTangent</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">loss_tangent</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">material_def</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="EdbStackup.create_conductor"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_conductor.html#pyaedt.edb_core.stackup.EdbStackup.create_conductor">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_conductor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">conductivity</span><span class="o">=</span><span class="mf">1e6</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a conductor with simple properties.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the conductor.</span>
+<span class="sd">        conductivity : float, optional</span>
+<span class="sd">            Conductivity of the conductor. The default is ``1e6``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Material definition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
+            <span class="n">material_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">material_def</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Conductivity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">conductivity</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">material_def</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="EdbStackup.create_debye_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_debye_material</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="n">relative_permittivity_low</span><span class="p">,</span>
+        <span class="n">relative_permittivity_high</span><span class="p">,</span>
+        <span class="n">loss_tangent_low</span><span class="p">,</span>
+        <span class="n">loss_tangent_high</span><span class="p">,</span>
+        <span class="n">lower_freqency</span><span class="p">,</span>
+        <span class="n">higher_frequency</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a dielectric with the Debye model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the dielectic.</span>
+<span class="sd">        relative_permittivity_low : float</span>
+<span class="sd">            Relative permittivity of the dielectric at the frequency specified</span>
+<span class="sd">            for ``lower_frequency``.</span>
+<span class="sd">        relative_permittivity_high : float</span>
+<span class="sd">            Relative ermittivity of the dielectric at the frequency specified</span>
+<span class="sd">            for ``higher_frequency``.</span>
+<span class="sd">        loss_tangent_low : float</span>
+<span class="sd">            Loss tangent for the material at the frequency specified</span>
+<span class="sd">            for ``lower_frequency``.</span>
+<span class="sd">        loss_tangent_high : float</span>
+<span class="sd">            Loss tangent for the material at the frequency specified</span>
+<span class="sd">            for ``higher_frequency``.</span>
+<span class="sd">        lower_freqency : float</span>
+<span class="sd">            Value for the lower frequency.</span>
+<span class="sd">        higher_frequency : float</span>
+<span class="sd">            Value for the higher frequency.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Material definition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">DebyeModel</span><span class="p">()</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetFrequencyRange</span><span class="p">(</span><span class="n">lower_freqency</span><span class="p">,</span> <span class="n">higher_frequency</span><span class="p">)</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetLossTangentAtHighLowFrequency</span><span class="p">(</span><span class="n">loss_tangent_low</span><span class="p">,</span> <span class="n">loss_tangent_high</span><span class="p">)</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetRelativePermitivityAtHighLowFrequency</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">relative_permittivity_low</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">relative_permittivity_high</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_dielectric_material_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">material_def</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EdbStackup.create_multipole_debye_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material.html#pyaedt.edb_core.stackup.EdbStackup.create_multipole_debye_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_multipole_debye_material</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="n">frequencies</span><span class="p">,</span>
+        <span class="n">relative_permittivities</span><span class="p">,</span>
+        <span class="n">loss_tangents</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a dielectric with the Multipole Debye model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the dielectic.</span>
+<span class="sd">        frequencies : list</span>
+<span class="sd">            Frequencies in GHz.</span>
+<span class="sd">        relative_permittivities : list</span>
+<span class="sd">            Relative permittivities at each frequency.</span>
+<span class="sd">        loss_tangents : list</span>
+<span class="sd">            Loss tangents at each frequency.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Material definition.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Edb</span>
+<span class="sd">        &gt;&gt;&gt; edb = Edb()</span>
+<span class="sd">        &gt;&gt;&gt; freq = [0, 2, 3, 4, 5, 6]</span>
+<span class="sd">        &gt;&gt;&gt; rel_perm = [1e9, 1.1e9, 1.2e9, 1.3e9, 1.5e9, 1.6e9]</span>
+<span class="sd">        &gt;&gt;&gt; loss_tan = [0.025, 0.026, 0.027, 0.028, 0.029, 0.030]</span>
+<span class="sd">        &gt;&gt;&gt; diel = edb.core_stackup.create_multipole_debye_material(&quot;My_MP_Debye&quot;, freq, rel_perm, loss_tan)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">frequencies</span><span class="p">]</span>
+        <span class="n">relative_permittivities</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">relative_permittivities</span><span class="p">]</span>
+        <span class="n">loss_tangents</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">loss_tangents</span><span class="p">]</span>
+        <span class="n">material_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MultipoleDebyeModel</span><span class="p">()</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetParameters</span><span class="p">(</span>
+            <span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">frequencies</span><span class="p">),</span>
+            <span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">relative_permittivities</span><span class="p">),</span>
+            <span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">loss_tangents</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_dielectric_material_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">material_def</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EdbStackup.get_layout_thickness"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness.html#pyaedt.edb_core.stackup.EdbStackup.get_layout_thickness">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_layout_thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the layout thickness.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        Float, the thickness value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">layers_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">bottom_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layers_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">top_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layers_name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">thickness</span> <span class="o">=</span> <span class="n">top_layer</span><span class="o">.</span><span class="n">lower_elevation</span> <span class="o">+</span> <span class="n">top_layer</span><span class="o">.</span><span class="n">thickness_value</span> <span class="o">-</span> <span class="n">bottom_layer</span><span class="o">.</span><span class="n">lower_elevation</span>
+        <span class="k">return</span> <span class="n">thickness</span></div>
+
+<div class="viewcode-block" id="EdbStackup.duplicate_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.duplicate_material.html#pyaedt.edb_core.stackup.EdbStackup.duplicate_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">duplicate_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">material_name</span><span class="p">,</span> <span class="n">new_material_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Duplicate a material from the database.</span>
+<span class="sd">        It duplicates these five properties: ``permittivity``, ``permeability``, ` conductivity,``</span>
+<span class="sd">        ``dielectriclosstangent``, and ``magneticlosstangent``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        material_name : str</span>
+<span class="sd">            Name of the existing material.</span>
+<span class="sd">        new_material_name : str</span>
+<span class="sd">            Name of the new duplicated material.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        EDB material : class: &#39;Ansys.Ansoft.Edb.Definition.MaterialDef&#39;</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Edb</span>
+<span class="sd">        &gt;&gt;&gt; edb_app = Edb()</span>
+<span class="sd">        &gt;&gt;&gt; my_material = edb_app.core_stackup.duplicate_material(&quot;copper&quot;, &quot;my_new_copper&quot;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;This material doesn&#39;t exists.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">permittivity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span><span class="s2">&quot;permittivity&quot;</span><span class="p">,</span> <span class="n">material_name</span><span class="p">))</span>
+            <span class="n">permeability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span>
+                    <span class="s2">&quot;permeability&quot;</span><span class="p">,</span>
+                    <span class="n">material_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">conductivity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span>
+                    <span class="s2">&quot;conductivity&quot;</span><span class="p">,</span>
+                    <span class="n">material_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">dielectric_loss_tangent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span><span class="s2">&quot;dielectric_loss_tangent&quot;</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">magnetic_loss_tangent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_property_by_material_name</span><span class="p">(</span><span class="s2">&quot;magnetic_loss_tangent&quot;</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">edb_material</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">new_material_name</span><span class="p">)</span>
+            <span class="n">edb_material</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Permittivity</span><span class="p">,</span> <span class="n">permittivity</span><span class="p">)</span>
+            <span class="n">edb_material</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Permeability</span><span class="p">,</span> <span class="n">permeability</span><span class="p">)</span>
+            <span class="n">edb_material</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Conductivity</span><span class="p">,</span> <span class="n">conductivity</span><span class="p">)</span>
+            <span class="n">edb_material</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">DielectricLossTangent</span><span class="p">,</span> <span class="n">dielectric_loss_tangent</span>
+            <span class="p">)</span>
+            <span class="n">edb_material</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">MagneticLossTangent</span><span class="p">,</span> <span class="n">magnetic_loss_tangent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">edb_material</span></div>
+
+<div class="viewcode-block" id="EdbStackup.material_name_to_id"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.material_name_to_id.html#pyaedt.edb_core.stackup.EdbStackup.material_name_to_id">[docs]</a>    <span class="nd">@pyaedt_function_handler</span>
+    <span class="k">def</span> <span class="nf">material_name_to_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert a material property name to a material property ID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        property_name : str</span>
+<span class="sd">            Name of the material property.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ID of the material property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Permittivity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Permittivity</span><span class="p">,</span>
+            <span class="s2">&quot;Permeability&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Permeability</span><span class="p">,</span>
+            <span class="s2">&quot;Conductivity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">Conductivity</span><span class="p">,</span>
+            <span class="s2">&quot;DielectricLossTangent&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">DielectricLossTangent</span><span class="p">,</span>
+            <span class="s2">&quot;MagneticLossTangent&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">MagneticLossTangent</span><span class="p">,</span>
+            <span class="s2">&quot;ThermalConductivity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">ThermalConductivity</span><span class="p">,</span>
+            <span class="s2">&quot;MassDensity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">MassDensity</span><span class="p">,</span>
+            <span class="s2">&quot;SpecificHeat&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">SpecificHeat</span><span class="p">,</span>
+            <span class="s2">&quot;YoungsModulus&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">YoungsModulus</span><span class="p">,</span>
+            <span class="s2">&quot;PoissonsRatio&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">PoissonsRatio</span><span class="p">,</span>
+            <span class="s2">&quot;ThermalExpansionCoefficient&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">ThermalExpansionCoefficient</span><span class="p">,</span>
+            <span class="s2">&quot;InvalidProperty&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">InvalidProperty</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">found_el</span> <span class="o">=</span> <span class="n">difflib</span><span class="o">.</span><span class="n">get_close_matches</span><span class="p">(</span><span class="n">property_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">props</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">found_el</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">props</span><span class="p">[</span><span class="n">found_el</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialPropertyId</span><span class="o">.</span><span class="n">InvalidProperty</span></div>
+
+<div class="viewcode-block" id="EdbStackup.get_property_by_material_name"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name.html#pyaedt.edb_core.stackup.EdbStackup.get_property_by_material_name">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_property_by_material_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">material_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the property of a material. If it is executed in IronPython,</span>
+<span class="sd">         you must only use the first element of the returned tuple, which is a float.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        material_name : str</span>
+<span class="sd">            Name of the existing material.</span>
+<span class="sd">        property_name : str</span>
+<span class="sd">            Name of the material property.</span>
+<span class="sd">            ``permittivity``</span>
+<span class="sd">            ``permeability``</span>
+<span class="sd">            ``conductivity``</span>
+<span class="sd">            ``dielectric_loss_tangent``</span>
+<span class="sd">            ``magnetic_loss_tangent``</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            the float value of the property.</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Edb</span>
+<span class="sd">        &gt;&gt;&gt; edb_app = Edb()</span>
+<span class="sd">        &gt;&gt;&gt; returned_tuple = edb_app.core_stackup.get_property_by_material_name(&quot;conductivity&quot;, &quot;copper&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb_value = returned_tuple[0]</span>
+<span class="sd">        &gt;&gt;&gt; float_value = returned_tuple[1]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;This material doesn&#39;t exists.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">original_material</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">material_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_ironpython</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="n">property_box</span> <span class="o">=</span> <span class="n">clr</span><span class="o">.</span><span class="n">StrongBox</span><span class="p">[</span><span class="nb">float</span><span class="p">]()</span>
+                <span class="n">original_material</span><span class="o">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material_name_to_id</span><span class="p">(</span><span class="n">property_name</span><span class="p">),</span> <span class="n">property_box</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">property_box</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">property_box</span> <span class="o">=</span> <span class="n">original_material</span><span class="o">.</span><span class="n">GetProperty</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">material_name_to_id</span><span class="p">(</span><span class="n">property_name</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">property_box</span><span class="o">.</span><span class="n">ToDouble</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_get_solder_height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="ow">and</span> <span class="n">val</span><span class="o">.</span><span class="n">placement_layer</span> <span class="o">==</span> <span class="n">layer_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_remove_solder_pec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="ow">and</span> <span class="n">val</span><span class="o">.</span><span class="n">placement_layer</span> <span class="o">==</span> <span class="n">layer_name</span><span class="p">:</span>
+                <span class="n">comp_prop</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">component_property</span>
+                <span class="n">port_property</span> <span class="o">=</span> <span class="n">comp_prop</span><span class="o">.</span><span class="n">GetPortProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                <span class="n">port_property</span><span class="o">.</span><span class="n">SetReferenceSizeAuto</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">port_property</span><span class="o">.</span><span class="n">SetReferenceSize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+                <span class="n">comp_prop</span><span class="o">.</span><span class="n">SetPortProperty</span><span class="p">(</span><span class="n">port_property</span><span class="p">)</span>
+                <span class="n">val</span><span class="o">.</span><span class="n">edbcomponent</span><span class="o">.</span><span class="n">SetComponentProperty</span><span class="p">(</span><span class="n">comp_prop</span><span class="p">)</span>
+
+<div class="viewcode-block" id="EdbStackup.adjust_solder_dielectrics"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics.html#pyaedt.edb_core.stackup.EdbStackup.adjust_solder_dielectrics">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">adjust_solder_dielectrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjust the stack-up by adding or modifying dielectric layers that contains Solder Balls.</span>
+<span class="sd">        This method identifies the solder-ball height and adjust the dielectric thickness on top (or bottom) to fit</span>
+<span class="sd">        the thickness in order to merge another layout.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_components</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span><span class="p">:</span>
+                <span class="n">layer</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">placement_layer</span>
+                <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">elevation</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">layer1</span> <span class="o">=</span> <span class="n">layer</span>
+                    <span class="n">last_layer_thickess</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="k">if</span> <span class="n">el</span> <span class="o">==</span> <span class="n">layer</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="n">elevation</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span>
+                        <span class="n">last_layer_thickess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span>
+                        <span class="n">layer1</span> <span class="o">=</span> <span class="n">el</span>
+                    <span class="k">if</span> <span class="n">layer1</span> <span class="o">!=</span> <span class="n">layer</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layer1</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">-</span> <span class="n">elevation</span> <span class="o">+</span> <span class="n">last_layer_thickess</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">&gt;</span> <span class="n">elevation</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                            <span class="s2">&quot;Top_Air&quot;</span><span class="p">,</span>
+                            <span class="n">start_layer</span><span class="o">=</span><span class="n">layer1</span><span class="p">,</span>
+                            <span class="n">material</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span>
+                            <span class="n">thickness</span><span class="o">=</span><span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">-</span> <span class="n">elevation</span><span class="p">,</span>
+                            <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">elevation</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">layer1</span> <span class="o">=</span> <span class="n">layer</span>
+                    <span class="n">last_layer_thickess</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">el</span> <span class="o">==</span> <span class="n">layer</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="n">layer1</span> <span class="o">=</span> <span class="n">el</span>
+                        <span class="n">elevation</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span>
+                        <span class="n">last_layer_thickess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span>
+                    <span class="k">if</span> <span class="n">layer1</span> <span class="o">!=</span> <span class="n">layer</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">layer1</span><span class="p">]</span><span class="o">.</span><span class="n">thickness_value</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">-</span> <span class="n">elevation</span> <span class="o">+</span> <span class="n">last_layer_thickess</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">&gt;</span> <span class="n">elevation</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                            <span class="s2">&quot;Bottom_air&quot;</span><span class="p">,</span>
+                            <span class="n">start_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">material</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span>
+                            <span class="n">thickness</span><span class="o">=</span><span class="n">val</span><span class="o">.</span><span class="n">solder_ball_height</span> <span class="o">-</span> <span class="n">elevation</span><span class="p">,</span>
+                            <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbStackup.place_in_layout"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">place_in_layout</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">edb</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">offset_x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">offset_y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">flipped_stackup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">place_on_top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Place current Cell into another cell using layer placement method.</span>
+<span class="sd">        Flip the current layer stackup of a layout if requested. Transform parameters currently not supported.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        edb : Edb</span>
+<span class="sd">            Cell on which to place the current layout. If None the Cell will be applied on an empty new Cell.</span>
+<span class="sd">        angle : double, optional</span>
+<span class="sd">            The rotation angle applied on the design.</span>
+<span class="sd">        offset_x : double, optional</span>
+<span class="sd">            The x offset value.</span>
+<span class="sd">        offset_y : double, optional</span>
+<span class="sd">            The y offset value.</span>
+<span class="sd">        flipped_stackup : bool, optional</span>
+<span class="sd">            Either if the current layout is inverted.</span>
+<span class="sd">            If `True` and place_on_top is `True` the stackup will be flipped before the merge.</span>
+<span class="sd">        place_on_top : bool, optional</span>
+<span class="sd">            Either if place the current layout on Top or Bottom of destination Layout.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when succeed ``False`` if not.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; edb1 = Edb(edbpath=targetfile1,  edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb2 = Edb(edbpath=targetfile2, edbversion=&quot;2021.2&quot;)</span>
+
+<span class="sd">        &gt;&gt;&gt; hosting_cmp = edb1.core_components.get_component_by_name(&quot;U100&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; mounted_cmp = edb2.core_components.get_component_by_name(&quot;BGA&quot;)</span>
+
+<span class="sd">        &gt;&gt;&gt; vector, rotation, solder_ball_height = edb1.core_components.get_component_placement_vector(</span>
+<span class="sd">        ...                                                     mounted_component=mounted_cmp,</span>
+<span class="sd">        ...                                                     hosting_component=hosting_cmp,</span>
+<span class="sd">        ...                                                     mounted_component_pin1=&quot;A12&quot;,</span>
+<span class="sd">        ...                                                     mounted_component_pin2=&quot;A14&quot;,</span>
+<span class="sd">        ...                                                     hosting_component_pin1=&quot;A12&quot;,</span>
+<span class="sd">        ...                                                     hosting_component_pin2=&quot;A14&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb2.core_stackup.place_in_layout(edb1.active_cell, angle=0.0, offset_x=vector[0],</span>
+<span class="sd">        ...                                   offset_y=vector[1], flipped_stackup=False, place_on_top=True,</span>
+<span class="sd">        ...                                   )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if flipped_stackup and place_on_top or (not flipped_stackup and not place_on_top):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjust_solder_dielectrics</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">place_on_top</span><span class="p">:</span>
+            <span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">flip_design</span><span class="p">()</span>
+            <span class="n">place_on_top</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">flipped_stackup</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">flip_design</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">flipped_stackup</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flip_design</span><span class="p">()</span>
+        <span class="n">edb_cell</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">active_cell</span>
+        <span class="n">_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">angle</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span>
+        <span class="n">_offset_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_x</span><span class="p">)</span>
+        <span class="n">_offset_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">edb_cell</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">cell_names</span><span class="p">:</span>
+            <span class="n">_dbCell</span> <span class="o">=</span> <span class="n">convert_py_list_to_net_list</span><span class="p">([</span><span class="n">edb_cell</span><span class="p">])</span>
+            <span class="n">list_cells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">CopyCells</span><span class="p">(</span><span class="n">_dbCell</span><span class="p">)</span>
+            <span class="n">edb_cell</span> <span class="o">=</span> <span class="n">list_cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetCell</span><span class="p">()</span><span class="o">.</span><span class="n">SetBlackBox</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cell_inst2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Hierarchy</span><span class="o">.</span><span class="n">CellInstance</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+            <span class="n">edb_cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetCell</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span>
+        <span class="p">)</span>
+        <span class="n">cell_trans</span> <span class="o">=</span> <span class="n">cell_inst2</span><span class="o">.</span><span class="n">GetTransform</span><span class="p">()</span>
+        <span class="n">cell_trans</span><span class="o">.</span><span class="n">SetRotationValue</span><span class="p">(</span><span class="n">_angle</span><span class="p">)</span>
+        <span class="n">cell_trans</span><span class="o">.</span><span class="n">SetXOffsetValue</span><span class="p">(</span><span class="n">_offset_x</span><span class="p">)</span>
+        <span class="n">cell_trans</span><span class="o">.</span><span class="n">SetYOffsetValue</span><span class="p">(</span><span class="n">_offset_y</span><span class="p">)</span>
+        <span class="n">cell_trans</span><span class="o">.</span><span class="n">SetMirror</span><span class="p">(</span><span class="n">flipped_stackup</span><span class="p">)</span>
+        <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetTransform</span><span class="p">(</span><span class="n">cell_trans</span><span class="p">)</span>
+        <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetSolveIndependentPreference</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">stackup_target</span> <span class="o">=</span> <span class="n">edb_cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">place_on_top</span><span class="p">:</span>
+            <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetPlacementLayer</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">stackup_target</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetPlacementLayer</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">stackup_target</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbStackup.place_in_layout_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_in_layout_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">place_in_layout_3d_placement</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">edb</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">offset_x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">offset_y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">flipped_stackup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">place_on_top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">solder_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Place current Cell into another cell using 3d placement method.</span>
+<span class="sd">        Flip the current layer stackup of a layout if requested. Transform parameters currently not supported.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        edb : Edb</span>
+<span class="sd">            Cell on which to place the current layout. If None the Cell will be applied on an empty new Cell.</span>
+<span class="sd">        angle : double, optional</span>
+<span class="sd">            The rotation angle applied on the design.</span>
+<span class="sd">        offset_x : double, optional</span>
+<span class="sd">            The x offset value.</span>
+<span class="sd">        offset_y : double, optional</span>
+<span class="sd">            The y offset value.</span>
+<span class="sd">        flipped_stackup : bool, optional</span>
+<span class="sd">            Either if the current layout is inverted.</span>
+<span class="sd">            If `True` and place_on_top is `True` the stackup will be flipped before the merge.</span>
+<span class="sd">        place_on_top : bool, optional</span>
+<span class="sd">            Either if place the current layout on Top or Bottom of destination Layout.</span>
+<span class="sd">        solder_height : float, optional</span>
+<span class="sd">            Solder Ball or Bumps eight.</span>
+<span class="sd">            This value will be added to the elevation to align the two layouts.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when succeed ``False`` if not.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; edb1 = Edb(edbpath=targetfile1,  edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb2 = Edb(edbpath=targetfile2, edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; hosting_cmp = edb1.core_components.get_component_by_name(&quot;U100&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; mounted_cmp = edb2.core_components.get_component_by_name(&quot;BGA&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb2.core_stackup.place_in_layout(edb1.active_cell, angle=0.0, offset_x=&quot;1mm&quot;,</span>
+<span class="sd">        ...                                   offset_y=&quot;2mm&quot;, flipped_stackup=False, place_on_top=True,</span>
+<span class="sd">        ...                                   )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_angle</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span>
+
+        <span class="k">if</span> <span class="n">solder_height</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">flipped_stackup</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">place_on_top</span> <span class="ow">or</span> <span class="p">(</span><span class="n">place_on_top</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">flipped_stackup</span><span class="p">):</span>
+                <span class="n">minimum_elevation</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_layers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">minimum_elevation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">minimum_elevation</span> <span class="o">=</span> <span class="n">lay</span><span class="o">.</span><span class="n">lower_elevation</span>
+                    <span class="k">elif</span> <span class="n">lay</span><span class="o">.</span><span class="n">lower_elevation</span> <span class="o">&gt;</span> <span class="n">minimum_elevation</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="n">lay_solder_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_solder_height</span><span class="p">(</span><span class="n">lay</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">solder_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lay_solder_height</span><span class="p">,</span> <span class="n">solder_height</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_remove_solder_pec</span><span class="p">(</span><span class="n">lay</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">maximum_elevation</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">layers_from_the_top</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal_layers</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">lay</span><span class="p">:</span> <span class="o">-</span><span class="n">lay</span><span class="o">.</span><span class="n">upper_elevation</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">layers_from_the_top</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">maximum_elevation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">maximum_elevation</span> <span class="o">=</span> <span class="n">lay</span><span class="o">.</span><span class="n">upper_elevation</span>
+                    <span class="k">elif</span> <span class="n">lay</span><span class="o">.</span><span class="n">upper_elevation</span> <span class="o">&lt;</span> <span class="n">maximum_elevation</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="n">lay_solder_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_solder_height</span><span class="p">(</span><span class="n">lay</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">solder_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lay_solder_height</span><span class="p">,</span> <span class="n">solder_height</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_remove_solder_pec</span><span class="p">(</span><span class="n">lay</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">flipped_stackup</span><span class="p">:</span>
+            <span class="n">rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+        <span class="n">edb_cell</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">active_cell</span>
+        <span class="n">_offset_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_x</span><span class="p">)</span>
+        <span class="n">_offset_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">edb_cell</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">cell_names</span><span class="p">:</span>
+            <span class="n">_dbCell</span> <span class="o">=</span> <span class="n">convert_py_list_to_net_list</span><span class="p">([</span><span class="n">edb_cell</span><span class="p">])</span>
+            <span class="n">list_cells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">CopyCells</span><span class="p">(</span><span class="n">_dbCell</span><span class="p">)</span>
+            <span class="n">edb_cell</span> <span class="o">=</span> <span class="n">list_cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetCell</span><span class="p">()</span><span class="o">.</span><span class="n">SetBlackBox</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cell_inst2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">Hierarchy</span><span class="o">.</span><span class="n">CellInstance</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
+            <span class="n">edb_cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetCell</span><span class="p">()</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span>
+        <span class="p">)</span>
+
+        <span class="n">stackup_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">(</span><span class="n">edb_cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">())</span>
+        <span class="n">stackup_source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">place_on_top</span><span class="p">:</span>
+            <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetPlacementLayer</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">stackup_target</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetPlacementLayer</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">stackup_target</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cell_inst2</span><span class="o">.</span><span class="n">SetIs3DPlacement</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sig_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">stackup_target</span><span class="o">.</span><span class="n">GetTopBottomStackupLayers</span><span class="p">(</span><span class="n">sig_set</span><span class="p">)</span>
+        <span class="n">target_top_elevation</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">target_bottom_elevation</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">res_s</span> <span class="o">=</span> <span class="n">stackup_source</span><span class="o">.</span><span class="n">GetTopBottomStackupLayers</span><span class="p">(</span><span class="n">sig_set</span><span class="p">)</span>
+        <span class="n">source_stack_top_elevation</span> <span class="o">=</span> <span class="n">res_s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">source_stack_bot_elevation</span> <span class="o">=</span> <span class="n">res_s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">place_on_top</span> <span class="ow">and</span> <span class="n">flipped_stackup</span><span class="p">:</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_top_elevation</span> <span class="o">+</span> <span class="n">source_stack_top_elevation</span>
+        <span class="k">elif</span> <span class="n">place_on_top</span><span class="p">:</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_top_elevation</span> <span class="o">-</span> <span class="n">source_stack_bot_elevation</span>
+        <span class="k">elif</span> <span class="n">flipped_stackup</span><span class="p">:</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_bottom_elevation</span> <span class="o">+</span> <span class="n">source_stack_bot_elevation</span>
+            <span class="n">solder_height</span> <span class="o">=</span> <span class="o">-</span><span class="n">solder_height</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_bottom_elevation</span> <span class="o">-</span> <span class="n">source_stack_top_elevation</span>
+            <span class="n">solder_height</span> <span class="o">=</span> <span class="o">-</span><span class="n">solder_height</span>
+
+        <span class="n">h_stackup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">elevation</span> <span class="o">+</span> <span class="n">solder_height</span><span class="p">)</span>
+
+        <span class="n">zero_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">one_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">point3d_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span><span class="n">_offset_x</span><span class="p">,</span> <span class="n">_offset_y</span><span class="p">,</span> <span class="n">h_stackup</span><span class="p">)</span>
+        <span class="n">point_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span><span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">)</span>
+        <span class="n">point_from</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span><span class="n">one_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">)</span>
+        <span class="n">point_to</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">_angle</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">_angle</span><span class="p">)),</span> <span class="n">zero_data</span>
+        <span class="p">)</span>
+        <span class="n">cell_inst2</span><span class="o">.</span><span class="n">Set3DTransformation</span><span class="p">(</span><span class="n">point_loc</span><span class="p">,</span> <span class="n">point_from</span><span class="p">,</span> <span class="n">point_to</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">point3d_t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbStackup.place_a3dcomp_3d_placement"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement.html#pyaedt.edb_core.stackup.EdbStackup.place_a3dcomp_3d_placement">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">place_a3dcomp_3d_placement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a3dcomp_path</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">offset_y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">place_on_top</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Place current Cell into another cell using 3d placement method.</span>
+<span class="sd">        Flip the current layer stackup of a layout if requested. Transform parameters currently not supported.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a3dcomp_path : str</span>
+<span class="sd">            Path to 3D Component file (*.a3dcomp) to place.</span>
+<span class="sd">        angle : double, optional</span>
+<span class="sd">            Clockwise rotation angle applied to the a3dcomp.</span>
+<span class="sd">        offset_x : double, optional</span>
+<span class="sd">            The x offset value.</span>
+<span class="sd">        offset_y : double, optional</span>
+<span class="sd">            The y offset value.</span>
+<span class="sd">        place_on_top : bool, optional</span>
+<span class="sd">            Whether to place the 3D Component on the top or bottom of this layout.</span>
+<span class="sd">            If False then the 3D Component will also be flipped over around its X axis.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` if successful and ``False`` if not.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; edb1 = Edb(edbpath=targetfile1,  edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; a3dcomp_path = &quot;connector.a3dcomp&quot;</span>
+<span class="sd">        &gt;&gt;&gt; edb1.core_stackup.place_a3dcomp_3d_placement(a3dcomp_path, angle=0.0, offset_x=&quot;1mm&quot;,</span>
+<span class="sd">        ...                                   offset_y=&quot;2mm&quot;, flipped_stackup=False, place_on_top=True,</span>
+<span class="sd">        ...                                   )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">zero_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">one_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">local_origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span><span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">)</span>
+        <span class="n">rotation_axis_from</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span><span class="n">one_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">,</span> <span class="n">zero_data</span><span class="p">)</span>
+        <span class="n">_angle</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span>
+        <span class="n">rotation_axis_to</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">_angle</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">_angle</span><span class="p">)),</span> <span class="n">zero_data</span>
+        <span class="p">)</span>
+
+        <span class="n">stackup_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">())</span>
+        <span class="n">sig_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">stackup_target</span><span class="o">.</span><span class="n">GetTopBottomStackupLayers</span><span class="p">(</span><span class="n">sig_set</span><span class="p">)</span>
+        <span class="n">target_top_elevation</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">target_bottom_elevation</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">flip_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="s2">&quot;0deg&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">place_on_top</span><span class="p">:</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_top_elevation</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">flip_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="s2">&quot;180deg&quot;</span><span class="p">)</span>
+            <span class="n">elevation</span> <span class="o">=</span> <span class="n">target_bottom_elevation</span>
+        <span class="n">h_stackup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">elevation</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point3DData</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">offset_y</span><span class="p">),</span> <span class="n">h_stackup</span>
+        <span class="p">)</span>
+
+        <span class="n">mcad_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">McadModel</span><span class="o">.</span><span class="n">Create3DComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="p">,</span> <span class="n">a3dcomp_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mcad_model</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to create MCAD model from a3dcomp&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">cell_instance</span> <span class="o">=</span> <span class="n">mcad_model</span><span class="o">.</span><span class="n">GetCellInstance</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cell_instance</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cell instance of a3dcomp is null&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cell_instance</span><span class="o">.</span><span class="n">SetIs3DPlacement</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to set 3D placement on a3dcomp cell instance&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cell_instance</span><span class="o">.</span><span class="n">Set3DTransformation</span><span class="p">(</span>
+            <span class="n">local_origin</span><span class="p">,</span> <span class="n">rotation_axis_from</span><span class="p">,</span> <span class="n">rotation_axis_to</span><span class="p">,</span> <span class="n">flip_angle</span><span class="p">,</span> <span class="n">location</span>
+        <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to set 3D transform on a3dcomp cell instance&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbStackup.flip_design"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.flip_design.html#pyaedt.edb_core.stackup.EdbStackup.flip_design">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">flip_design</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flip the current design of a layout.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when succeed ``False`` if not.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; edb = Edb(edbpath=targetfile,  edbversion=&quot;2021.2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; edb.core_stackup.flip_design()</span>
+<span class="sd">        &gt;&gt;&gt; edb.save()</span>
+<span class="sd">        &gt;&gt;&gt; edb.close_edb()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">lc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">()</span>
+            <span class="n">new_lc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">()</span>
+            <span class="n">lc_mode</span> <span class="o">=</span> <span class="n">lc</span><span class="o">.</span><span class="n">GetMode</span><span class="p">()</span>
+            <span class="n">new_lc</span><span class="o">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">lc_mode</span><span class="p">)</span>
+            <span class="n">max_elevation</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">StackupLayerSet</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;RadBox&quot;</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">():</span>  <span class="c1"># Ignore RadBox</span>
+                    <span class="n">lower_elevation</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetLowerElevation</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.0e6</span>
+                    <span class="n">upper_elevation</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetUpperElevation</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.0e6</span>
+                    <span class="n">max_elevation</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">max_elevation</span><span class="p">,</span> <span class="n">lower_elevation</span><span class="p">,</span> <span class="n">upper_elevation</span><span class="p">])</span>
+
+            <span class="n">non_stackup_layers</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">AllLayerSet</span><span class="p">):</span>
+                <span class="n">cloned_layer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">cloned_layer</span><span class="o">.</span><span class="n">IsStackupLayer</span><span class="p">():</span>
+                    <span class="n">non_stackup_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cloned_layer</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;RadBox&quot;</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">IsViaLayer</span><span class="p">():</span>
+                    <span class="n">upper_elevation</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetUpperElevation</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.0e6</span>
+                    <span class="n">updated_lower_el</span> <span class="o">=</span> <span class="n">max_elevation</span> <span class="o">-</span> <span class="n">upper_elevation</span>
+                    <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">um&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">updated_lower_el</span><span class="p">))</span>
+                    <span class="n">cloned_layer</span><span class="o">.</span><span class="n">SetLowerElevation</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">cloned_layer</span><span class="o">.</span><span class="n">GetTopBottomAssociation</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">TopBottomAssociation</span><span class="o">.</span><span class="n">TopAssociated</span><span class="p">:</span>
+                        <span class="n">cloned_layer</span><span class="o">.</span><span class="n">SetTopBottomAssociation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">TopBottomAssociation</span><span class="o">.</span><span class="n">BottomAssociated</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">cloned_layer</span><span class="o">.</span><span class="n">SetTopBottomAssociation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">TopBottomAssociation</span><span class="o">.</span><span class="n">TopAssociated</span><span class="p">)</span>
+                    <span class="n">new_lc</span><span class="o">.</span><span class="n">AddStackupLayerAtElevation</span><span class="p">(</span><span class="n">cloned_layer</span><span class="p">)</span>
+
+            <span class="n">vialayers</span> <span class="o">=</span> <span class="p">[</span><span class="n">lay</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">StackupLayerSet</span><span class="p">)</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">IsViaLayer</span><span class="p">()]</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">vialayers</span><span class="p">:</span>
+                <span class="n">cloned_via_layer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                <span class="n">upper_ref_name</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetRefLayerName</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">lower_ref_name</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetRefLayerName</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">upper_ref</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">lay</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">AllLayerSet</span><span class="p">)</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">upper_ref_name</span>
+                <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">lower_ref</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">lay</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">AllLayerSet</span><span class="p">)</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">lower_ref_name</span>
+                <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">cloned_via_layer</span><span class="o">.</span><span class="n">SetRefLayer</span><span class="p">(</span><span class="n">lower_ref</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+                <span class="n">cloned_via_layer</span><span class="o">.</span><span class="n">SetRefLayer</span><span class="p">(</span><span class="n">upper_ref</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                <span class="n">ref_layer_in_flipped_stackup</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">lay</span>
+                    <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">new_lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">AllLayerSet</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">upper_ref_name</span>
+                <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">via_layer_lower_elevation</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">ref_layer_in_flipped_stackup</span><span class="o">.</span><span class="n">GetLowerElevation</span><span class="p">()</span> <span class="o">+</span> <span class="n">ref_layer_in_flipped_stackup</span><span class="o">.</span><span class="n">GetThickness</span><span class="p">()</span>
+                <span class="p">)</span>
+                <span class="n">cloned_via_layer</span><span class="o">.</span><span class="n">SetLowerElevation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">via_layer_lower_elevation</span><span class="p">))</span>
+                <span class="n">new_lc</span><span class="o">.</span><span class="n">AddStackupLayerAtElevation</span><span class="p">(</span><span class="n">cloned_via_layer</span><span class="p">)</span>
+
+            <span class="n">layer_list</span> <span class="o">=</span> <span class="n">convert_py_list_to_net_list</span><span class="p">(</span><span class="n">non_stackup_layers</span><span class="p">)</span>
+            <span class="n">new_lc</span><span class="o">.</span><span class="n">AddLayers</span><span class="p">(</span><span class="n">layer_list</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">SetLayerCollection</span><span class="p">(</span><span class="n">new_lc</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to Flip Stackup.&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">cmp_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmp</span> <span class="k">for</span> <span class="n">cmp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">Groups</span> <span class="k">if</span> <span class="n">cmp</span><span class="o">.</span><span class="n">GetComponent</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">cmp</span> <span class="ow">in</span> <span class="n">cmp_list</span><span class="p">:</span>
+                <span class="n">cmp_type</span> <span class="o">=</span> <span class="n">cmp</span><span class="o">.</span><span class="n">GetComponentType</span><span class="p">()</span>
+                <span class="n">cmp_prop</span> <span class="o">=</span> <span class="n">cmp</span><span class="o">.</span><span class="n">GetComponentProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">GetPlacement</span><span class="p">()</span>
+                        <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">SolderballPlacement</span><span class="o">.</span><span class="n">AbovePadstack</span>
+                    <span class="p">):</span>
+                        <span class="n">sball_prop</span> <span class="o">=</span> <span class="n">cmp_prop</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                        <span class="n">sball_prop</span><span class="o">.</span><span class="n">SetPlacement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">SolderballPlacement</span><span class="o">.</span><span class="n">BelowPadstack</span><span class="p">)</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">SetSolderBallProperty</span><span class="p">(</span><span class="n">sball_prop</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="p">(</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">GetPlacement</span><span class="p">()</span>
+                        <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">SolderballPlacement</span><span class="o">.</span><span class="n">BelowPadstack</span>
+                    <span class="p">):</span>
+                        <span class="n">sball_prop</span> <span class="o">=</span> <span class="n">cmp_prop</span><span class="o">.</span><span class="n">GetSolderBallProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                        <span class="n">sball_prop</span><span class="o">.</span><span class="n">SetPlacement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">SolderballPlacement</span><span class="o">.</span><span class="n">AbovePadstack</span><span class="p">)</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">SetSolderBallProperty</span><span class="p">(</span><span class="n">sball_prop</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">if</span> <span class="n">cmp_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">ComponentType</span><span class="o">.</span><span class="n">IC</span><span class="p">:</span>
+                    <span class="n">die_prop</span> <span class="o">=</span> <span class="n">cmp_prop</span><span class="o">.</span><span class="n">GetDieProperty</span><span class="p">()</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                    <span class="n">chip_orientation</span> <span class="o">=</span> <span class="n">die_prop</span><span class="o">.</span><span class="n">GetOrientation</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">chip_orientation</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">DieOrientation</span><span class="o">.</span><span class="n">ChipDown</span><span class="p">:</span>
+                        <span class="n">die_prop</span><span class="o">.</span><span class="n">SetOrientation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">DieOrientation</span><span class="o">.</span><span class="n">ChipUp</span><span class="p">)</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">SetDieProperty</span><span class="p">(</span><span class="n">die_prop</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">die_prop</span><span class="o">.</span><span class="n">SetOrientation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">DieOrientation</span><span class="o">.</span><span class="n">ChipDown</span><span class="p">)</span>
+                        <span class="n">cmp_prop</span><span class="o">.</span><span class="n">SetDieProperty</span><span class="p">(</span><span class="n">die_prop</span><span class="p">)</span>
+                <span class="n">cmp</span><span class="o">.</span><span class="n">SetComponentProperty</span><span class="p">(</span><span class="n">cmp_prop</span><span class="p">)</span>
+
+            <span class="n">lay_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">padstack</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pedb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">padstack_instances</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                <span class="n">start_layer_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">lay</span><span class="o">.</span><span class="n">GetLayerId</span><span class="p">()</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">lay_list</span><span class="p">)</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">padstack</span><span class="o">.</span><span class="n">start_layer</span><span class="p">]</span>
+                <span class="n">stop_layer_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">lay</span><span class="o">.</span><span class="n">GetLayerId</span><span class="p">()</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">lay_list</span><span class="p">)</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="n">padstack</span><span class="o">.</span><span class="n">stop_layer</span><span class="p">]</span>
+                <span class="n">layer_map</span> <span class="o">=</span> <span class="n">padstack</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">GetLayerMap</span><span class="p">()</span>
+                <span class="n">layer_map</span><span class="o">.</span><span class="n">SetMapping</span><span class="p">(</span><span class="n">stop_layer_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">start_layer_id</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">padstack</span><span class="o">.</span><span class="n">_edb_padstackinstance</span><span class="o">.</span><span class="n">SetLayerMap</span><span class="p">(</span><span class="n">layer_map</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">_update_edb_objects</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="EdbStackup.create_djordjevicsarkar_material"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material.html#pyaedt.edb_core.stackup.EdbStackup.create_djordjevicsarkar_material">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_djordjevicsarkar_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">relative_permittivity</span><span class="p">,</span> <span class="n">loss_tangent</span><span class="p">,</span> <span class="n">test_frequency</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a Djordjevic_Sarkar dielectric.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the dielectic.</span>
+<span class="sd">        relative_permittivity : float</span>
+<span class="sd">            Relative permittivity of the dielectric.</span>
+<span class="sd">        loss_tangent : float</span>
+<span class="sd">            Loss tangent for the material.</span>
+<span class="sd">        test_frequency : float</span>
+<span class="sd">            Test frequency in GHz for the dielectric.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        type</span>
+<span class="sd">            Material definition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">DjordjecvicSarkarModel</span><span class="p">()</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetFrequency</span><span class="p">(</span><span class="n">test_frequency</span><span class="p">)</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetLossTangentAtFrequency</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_edb_value</span><span class="p">(</span><span class="n">loss_tangent</span><span class="p">))</span>
+        <span class="n">material_def</span><span class="o">.</span><span class="n">SetRelativePermitivityAtFrequency</span><span class="p">(</span><span class="n">relative_permittivity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_dielectric_material_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">material_def</span><span class="p">)</span></div>
+
+    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_add_dielectric_material_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">material_model</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">FindByName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">IsNull</span><span class="p">():</span>
+            <span class="n">DieDef</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Definition</span><span class="o">.</span><span class="n">MaterialDef</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">succeeded</span> <span class="o">=</span> <span class="n">DieDef</span><span class="o">.</span><span class="n">SetDielectricMaterialModel</span><span class="p">(</span><span class="n">material_model</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">succeeded</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">DieDef</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="EdbStackup.stackup_limits"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.stackup_limits.html#pyaedt.edb_core.stackup.EdbStackup.stackup_limits">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">stackup_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">only_metals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve stackup limits.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        only_metals : bool, optional</span>
+<span class="sd">            Whether to retrieve only metals. The default is ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stackup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_layout</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">only_metals</span><span class="p">:</span>
+            <span class="n">input_layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">SignalLayerSet</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">input_layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">StackupLayerSet</span>
+
+        <span class="n">res</span><span class="p">,</span> <span class="n">topl</span><span class="p">,</span> <span class="n">topz</span><span class="p">,</span> <span class="n">bottoml</span><span class="p">,</span> <span class="n">bottomz</span> <span class="o">=</span> <span class="n">stackup</span><span class="o">.</span><span class="n">GetTopBottomStackupLayers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">topl</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">topz</span><span class="p">,</span> <span class="n">bottoml</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">bottomz</span></div>
+
+<div class="viewcode-block" id="EdbStackup.create_symmetric_stackup"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup.html#pyaedt.edb_core.stackup.EdbStackup.create_symmetric_stackup">[docs]</a>    <span class="k">def</span> <span class="nf">create_symmetric_stackup</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">layer_count</span><span class="p">,</span>
+        <span class="n">inner_layer_thickness</span><span class="o">=</span><span class="s2">&quot;17um&quot;</span><span class="p">,</span>
+        <span class="n">outer_layer_thickness</span><span class="o">=</span><span class="s2">&quot;50um&quot;</span><span class="p">,</span>
+        <span class="n">dielectric_thickness</span><span class="o">=</span><span class="s2">&quot;100um&quot;</span><span class="p">,</span>
+        <span class="n">dielectric_material</span><span class="o">=</span><span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">,</span>
+        <span class="n">soldermask</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">soldermask_thickness</span><span class="o">=</span><span class="s2">&quot;20um&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a symmetric stackup.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        layer_count : int</span>
+<span class="sd">            Number of layer count.</span>
+<span class="sd">        inner_layer_thickness : str, float, optional</span>
+<span class="sd">            Thickness of inner conductor layer.</span>
+<span class="sd">        outer_layer_thickness : str, float, optional</span>
+<span class="sd">            Thickness of outer conductor layer.</span>
+<span class="sd">        dielectric_thickness : str, float, optional</span>
+<span class="sd">            Thickness of dielectric layer.</span>
+<span class="sd">        dielectric_material : str, optional</span>
+<span class="sd">            Material of dielectric layer.</span>
+<span class="sd">        soldermask : bool, optional</span>
+<span class="sd">            Whether to create soldermask layers. The default is``True``.</span>
+<span class="sd">        soldermask_thickness : str, optional</span>
+<span class="sd">            Thickness of soldermask layer.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">layer_count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">soldermask</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="s2">&quot;SMB&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;SolderMask&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">soldermask_thickness</span><span class="p">,</span> <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">layer_name</span> <span class="o">=</span> <span class="s2">&quot;BOTTOM&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="s2">&quot;SMB&quot;</span><span class="p">,</span> <span class="n">fillMaterial</span><span class="o">=</span><span class="s2">&quot;SolderMask&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">outer_layer_thickness</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">layer_name</span> <span class="o">=</span> <span class="s2">&quot;BOTTOM&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">fillMaterial</span><span class="o">=</span><span class="s2">&quot;Air&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">outer_layer_thickness</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layer_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">new_layer_name</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">layer</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                <span class="n">new_layer_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">dielectric_material</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">dielectric_thickness</span><span class="p">,</span> <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+            <span class="n">layer_name</span> <span class="o">=</span> <span class="n">new_layer_name</span>
+            <span class="n">new_layer_name</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">layer</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                <span class="n">new_layer_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="n">dielectric_material</span><span class="p">,</span> <span class="n">inner_layer_thickness</span>
+            <span class="p">)</span>
+            <span class="n">layer_name</span> <span class="o">=</span> <span class="n">new_layer_name</span>
+
+        <span class="n">new_layer_name</span> <span class="o">=</span> <span class="s2">&quot;D1&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+            <span class="n">new_layer_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">dielectric_material</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">dielectric_thickness</span><span class="p">,</span> <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="n">layer_name</span> <span class="o">=</span> <span class="n">new_layer_name</span>
+
+        <span class="k">if</span> <span class="n">soldermask</span><span class="p">:</span>
+            <span class="n">new_layer_name</span> <span class="o">=</span> <span class="s2">&quot;TOP&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                <span class="n">new_layer_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">fillMaterial</span><span class="o">=</span><span class="s2">&quot;SolderMask&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">outer_layer_thickness</span>
+            <span class="p">)</span>
+            <span class="n">layer_name</span> <span class="o">=</span> <span class="n">new_layer_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="s2">&quot;SMT&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="s2">&quot;SolderMask&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">soldermask_thickness</span><span class="p">,</span> <span class="n">layerType</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_layer_name</span> <span class="o">=</span> <span class="s2">&quot;TOP&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+                <span class="n">new_layer_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">fillMaterial</span><span class="o">=</span><span class="s2">&quot;Air&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">outer_layer_thickness</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="EdbStackup.set_etching_layers"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.edb_core.stackup.EdbStackup.set_etching_layers.html#pyaedt.edb_core.stackup.EdbStackup.set_etching_layers">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">set_etching_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the etching layer parameters for a layout stackup.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        simulation_setup : EDB_DATA_SimulationConfiguration object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">simulation_setup</span><span class="p">,</span> <span class="n">SimulationConfiguration</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_builder</span><span class="o">.</span><span class="n">cell</span>
+        <span class="n">this_lc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span><span class="o">.</span><span class="n">GetLayerCollection</span><span class="p">())</span>
+        <span class="n">all_layers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">this_lc</span><span class="o">.</span><span class="n">Layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerTypeSet</span><span class="o">.</span><span class="n">AllLayerSet</span><span class="p">))</span>
+
+        <span class="n">signal_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">lay</span> <span class="k">for</span> <span class="n">lay</span> <span class="ow">in</span> <span class="n">all_layers</span> <span class="k">if</span> <span class="n">lay</span><span class="o">.</span><span class="n">GetLayerType</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">]</span>
+
+        <span class="n">new_layers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_layers</span><span class="o">.</span><span class="n">Where</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyr</span><span class="p">:</span> <span class="n">lyr</span><span class="o">.</span><span class="n">GetLayerType</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerType</span><span class="o">.</span><span class="n">SignalLayer</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">simulation_setup</span><span class="o">.</span><span class="n">signal_layer_etching_instances</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">signal_layers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="ow">in</span> <span class="n">simulation_setup</span><span class="o">.</span><span class="n">signal_layer_etching_instances</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;Signal layer </span><span class="si">{0}</span><span class="s2"> is not found in the etching layers specified in the cfg, &quot;</span>
+                        <span class="s2">&quot;skipping the etching factor assignment&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+                    <span class="p">)</span>
+                    <span class="n">new_signal_lay</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_signal_lay</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Clone</span><span class="p">()</span>
+                    <span class="n">new_signal_lay</span><span class="o">.</span><span class="n">SetEtchFactorEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="n">etching_factor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+                        <span class="n">simulation_setup</span><span class="o">.</span><span class="n">etching_factor_instances</span><span class="p">[</span>
+                            <span class="n">simulation_setup</span><span class="o">.</span><span class="n">signal_layer_etching_instances</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="n">new_signal_lay</span><span class="o">.</span><span class="n">SetEtchFactor</span><span class="p">(</span><span class="n">etching_factor</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="s2">&quot;Setting etching factor </span><span class="si">{0}</span><span class="s2"> on layer </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">etching_factor</span><span class="p">),</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+                    <span class="p">)</span>
+
+                <span class="n">new_layers</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new_signal_lay</span><span class="p">)</span>
+
+            <span class="n">layers_with_etching</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edb</span><span class="o">.</span><span class="n">Cell</span><span class="o">.</span><span class="n">LayerCollection</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">layers_with_etching</span><span class="o">.</span><span class="n">AddLayers</span><span class="p">(</span><span class="n">new_layers</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cell</span><span class="o">.</span><span class="n">GetLayout</span><span class="p">()</span><span class="o">.</span><span class="n">SetLayerCollection</span><span class="p">(</span><span class="n">layers_with_etching</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

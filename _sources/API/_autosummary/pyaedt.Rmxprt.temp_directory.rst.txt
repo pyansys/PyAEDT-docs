@@ -1,0 +1,6 @@
+temp\_directory
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.temp_directory

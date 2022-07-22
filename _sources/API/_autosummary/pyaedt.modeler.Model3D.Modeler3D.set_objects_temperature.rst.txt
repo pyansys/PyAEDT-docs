@@ -1,0 +1,6 @@
+set\_objects\_temperature
+=========================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.set_objects_temperature

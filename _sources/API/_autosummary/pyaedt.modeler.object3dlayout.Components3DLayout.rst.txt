@@ -1,0 +1,67 @@
+﻿pyaedt.modeler.object3dlayout.Components3DLayout
+================================================
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoclass:: Components3DLayout
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Components3DLayout.change_property
+      
+      
+      Components3DLayout.enabled
+      
+      
+      Components3DLayout.set_property_value
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Components3DLayout.angle
+      
+      
+      Components3DLayout.location
+      
+      
+      Components3DLayout.lock_position
+      
+      
+      Components3DLayout.model
+      
+      
+      Components3DLayout.net_name
+      
+      
+      Components3DLayout.object_units
+      
+      
+      Components3DLayout.part
+      
+      
+      Components3DLayout.part_type
+      
+      
+      Components3DLayout.pins
+      
+      
+      Components3DLayout.placement_layer
+      
+   
+   

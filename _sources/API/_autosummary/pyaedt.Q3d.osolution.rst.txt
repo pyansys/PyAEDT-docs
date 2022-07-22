@@ -1,0 +1,6 @@
+osolution
+=========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.osolution

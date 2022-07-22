@@ -1,0 +1,6 @@
+calculate\_radius\_2D
+=====================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.calculate_radius_2D

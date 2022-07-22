@@ -1,0 +1,6 @@
+get\_solving\_volume
+====================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.get_solving_volume

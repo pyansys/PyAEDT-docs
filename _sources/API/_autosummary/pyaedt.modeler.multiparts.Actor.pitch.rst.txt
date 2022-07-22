@@ -1,0 +1,6 @@
+pitch
+=====
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Actor.pitch

@@ -1,0 +1,6 @@
+refresh\_all\_layers
+====================
+
+.. currentmodule:: pyaedt.modules.LayerStackup
+
+.. automethod:: Layers.refresh_all_layers

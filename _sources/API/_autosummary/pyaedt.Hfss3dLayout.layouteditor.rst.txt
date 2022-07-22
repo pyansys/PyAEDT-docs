@@ -1,0 +1,6 @@
+layouteditor
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.layouteditor

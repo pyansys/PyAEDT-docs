@@ -1,0 +1,6 @@
+create\_object\_from\_face
+==========================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.create_object_from_face

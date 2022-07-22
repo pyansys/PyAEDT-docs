@@ -1,0 +1,6 @@
+largest\_face
+=============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.largest_face

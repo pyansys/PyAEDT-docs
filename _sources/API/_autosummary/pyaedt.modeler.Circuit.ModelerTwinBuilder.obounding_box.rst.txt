@@ -1,0 +1,6 @@
+obounding\_box
+==============
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerTwinBuilder.obounding_box

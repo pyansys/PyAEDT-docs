@@ -1,0 +1,6 @@
+materials
+=========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: TwinBuilder.materials

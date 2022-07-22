@@ -1,0 +1,6 @@
+syslib
+======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell3d.syslib

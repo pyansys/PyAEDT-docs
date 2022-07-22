@@ -1,0 +1,6 @@
+create\_via
+===========
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.create_via

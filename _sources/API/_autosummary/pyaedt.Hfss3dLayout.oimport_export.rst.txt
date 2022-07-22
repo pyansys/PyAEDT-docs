@@ -1,0 +1,6 @@
+oimport\_export
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.oimport_export

@@ -1,0 +1,6 @@
+defaultmaterial
+===============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. autoproperty:: Modeler3D.defaultmaterial

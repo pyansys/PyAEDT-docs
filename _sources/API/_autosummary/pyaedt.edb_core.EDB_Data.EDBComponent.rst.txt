@@ -1,0 +1,88 @@
+﻿pyaedt.edb\_core.EDB\_Data.EDBComponent
+=======================================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoclass:: EDBComponent
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EDBComponent.cap_value
+      
+      
+      EDBComponent.center
+      
+      
+      EDBComponent.component_property
+      
+      
+      EDBComponent.ind_value
+      
+      
+      EDBComponent.is_enabled
+      
+      
+      EDBComponent.is_parallel_rlc
+      
+      
+      EDBComponent.lower_elevation
+      
+      
+      EDBComponent.nets
+      
+      
+      EDBComponent.numpins
+      
+      
+      EDBComponent.partname
+      
+      
+      EDBComponent.pinlist
+      
+      
+      EDBComponent.pins
+      
+      
+      EDBComponent.placement_layer
+      
+      
+      EDBComponent.refdes
+      
+      
+      EDBComponent.res_value
+      
+      
+      EDBComponent.solder_ball_height
+      
+      
+      EDBComponent.solder_ball_placement
+      
+      
+      EDBComponent.top_bottom_association
+      
+      
+      EDBComponent.type
+      
+      
+      EDBComponent.upper_elevation
+      
+   
+   

@@ -1,0 +1,6 @@
+close\_project
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.close_project

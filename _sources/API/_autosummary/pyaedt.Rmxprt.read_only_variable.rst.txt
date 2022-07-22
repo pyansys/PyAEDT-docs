@@ -1,0 +1,6 @@
+read\_only\_variable
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.read_only_variable

@@ -1,0 +1,14 @@
+
+:orphan:
+
+.. _sphx_glr_examples_07-TwinBuilder_sg_execution_times:
+
+Computation times
+=================
+**00:30.886** total execution time for **examples_07-TwinBuilder** files:
+
++-------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_07-TwinBuilder_01-RC_Circuit_Example.py` (``01-RC_Circuit_Example.py``) | 00:15.564 | 0.0 MB |
++-------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_07-TwinBuilder_02-Wiring_A_Rectifier.py` (``02-Wiring_A_Rectifier.py``) | 00:15.323 | 0.0 MB |
++-------------------------------------------------------------------------------------------------+-----------+--------+

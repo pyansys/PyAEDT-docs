@@ -1,0 +1,6 @@
+omodelsetup
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.omodelsetup

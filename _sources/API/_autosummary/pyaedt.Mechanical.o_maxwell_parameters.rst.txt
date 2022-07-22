@@ -1,0 +1,6 @@
+o\_maxwell\_parameters
+======================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.o_maxwell_parameters

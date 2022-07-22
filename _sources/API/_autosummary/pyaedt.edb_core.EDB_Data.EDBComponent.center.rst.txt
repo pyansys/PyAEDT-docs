@@ -1,0 +1,6 @@
+center
+======
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBComponent.center

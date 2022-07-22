@@ -1,0 +1,6 @@
+analyze\_from\_initial\_mesh
+============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.analyze_from_initial_mesh

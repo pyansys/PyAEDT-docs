@@ -1,0 +1,6 @@
+move
+====
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. automethod:: ModelerNexxim.move

@@ -1,0 +1,6 @@
+import\_odb
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.import_odb

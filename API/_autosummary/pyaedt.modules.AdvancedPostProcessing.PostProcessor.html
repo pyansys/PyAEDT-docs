@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.modules.AdvancedPostProcessing.PostProcessor &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="animate_fields_from_aedtplt" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt.html" />
+    <link rel="prev" title="Postprocessing" href="../Post.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Post.html" accesskey="U">Postprocessing</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.modules.AdvancedPostProcessing.PostProcessor</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.modules.AdvancedPostProcessing.PostProcessor
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt.html">
+       animate_fields_from_aedtplt
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2.html">
+       animate_fields_from_aedtplt_2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_display_types.html">
+       available_display_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_quantities_categories.html">
+       available_quantities_categories
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_quantities.html">
+       available_report_quantities
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale.html">
+       change_field_plot_scale
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property.html">
+       change_field_property
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.copy_report_data.html">
+       copy_report_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot.html">
+       create_3d_plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane.html">
+       create_fieldplot_cutplane
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line.html">
+       create_fieldplot_line
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface.html">
+       create_fieldplot_surface
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume.html">
+       create_fieldplot_volume
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_rectangular_plot.html">
+       create_rectangular_plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report.html">
+       create_report
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report_from_configuration.html">
+       create_report_from_configuration
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot.html">
+       delete_field_plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_report.html">
+       delete_report
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file.html">
+       export_field_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file_on_grid.html">
+       export_field_file_on_grid
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view.html">
+       export_field_image_with_view
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg.html">
+       export_field_jpg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot.html">
+       export_field_plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj.html">
+       export_mesh_obj
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj.html">
+       export_model_obj
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_picture.html">
+       export_model_picture
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_csv.html">
+       export_report_to_csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file.html">
+       export_report_to_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_jpg.html">
+       export_report_to_jpg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data.html">
+       get_efields_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_far_field_data.html">
+       get_far_field_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_model_plotter_geometries.html">
+       get_model_plotter_geometries
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_report_data.html">
+       get_report_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_scalar_field_value.html">
+       get_scalar_field_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data.html">
+       get_solution_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data_per_variation.html">
+       get_solution_data_per_variation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display.html">
+       nb_display
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_field_from_fieldplot.html">
+       plot_field_from_fieldplot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_model_obj.html">
+       plot_model_obj
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene.html">
+       plot_scene
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.rename_report.html">
+       rename_report
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.steal_focus_oneditor.html">
+       steal_focus_oneditor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss.html">
+       volumetric_loss
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.all_report_names.html">
+       all_report_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_types.html">
+       available_report_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.logger.html">
+       logger
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.model_units.html">
+       model_units
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.modeler.html">
+       modeler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.ofieldsreporter.html">
+       ofieldsreporter
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.oreportsetup.html">
+       oreportsetup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_osolution.html">
+       post_osolution
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_solution_type.html">
+       post_solution_type
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.SolutionData.html">
+     pyaedt.modules.solutions.SolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FieldPlot.html">
+     pyaedt.modules.solutions.FieldPlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.solutions.FfdSolutionData.html">
+     pyaedt.modules.solutions.FfdSolutionData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.ModelPlotter.html">
+     pyaedt.modules.AdvancedPostProcessing.ModelPlotter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Trace.html">
+     pyaedt.modules.report_templates.Trace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.LimitLine.html">
+     pyaedt.modules.report_templates.LimitLine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Standard.html">
+     pyaedt.modules.report_templates.Standard
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Fields.html">
+     pyaedt.modules.report_templates.Fields
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.NearField.html">
+     pyaedt.modules.report_templates.NearField
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.FarField.html">
+     pyaedt.modules.report_templates.FarField
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.EyeDiagram.html">
+     pyaedt.modules.report_templates.EyeDiagram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Emission.html">
+     pyaedt.modules.report_templates.Emission
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modules.report_templates.Spectral.html">
+     pyaedt.modules.report_templates.Spectral
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-modules-advancedpostprocessing-postprocessor">
+<h1>pyaedt.modules.AdvancedPostProcessing.PostProcessor<a class="headerlink" href="#pyaedt-modules-advancedpostprocessing-postprocessor" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.modules.AdvancedPostProcessing.PostProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modules.AdvancedPostProcessing.</span></span><span class="sig-name descname"><span class="pre">PostProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modules/AdvancedPostProcessing.html#PostProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modules.AdvancedPostProcessing.PostProcessor" title="Permalink to this definition">#</a></dt>
+<dd><p>Contains advanced postprocessing functionalities that require Python 3.x packages like NumPy and Matplotlib.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>app</strong></dt><dd><p>Inherited parent object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Basic usage demonstrated with an HFSS, Maxwell, or any other design:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aedtapp</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">post</span> <span class="o">=</span> <span class="n">aedtapp</span><span class="o">.</span><span class="n">post</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.animate_fields_from_aedtplt</span></code></a>(...)</p></td>
+<td><p>Generate a field plot to an image file (JPG or PNG) using PyVista.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.animate_fields_from_aedtplt_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.animate_fields_from_aedtplt_2</span></code></a>(...)</p></td>
+<td><p>Generate a field plot to an animated gif file using PyVista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_display_types.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_display_types" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_display_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.available_display_types</span></code></a>([...])</p></td>
+<td><p>Retrieve display types for a report categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_quantities_categories.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_quantities_categories" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_quantities_categories"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.available_quantities_categories</span></code></a>([...])</p></td>
+<td><p>Compute the list of all available report categories.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_quantities.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_quantities" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_quantities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.available_report_quantities</span></code></a>([...])</p></td>
+<td><p>Compute the list of all available report quantities of a given report quantity category.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_plot_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.change_field_plot_scale</span></code></a>(...[, ...])</p></td>
+<td><p>Change Field Plot Scale.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.change_field_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.change_field_property</span></code></a>(...)</p></td>
+<td><p>Modify a field plot property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.copy_report_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.copy_report_data" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.copy_report_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.copy_report_data</span></code></a>(PlotName)</p></td>
+<td><p>Copy report data as static data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_3d_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_3d_plot</span></code></a>(solution_data)</p></td>
+<td><p>Create a 3D plot using Matplotlib.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_cutplane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_fieldplot_cutplane</span></code></a>(...)</p></td>
+<td><p>Create a field plot of cut planes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_fieldplot_line</span></code></a>(objlist, ...)</p></td>
+<td><p>Create a field plot of line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_fieldplot_surface</span></code></a>(...)</p></td>
+<td><p>Create a field plot of surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_fieldplot_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_fieldplot_volume</span></code></a>(...[, ...])</p></td>
+<td><p>Create a field plot of volumes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_rectangular_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_rectangular_plot" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_rectangular_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_rectangular_plot</span></code></a>([...])</p></td>
+<td><p>Create a 2D rectangular plot in AEDT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_report</span></code></a>(expressions[, ...])</p></td>
+<td><p>Create a report in AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report_from_configuration.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report_from_configuration" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.create_report_from_configuration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.create_report_from_configuration</span></code></a>([...])</p></td>
+<td><p>Create a new report based on json file or dictionary of properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_field_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.delete_field_plot</span></code></a>(name)</p></td>
+<td><p>Delete a field plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_report.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_report" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.delete_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.delete_report</span></code></a>(PlotName)</p></td>
+<td><p>Delete a field plot report.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_field_file</span></code></a>(quantity_name)</p></td>
+<td><p>Use the field calculator to create a field file based on a solution and variation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file_on_grid.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file_on_grid" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_file_on_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_field_file_on_grid</span></code></a>(...)</p></td>
+<td><p>Use the field calculator to create a field file on a grid based on a solution and variation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_image_with_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_field_image_with_view</span></code></a>(...)</p></td>
+<td><p>Export a field plot image with a view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_jpg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_field_jpg</span></code></a>(fileName, ...)</p></td>
+<td><p>Export a field plot and coordinate system to a JPG file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_field_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_field_plot</span></code></a>(plotname, ...)</p></td>
+<td><p>Export a field plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_mesh_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_mesh_obj</span></code></a>([setup_name, ...])</p></td>
+<td><p>Export the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_model_obj</span></code></a>([obj_list, ...])</p></td>
+<td><p>Export the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_picture.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_picture" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_model_picture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_model_picture</span></code></a>([...])</p></td>
+<td><p>Export a snapshot of the model to a JPG file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_csv.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_csv" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_report_to_csv</span></code></a>(...)</p></td>
+<td><p>Export the 2D Plot data to a CSV file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_report_to_file</span></code></a>(...[, ...])</p></td>
+<td><p>Export the 2D Plot data to a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_jpg.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_jpg" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.export_report_to_jpg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.export_report_to_jpg</span></code></a>(...)</p></td>
+<td><p>Export the SParameter plot to a JPG file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_efields_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_efields_data</span></code></a>([...])</p></td>
+<td><p>Compute Etheta and EPhi.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_far_field_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_far_field_data" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_far_field_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_far_field_data</span></code></a>([...])</p></td>
+<td><p>Generate far field data using <code class="docutils literal notranslate"><span class="pre">GetSolutionDataPerVariation</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_model_plotter_geometries.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_model_plotter_geometries" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_model_plotter_geometries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_model_plotter_geometries</span></code></a>([...])</p></td>
+<td><p>Initialize the Model Plotter object with actual modeler objects and return it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_report_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_report_data" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_report_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_report_data</span></code></a>([expression, ...])</p></td>
+<td><p>Generate report data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_scalar_field_value.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_scalar_field_value" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_scalar_field_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_scalar_field_value</span></code></a>(...[, ...])</p></td>
+<td><p>Use the field calculator to Compute Scalar of a Field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_solution_data</span></code></a>(expressions)</p></td>
+<td><p>Get SolutionData of a report in AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data_per_variation.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data_per_variation" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.get_solution_data_per_variation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.get_solution_data_per_variation</span></code></a>([...])</p></td>
+<td><p>Retrieve solution data for each variation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.nb_display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.nb_display</span></code></a>([show_axis, ...])</p></td>
+<td><p>Show the Jupyter Notebook display.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_field_from_fieldplot.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_field_from_fieldplot" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_field_from_fieldplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.plot_field_from_fieldplot</span></code></a>(plotname)</p></td>
+<td><p>Export a field plot to an image file (JPG or PNG) using Python PyVista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_model_obj.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_model_obj" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_model_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.plot_model_obj</span></code></a>([objects, ...])</p></td>
+<td><p>Plot the model or a substet of objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.plot_scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.plot_scene</span></code></a>(frames_list, ...[, ...])</p></td>
+<td><p>Plot the current model 3D scene with overlapping animation coming from a file list and save the gif.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.rename_report.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.rename_report" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.rename_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.rename_report</span></code></a>(PlotName, newname)</p></td>
+<td><p>Rename a plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.steal_focus_oneditor.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.steal_focus_oneditor" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.steal_focus_oneditor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.steal_focus_oneditor</span></code></a>()</p></td>
+<td><p>Remove the selection of an object that would prevent the image from exporting correctly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.volumetric_loss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.volumetric_loss</span></code></a>(object_name)</p></td>
+<td><p>Use the field calculator to create a variable for volumetric losses.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.all_report_names.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.all_report_names" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.all_report_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.all_report_names</span></code></a></p></td>
+<td><p>List of all report names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_types.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_types" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.available_report_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.available_report_types</span></code></a></p></td>
+<td><p>Report types.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.logger.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.logger" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.logger</span></code></a></p></td>
+<td><p>Logger.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.model_units.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.model_units" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.model_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.model_units</span></code></a></p></td>
+<td><p>Model units.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.modeler.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.modeler" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.modeler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.modeler</span></code></a></p></td>
+<td><p>Modeler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.ofieldsreporter.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.ofieldsreporter" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.ofieldsreporter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.ofieldsreporter</span></code></a></p></td>
+<td><p>Fields reporter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.oreportsetup.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.oreportsetup" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.oreportsetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.oreportsetup</span></code></a></p></td>
+<td><p>Report setup.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_osolution.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_osolution" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_osolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.post_osolution</span></code></a></p></td>
+<td><p>Solution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_solution_type.html#pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_solution_type" title="pyaedt.modules.AdvancedPostProcessing.PostProcessor.post_solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessor.post_solution_type</span></code></a></p></td>
+<td><p>Design solution type.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

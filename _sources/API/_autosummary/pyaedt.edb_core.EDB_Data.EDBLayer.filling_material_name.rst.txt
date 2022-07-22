@@ -1,0 +1,6 @@
+filling\_material\_name
+=======================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBLayer.filling_material_name

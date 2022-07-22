@@ -1,0 +1,6 @@
+analysis\_setup
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.analysis_setup

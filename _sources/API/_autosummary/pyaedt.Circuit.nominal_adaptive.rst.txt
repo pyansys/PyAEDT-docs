@@ -1,0 +1,6 @@
+nominal\_adaptive
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.nominal_adaptive

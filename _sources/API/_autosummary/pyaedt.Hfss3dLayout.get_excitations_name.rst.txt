@@ -1,0 +1,6 @@
+get\_excitations\_name
+======================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.get_excitations_name

@@ -1,0 +1,6 @@
+start
+=====
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. automethod:: Environment.start

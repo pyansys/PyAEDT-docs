@@ -1,0 +1,6 @@
+evaluate\_expression
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.evaluate_expression

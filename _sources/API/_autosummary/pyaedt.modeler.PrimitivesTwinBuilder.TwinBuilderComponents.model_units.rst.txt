@@ -1,0 +1,6 @@
+model\_units
+============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. autoproperty:: TwinBuilderComponents.model_units

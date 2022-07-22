@@ -1,0 +1,6 @@
+nominal\_sweep
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.nominal_sweep

@@ -1,0 +1,6 @@
+get\_all\_sources
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.get_all_sources

@@ -1,0 +1,6 @@
+sweep\_along\_normal
+====================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.sweep_along_normal

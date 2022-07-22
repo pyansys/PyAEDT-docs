@@ -1,0 +1,6 @@
+assign\_voltage
+===============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell3d.assign_voltage

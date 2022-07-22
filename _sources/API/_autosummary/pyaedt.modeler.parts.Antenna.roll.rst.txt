@@ -1,0 +1,6 @@
+roll
+====
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Antenna.roll

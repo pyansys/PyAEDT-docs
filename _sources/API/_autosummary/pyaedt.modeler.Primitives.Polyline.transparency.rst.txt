@@ -1,0 +1,6 @@
+transparency
+============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.transparency

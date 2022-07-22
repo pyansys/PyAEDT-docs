@@ -1,0 +1,6 @@
+roll\_name
+==========
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Bird.roll_name

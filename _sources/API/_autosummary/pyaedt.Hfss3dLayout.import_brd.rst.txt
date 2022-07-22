@@ -1,0 +1,6 @@
+import\_brd
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.import_brd

@@ -1,0 +1,6 @@
+nets
+====
+
+.. currentmodule:: pyaedt.modeler.PrimitivesCircuit
+
+.. autoproperty:: CircuitComponents.nets

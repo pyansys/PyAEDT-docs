@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.modeler.PrimitivesCircuit.CircuitComponents &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="add_id_to_component" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_id_to_component.html" />
+    <link rel="prev" title="version" href="pyaedt.modeler.PrimitivesTwinBuilder.TwinBuilderComponents.version.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Primitives.html" accesskey="U">Modeler and  primitives</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.modeler.PrimitivesCircuit.CircuitComponents</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model2D.Modeler2D.html">
+     pyaedt.modeler.Model2D.Modeler2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model3D.Modeler3D.html">
+     pyaedt.modeler.Model3D.Modeler3D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model3DLayout.Modeler3DLayout.html">
+     pyaedt.modeler.Model3DLayout.Modeler3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerNexxim.html">
+     pyaedt.modeler.Circuit.ModelerNexxim
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerTwinBuilder.html">
+     pyaedt.modeler.Circuit.ModelerTwinBuilder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerEmit.html">
+     pyaedt.modeler.Circuit.ModelerEmit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives2D.Primitives2D.html">
+     pyaedt.modeler.Primitives2D.Primitives2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives3D.Primitives3D.html">
+     pyaedt.modeler.Primitives3D.Primitives3D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives3DLayout.Primitives3DLayout.html">
+     pyaedt.modeler.Primitives3DLayout.Primitives3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.PrimitivesNexxim.NexximComponents.html">
+     pyaedt.modeler.PrimitivesNexxim.NexximComponents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.PrimitivesTwinBuilder.TwinBuilderComponents.html">
+     pyaedt.modeler.PrimitivesTwinBuilder.TwinBuilderComponents
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.modeler.PrimitivesCircuit.CircuitComponents
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_id_to_component.html">
+       add_id_to_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_pin_iports.html">
+       add_pin_iports
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.arg_with_dim.html">
+       arg_with_dim
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component.html">
+       create_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component_from_touchstonmodel.html">
+       create_component_from_touchstonmodel
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_gnd.html">
+       create_gnd
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_interface_port.html">
+       create_interface_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_iport.html">
+       create_iport
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_line.html">
+       create_line
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_model_from_touchstone.html">
+       create_model_from_touchstone
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_page_port.html">
+       create_page_port
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_symbol.html">
+       create_symbol
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_touchsthone_component.html">
+       create_touchsthone_component
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_unique_id.html">
+       create_unique_id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_wire.html">
+       create_wire
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.disable_data_netlist.html">
+       disable_data_netlist
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_global_netlist.html">
+       enable_global_netlist
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_use_instance_name.html">
+       enable_use_instance_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_obj_id.html">
+       get_obj_id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pin_location.html">
+       get_pin_location
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pins.html">
+       get_pins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.refresh_all_ids.html">
+       refresh_all_ids
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_type.html">
+       design_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_types.html">
+       design_types
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.model_units.html">
+       model_units
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.nets.html">
+       nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_component_manager.html">
+       o_component_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_definition_manager.html">
+       o_definition_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_symbol_manager.html">
+       o_symbol_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.version.html">
+       version
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.Object3d.html">
+     pyaedt.modeler.Object3d.Object3d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.FacePrimitive.html">
+     pyaedt.modeler.Object3d.FacePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.EdgePrimitive.html">
+     pyaedt.modeler.Object3d.EdgePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.VertexPrimitive.html">
+     pyaedt.modeler.Object3d.VertexPrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives.PolylineSegment.html">
+     pyaedt.modeler.Primitives.PolylineSegment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.html">
+     pyaedt.modeler.Primitives.Polyline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.Padstack.html">
+     pyaedt.modeler.Object3d.Padstack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.UserDefinedComponent.html">
+     pyaedt.modeler.Object3d.UserDefinedComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.CircuitComponent.html">
+     pyaedt.modeler.Object3d.CircuitComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.CircuitPins.html">
+     pyaedt.modeler.Object3d.CircuitPins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Components3DLayout.html">
+     pyaedt.modeler.object3dlayout.Components3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Nets3DLayout.html">
+     pyaedt.modeler.object3dlayout.Nets3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Pins3DLayout.html">
+     pyaedt.modeler.object3dlayout.Pins3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Line3dLayout.html">
+     pyaedt.modeler.object3dlayout.Line3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Polygons3DLayout.html">
+     pyaedt.modeler.object3dlayout.Polygons3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Circle3dLayout.html">
+     pyaedt.modeler.object3dlayout.Circle3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Rect3dLayout.html">
+     pyaedt.modeler.object3dlayout.Rect3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Points3dLayout.html">
+     pyaedt.modeler.object3dlayout.Points3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Point.html">
+     pyaedt.modeler.object3dlayout.Point
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Modeler.CoordinateSystem.html">
+     pyaedt.modeler.Modeler.CoordinateSystem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.GeometryOperators.html">
+     pyaedt.modeler.GeometryOperators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-modeler-primitivescircuit-circuitcomponents">
+<h1>pyaedt.modeler.PrimitivesCircuit.CircuitComponents<a class="headerlink" href="#pyaedt-modeler-primitivescircuit-circuitcomponents" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.modeler.PrimitivesCircuit.CircuitComponents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modeler.PrimitivesCircuit.</span></span><span class="sig-name descname"><span class="pre">CircuitComponents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modeler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modeler/PrimitivesCircuit.html#CircuitComponents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modeler.PrimitivesCircuit.CircuitComponents" title="Permalink to this definition">#</a></dt>
+<dd><p>CircutComponents class.</p>
+<p>Manages all circuit components for Nexxim and Twin Builder.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aedtapp</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prim</span> <span class="o">=</span> <span class="n">aedtapp</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">schematic</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_id_to_component.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_id_to_component" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_id_to_component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.add_id_to_component</span></code></a>(id)</p></td>
+<td><p>Add an ID to a component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_pin_iports.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_pin_iports" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.add_pin_iports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.add_pin_iports</span></code></a>(name, id_num)</p></td>
+<td><p>Add ports on pins.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.arg_with_dim.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.arg_with_dim" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.arg_with_dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.arg_with_dim</span></code></a>(Value[, sUnits])</p></td>
+<td><p>Format an argument with dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_component</span></code></a>([...])</p></td>
+<td><p>Create a component from a library.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component_from_touchstonmodel.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component_from_touchstonmodel" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_component_from_touchstonmodel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_component_from_touchstonmodel</span></code></a>(...)</p></td>
+<td><p>Create a component from a Touchstone model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_gnd.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_gnd" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_gnd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_gnd</span></code></a>([location, angle])</p></td>
+<td><p>Create a ground.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_interface_port.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_interface_port" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_interface_port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_interface_port</span></code></a>(name)</p></td>
+<td><p>Create an interface port.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_iport.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_iport" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_iport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_iport</span></code></a>(name[, posx, ...])</p></td>
+<td><p>Create an interface port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_line.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_line" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_line</span></code></a>(points_array)</p></td>
+<td><p>Draw a graphical line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_model_from_touchstone.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_model_from_touchstone" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_model_from_touchstone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_model_from_touchstone</span></code></a>(...)</p></td>
+<td><p>Create a model from a Touchstone file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_page_port.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_page_port" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_page_port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_page_port</span></code></a>(name[, ...])</p></td>
+<td><p>Create a page port.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_symbol.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_symbol" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_symbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_symbol</span></code></a>(symbol_name, ...)</p></td>
+<td><p>Create a symbol.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_touchsthone_component.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_touchsthone_component" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_touchsthone_component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_touchsthone_component</span></code></a>(...)</p></td>
+<td><p>Create a component from a Touchstone model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_unique_id.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_unique_id" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_unique_id</span></code></a>()</p></td>
+<td><p>Create an unique ID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_wire.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_wire" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.create_wire"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.create_wire</span></code></a>(points_array)</p></td>
+<td><p>Create a wire.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.disable_data_netlist.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.disable_data_netlist" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.disable_data_netlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.disable_data_netlist</span></code></a>(...)</p></td>
+<td><p>Disable the Nexxim global net list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_global_netlist.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_global_netlist" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_global_netlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.enable_global_netlist</span></code></a>(...)</p></td>
+<td><p>Enable Nexxim global net list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_use_instance_name.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_use_instance_name" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.enable_use_instance_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.enable_use_instance_name</span></code></a>([...])</p></td>
+<td><p>Enable the use of the instance name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_obj_id.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_obj_id" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_obj_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.get_obj_id</span></code></a>(objname)</p></td>
+<td><p>Retrieve the ID of an object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pin_location.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pin_location" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pin_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.get_pin_location</span></code></a>(partid, ...)</p></td>
+<td><p>Retrieve the location of a pin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pins.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pins" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.get_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.get_pins</span></code></a>(partid)</p></td>
+<td><p>Retrieve one or more pins.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.refresh_all_ids.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.refresh_all_ids" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.refresh_all_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.refresh_all_ids</span></code></a>()</p></td>
+<td><p>Refresh all IDs and return the number of components.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_type.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_type" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.design_type</span></code></a></p></td>
+<td><p>Design type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_types.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_types" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.design_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.design_types</span></code></a></p></td>
+<td><p>Design types.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.model_units.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.model_units" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.model_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.model_units</span></code></a></p></td>
+<td><p>Model units.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.nets.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.nets" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.nets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.nets</span></code></a></p></td>
+<td><p>List of all schematic nets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_component_manager.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_component_manager" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_component_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.o_component_manager</span></code></a></p></td>
+<td><p>Component manager object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_definition_manager.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_definition_manager" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_definition_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.o_definition_manager</span></code></a></p></td>
+<td><p>Aedt oDefinitionManager.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_symbol_manager.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_symbol_manager" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.o_symbol_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.o_symbol_manager</span></code></a></p></td>
+<td><p>Model manager object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.version.html#pyaedt.modeler.PrimitivesCircuit.CircuitComponents.version" title="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitComponents.version</span></code></a></p></td>
+<td><p>Version.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

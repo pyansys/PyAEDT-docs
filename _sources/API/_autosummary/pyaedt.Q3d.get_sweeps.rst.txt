@@ -1,0 +1,6 @@
+get\_sweeps
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.get_sweeps

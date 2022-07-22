@@ -1,0 +1,6 @@
+duplicate
+=========
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.duplicate

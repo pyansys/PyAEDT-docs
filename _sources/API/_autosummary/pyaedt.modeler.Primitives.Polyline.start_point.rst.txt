@@ -1,0 +1,6 @@
+start\_point
+============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.start_point

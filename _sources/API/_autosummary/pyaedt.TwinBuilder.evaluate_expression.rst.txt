@@ -1,0 +1,6 @@
+evaluate\_expression
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.evaluate_expression

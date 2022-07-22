@@ -1,0 +1,6 @@
+analysis\_setup
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.analysis_setup

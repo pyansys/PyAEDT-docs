@@ -1,0 +1,6 @@
+core\_primitives
+================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Edb.core_primitives

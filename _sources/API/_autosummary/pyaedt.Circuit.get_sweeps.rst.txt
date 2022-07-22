@@ -1,0 +1,6 @@
+get\_sweeps
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.get_sweeps

@@ -1,0 +1,6 @@
+local\_origin
+=============
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Part.local_origin

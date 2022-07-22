@@ -1,0 +1,6 @@
+top\_bottom\_association
+========================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadstackInstance.top_bottom_association

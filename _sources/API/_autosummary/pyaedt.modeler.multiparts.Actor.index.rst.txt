@@ -1,0 +1,6 @@
+index
+=====
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Actor.index

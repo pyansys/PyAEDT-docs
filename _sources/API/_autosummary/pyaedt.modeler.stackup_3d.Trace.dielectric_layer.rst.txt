@@ -1,0 +1,6 @@
+dielectric\_layer
+=================
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. autoproperty:: Trace.dielectric_layer

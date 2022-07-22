@@ -1,0 +1,6 @@
+set\_source\_context
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.set_source_context

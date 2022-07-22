@@ -1,0 +1,6 @@
+get\_excitations\_name
+======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.get_excitations_name

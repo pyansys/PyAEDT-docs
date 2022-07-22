@@ -1,0 +1,6 @@
+valid\_properties
+=================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.valid_properties

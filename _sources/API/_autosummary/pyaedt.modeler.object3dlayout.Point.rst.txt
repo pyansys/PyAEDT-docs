@@ -1,0 +1,49 @@
+﻿pyaedt.modeler.object3dlayout.Point
+===================================
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoclass:: Point
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Point.delete
+      
+      
+      Point.set_color
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Point.coordinate_system
+      
+      
+      Point.logger
+      
+      
+      Point.m_Editor
+      
+      
+      Point.name
+      
+      
+      Point.valid_properties
+      
+   
+   

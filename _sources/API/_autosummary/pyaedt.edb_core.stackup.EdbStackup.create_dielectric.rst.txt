@@ -1,0 +1,6 @@
+create\_dielectric
+==================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.create_dielectric

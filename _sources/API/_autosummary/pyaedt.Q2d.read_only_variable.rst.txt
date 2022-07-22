@@ -1,0 +1,6 @@
+read\_only\_variable
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.read_only_variable

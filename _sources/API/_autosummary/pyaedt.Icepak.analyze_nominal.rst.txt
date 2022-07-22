@@ -1,0 +1,6 @@
+analyze\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.analyze_nominal

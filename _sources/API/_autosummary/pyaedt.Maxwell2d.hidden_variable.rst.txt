@@ -1,0 +1,6 @@
+hidden\_variable
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.hidden_variable

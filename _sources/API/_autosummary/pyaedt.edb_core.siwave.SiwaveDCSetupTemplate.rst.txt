@@ -1,0 +1,37 @@
+﻿pyaedt.edb\_core.siwave.SiwaveDCSetupTemplate
+=============================================
+
+.. currentmodule:: pyaedt.edb_core.siwave
+
+.. autoclass:: SiwaveDCSetupTemplate
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      SiwaveDCSetupTemplate.neg_term_to_ground
+      
+      
+      SiwaveDCSetupTemplate.pos_term_to_ground
+      
+      
+      SiwaveDCSetupTemplate.source_terms_to_ground
+      
+   
+   

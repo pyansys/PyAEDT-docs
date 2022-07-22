@@ -1,0 +1,6 @@
+signal\_nets
+============
+
+.. currentmodule:: pyaedt.edb_core.nets
+
+.. autoproperty:: EdbNets.signal_nets

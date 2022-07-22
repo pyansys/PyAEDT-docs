@@ -1,0 +1,6 @@
+export3DModel
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.export3DModel

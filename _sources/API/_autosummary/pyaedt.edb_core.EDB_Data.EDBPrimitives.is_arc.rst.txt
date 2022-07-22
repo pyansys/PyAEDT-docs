@@ -1,0 +1,6 @@
+is\_arc
+=======
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPrimitives.is_arc

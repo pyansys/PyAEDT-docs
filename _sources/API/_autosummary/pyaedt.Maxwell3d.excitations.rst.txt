@@ -1,0 +1,6 @@
+excitations
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell3d.excitations

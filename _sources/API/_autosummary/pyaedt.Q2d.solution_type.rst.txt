@@ -1,0 +1,6 @@
+solution\_type
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.solution_type

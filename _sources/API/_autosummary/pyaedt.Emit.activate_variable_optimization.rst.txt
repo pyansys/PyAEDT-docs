@@ -1,0 +1,6 @@
+activate\_variable\_optimization
+================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.activate_variable_optimization

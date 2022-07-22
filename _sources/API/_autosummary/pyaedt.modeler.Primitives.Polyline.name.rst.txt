@@ -1,0 +1,6 @@
+name
+====
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.name

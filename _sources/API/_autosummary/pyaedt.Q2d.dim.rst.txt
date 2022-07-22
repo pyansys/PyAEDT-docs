@@ -1,0 +1,6 @@
+dim
+===
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.dim

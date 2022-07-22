@@ -1,0 +1,6 @@
+get\_setup
+==========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.get_setup

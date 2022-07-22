@@ -1,0 +1,6 @@
+edb\_layers
+===========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBLayers.edb_layers

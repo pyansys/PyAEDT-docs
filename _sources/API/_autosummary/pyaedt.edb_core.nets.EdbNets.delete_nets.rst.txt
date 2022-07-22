@@ -1,0 +1,6 @@
+delete\_nets
+============
+
+.. currentmodule:: pyaedt.edb_core.nets
+
+.. automethod:: EdbNets.delete_nets

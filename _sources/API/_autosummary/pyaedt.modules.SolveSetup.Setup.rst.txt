@@ -1,0 +1,82 @@
+﻿pyaedt.modules.SolveSetup.Setup
+===============================
+
+.. currentmodule:: pyaedt.modules.SolveSetup
+
+.. autoclass:: Setup
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Setup.add_derivatives
+      
+      
+      Setup.add_eddy_current_sweep
+      
+      
+      Setup.add_mesh_link
+      
+      
+      Setup.add_sweep
+      
+      
+      Setup.create
+      
+      
+      Setup.delete
+      
+      
+      Setup.disable
+      
+      
+      Setup.enable
+      
+      
+      Setup.enable_adaptive_setup_broadband
+      
+      
+      Setup.enable_adaptive_setup_multifrequency
+      
+      
+      Setup.enable_adaptive_setup_single
+      
+      
+      Setup.enable_expression_cache
+      
+      
+      Setup.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Setup.available_properties
+      
+      
+      Setup.is_solved
+      
+      
+      Setup.name
+      
+      
+      Setup.omodule
+      
+      
+      Setup.p_app
+      
+   
+   

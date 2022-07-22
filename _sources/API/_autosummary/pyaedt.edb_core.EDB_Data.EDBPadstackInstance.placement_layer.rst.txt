@@ -1,0 +1,6 @@
+placement\_layer
+================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadstackInstance.placement_layer

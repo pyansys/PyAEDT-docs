@@ -1,0 +1,6 @@
+move
+====
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: UserDefinedComponent.move

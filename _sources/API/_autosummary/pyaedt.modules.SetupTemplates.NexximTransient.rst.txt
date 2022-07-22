@@ -1,0 +1,6 @@
+﻿NexximTransient
+===============
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: NexximTransient

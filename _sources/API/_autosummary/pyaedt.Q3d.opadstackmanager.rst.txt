@@ -1,0 +1,6 @@
+opadstackmanager
+================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.opadstackmanager

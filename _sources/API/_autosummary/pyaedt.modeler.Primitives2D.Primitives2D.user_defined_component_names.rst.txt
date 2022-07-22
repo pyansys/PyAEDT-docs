@@ -1,0 +1,6 @@
+user\_defined\_component\_names
+===============================
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. autoproperty:: Primitives2D.user_defined_component_names

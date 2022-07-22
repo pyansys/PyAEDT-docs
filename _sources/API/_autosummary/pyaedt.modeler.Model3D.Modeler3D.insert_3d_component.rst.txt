@@ -1,0 +1,6 @@
+insert\_3d\_component
+=====================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.insert_3d_component

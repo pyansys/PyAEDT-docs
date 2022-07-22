@@ -1,0 +1,6 @@
+get\_bounding\_dimension
+========================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.get_bounding_dimension

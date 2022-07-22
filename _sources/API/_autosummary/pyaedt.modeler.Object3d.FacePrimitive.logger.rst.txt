@@ -1,0 +1,6 @@
+logger
+======
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: FacePrimitive.logger

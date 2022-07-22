@@ -1,0 +1,6 @@
+vertices
+========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: EdgePrimitive.vertices

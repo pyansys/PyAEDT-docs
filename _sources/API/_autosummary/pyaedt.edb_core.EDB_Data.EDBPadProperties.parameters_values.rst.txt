@@ -1,0 +1,6 @@
+parameters\_values
+==================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadProperties.parameters_values

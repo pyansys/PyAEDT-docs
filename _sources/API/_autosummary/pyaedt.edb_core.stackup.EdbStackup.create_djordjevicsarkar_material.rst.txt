@@ -1,0 +1,6 @@
+create\_djordjevicsarkar\_material
+==================================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.create_djordjevicsarkar_material

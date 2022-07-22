@@ -1,0 +1,6 @@
+deactivate\_variable\_sensitivity
+=================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.deactivate_variable_sensitivity

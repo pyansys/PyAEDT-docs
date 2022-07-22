@@ -1,0 +1,6 @@
+activate\_variable\_tuning
+==========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.activate_variable_tuning

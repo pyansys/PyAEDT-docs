@@ -1,0 +1,6 @@
+syslib
+======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.syslib

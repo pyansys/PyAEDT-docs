@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyaedt.emit &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.emit</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyaedt.emit</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
+
+<span class="kn">from</span> <span class="nn">pyaedt.application.AnalysisEmit</span> <span class="kn">import</span> <span class="n">FieldAnalysisEmit</span>
+
+
+<div class="viewcode-block" id="Emit"><a class="viewcode-back" href="../../API/_autosummary/pyaedt.Emit.html#pyaedt.Emit">[docs]</a><span class="k">class</span> <span class="nc">Emit</span><span class="p">(</span><span class="n">FieldAnalysisEmit</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Provides the Emit application interface.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       This class creates only a skeleton for an empty design.</span>
+<span class="sd">       It has very limited functionalities, and no methods</span>
+<span class="sd">       are implemented yet.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    projectname : str, optional</span>
+<span class="sd">        Name of the project to select or the full path to the project</span>
+<span class="sd">        or AEDTZ archive to open.  The default is ``None``, in which case</span>
+<span class="sd">        an attempt is made to get an active project. If no projects are</span>
+<span class="sd">        present, an empty project is created.</span>
+<span class="sd">    designname : str, optional</span>
+<span class="sd">        Name of the design to select. The default is ``None``, in which case</span>
+<span class="sd">        an attempt is made to get an active design. If no designs are</span>
+<span class="sd">        present, an empty design is created.</span>
+<span class="sd">    solution_type : str, optional</span>
+<span class="sd">        Solution type to apply to the design. The default is ``None``, in which</span>
+<span class="sd">        case the default type is applied.</span>
+<span class="sd">    setup_name : str, optional</span>
+<span class="sd">       Name of the setup to use as the nominal. The default is</span>
+<span class="sd">       ``None``, in which case the active setup is used or nothing is</span>
+<span class="sd">       used.</span>
+<span class="sd">    specified_version : str, optional</span>
+<span class="sd">        Version of AEDT to use. The default is ``None``, in which case</span>
+<span class="sd">        the active setup is used or the latest installed version is</span>
+<span class="sd">        used.</span>
+<span class="sd">    non_graphical : bool, optional</span>
+<span class="sd">        Whether to launch AEDT in non-graphical mode. The default</span>
+<span class="sd">        is ``False``, in which case AEDT is launched in graphical mode.</span>
+<span class="sd">        This parameter is ignored when a script is launched within AEDT.</span>
+<span class="sd">    new_desktop_session : bool, optional</span>
+<span class="sd">        Whether to launch an instance of AEDT in a new thread, even if</span>
+<span class="sd">        another instance of the ``specified_version`` is active on the</span>
+<span class="sd">        machine.  The default is ``True``.</span>
+<span class="sd">    close_on_exit : bool, optional</span>
+<span class="sd">        Whether to release AEDT on exit. The default is ``False``.</span>
+<span class="sd">    student_version : bool, optional</span>
+<span class="sd">        Whether to open the AEDT student version. The default is ``False``.</span>
+<span class="sd">    machine : str, optional</span>
+<span class="sd">        Machine name to which the oDesktop session is to connect to. This</span>
+<span class="sd">        parameter works only in 2022 R2 and later. The remote server must be</span>
+<span class="sd">        up and running with the command `&quot;ansysedt.exe -grpcsrv portnum&quot;`.</span>
+<span class="sd">        If the machine is `&quot;localhost&quot;`, the server starts if it is not present.</span>
+<span class="sd">    port : int, optional</span>
+<span class="sd">        Port number on which to start the oDesktop communication on an already existing server.</span>
+<span class="sd">        This parameter is ignored when creating a new server. It works only in 2022 R2 or</span>
+<span class="sd">        later. The remote server must be up and running with the command `&quot;ansysedt.exe -grpcsrv portnum&quot;`.</span>
+<span class="sd">    aedt_process_id : int, optional</span>
+<span class="sd">        Process ID for the instance of AEDT to point PyAEDT at. The default is</span>
+<span class="sd">        ``None``. This parameter is only used when ``new_desktop_session = False``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create an instance of Emit and connect to an existing Emit</span>
+<span class="sd">    design or create a new Emit design if one does not exist.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyaedt import Emit</span>
+<span class="sd">    &gt;&gt;&gt; app = Emit()</span>
+
+<span class="sd">    Create a instance of Emit and link to a project named</span>
+<span class="sd">    ``&quot;projectname&quot;``. If this project does not exist, create one with</span>
+<span class="sd">    this name.</span>
+
+<span class="sd">    &gt;&gt;&gt; app = Emit(projectname)</span>
+
+<span class="sd">    Create an instance of Emit and link to a design named</span>
+<span class="sd">    ``&quot;designname&quot;`` in a project named ``&quot;projectname&quot;``.</span>
+
+<span class="sd">    &gt;&gt;&gt; app = Emit(projectname,designame)</span>
+
+<span class="sd">    Create an instance of Emit and open the specified project,</span>
+<span class="sd">    which is named ``Myfile.aedt``.</span>
+
+<span class="sd">    &gt;&gt;&gt; app = Emit(&quot;myfile.aedt&quot;)</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">projectname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">designname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solution_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">setup_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">specified_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">non_graphical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">close_on_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">student_version</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">machine</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">aedt_process_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor.&quot;&quot;&quot;</span>
+        <span class="n">FieldAnalysisEmit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="s2">&quot;EMIT&quot;</span><span class="p">,</span>
+            <span class="n">projectname</span><span class="p">,</span>
+            <span class="n">designname</span><span class="p">,</span>
+            <span class="n">solution_type</span><span class="p">,</span>
+            <span class="n">setup_name</span><span class="p">,</span>
+            <span class="n">specified_version</span><span class="p">,</span>
+            <span class="n">non_graphical</span><span class="p">,</span>
+            <span class="n">new_desktop_session</span><span class="p">,</span>
+            <span class="n">close_on_exit</span><span class="p">,</span>
+            <span class="n">student_version</span><span class="p">,</span>
+            <span class="n">machine</span><span class="o">=</span><span class="n">machine</span><span class="p">,</span>
+            <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
+            <span class="n">aedt_process_id</span><span class="o">=</span><span class="n">aedt_process_id</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

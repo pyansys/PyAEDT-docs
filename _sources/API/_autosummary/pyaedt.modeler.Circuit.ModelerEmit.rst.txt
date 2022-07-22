@@ -1,0 +1,52 @@
+﻿pyaedt.modeler.Circuit.ModelerEmit
+==================================
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoclass:: ModelerEmit
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ModelerEmit.connect_schematic_components
+      
+      
+      ModelerEmit.zoom_to_fit
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      ModelerEmit.logger
+      
+      
+      ModelerEmit.o_component_manager
+      
+      
+      ModelerEmit.o_model_manager
+      
+      
+      ModelerEmit.obounding_box
+      
+      
+      ModelerEmit.oeditor
+      
+      
+      ModelerEmit.projdir
+      
+   
+   

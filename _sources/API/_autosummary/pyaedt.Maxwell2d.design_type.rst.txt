@@ -1,0 +1,6 @@
+design\_type
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.design_type

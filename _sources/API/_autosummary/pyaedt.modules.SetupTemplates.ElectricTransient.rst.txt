@@ -1,0 +1,6 @@
+﻿ElectricTransient
+=================
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: ElectricTransient

@@ -1,0 +1,6 @@
+create\_dataset
+===============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.create_dataset

@@ -1,0 +1,6 @@
+pins
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Edb.pins

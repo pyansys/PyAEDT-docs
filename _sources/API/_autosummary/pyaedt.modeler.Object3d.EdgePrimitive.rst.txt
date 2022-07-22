@@ -1,0 +1,52 @@
+﻿pyaedt.modeler.Object3d.EdgePrimitive
+=====================================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoclass:: EdgePrimitive
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EdgePrimitive.chamfer
+      
+      
+      EdgePrimitive.create_object
+      
+      
+      EdgePrimitive.fillet
+      
+      
+      EdgePrimitive.move_along_normal
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EdgePrimitive.length
+      
+      
+      EdgePrimitive.midpoint
+      
+      
+      EdgePrimitive.segment_info
+      
+      
+      EdgePrimitive.vertices
+      
+   
+   

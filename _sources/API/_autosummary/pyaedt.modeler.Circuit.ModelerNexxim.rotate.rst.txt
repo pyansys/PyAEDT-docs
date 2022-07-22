@@ -1,0 +1,6 @@
+rotate
+======
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. automethod:: ModelerNexxim.rotate

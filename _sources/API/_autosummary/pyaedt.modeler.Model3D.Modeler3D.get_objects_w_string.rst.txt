@@ -1,0 +1,6 @@
+get\_objects\_w\_string
+=======================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.get_objects_w_string

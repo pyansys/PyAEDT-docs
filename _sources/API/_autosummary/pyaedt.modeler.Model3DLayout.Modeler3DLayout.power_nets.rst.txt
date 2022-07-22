@@ -1,0 +1,6 @@
+power\_nets
+===========
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.power_nets

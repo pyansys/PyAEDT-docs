@@ -1,0 +1,6 @@
+start
+=====
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. automethod:: Radar.start

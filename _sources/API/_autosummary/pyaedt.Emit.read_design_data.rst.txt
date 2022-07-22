@@ -1,0 +1,6 @@
+read\_design\_data
+==================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.read_design_data

@@ -1,0 +1,6 @@
+lock\_file
+==========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.lock_file

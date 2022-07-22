@@ -1,0 +1,6 @@
+output\_variables
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: TwinBuilder.output_variables

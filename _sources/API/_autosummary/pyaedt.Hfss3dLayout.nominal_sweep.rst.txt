@@ -1,0 +1,6 @@
+nominal\_sweep
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.nominal_sweep

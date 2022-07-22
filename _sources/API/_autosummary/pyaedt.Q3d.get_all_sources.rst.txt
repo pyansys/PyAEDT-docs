@@ -1,0 +1,6 @@
+get\_all\_sources
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.get_all_sources

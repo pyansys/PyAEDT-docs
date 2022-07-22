@@ -1,0 +1,6 @@
+design\_list
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.design_list

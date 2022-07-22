@@ -1,0 +1,6 @@
+oeditor
+=======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.oeditor

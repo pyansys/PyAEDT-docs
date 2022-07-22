@@ -1,0 +1,6 @@
+get\_setup
+==========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.get_setup

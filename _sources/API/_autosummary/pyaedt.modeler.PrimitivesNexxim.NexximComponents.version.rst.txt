@@ -1,0 +1,6 @@
+version
+=======
+
+.. currentmodule:: pyaedt.modeler.PrimitivesNexxim
+
+.. autoproperty:: NexximComponents.version

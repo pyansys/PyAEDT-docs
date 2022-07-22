@@ -1,0 +1,6 @@
+build\_simulation\_project
+==========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Edb.build_simulation_project

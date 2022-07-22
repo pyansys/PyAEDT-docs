@@ -1,0 +1,6 @@
+material\_name
+==============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.material_name

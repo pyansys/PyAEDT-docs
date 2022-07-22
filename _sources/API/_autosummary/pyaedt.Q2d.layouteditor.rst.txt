@@ -1,0 +1,6 @@
+layouteditor
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.layouteditor

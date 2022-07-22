@@ -1,0 +1,6 @@
+omatrix
+=======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.omatrix

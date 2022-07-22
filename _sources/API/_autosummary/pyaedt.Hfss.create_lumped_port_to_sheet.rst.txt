@@ -1,0 +1,6 @@
+create\_lumped\_port\_to\_sheet
+===============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.create_lumped_port_to_sheet

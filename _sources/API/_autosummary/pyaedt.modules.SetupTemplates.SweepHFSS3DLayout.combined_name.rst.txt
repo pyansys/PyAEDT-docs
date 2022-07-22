@@ -1,0 +1,6 @@
+combined\_name
+==============
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autoproperty:: SweepHFSS3DLayout.combined_name

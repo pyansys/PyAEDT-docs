@@ -1,0 +1,6 @@
+chamfer
+=======
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: EdgePrimitive.chamfer

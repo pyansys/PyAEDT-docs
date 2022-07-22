@@ -1,0 +1,6 @@
+create\_setup
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.create_setup

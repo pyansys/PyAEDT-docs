@@ -1,0 +1,6 @@
+get\_liquid\_objects
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.get_liquid_objects

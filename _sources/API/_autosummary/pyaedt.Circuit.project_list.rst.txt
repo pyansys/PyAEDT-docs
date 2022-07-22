@@ -1,0 +1,6 @@
+project\_list
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.project_list

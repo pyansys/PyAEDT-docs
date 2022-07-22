@@ -1,0 +1,6 @@
+top\_face\_y
+============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.top_face_y

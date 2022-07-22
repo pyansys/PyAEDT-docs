@@ -1,0 +1,6 @@
+copy\_project
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.copy_project

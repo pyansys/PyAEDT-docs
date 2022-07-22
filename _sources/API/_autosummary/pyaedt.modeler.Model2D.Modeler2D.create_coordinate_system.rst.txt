@@ -1,0 +1,6 @@
+create\_coordinate\_system
+==========================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.create_coordinate_system

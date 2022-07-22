@@ -1,0 +1,6 @@
+project\_time\_stamp
+====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.project_time_stamp

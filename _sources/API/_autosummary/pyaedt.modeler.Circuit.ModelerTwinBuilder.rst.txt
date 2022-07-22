@@ -1,0 +1,58 @@
+﻿pyaedt.modeler.Circuit.ModelerTwinBuilder
+=========================================
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoclass:: ModelerTwinBuilder
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      ModelerTwinBuilder.connect_schematic_components
+      
+      
+      ModelerTwinBuilder.zoom_to_fit
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      ModelerTwinBuilder.components
+      
+      
+      ModelerTwinBuilder.logger
+      
+      
+      ModelerTwinBuilder.o_component_manager
+      
+      
+      ModelerTwinBuilder.o_model_manager
+      
+      
+      ModelerTwinBuilder.obounding_box
+      
+      
+      ModelerTwinBuilder.oeditor
+      
+      
+      ModelerTwinBuilder.projdir
+      
+      
+      ModelerTwinBuilder.schematic
+      
+   
+   

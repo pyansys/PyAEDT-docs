@@ -1,0 +1,6 @@
+yaw
+===
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Vehicle.yaw

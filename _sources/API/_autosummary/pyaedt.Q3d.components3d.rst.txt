@@ -1,0 +1,6 @@
+components3d
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.components3d

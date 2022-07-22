@@ -1,0 +1,6 @@
+get\_evaluated\_value
+=====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.get_evaluated_value

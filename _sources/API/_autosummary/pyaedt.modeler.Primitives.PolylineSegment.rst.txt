@@ -1,0 +1,22 @@
+﻿pyaedt.modeler.Primitives.PolylineSegment
+=========================================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoclass:: PolylineSegment
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+core\_siwave
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Edb.core_siwave

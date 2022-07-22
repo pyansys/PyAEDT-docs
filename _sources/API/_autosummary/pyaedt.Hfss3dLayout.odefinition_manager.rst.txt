@@ -1,0 +1,6 @@
+odefinition\_manager
+====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.odefinition_manager

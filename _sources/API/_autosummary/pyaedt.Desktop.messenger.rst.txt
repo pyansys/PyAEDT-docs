@@ -1,0 +1,6 @@
+messenger
+=========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Desktop.messenger

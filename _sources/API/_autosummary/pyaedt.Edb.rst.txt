@@ -1,0 +1,151 @@
+﻿pyaedt.Edb
+==========
+
+.. currentmodule:: pyaedt
+
+.. autoclass:: Edb
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Edb.add_design_variable
+      
+      
+      Edb.arg_with_dim
+      
+      
+      Edb.build_simulation_project
+      
+      
+      Edb.change_design_variable_value
+      
+      
+      Edb.close_edb
+      
+      
+      Edb.create_cutout
+      
+      
+      Edb.create_cutout_on_point_list
+      
+      
+      Edb.create_edb
+      
+      
+      Edb.edb_exception
+      
+      
+      Edb.edb_value
+      
+      
+      Edb.execute
+      
+      
+      Edb.export_hfss
+      
+      
+      Edb.export_maxwell
+      
+      
+      Edb.export_q3d
+      
+      
+      Edb.export_to_ipc2581
+      
+      
+      Edb.get_bounding_box
+      
+      
+      Edb.get_conformal_polygon_from_netlist
+      
+      
+      Edb.get_statistics
+      
+      
+      Edb.import_cadence_file
+      
+      
+      Edb.import_gds_file
+      
+      
+      Edb.import_layout_pcb
+      
+      
+      Edb.open_edb
+      
+      
+      Edb.open_edb_inside_aedt
+      
+      
+      Edb.save_edb
+      
+      
+      Edb.save_edb_as
+      
+      
+      Edb.solve_siwave
+      
+      
+      Edb.write_export3d_option_config_file
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Edb.active_cell
+      
+      
+      Edb.active_layout
+      
+      
+      Edb.cell_names
+      
+      
+      Edb.core_components
+      
+      
+      Edb.core_hfss
+      
+      
+      Edb.core_nets
+      
+      
+      Edb.core_padstack
+      
+      
+      Edb.core_primitives
+      
+      
+      Edb.core_siwave
+      
+      
+      Edb.core_stackup
+      
+      
+      Edb.db
+      
+      
+      Edb.edblib
+      
+      
+      Edb.logger
+      
+      
+      Edb.pins
+      
+   
+   

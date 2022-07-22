@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HFSS: advanced far field postprocessing &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HFSS: component antenna array" href="Array.html" />
+    <link rel="prev" title="General: polyline creation" href="../01-Modeling-Setup/Polyline_Primitives.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Examples</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">HFSS: advanced far field postprocessing</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/00_EDB_Create_VIA.html">
+   EDB: geometry creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/01_edb_example.html">
+   EDB: Siwave analysis from EDB setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/02_edb_to_ipc2581.html">
+   EDB: IPC2581 export
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/03_5G_antenna_example.html">
+   EDB: 5G linear array antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/04_edb_parametrized_design.html">
+   EDB: fully parameterized design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/05_Plot_nets.html">
+   EDB: plot nets with Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/06_Advanced_EDB.html">
+   EDB: parametric via creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/07_WPF_Merge_Utility.html">
+   EDB: merge utility
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/08_CPWG.html">
+   EDB: fully parameterized CPWG design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Configurations.html">
+   General: configuration files
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/HFSS_CoordinateSystem.html">
+   General: coordinate system creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Optimetrics.html">
+   General: optimetrics setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Polyline_Primitives.html">
+   General: polyline creation
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   HFSS: advanced far field postprocessing
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Array.html">
+   HFSS: component antenna array
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDB_in_3DLayout.html">
+   HFSS 3D Layout: PCB and EDB in 3D layout
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Flex_CPWG.html">
+   HFSS: flex cable CPWG
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS3DLayout_Via.html">
+   HFSS 3D Layout: parametric via analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Choke.html">
+   HFSS: choke
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Dipole.html">
+   HFSS: dipole antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Spiral.html">
+   HFSS: spiral inductor
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Machine_learning_applied_to_Patch.html">
+   HFSS: machine learning applied to a patch
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Doppler_Example.html">
+   SBR+: doppler setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Example.html">
+   SBR+: HFSS to SBR+ coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Time_Plot.html">
+   SBR+: HFSS to SBR+ time animation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_NissanLeaf.html">
+   Maxwell 2D: PM synchronous motor transient analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_Transient.html">
+   Maxwell 2D: transient winding analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam3.html">
+   Maxwell 3D: bath plate analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam7.html">
+   Maxwell 3D: asymmetric conductor analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3D_Choke.html">
+   Maxwell 3D: choke setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell_Magnet.html">
+   Maxwell 3D: magnet DC analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Example.html">
+   Circuit: schematic creation and analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Subcircuit_Example.html">
+   Circuit: schematic subcircuit management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Transient.html">
+   Circuit: transient analysis and eye plot
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Create_Netlist.html">
+   Circuit: netlist to schematic iport
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_Example.html">
+   EMIT: antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_HFSS_Example.html">
+   EMIT: HFSS to EMIT coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Reports.html">
+   Circuit: automatic report creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Touchstone_Management.html">
+   Circuit: Touchstone file management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Icepak_Example.html">
+   Icepak: graphic card thermal analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Sherlock_Example.html">
+   Icepack: setup from Sherlock inputs
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_CPWG.html">
+   2D Extractor: CPWG analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_Stripline.html">
+   2D Extractor: stripline analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q3D_Example.html">
+   Q3D Extractor: busbar analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Icepak_Coupling.html">
+   Multiphysics: HFSS-Icepack multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Mechanical.html">
+   Multiphysics: HFSS-Mechanical multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/01-RC_Circuit_Example.html">
+   Twin Builder: RC circuit design anaysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
+   Twin Builder: wiring a rectifier with a capacitor filter
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-packages">
+   Import packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-all-modules-for-postprocessing">
+   Import all modules for postprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launch-aedt">
+   Launch AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-hfss-project">
+   Open HFSS project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solve-hfss-project">
+   Solve HFSS project
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-efields-data-from-solution">
+   Get efields data from solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-far-field-values">
+   Calculate far field values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-plot-and-interact-with-it">
+   Create plot and interact with it
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-polar-plot">
+   Generate polar plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-scalar-plot">
+   Generate scalar plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-plot-using-phi-as-primary-sweep">
+   Generate plot using Phi as primary sweep
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#close-hfss-project-and-aedt">
+   Close HFSS project and AEDT
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-02-hfss-advanced-far-field-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="hfss-advanced-far-field-postprocessing">
+<span id="sphx-glr-examples-02-hfss-advanced-far-field-py"></span><h1>HFSS: advanced far field postprocessing<a class="headerlink" href="#hfss-advanced-far-field-postprocessing" title="Permalink to this heading">#</a></h1>
+<p>This example shows how to use advanced postprocessing functions to create plots
+using Matplotlib without opening the HFSS user interface.
+This examples runs only on Windows using CPython.</p>
+<section id="import-packages">
+<h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this heading">#</a></h2>
+<p>Set the local path to the path for PyAEDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">local_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.abspath" title="os.path.abspath" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span></a><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">module_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">local_path</span></a><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_lib_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/pathlib.html#pathlib.PurePath.parent" title="pathlib.PurePath.parent" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-data"><span class="n">module_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span></a>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_antenna_array</span><span class="p">()</span>
+
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">remove_project_lock</span>
+</pre></div>
+</div>
+<p>Set non-graphical mode
+Set non-graphical mode. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="import-all-modules-for-postprocessing">
+<h2>Import all modules for postprocessing<a class="headerlink" href="#import-all-modules-for-postprocessing" title="Permalink to this heading">#</a></h2>
+<p>Import all modules for postprocessing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-aedt">
+<h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
+<p>Launch AEDT 2022 R2 in non-graphical mode.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">desktop</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger Started
+pyaedt info: Launching PyAEDT outside AEDT with CPython and PythonNET.
+pyaedt info: AEDT installation Path C:\Program Files\AnsysEM\v222\Win64.
+pyaedt info: Launching AEDT with module PythonNET.
+pyaedt info: Ansoft.ElectronicsDesktop.2022.2 Started with process ID 4100.
+pyaedt info: Logger file D:\Temp\pyaedt20220722_091734.log in use.
+pyaedt info: pyaedt v0.5.9
+pyaedt info: Python version 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]
+</pre></div>
+</div>
+</section>
+<section id="open-hfss-project">
+<h2>Open HFSS project<a class="headerlink" href="#open-hfss-project" title="Permalink to this heading">#</a></h2>
+<p>Open the HFSS project.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remove_project_lock</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">)</span>
+
+<span class="n">hfss</span> <span class="o">=</span> <span class="n">Hfss</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a><span class="p">,</span> <span class="s2">&quot;4X4_MultiCell_CA-Array&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Project FiniteArray_Radome_77GHz_3D_CADDM has been opened.
+pyaedt info: Aedt Objects initialized
+pyaedt info: Variable Manager initialized
+pyaedt info: Design Loaded
+pyaedt info: Successfully loaded project materials !
+pyaedt info: Materials Loaded
+pyaedt info: aedt file load time 0.18758106231689453
+</pre></div>
+</div>
+</section>
+<section id="solve-hfss-project">
+<h2>Solve HFSS project<a class="headerlink" href="#solve-hfss-project" title="Permalink to this heading">#</a></h2>
+<p>Solves the HFSS project.
+The solution time is computed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+<span class="n">hfss</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span><span class="s2">&quot;Setup1&quot;</span><span class="p">)</span>
+<span class="n">hfss</span><span class="o">.</span><span class="n">save_project</span><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution Time&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solving design setup Setup1
+pyaedt info: Design setup Setup1 solved correctly
+pyaedt info: Project FiniteArray_Radome_77GHz_3D_CADDM Saved correctly
+Solution Time 21.48723530769348
+</pre></div>
+</div>
+</section>
+<section id="get-efields-data-from-solution">
+<h2>Get efields data from solution<a class="headerlink" href="#get-efields-data-from-solution" title="Permalink to this heading">#</a></h2>
+<p>Gets efields data from the solution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a> <span class="o">=</span> <span class="n">hfss</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_efields_data</span><span class="p">(</span><span class="n">ff_setup</span><span class="o">=</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start</span></a>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Postprocessing Time&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+pyaedt info: Solution Data Correctly Loaded.
+Postprocessing Time 290.253479719162
+</pre></div>
+</div>
+</section>
+<section id="calculate-far-field-values">
+<h2>Calculate far field values<a class="headerlink" href="#calculate-far-field-values" title="Permalink to this heading">#</a></h2>
+<p>Use Matplotlib to read the solution generated in <a href="#id1"><span class="problematic" id="id2">``</span></a>ff_data``and process
+the field based on Phi and Theta and generate a plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ff_calc</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">qty</span><span class="o">=</span><span class="s2">&quot;rETotal&quot;</span><span class="p">,</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">array_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="n">loc_offset</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># if array index is not starting at [1,1]</span>
+    <span class="n">xphase</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">yphase</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">array_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">array_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">array_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">weight</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">array_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="n">mag</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ones.html#numpy.ones" title="numpy.ones" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="n">array_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+    <span class="n">port_names_arranged</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.chararray.html#numpy.chararray" title="numpy.chararray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">chararray</span></a><span class="p">(</span><span class="n">array_shape</span><span class="p">)</span>
+    <span class="n">all_ports</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">w_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># calculate weights based off of progressive phase shift</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">array_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">array_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">mag_val</span> <span class="o">=</span> <span class="n">mag</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+            <span class="n">ang</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">radians</span></a><span class="p">(</span><span class="n">xphase</span> <span class="o">*</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">radians</span></a><span class="p">(</span><span class="n">yphase</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">weight</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><span class="n">mag_val</span><span class="p">)</span> <span class="o">*</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ang</span><span class="p">)</span>
+            <span class="n">current_index_str</span> <span class="o">=</span> <span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">loc_offset</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">loc_offset</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+            <span class="n">port_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">all_ports</span> <span class="k">if</span> <span class="n">current_index_str</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+            <span class="n">w_dict</span><span class="p">[</span><span class="n">port_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="n">length_of_ff_data</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">array_shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w_dict</span><span class="p">),</span> <span class="n">length_of_ff_data</span><span class="p">)</span>
+    <span class="n">rEtheta_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">array_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="n">rEphi_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">array_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">array_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="c1"># create port mapping</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">port</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">re_theta</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">re_phi</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">re_theta</span> <span class="o">=</span> <span class="n">re_theta</span> <span class="o">*</span> <span class="n">w_dict</span><span class="p">[</span><span class="n">port</span><span class="p">]</span>
+
+        <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">w_dict</span><span class="p">[</span><span class="n">port</span><span class="p">]</span>
+        <span class="n">re_phi</span> <span class="o">=</span> <span class="n">re_phi</span> <span class="o">*</span> <span class="n">w_dict</span><span class="p">[</span><span class="n">port</span><span class="p">]</span>
+
+        <span class="n">rEtheta_fields</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">re_theta</span>
+        <span class="n">rEphi_fields</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">re_phi</span>
+
+        <span class="n">theta_range</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">phi_range</span> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ff_data</span></a><span class="p">[</span><span class="n">port</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)]</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)]</span>
+        <span class="n">Ntheta</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta_range</span><span class="p">)</span>
+        <span class="n">Nphi</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phi_range</span><span class="p">)</span>
+
+    <span class="n">rEtheta_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.dot.html#numpy.dot" title="numpy.dot" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">dot</span></a><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">rEtheta_fields</span><span class="p">)</span>
+    <span class="n">rEtheta_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.reshape.html#numpy.reshape" title="numpy.reshape" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">reshape</span></a><span class="p">(</span><span class="n">rEtheta_fields</span><span class="p">,</span> <span class="p">(</span><span class="n">Ntheta</span><span class="p">,</span> <span class="n">Nphi</span><span class="p">))</span>
+
+    <span class="n">rEphi_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.dot.html#numpy.dot" title="numpy.dot" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">dot</span></a><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">rEphi_fields</span><span class="p">)</span>
+    <span class="n">rEphi_fields</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.reshape.html#numpy.reshape" title="numpy.reshape" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">reshape</span></a><span class="p">(</span><span class="n">rEphi_fields</span><span class="p">,</span> <span class="p">(</span><span class="n">Ntheta</span><span class="p">,</span> <span class="n">Nphi</span><span class="p">))</span>
+
+    <span class="n">all_qtys</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">all_qtys</span><span class="p">[</span><span class="s2">&quot;rEPhi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rEphi_fields</span>
+    <span class="n">all_qtys</span><span class="p">[</span><span class="s2">&quot;rETheta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rEtheta_fields</span>
+    <span class="n">all_qtys</span><span class="p">[</span><span class="s2">&quot;rETotal&quot;</span><span class="p">]</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">power</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><span class="n">rEphi_fields</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">power</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><span class="n">rEtheta_fields</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">pin</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.sum.html#numpy.sum" title="numpy.sum" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">))</span>
+    <span class="n">real_gain</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a> <span class="o">*</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">power</span></a><span class="p">(</span><span class="n">all_qtys</span><span class="p">[</span><span class="s2">&quot;rETotal&quot;</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">pin</span> <span class="o">/</span> <span class="mi">377</span>
+    <span class="n">all_qtys</span><span class="p">[</span><span class="s2">&quot;RealizedGain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">real_gain</span>
+
+    <span class="k">if</span> <span class="n">dB</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;Gain&quot;</span> <span class="ow">in</span> <span class="n">qty</span><span class="p">:</span>
+            <span class="n">qty_to_plot</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><span class="n">all_qtys</span><span class="p">[</span><span class="n">qty</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">qty_to_plot</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><span class="n">all_qtys</span><span class="p">[</span><span class="n">qty</span><span class="p">]))</span>
+        <span class="n">qty_str</span> <span class="o">=</span> <span class="n">qty</span> <span class="o">+</span> <span class="s2">&quot; (dB)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">qty_to_plot</span> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">abs</span></a><span class="p">(</span><span class="n">all_qtys</span><span class="p">[</span><span class="n">qty</span><span class="p">])</span>
+        <span class="n">qty_str</span> <span class="o">=</span> <span class="n">qty</span> <span class="o">+</span> <span class="s2">&quot; (mag)&quot;</span>
+
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="matplotlib.pyplot.title" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="n">qty_str</span><span class="p">)</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="s2">&quot;Theta (degree)&quot;</span><span class="p">)</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;Phi (degree)&quot;</span><span class="p">)</span>
+
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow" title="matplotlib.pyplot.imshow" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.colorbar.html#matplotlib.pyplot.colorbar" title="matplotlib.pyplot.colorbar" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">()</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">qty_to_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-plot-and-interact-with-it">
+<h2>Create plot and interact with it<a class="headerlink" href="#create-plot-and-interact-with-it" title="Permalink to this heading">#</a></h2>
+<p>Create the plot and interact with it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ff_calc</span><span class="p">()</span>
+
+<span class="c1"># interact(ff_calc, x=widgets.FloatSlider(value=0, min=-180, max=180, step=1),</span>
+<span class="c1">#          y=widgets.FloatSlider(value=0, min=-180, max=180, step=1))</span>
+
+
+<span class="n">vals</span> <span class="o">=</span> <span class="n">hfss</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_far_field_data</span><span class="p">(</span>
+    <span class="n">setup_sweep_name</span><span class="o">=</span><span class="n">hfss</span><span class="o">.</span><span class="n">nominal_sweep</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;RealizedGainTotal&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Advanced_Far_Field_001.png" srcset="../../_images/sphx_glr_Advanced_Far_Field_001.png" alt="rETotal (dB)" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(16+0j)
+pyaedt info: Solution Data Correctly Loaded.
+</pre></div>
+</div>
+</section>
+<section id="generate-polar-plot">
+<h2>Generate polar plot<a class="headerlink" href="#generate-polar-plot" title="Permalink to this heading">#</a></h2>
+<p>Generate a polar plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">math_formula</span><span class="o">=</span><span class="s2">&quot;db20&quot;</span><span class="p">,</span> <span class="n">is_polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Advanced_Far_Field_002.png" srcset="../../_images/sphx_glr_Advanced_Far_Field_002.png" alt="Simulation Results Plot" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2000x1000 with 1 Axes&gt;
+</pre></div>
+</div>
+</section>
+<section id="generate-scalar-plot">
+<h2>Generate scalar plot<a class="headerlink" href="#generate-scalar-plot" title="Permalink to this heading">#</a></h2>
+<p>Generate a scalar plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">math_formula</span><span class="o">=</span><span class="s2">&quot;db20&quot;</span><span class="p">,</span> <span class="n">is_polar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Advanced_Far_Field_003.png" srcset="../../_images/sphx_glr_Advanced_Far_Field_003.png" alt="Simulation Results Plot" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2000x1000 with 1 Axes&gt;
+</pre></div>
+</div>
+</section>
+<section id="generate-plot-using-phi-as-primary-sweep">
+<h2>Generate plot using Phi as primary sweep<a class="headerlink" href="#generate-plot-using-phi-as-primary-sweep" title="Permalink to this heading">#</a></h2>
+<p>Generate the plot using Phi as the primary sweep.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vals3d</span> <span class="o">=</span> <span class="n">hfss</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_far_field_data</span><span class="p">(</span>
+    <span class="n">setup_sweep_name</span><span class="o">=</span><span class="n">hfss</span><span class="o">.</span><span class="n">nominal_sweep</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s2">&quot;RealizedGainTotal&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Infinite Sphere1&quot;</span>
+<span class="p">)</span>
+
+<span class="n">vals3d</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Advanced_Far_Field_004.png" srcset="../../_images/sphx_glr_Advanced_Far_Field_004.png" alt="Advanced Far Field" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solution Data Correctly Loaded.
+pyaedt error: Method plot_3d_chart Failed:  Value Error. Please Check again
+Method plot_3d_chart Failed:  Value Error. Please Check again
+pyaedt error: operands could not be broadcast together with shapes (121,2) (121,61)
+operands could not be broadcast together with shapes (121,2) (121,61)
+pyaedt error: Arguments Provided:
+Arguments Provided:
+pyaedt error:     plot_data = [[0.0, 3.0, 6.0, 9.0, 12.0, 14.999999999999998, 18.0, 21.0, 24.0, 27.0, 29.999999999999996, 33.0, 36.0, 39.0, 42.0, 45.0, 48.0, 51.0, 54.0, 57.0, 59.99999999999999, 63.0, 66.0, 69.0, 72.0, 75.0, 78.0, 81.0, 84.0, 87.0, 90.0, 93.0, 96.
+    plot_data = [[0.0, 3.0, 6.0, 9.0, 12.0, 14.999999999999998, 18.0, 21.0, 24.0, 27.0, 29.999999999999996, 33.0, 36.0, 39.0, 42.0, 45.0, 48.0, 51.0, 54.0, 57.0, 59.99999999999999, 63.0, 66.0, 69.0, 72.0, 75.0, 78.0, 81.0, 84.0, 87.0, 90.0, 93.0, 96.
+pyaedt error: 0, 99.0, 102.0, 105.0, 108.0, 111.0, 114.0, 117.0, 119.99999999999999, 123.0, 126.0, 129.0, 132.0, 135.0, 138.0, 141.0, 144.0, 147.0, 150.0, 153.0, 156.0, 159.0, 162.0, 165.0, 168.0, 171.0, 174.0, 177.0, 180.0], [-3.141592653589793, -3.08923277602996
+0, 99.0, 102.0, 105.0, 108.0, 111.0, 114.0, 117.0, 119.99999999999999, 123.0, 126.0, 129.0, 132.0, 135.0, 138.0, 141.0, 144.0, 147.0, 150.0, 153.0, 156.0, 159.0, 162.0, 165.0, 168.0, 171.0, 174.0, 177.0, 180.0], [-3.141592653589793, -3.08923277602996
+pyaedt error: 34, -3.036872898470133, -2.9845130209103035, -2.9321531433504737, -2.8797932657906435, -2.827433388230814, -2.775073510670984, -2.722713633111154, -2.670353755551324, -2.6179938779914944, -2.5656340004316647, -2.5132741228718345, -2.4609142453120043,
+34, -3.036872898470133, -2.9845130209103035, -2.9321531433504737, -2.8797932657906435, -2.827433388230814, -2.775073510670984, -2.722713633111154, -2.670353755551324, -2.6179938779914944, -2.5656340004316647, -2.5132741228718345, -2.4609142453120043,
+pyaedt error:  -2.4085543677521746, -2.356194490192345, -2.303834612632515, -2.251474735072685, -2.199114857512855, -2.1467549799530254, -2.0943951023931953, -2.0420352248333655, -1.9896753472735356, -1.9373154697137058, -1.8849555921538759, -1.8325957145940461, -
+ -2.4085543677521746, -2.356194490192345, -2.303834612632515, -2.251474735072685, -2.199114857512855, -2.1467549799530254, -2.0943951023931953, -2.0420352248333655, -1.9896753472735356, -1.9373154697137058, -1.8849555921538759, -1.8325957145940461, -
+pyaedt error: 1.780235837034216, -1.7278759594743864, -1.6755160819145563, -1.6231562043547263, -1.5707963267948966, -1.5184364492350666, -1.4660765716752369, -1.413716694115407, -1.361356816555577, -1.3089969389957472, -1.2566370614359172, -1.2042771838760873, -1
+1.780235837034216, -1.7278759594743864, -1.6755160819145563, -1.6231562043547263, -1.5707963267948966, -1.5184364492350666, -1.4660765716752369, -1.413716694115407, -1.361356816555577, -1.3089969389957472, -1.2566370614359172, -1.2042771838760873, -1
+pyaedt error: .1519173063162575, -1.0995574287564276, -1.0471975511965976, -0.9948376736367678, -0.9424777960769379, -0.890117918517108, -0.8377580409572781, -0.7853981633974483, -0.7330382858376184, -0.6806784082777885, -0.6283185307179586, -0.5759586531581288, -
+.1519173063162575, -1.0995574287564276, -1.0471975511965976, -0.9948376736367678, -0.9424777960769379, -0.890117918517108, -0.8377580409572781, -0.7853981633974483, -0.7330382858376184, -0.6806784082777885, -0.6283185307179586, -0.5759586531581288, -
+pyaedt error: 0.5235987755982988, -0.47123889803846897, -0.41887902047863906, -0.3665191429188092, -0.3141592653589793, -0.2617993877991494, -0.20943951023931953, -0.15707963267948966, -0.10471975511965977, -0.05235987755982988, 0.0, 0.05235987755982988, 0.1047197
+0.5235987755982988, -0.47123889803846897, -0.41887902047863906, -0.3665191429188092, -0.3141592653589793, -0.2617993877991494, -0.20943951023931953, -0.15707963267948966, -0.10471975511965977, -0.05235987755982988, 0.0, 0.05235987755982988, 0.1047197
+pyaedt error: 5511965977, 0.15707963267948966, 0.20943951023931953, 0.2617993877991494, 0.3141592653589793, 0.3665191429188092, 0.41887902047863906, 0.47123889803846897, 0.5235987755982988, 0.5759586531581288, 0.6283185307179586, 0.6806784082777885, 0.733038285837
+5511965977, 0.15707963267948966, 0.20943951023931953, 0.2617993877991494, 0.3141592653589793, 0.3665191429188092, 0.41887902047863906, 0.47123889803846897, 0.5235987755982988, 0.5759586531581288, 0.6283185307179586, 0.6806784082777885, 0.733038285837
+pyaedt error: 6184, 0.7853981633974483, 0.8377580409572781, 0.890117918517108, 0.9424777960769379, 0.9948376736367678, 1.0471975511965976, 1.0995574287564276, 1.1519173063162575, 1.2042771838760873, 1.2566370614359172, 1.3089969389957472, 1.361356816555577, 1.4137
+6184, 0.7853981633974483, 0.8377580409572781, 0.890117918517108, 0.9424777960769379, 0.9948376736367678, 1.0471975511965976, 1.0995574287564276, 1.1519173063162575, 1.2042771838760873, 1.2566370614359172, 1.3089969389957472, 1.361356816555577, 1.4137
+pyaedt error: 16694115407, 1.4660765716752369, 1.5184364492350666, 1.5707963267948966, 1.6231562043547263, 1.6755160819145563, 1.7278759594743864, 1.780235837034216, 1.8325957145940461, 1.8849555921538759, 1.9373154697137058, 1.9896753472735356, 2.0420352248333655
+16694115407, 1.4660765716752369, 1.5184364492350666, 1.5707963267948966, 1.6231562043547263, 1.6755160819145563, 1.7278759594743864, 1.780235837034216, 1.8325957145940461, 1.8849555921538759, 1.9373154697137058, 1.9896753472735356, 2.0420352248333655
+pyaedt error: , 2.0943951023931953, 2.1467549799530254, 2.199114857512855, 2.251474735072685, 2.303834612632515, 2.356194490192345, 2.4085543677521746, 2.4609142453120043, 2.5132741228718345, 2.5656340004316647, 2.6179938779914944, 2.670353755551324, 2.72271363311
+, 2.0943951023931953, 2.1467549799530254, 2.199114857512855, 2.251474735072685, 2.303834612632515, 2.356194490192345, 2.4085543677521746, 2.4609142453120043, 2.5132741228718345, 2.5656340004316647, 2.6179938779914944, 2.670353755551324, 2.72271363311
+pyaedt error: 1154, 2.775073510670984, 2.827433388230814, 2.8797932657906435, 2.9321531433504737, 2.9845130209103035, 3.036872898470133, 3.0892327760299634, 3.141592653589793], [[1.5172350166054933, 1.5433176414932714], [1.5172350166054922, 1.5433176414932717], [1
+1154, 2.775073510670984, 2.827433388230814, 2.8797932657906435, 2.9321531433504737, 2.9845130209103035, 3.036872898470133, 3.0892327760299634, 3.141592653589793], [[1.5172350166054933, 1.5433176414932714], [1.5172350166054922, 1.5433176414932717], [1
+pyaedt error: .5172350166054913, 1.5433176414932717], [1.5172350166054915, 1.543317641493272], [1.5172350166054915, 1.5433176414932703], [1.517235016605492, 1.5433176414932703], [1.517235016605492, 1.5433176414932719], [1.5172350166054922, 1.543317641493272], [1.5
+.5172350166054913, 1.5433176414932717], [1.5172350166054915, 1.543317641493272], [1.5172350166054915, 1.5433176414932703], [1.517235016605492, 1.5433176414932703], [1.517235016605492, 1.5433176414932719], [1.5172350166054922, 1.543317641493272], [1.5
+pyaedt error: 17235016605492, 1.5433176414932723], [1.5172350166054922, 1.5433176414932726], [1.517235016605492, 1.5433176414932726], [1.517235016605492, 1.5433176414932717], [1.517235016605492, 1.5433176414932717], [1.517235016605492, 1.543317641493271], [1.51723
+17235016605492, 1.5433176414932723], [1.5172350166054922, 1.5433176414932726], [1.517235016605492, 1.5433176414932726], [1.517235016605492, 1.5433176414932717], [1.517235016605492, 1.5433176414932717], [1.517235016605492, 1.543317641493271], [1.51723
+pyaedt error: 50166054915, 1.5433176414932717], [1.5172350166054906, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350166054915, 1.5433176414932717], [1.517235016605492, 1.5433176414932726], [1.517235016605492, 1.543317641493272], [1.517235
+50166054915, 1.5433176414932717], [1.5172350166054906, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350166054915, 1.5433176414932717], [1.517235016605492, 1.5433176414932726], [1.517235016605492, 1.543317641493272], [1.517235
+pyaedt error: 0166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350166054922, 1.5433176414932717], [1.517235016605492, 1.5433176414932703], [1.51723
+0166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350166054922, 1.5433176414932717], [1.517235016605492, 1.5433176414932703], [1.51723
+pyaedt error: 50166054922, 1.543317641493271], [1.517235016605492, 1.5433176414932717], [1.5172350166054929, 1.5433176414932714], [1.5172350166054926, 1.5433176414932714], [1.5172350166054922, 1.5433176414932712], [1.5172350166054924, 1.543317641493272], [1.517235
+50166054922, 1.543317641493271], [1.517235016605492, 1.5433176414932717], [1.5172350166054929, 1.5433176414932714], [1.5172350166054926, 1.5433176414932714], [1.5172350166054922, 1.5433176414932712], [1.5172350166054924, 1.543317641493272], [1.517235
+pyaedt error: 0166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932714], [1.5172350166054924, 1.5433176414932712], [1.5172350166054915, 1.5433176414932708], [1.5172350166054922, 1.5433176414932703], [1.5172350166054924, 1.5433176414932703], [1.51723
+0166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932714], [1.5172350166054924, 1.5433176414932712], [1.5172350166054915, 1.5433176414932708], [1.5172350166054922, 1.5433176414932703], [1.5172350166054924, 1.5433176414932703], [1.51723
+pyaedt error: 50166054922, 1.5433176414932723], [1.5172350166054909, 1.543317641493272], [1.5172350166054909, 1.5433176414932712], [1.5172350166054915, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054909, 1.5433176414932723], [1.5172
+50166054922, 1.5433176414932723], [1.5172350166054909, 1.543317641493272], [1.5172350166054909, 1.5433176414932712], [1.5172350166054915, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054909, 1.5433176414932723], [1.5172
+pyaedt error: 350166054922, 1.543317641493272], [1.5172350166054922, 1.543317641493272], [1.5172350166054924, 1.543317641493272], [1.5172350166054909, 1.543317641493272], [1.5172350166054909, 1.5433176414932714], [1.517235016605492, 1.5433176414932712], [1.5172350
+350166054922, 1.543317641493272], [1.5172350166054922, 1.543317641493272], [1.5172350166054924, 1.543317641493272], [1.5172350166054909, 1.543317641493272], [1.5172350166054909, 1.5433176414932714], [1.517235016605492, 1.5433176414932712], [1.5172350
+pyaedt error: 166054915, 1.5433176414932714], [1.5172350166054924, 1.5433176414932712], [1.5172350166054924, 1.5433176414932712], [1.5172350166054924, 1.5433176414932714], [1.5172350166054915, 1.5433176414932714], [1.517235016605492, 1.543317641493272], [1.5172350
+166054915, 1.5433176414932714], [1.5172350166054924, 1.5433176414932712], [1.5172350166054924, 1.5433176414932712], [1.5172350166054924, 1.5433176414932714], [1.5172350166054915, 1.5433176414932714], [1.517235016605492, 1.543317641493272], [1.5172350
+pyaedt error: 166054915, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.517235016605492, 1.5433176414932714], [1.5172350166054915, 1.5433176414932714], [1.517235
+166054915, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.517235016605492, 1.5433176414932714], [1.5172350166054915, 1.5433176414932714], [1.517235
+pyaedt error: 0166054913, 1.5433176414932726], [1.517235016605492, 1.5433176414932714], [1.517235016605492, 1.5433176414932712], [1.517235016605492, 1.5433176414932712], [1.5172350166054915, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350
+0166054913, 1.5433176414932726], [1.517235016605492, 1.5433176414932714], [1.517235016605492, 1.5433176414932712], [1.517235016605492, 1.5433176414932712], [1.5172350166054915, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.5172350
+pyaedt error: 16605492, 1.5433176414932712], [1.5172350166054922, 1.5433176414932723], [1.5172350166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932712], [1.5172350166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.5172350
+16605492, 1.5433176414932712], [1.5172350166054922, 1.5433176414932723], [1.5172350166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932712], [1.5172350166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.5172350
+pyaedt error: 16605492, 1.5433176414932712], [1.5172350166054915, 1.543317641493272], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932717], [1.51723501
+16605492, 1.5433176414932712], [1.5172350166054915, 1.543317641493272], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932712], [1.5172350166054922, 1.5433176414932723], [1.517235016605492, 1.5433176414932717], [1.51723501
+pyaedt error: 6605493, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054924, 1.5433176414932717], [1.5172350166054922, 1.543317641493271], [1.5172350166054922, 1.5433176414932703], [1.5172350166054924, 1.5433176414932712], [1.51723501
+6605493, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054924, 1.5433176414932717], [1.5172350166054922, 1.543317641493271], [1.5172350166054922, 1.5433176414932703], [1.5172350166054924, 1.5433176414932712], [1.51723501
+pyaedt error: 66054922, 1.543317641493271], [1.5172350166054922, 1.5433176414932717], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.5172350166054922, 1.5433176414932712], [1.5172350166054924, 1.5433176414932717], [1.5172350
+66054922, 1.543317641493271], [1.5172350166054922, 1.5433176414932717], [1.5172350166054924, 1.5433176414932712], [1.5172350166054922, 1.5433176414932714], [1.5172350166054922, 1.5433176414932712], [1.5172350166054924, 1.5433176414932717], [1.5172350
+pyaedt error: 166054913, 1.5433176414932717], [1.517235016605492, 1.5433176414932712], [1.517235016605492, 1.5433176414932712], [1.5172350166054913, 1.543317641493271], [1.517235016605492, 1.5433176414932717], [1.5172350166054915, 1.5433176414932712], [1.517235016
+166054913, 1.5433176414932717], [1.517235016605492, 1.5433176414932712], [1.517235016605492, 1.5433176414932712], [1.5172350166054913, 1.543317641493271], [1.517235016605492, 1.5433176414932717], [1.5172350166054915, 1.5433176414932712], [1.517235016
+pyaedt error: 6054913, 1.5433176414932717], [1.517235016605492, 1.5433176414932714], [1.5172350166054922, 1.5433176414932714], [1.5172350166054913, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.51723501
+6054913, 1.5433176414932717], [1.517235016605492, 1.5433176414932714], [1.5172350166054922, 1.5433176414932714], [1.5172350166054913, 1.5433176414932717], [1.5172350166054922, 1.5433176414932714], [1.5172350166054915, 1.5433176414932717], [1.51723501
+pyaedt error: 6605492, 1.5433176414932723], [1.5172350166054922, 1.543317641493272], [1.5172350166054909, 1.5433176414932723], [1.5172350166054913, 1.5433176414932726], [1.5172350166054909, 1.5433176414932714], [1.5172350166054924, 1.5433176414932717], [1.51723501
+6605492, 1.5433176414932723], [1.5172350166054922, 1.543317641493272], [1.5172350166054909, 1.5433176414932723], [1.5172350166054913, 1.5433176414932726], [1.5172350166054909, 1.5433176414932714], [1.5172350166054924, 1.5433176414932717], [1.51723501
+pyaedt error: 66054906, 1.5433176414932714], [1.5172350166054915, 1.5433176414932712], [1.517235016605492, 1.5433176414932714], [1.5172350166054913, 1.5433176414932717], [1.5172350166054915, 1.5433176414932717], [1.5172350166054915, 1.5433176414932723], [1.5172350
+66054906, 1.5433176414932714], [1.5172350166054915, 1.5433176414932712], [1.517235016605492, 1.5433176414932714], [1.5172350166054913, 1.5433176414932717], [1.5172350166054915, 1.5433176414932717], [1.5172350166054915, 1.5433176414932723], [1.5172350
+pyaedt error: 166054913, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054909, 1.5433176414932717], [1.5172350166054913, 1.5433176414932728], [1.5172350166054933, 1.5433176414932714]]]
+166054913, 1.5433176414932712], [1.5172350166054915, 1.5433176414932717], [1.5172350166054909, 1.5433176414932717], [1.5172350166054913, 1.5433176414932728], [1.5172350166054933, 1.5433176414932714]]]
+pyaedt error:     size = (2000, 1000)
+    size = (2000, 1000)
+pyaedt error:     xlabel = Theta
+    xlabel = Theta
+pyaedt error:     ylabel = Phi
+    ylabel = Phi
+pyaedt error:     title = Simulation Results Plot
+    title = Simulation Results Plot
+pyaedt error:     snapshot_path = None
+    snapshot_path = None
+pyaedt error: Error in :   File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\plot.py&quot;, line 400, in plot_3d_chart
+Error in :   File &quot;C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\generic\plot.py&quot;, line 400, in plot_3d_chart
+pyaedt error: Check Online documentation on: https://aedtdocs.pyansys.com/search.html?q=plot_3d_chart
+Check Online documentation on: https://aedtdocs.pyansys.com/search.html?q=plot_3d_chart
+
+False
+</pre></div>
+</div>
+</section>
+<section id="close-hfss-project-and-aedt">
+<h2>Close HFSS project and AEDT<a class="headerlink" href="#close-hfss-project-and-aedt" title="Permalink to this heading">#</a></h2>
+<p>Close the HFSS project and release AEDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># hfss.close_project()</span>
+<span class="n">hfss</span><span class="o">.</span><span class="n">save_project</span><span class="p">()</span>
+<span class="n">desktop</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Project FiniteArray_Radome_77GHz_3D_CADDM Saved correctly
+
+True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 5 minutes  31.707 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss-advanced-far-field-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0ce391b8f8bb3d06931226fd1f2dec74/Advanced_Far_Field.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Advanced_Far_Field.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cac2814f5907dec629e549e35b82c100/Advanced_Far_Field.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Advanced_Far_Field.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

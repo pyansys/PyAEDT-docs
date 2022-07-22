@@ -1,0 +1,6 @@
+desktop\_install\_dir
+=====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.desktop_install_dir

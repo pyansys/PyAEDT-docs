@@ -1,0 +1,6 @@
+create\_line
+============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesCircuit
+
+.. automethod:: CircuitComponents.create_line

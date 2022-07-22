@@ -1,0 +1,6 @@
+get\_object\_edges
+==================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.get_object_edges

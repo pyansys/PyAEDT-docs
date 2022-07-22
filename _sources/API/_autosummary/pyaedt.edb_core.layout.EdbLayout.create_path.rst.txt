@@ -1,0 +1,6 @@
+create\_path
+============
+
+.. currentmodule:: pyaedt.edb_core.layout
+
+.. automethod:: EdbLayout.create_path

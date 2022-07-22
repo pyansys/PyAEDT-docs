@@ -1,0 +1,6 @@
+get\_oo\_object
+===============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.get_oo_object

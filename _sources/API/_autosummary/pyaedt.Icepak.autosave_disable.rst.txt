@@ -1,0 +1,6 @@
+autosave\_disable
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.autosave_disable

@@ -1,0 +1,6 @@
+create\_wave\_port\_from\_sheet
+===============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.create_wave_port_from_sheet

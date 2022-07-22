@@ -1,0 +1,6 @@
+omodelsetup
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.omodelsetup

@@ -1,0 +1,6 @@
+obounding\_box
+==============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. autoproperty:: Modeler3D.obounding_box

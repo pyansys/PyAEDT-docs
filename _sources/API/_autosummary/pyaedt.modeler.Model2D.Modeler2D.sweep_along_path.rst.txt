@@ -1,0 +1,6 @@
+sweep\_along\_path
+==================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.sweep_along_path

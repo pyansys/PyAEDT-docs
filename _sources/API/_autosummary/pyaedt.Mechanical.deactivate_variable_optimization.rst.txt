@@ -1,0 +1,6 @@
+deactivate\_variable\_optimization
+==================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.deactivate_variable_optimization

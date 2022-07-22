@@ -1,0 +1,6 @@
+dim
+===
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell3d.dim

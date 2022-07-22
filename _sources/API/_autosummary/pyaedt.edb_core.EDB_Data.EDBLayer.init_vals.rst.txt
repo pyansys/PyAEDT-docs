@@ -1,0 +1,6 @@
+init\_vals
+==========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBLayer.init_vals

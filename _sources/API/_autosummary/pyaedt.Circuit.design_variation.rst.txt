@@ -1,0 +1,6 @@
+design\_variation
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.design_variation

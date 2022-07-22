@@ -1,0 +1,6 @@
+existing\_analysis\_sweeps
+==========================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.existing_analysis_sweeps

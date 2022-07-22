@@ -1,0 +1,6 @@
+name
+====
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoproperty:: Point.name

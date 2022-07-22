@@ -1,0 +1,6 @@
+get\_excitations\_name
+======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.get_excitations_name

@@ -1,0 +1,46 @@
+﻿pyaedt.modeler.Object3d.Padstack
+================================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoclass:: Padstack
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Padstack.add_hole
+      
+      
+      Padstack.add_layer
+      
+      
+      Padstack.create
+      
+      
+      Padstack.remove
+      
+      
+      Padstack.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Padstack.pads_args
+      
+   
+   

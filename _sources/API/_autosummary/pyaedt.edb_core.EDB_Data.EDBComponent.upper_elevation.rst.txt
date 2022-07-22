@@ -1,0 +1,6 @@
+upper\_elevation
+================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBComponent.upper_elevation

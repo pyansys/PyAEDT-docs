@@ -1,0 +1,6 @@
+create\_frequency\_sweep
+========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.create_frequency_sweep

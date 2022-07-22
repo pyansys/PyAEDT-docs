@@ -1,0 +1,6 @@
+pitch
+=====
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Vehicle.pitch

@@ -1,0 +1,6 @@
+create\_wave\_port\_between\_objects
+====================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.create_wave_port_between_objects

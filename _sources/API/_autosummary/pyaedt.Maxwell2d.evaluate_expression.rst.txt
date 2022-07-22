@@ -1,0 +1,6 @@
+evaluate\_expression
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.evaluate_expression

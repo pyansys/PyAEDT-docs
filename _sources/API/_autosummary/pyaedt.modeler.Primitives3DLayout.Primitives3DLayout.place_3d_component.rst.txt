@@ -1,0 +1,6 @@
+place\_3d\_component
+====================
+
+.. currentmodule:: pyaedt.modeler.Primitives3DLayout
+
+.. automethod:: Primitives3DLayout.place_3d_component

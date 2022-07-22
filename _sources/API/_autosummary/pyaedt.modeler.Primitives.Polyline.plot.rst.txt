@@ -1,0 +1,6 @@
+plot
+====
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.plot

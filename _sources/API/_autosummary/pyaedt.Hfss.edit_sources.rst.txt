@@ -1,0 +1,6 @@
+edit\_sources
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.edit_sources

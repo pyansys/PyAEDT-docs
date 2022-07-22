@@ -1,0 +1,6 @@
+hole\_plating\_ratio
+====================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadstack.hole_plating_ratio

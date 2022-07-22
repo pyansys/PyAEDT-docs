@@ -1,0 +1,40 @@
+﻿pyaedt.modules.SetupTemplates.SweepHFSS
+=======================================
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autoclass:: SweepHFSS
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      SweepHFSS.add_subrange
+      
+      
+      SweepHFSS.create
+      
+      
+      SweepHFSS.update
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      SweepHFSS.is_solved
+      
+   
+   

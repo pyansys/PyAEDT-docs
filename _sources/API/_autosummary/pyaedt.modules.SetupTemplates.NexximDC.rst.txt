@@ -1,0 +1,6 @@
+﻿NexximDC
+========
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: NexximDC

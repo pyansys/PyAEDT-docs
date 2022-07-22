@@ -1,0 +1,6 @@
+create\_iport
+=============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.create_iport

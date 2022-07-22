@@ -1,0 +1,6 @@
+in\_polygon
+===========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPadstackInstance.in_polygon

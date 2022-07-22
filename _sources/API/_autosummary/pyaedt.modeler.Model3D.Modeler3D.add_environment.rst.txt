@@ -1,0 +1,6 @@
+add\_environment
+================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.add_environment

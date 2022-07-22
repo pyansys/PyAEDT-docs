@@ -1,0 +1,6 @@
+color\_string
+=============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.color_string

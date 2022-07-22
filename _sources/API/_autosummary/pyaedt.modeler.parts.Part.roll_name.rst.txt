@@ -1,0 +1,6 @@
+roll\_name
+==========
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Part.roll_name

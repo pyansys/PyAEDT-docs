@@ -1,0 +1,6 @@
+sheet\_names
+============
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. autoproperty:: Primitives2D.sheet_names

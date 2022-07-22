@@ -1,0 +1,6 @@
+clip\_plane
+===========
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.clip_plane

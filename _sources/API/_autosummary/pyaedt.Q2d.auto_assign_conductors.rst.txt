@@ -1,0 +1,6 @@
+auto\_assign\_conductors
+========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.auto_assign_conductors

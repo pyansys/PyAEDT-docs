@@ -1,0 +1,6 @@
+rotate
+======
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.rotate

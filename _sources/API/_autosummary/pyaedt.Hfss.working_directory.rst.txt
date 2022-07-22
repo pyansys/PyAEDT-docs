@@ -1,0 +1,6 @@
+working\_directory
+==================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss.working_directory

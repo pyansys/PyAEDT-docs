@@ -1,0 +1,6 @@
+update\_padstack\_instances
+===========================
+
+.. currentmodule:: pyaedt.edb_core.padstack
+
+.. automethod:: EdbPadstacks.update_padstack_instances

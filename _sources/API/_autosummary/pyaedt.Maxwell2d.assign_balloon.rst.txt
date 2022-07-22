@@ -1,0 +1,6 @@
+assign\_balloon
+===============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.assign_balloon

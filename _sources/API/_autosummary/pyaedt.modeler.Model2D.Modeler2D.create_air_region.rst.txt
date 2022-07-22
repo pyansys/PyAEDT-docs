@@ -1,0 +1,6 @@
+create\_air\_region
+===================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.create_air_region

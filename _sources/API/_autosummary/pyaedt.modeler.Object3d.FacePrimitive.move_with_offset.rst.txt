@@ -1,0 +1,6 @@
+move\_with\_offset
+==================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: FacePrimitive.move_with_offset

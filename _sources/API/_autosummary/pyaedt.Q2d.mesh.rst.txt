@@ -1,0 +1,6 @@
+mesh
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.mesh

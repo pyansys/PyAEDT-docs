@@ -1,0 +1,6 @@
+deactivate\_variable\_tuning
+============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.deactivate_variable_tuning

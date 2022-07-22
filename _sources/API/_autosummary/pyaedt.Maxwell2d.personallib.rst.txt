@@ -1,0 +1,6 @@
+personallib
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.personallib

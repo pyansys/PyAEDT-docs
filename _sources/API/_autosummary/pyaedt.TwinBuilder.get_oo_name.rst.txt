@@ -1,0 +1,6 @@
+get\_oo\_name
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.get_oo_name

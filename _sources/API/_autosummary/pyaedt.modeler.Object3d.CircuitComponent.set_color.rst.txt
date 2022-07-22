@@ -1,0 +1,6 @@
+set\_color
+==========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: CircuitComponent.set_color

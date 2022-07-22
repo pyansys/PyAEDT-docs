@@ -1,0 +1,6 @@
+faces\_by\_area
+===============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.faces_by_area

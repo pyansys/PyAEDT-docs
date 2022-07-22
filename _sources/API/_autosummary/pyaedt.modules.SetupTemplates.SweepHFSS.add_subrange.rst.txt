@@ -1,0 +1,6 @@
+add\_subrange
+=============
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. automethod:: SweepHFSS.add_subrange

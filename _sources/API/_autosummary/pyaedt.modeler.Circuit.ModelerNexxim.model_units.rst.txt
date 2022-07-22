@@ -1,0 +1,6 @@
+model\_units
+============
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerNexxim.model_units

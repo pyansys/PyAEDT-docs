@@ -1,0 +1,6 @@
+name
+====
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Environment.name

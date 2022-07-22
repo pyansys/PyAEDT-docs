@@ -1,0 +1,6 @@
+disable\_modelcreation
+======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.disable_modelcreation

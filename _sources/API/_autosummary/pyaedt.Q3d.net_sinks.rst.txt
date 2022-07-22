@@ -1,0 +1,6 @@
+net\_sinks
+==========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.net_sinks

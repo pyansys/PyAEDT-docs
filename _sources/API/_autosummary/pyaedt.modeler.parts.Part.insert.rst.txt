@@ -1,0 +1,6 @@
+insert
+======
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. automethod:: Part.insert

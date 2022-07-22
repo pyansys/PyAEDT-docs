@@ -1,0 +1,6 @@
+project\_timestamp\_changed
+===========================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.project_timestamp_changed

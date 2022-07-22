@@ -1,0 +1,6 @@
+create\_component\_from\_pins
+=============================
+
+.. currentmodule:: pyaedt.edb_core.components
+
+.. automethod:: Components.create_component_from_pins

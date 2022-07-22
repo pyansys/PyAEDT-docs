@@ -1,0 +1,6 @@
+m\_Editor
+=========
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoproperty:: Point.m_Editor

@@ -1,0 +1,247 @@
+﻿pyaedt.modeler.Primitives2D.Primitives2D
+========================================
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. autoclass:: Primitives2D
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Primitives2D.add_new_objects
+      
+      
+      Primitives2D.add_new_user_defined_component
+      
+      
+      Primitives2D.cleanup_objects
+      
+      
+      Primitives2D.create_circle
+      
+      
+      Primitives2D.create_ellipse
+      
+      
+      Primitives2D.create_object_from_edge
+      
+      
+      Primitives2D.create_object_from_face
+      
+      
+      Primitives2D.create_polyline
+      
+      
+      Primitives2D.create_rectangle
+      
+      
+      Primitives2D.create_region
+      
+      
+      Primitives2D.create_regular_polygon
+      
+      
+      Primitives2D.create_spiral_on_face
+      
+      
+      Primitives2D.create_udp
+      
+      
+      Primitives2D.delete
+      
+      
+      Primitives2D.delete_objects_containing
+      
+      
+      Primitives2D.does_object_exists
+      
+      
+      Primitives2D.find_closest_edges
+      
+      
+      Primitives2D.find_new_objects
+      
+      
+      Primitives2D.get_bodynames_from_position
+      
+      
+      Primitives2D.get_closest_edgeid_to_position
+      
+      
+      Primitives2D.get_edge_length
+      
+      
+      Primitives2D.get_edge_midpoint
+      
+      
+      Primitives2D.get_edge_vertices
+      
+      
+      Primitives2D.get_edgeid_from_position
+      
+      
+      Primitives2D.get_edgeids_from_vertexid
+      
+      
+      Primitives2D.get_edges_for_circuit_port
+      
+      
+      Primitives2D.get_edges_for_circuit_port_from_sheet
+      
+      
+      Primitives2D.get_edges_on_bounding_box
+      
+      
+      Primitives2D.get_equivalent_parallel_edges
+      
+      
+      Primitives2D.get_existing_polyline
+      
+      
+      Primitives2D.get_face_area
+      
+      
+      Primitives2D.get_face_center
+      
+      
+      Primitives2D.get_face_edges
+      
+      
+      Primitives2D.get_face_vertices
+      
+      
+      Primitives2D.get_faceid_from_position
+      
+      
+      Primitives2D.get_mid_points_on_dir
+      
+      
+      Primitives2D.get_model_bounding_box
+      
+      
+      Primitives2D.get_obj_id
+      
+      
+      Primitives2D.get_object_edges
+      
+      
+      Primitives2D.get_object_faces
+      
+      
+      Primitives2D.get_object_from_name
+      
+      
+      Primitives2D.get_object_vertices
+      
+      
+      Primitives2D.get_objects_by_material
+      
+      
+      Primitives2D.get_objects_w_string
+      
+      
+      Primitives2D.get_vertex_position
+      
+      
+      Primitives2D.refresh
+      
+      
+      Primitives2D.refresh_all_ids
+      
+      
+      Primitives2D.remove_point
+      
+      
+      Primitives2D.update_object
+      
+      
+      Primitives2D.update_udp
+      
+      
+      Primitives2D.value_in_object_units
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      Primitives2D.defaultmaterial
+      
+      
+      Primitives2D.line_names
+      
+      
+      Primitives2D.line_objects
+      
+      
+      Primitives2D.logger
+      
+      
+      Primitives2D.model_consistency_report
+      
+      
+      Primitives2D.model_objects
+      
+      
+      Primitives2D.model_units
+      
+      
+      Primitives2D.modeler
+      
+      
+      Primitives2D.non_model_objects
+      
+      
+      Primitives2D.object_list
+      
+      
+      Primitives2D.object_names
+      
+      
+      Primitives2D.plane2d
+      
+      
+      Primitives2D.points
+      
+      
+      Primitives2D.points_by_name
+      
+      
+      Primitives2D.sheet_names
+      
+      
+      Primitives2D.sheet_objects
+      
+      
+      Primitives2D.solid_names
+      
+      
+      Primitives2D.solid_objects
+      
+      
+      Primitives2D.unclassified_names
+      
+      
+      Primitives2D.unclassified_objects
+      
+      
+      Primitives2D.user_defined_component_names
+      
+      
+      Primitives2D.version
+      
+   
+   

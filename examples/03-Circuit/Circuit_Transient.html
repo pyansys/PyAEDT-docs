@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Circuit: transient analysis and eye plot &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Circuit: netlist to schematic iport" href="Create_Netlist.html" />
+    <link rel="prev" title="Circuit: schematic subcircuit management" href="Circuit_Subcircuit_Example.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Examples</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">Circuit: transient analysis and eye plot</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/00_EDB_Create_VIA.html">
+   EDB: geometry creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/01_edb_example.html">
+   EDB: Siwave analysis from EDB setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/02_edb_to_ipc2581.html">
+   EDB: IPC2581 export
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/03_5G_antenna_example.html">
+   EDB: 5G linear array antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/04_edb_parametrized_design.html">
+   EDB: fully parameterized design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/05_Plot_nets.html">
+   EDB: plot nets with Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/06_Advanced_EDB.html">
+   EDB: parametric via creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/07_WPF_Merge_Utility.html">
+   EDB: merge utility
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/08_CPWG.html">
+   EDB: fully parameterized CPWG design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Configurations.html">
+   General: configuration files
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/HFSS_CoordinateSystem.html">
+   General: coordinate system creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Optimetrics.html">
+   General: optimetrics setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Polyline_Primitives.html">
+   General: polyline creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Advanced_Far_Field.html">
+   HFSS: advanced far field postprocessing
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Array.html">
+   HFSS: component antenna array
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/EDB_in_3DLayout.html">
+   HFSS 3D Layout: PCB and EDB in 3D layout
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Flex_CPWG.html">
+   HFSS: flex cable CPWG
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS3DLayout_Via.html">
+   HFSS 3D Layout: parametric via analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Choke.html">
+   HFSS: choke
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Dipole.html">
+   HFSS: dipole antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Spiral.html">
+   HFSS: spiral inductor
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Machine_learning_applied_to_Patch.html">
+   HFSS: machine learning applied to a patch
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Doppler_Example.html">
+   SBR+: doppler setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Example.html">
+   SBR+: HFSS to SBR+ coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Time_Plot.html">
+   SBR+: HFSS to SBR+ time animation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_NissanLeaf.html">
+   Maxwell 2D: PM synchronous motor transient analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_Transient.html">
+   Maxwell 2D: transient winding analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam3.html">
+   Maxwell 3D: bath plate analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam7.html">
+   Maxwell 3D: asymmetric conductor analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3D_Choke.html">
+   Maxwell 3D: choke setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell_Magnet.html">
+   Maxwell 3D: magnet DC analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Circuit_Example.html">
+   Circuit: schematic creation and analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Circuit_Subcircuit_Example.html">
+   Circuit: schematic subcircuit management
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Circuit: transient analysis and eye plot
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Create_Netlist.html">
+   Circuit: netlist to schematic iport
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EMIT_Example.html">
+   EMIT: antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EMIT_HFSS_Example.html">
+   EMIT: HFSS to EMIT coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Reports.html">
+   Circuit: automatic report creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Touchstone_Management.html">
+   Circuit: Touchstone file management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Icepak_Example.html">
+   Icepak: graphic card thermal analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Sherlock_Example.html">
+   Icepack: setup from Sherlock inputs
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_CPWG.html">
+   2D Extractor: CPWG analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_Stripline.html">
+   2D Extractor: stripline analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q3D_Example.html">
+   Q3D Extractor: busbar analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Icepak_Coupling.html">
+   Multiphysics: HFSS-Icepack multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Mechanical.html">
+   Multiphysics: HFSS-Mechanical multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/01-RC_Circuit_Example.html">
+   Twin Builder: RC circuit design anaysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
+   Twin Builder: wiring a rectifier with a capacitor filter
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-the-required-imports">
+   Perform the required imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-non-graphical-mode">
+   Set non-graphical mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launch-aedt-with-circuit">
+   Launch AEDT with Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-ibis-file">
+   Read IBIS file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#place-ideal-transmission-line">
+   Place ideal transmission line
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-resistor-and-ground">
+   Create resistor and ground
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-elements">
+   Connect elements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#place-probe">
+   Place probe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-setup-and-analyze">
+   Create setup and analyze
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-report-outside-aedt">
+   Create report outside AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-report-inside-aedt">
+   Create report inside AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-eye-diagram-inside-aedt">
+   Create eye diagram inside AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-eye-diagram-outside-aedt">
+   Create eye diagram outside AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#release-aedt">
+   Release AEDT
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-03-circuit-circuit-transient-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="circuit-transient-analysis-and-eye-plot">
+<span id="sphx-glr-examples-03-circuit-circuit-transient-py"></span><h1>Circuit: transient analysis and eye plot<a class="headerlink" href="#circuit-transient-analysis-and-eye-plot" title="Permalink to this heading">#</a></h1>
+<p>This example shows how you can use PyAEDT to create a circuit design,
+run a Nexxim time-domain simulation, and create an eye diagram.</p>
+<section id="perform-the-required-imports">
+<h2>Perform the required imports<a class="headerlink" href="#perform-the-required-imports" title="Permalink to this heading">#</a></h2>
+<p>Perform the required imports.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Circuit</span>
+</pre></div>
+</div>
+</section>
+<section id="set-non-graphical-mode">
+<h2>Set non-graphical mode<a class="headerlink" href="#set-non-graphical-mode" title="Permalink to this heading">#</a></h2>
+<p>Set non-graphical mode. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-aedt-with-circuit">
+<h2>Launch AEDT with Circuit<a class="headerlink" href="#launch-aedt-with-circuit" title="Permalink to this heading">#</a></h2>
+<p>Launch AEDT 2022 R2 in graphical mode with Circuit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cir</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger Started
+pyaedt info: Launching PyAEDT outside AEDT with CPython and PythonNET.
+pyaedt info: AEDT installation Path C:\Program Files\AnsysEM\v222\Win64.
+pyaedt info: Launching AEDT with module PythonNET.
+pyaedt info: Ansoft.ElectronicsDesktop.2022.2 Started with process ID 5724.
+pyaedt info: Logger file D:\Temp\pyaedt20220722_091734.log in use.
+pyaedt info: pyaedt v0.5.9
+pyaedt info: Python version 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]
+pyaedt info: Project Project51 has been created.
+pyaedt info: No design is present. Inserting a new design.
+pyaedt info: Added design &#39;Circuit Design_1EW&#39; of type Circuit Design.
+pyaedt info: Aedt Objects initialized
+pyaedt info: Variable Manager initialized
+pyaedt info: Design Loaded
+pyaedt info: Successfully loaded project materials !
+pyaedt info: Materials Loaded
+</pre></div>
+</div>
+</section>
+<section id="read-ibis-file">
+<h2>Read IBIS file<a class="headerlink" href="#read-ibis-file" title="Permalink to this heading">#</a></h2>
+<p>Read an IBIS file and place a buffer in the schematic.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ibis</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">get_ibis_model_from_file</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">cir</span><span class="o">.</span><span class="n">desktop_install_dir</span><span class="p">,</span> <span class="s1">&#39;buflib&#39;</span><span class="p">,</span> <span class="s1">&#39;IBIS&#39;</span><span class="p">,</span> <span class="s1">&#39;u26a_800.ibs&#39;</span><span class="p">))</span>
+<span class="n">ibs</span> <span class="o">=</span> <span class="n">ibis</span><span class="o">.</span><span class="n">buffers</span><span class="p">[</span><span class="s2">&quot;DQ_u26a_800&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="place-ideal-transmission-line">
+<h2>Place ideal transmission line<a class="headerlink" href="#place-ideal-transmission-line" title="Permalink to this heading">#</a></h2>
+<p>Place an ideal transmission line in the schematic and parametrize it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tr1</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">components_catalog</span><span class="p">[</span><span class="s2">&quot;Ideal Distributed:TRLK_NX&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s2">&quot;tr1&quot;</span><span class="p">)</span>
+<span class="n">tr1</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;P&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;50mm&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="create-resistor-and-ground">
+<h2>Create resistor and ground<a class="headerlink" href="#create-resistor-and-ground" title="Permalink to this heading">#</a></h2>
+<p>Create a resistor and ground in the schematic.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_resistor</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;1Meg&quot;</span><span class="p">)</span>
+<span class="n">gnd1</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">create_gnd</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="connect-elements">
+<h2>Connect elements<a class="headerlink" href="#connect-elements" title="Permalink to this heading">#</a></h2>
+<p>Connect elements in the schematic.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tr1</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">ibs</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">tr1</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">gnd1</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="place-probe">
+<h2>Place probe<a class="headerlink" href="#place-probe" title="Permalink to this heading">#</a></h2>
+<p>Place a probe and rename it to <code class="docutils literal notranslate"><span class="pre">Vout</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pr1</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">components_catalog</span><span class="p">[</span><span class="s2">&quot;Probes:VPROBE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s2">&quot;vout&quot;</span><span class="p">)</span>
+<span class="n">pr1</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Vout&quot;</span>
+<span class="n">pr1</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">connect_to_component</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="create-setup-and-analyze">
+<h2>Create setup and analyze<a class="headerlink" href="#create-setup-and-analyze" title="Permalink to this heading">#</a></h2>
+<p>Create a transient analysis setup and analyze it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trans_setup</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">create_setup</span><span class="p">(</span><span class="s2">&quot;TransientRun&quot;</span><span class="p">,</span> <span class="s2">&quot;NexximTransient&quot;</span><span class="p">)</span>
+<span class="n">trans_setup</span><span class="o">.</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;TransientData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;0.01ns&quot;</span><span class="p">,</span> <span class="s2">&quot;200ns&quot;</span><span class="p">]</span>
+<span class="n">cir</span><span class="o">.</span><span class="n">analyze_setup</span><span class="p">(</span><span class="s2">&quot;TransientRun&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solving design setup TransientRun
+pyaedt info: Design setup TransientRun solved correctly
+
+True
+</pre></div>
+</div>
+</section>
+<section id="create-report-outside-aedt">
+<h2>Create report outside AEDT<a class="headerlink" href="#create-report-outside-aedt" title="Permalink to this heading">#</a></h2>
+<p>Create a report outside AEDT using the <code class="docutils literal notranslate"><span class="pre">get_solution_data</span></code> method. This
+method allows you to get solution data and plot it outside AEDT without needing
+a UI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><span class="s2">&quot;V(Vout)&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
+    <span class="n">report</span><span class="o">.</span><span class="n">add_cartesian_y_marker</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">solutions</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">get_solution_data</span><span class="p">(</span><span class="s2">&quot;V(Vout)&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">solutions</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Circuit_Transient_001.png" srcset="../../_images/sphx_glr_Circuit_Transient_001.png" alt="Simulation Results Plot" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solution Data Correctly Loaded.
+
+&lt;Figure size 2000x1000 with 1 Axes&gt;
+</pre></div>
+</div>
+</section>
+<section id="create-report-inside-aedt">
+<h2>Create report inside AEDT<a class="headerlink" href="#create-report-inside-aedt" title="Permalink to this heading">#</a></h2>
+<p>Create a report inside AEDT using the <code class="docutils literal notranslate"><span class="pre">new_report</span></code> object. This object is
+fully customizable and usable with most of the reports available in AEDT.
+The standard report is the main one used in Circuit and Twin Builder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_report</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">reports_by_category</span><span class="o">.</span><span class="n">standard</span><span class="p">(</span><span class="s2">&quot;V(Vout)&quot;</span><span class="p">)</span>
+<span class="n">new_report</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span>
+<span class="n">new_report</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">:</span>
+    <span class="n">new_report</span><span class="o">.</span><span class="n">add_limit_line_from_points</span><span class="p">([</span><span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;ns&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
+    <span class="n">vout</span> <span class="o">=</span> <span class="n">new_report</span><span class="o">.</span><span class="n">traces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vout</span><span class="o">.</span><span class="n">set_trace_properties</span><span class="p">(</span><span class="n">trace_style</span><span class="o">=</span><span class="n">vout</span><span class="o">.</span><span class="n">LINESTYLE</span><span class="o">.</span><span class="n">Dot</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">trace_type</span><span class="o">=</span><span class="n">vout</span><span class="o">.</span><span class="n">TRACETYPE</span><span class="o">.</span><span class="n">Continuous</span><span class="p">,</span>
+                              <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+    <span class="n">vout</span><span class="o">.</span><span class="n">set_symbol_properties</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">vout</span><span class="o">.</span><span class="n">SYMBOLSTYLE</span><span class="o">.</span><span class="n">Circle</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">ll</span> <span class="o">=</span> <span class="n">new_report</span><span class="o">.</span><span class="n">limit_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ll</span><span class="o">.</span><span class="n">set_line_properties</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">ll</span><span class="o">.</span><span class="n">LINESTYLE</span><span class="o">.</span><span class="n">Solid</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">hatch_above</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">violation_emphasis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hatch_pixels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                           <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+<span class="n">new_report</span><span class="o">.</span><span class="n">time_start</span> <span class="o">=</span> <span class="s2">&quot;20ns&quot;</span>
+<span class="n">new_report</span><span class="o">.</span><span class="n">time_stop</span> <span class="o">=</span> <span class="s2">&quot;100ns&quot;</span>
+<span class="n">new_report</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">new_report</span><span class="o">.</span><span class="n">get_solution_data</span><span class="p">()</span>
+<span class="n">sol</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Circuit_Transient_002.png" srcset="../../_images/sphx_glr_Circuit_Transient_002.png" alt="Simulation Results Plot" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Solution Data Correctly Loaded.
+
+&lt;Figure size 2000x1000 with 1 Axes&gt;
+</pre></div>
+</div>
+</section>
+<section id="create-eye-diagram-inside-aedt">
+<h2>Create eye diagram inside AEDT<a class="headerlink" href="#create-eye-diagram-inside-aedt" title="Permalink to this heading">#</a></h2>
+<p>Create an eye diagram inside AEDT using the <code class="docutils literal notranslate"><span class="pre">new_report</span></code> object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_eye</span> <span class="o">=</span> <span class="n">cir</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">reports_by_category</span><span class="o">.</span><span class="n">eye_diagram</span><span class="p">(</span><span class="s2">&quot;V(Vout)&quot;</span><span class="p">)</span>
+<span class="n">new_eye</span><span class="o">.</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">unit_interval</span></a> <span class="o">=</span> <span class="s2">&quot;1e-9s&quot;</span>
+<span class="n">new_eye</span><span class="o">.</span><span class="n">time_stop</span> <span class="o">=</span> <span class="s2">&quot;100ns&quot;</span>
+<span class="n">new_eye</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="create-eye-diagram-outside-aedt">
+<h2>Create eye diagram outside AEDT<a class="headerlink" href="#create-eye-diagram-outside-aedt" title="Permalink to this heading">#</a></h2>
+<p>Create the same eye diagram outside AEDT using Matplotlib and the
+<code class="docutils literal notranslate"><span class="pre">get_solution_data</span></code> method.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">unit_interval</span></a> <span class="o">=</span> <span class="mi">1</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">offset</span></a> <span class="o">=</span> <span class="mf">0.25</span>
+<a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a> <span class="o">=</span> <span class="mi">200</span>
+<a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstart</span></a> <span class="o">=</span> <span class="mi">0</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_steps</span></a> <span class="o">=</span> <span class="p">[]</span>
+<a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstart</span></a> <span class="o">+</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">offset</span></a>
+<span class="k">while</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="o">&lt;</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tstop</span></a><span class="p">:</span>
+    <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">unit_interval</span></a>
+    <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_steps</span></a><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a><span class="p">)</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t</span></a> <span class="o">=</span> <span class="p">[[</span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="k">for</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="ow">in</span> <span class="n">solutions</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">unit_interval</span></a> <span class="o">&lt;</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span>
+     <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_steps</span></a><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ys</span></a> <span class="o">=</span> <span class="p">[[</span><a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a> <span class="o">/</span> <span class="mi">1000</span> <span class="k">for</span> <a href="https://docs.python.org/dev/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">i</span></a><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">solutions</span><span class="o">.</span><span class="n">data_real</span><span class="p">(),</span> <span class="n">solutions</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">])</span> <span class="k">if</span>
+       <span class="n">k</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">unit_interval</span></a> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_steps</span></a><span class="p">]</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellst</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([])</span>
+<a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellsv</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([])</span>
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">a</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">b</span></a> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ys</span></a><span class="p">):</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">an</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">a</span></a><span class="p">)</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">an</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">an</span></a> <span class="o">-</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">an</span></a><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bn</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">b</span></a><span class="p">)</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellst</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.append.html#numpy.append" title="numpy.append" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">append</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellst</span></a><span class="p">,</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">an</span></a><span class="p">)</span>
+    <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellsv</span></a> <span class="o">=</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.append.html#numpy.append" title="numpy.append" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">append</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellsv</span></a><span class="p">,</span> <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bn</span></a><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellst</span><span class="o">.</span><span class="n">T</span></a><span class="p">,</span>  <a href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cellsv</span><span class="o">.</span><span class="n">T</span></a><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_Circuit_Transient_003.png" srcset="../../_images/sphx_glr_Circuit_Transient_003.png" alt="Circuit Transient" class = "sphx-glr-single-img"/></section>
+<section id="release-aedt">
+<h2>Release AEDT<a class="headerlink" href="#release-aedt" title="Permalink to this heading">#</a></h2>
+<p>Release AEDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cir</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  17.231 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-circuit-circuit-transient-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7b2ee2ca299df53d1c914cc9441ff644/Circuit_Transient.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Circuit_Transient.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/22dcb593dd78f69947bc7f1ba7acc7d2/Circuit_Transient.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Circuit_Transient.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

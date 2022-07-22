@@ -1,0 +1,6 @@
+find\_top
+=========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.find_top

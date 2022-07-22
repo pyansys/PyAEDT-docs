@@ -1,0 +1,43 @@
+﻿pyaedt.edb\_core.EDB\_Data.EDBNetsData
+======================================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoclass:: EDBNetsData
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EDBNetsData.plot
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EDBNetsData.components
+      
+      
+      EDBNetsData.is_power_ground
+      
+      
+      EDBNetsData.name
+      
+      
+      EDBNetsData.primitives
+      
+   
+   

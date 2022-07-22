@@ -1,0 +1,6 @@
+create\_diode
+=============
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.create_diode

@@ -1,0 +1,6 @@
+create\_rectangle
+=================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.create_rectangle

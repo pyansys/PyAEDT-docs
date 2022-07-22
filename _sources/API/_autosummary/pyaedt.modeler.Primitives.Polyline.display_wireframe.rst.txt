@@ -1,0 +1,6 @@
+display\_wireframe
+==================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.display_wireframe

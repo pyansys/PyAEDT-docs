@@ -1,0 +1,6 @@
+int\_to\_pad\_type
+==================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPadProperties.int_to_pad_type

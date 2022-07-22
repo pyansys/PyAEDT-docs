@@ -1,0 +1,6 @@
+frequency
+=========
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. autoproperty:: Trace.frequency

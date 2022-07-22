@@ -1,0 +1,6 @@
+is\_planar
+==========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: FacePrimitive.is_planar

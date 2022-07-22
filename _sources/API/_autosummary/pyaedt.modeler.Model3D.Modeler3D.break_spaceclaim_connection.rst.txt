@@ -1,0 +1,6 @@
+break\_spaceclaim\_connection
+=============================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.break_spaceclaim_connection

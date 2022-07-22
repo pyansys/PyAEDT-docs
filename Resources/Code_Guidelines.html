@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Code guidelines &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="Contributing.html" />
+    <link rel="prev" title="Twin Builder: wiring a rectifier with a capacitor filter" href="../examples/07-TwinBuilder/02-Wiring_A_Rectifier.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href="">Code guidelines</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-coding-guidelines">
+   Python coding guidelines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indentation-and-line-breaks">
+   Indentation and line breaks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-line-length">
+   Maximum line length
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naming-conventions">
+   Naming conventions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#names-to-avoid">
+     Names to avoid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#package-and-module-naming">
+     Package and module naming
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#class-naming">
+     Class naming
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-and-method-naming">
+     Function and method naming
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-naming">
+     Variable naming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comments">
+   Comments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inline-comments">
+     Inline comments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstrings">
+   Docstrings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-recommendations">
+   Programming recommendations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#booleans-and-comparisons">
+     Booleans and comparisons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-strings">
+     Handling strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-the-windows-registry">
+     Reading the Windows registry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#duplicated-code">
+     Duplicated code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nested-blocks">
+     Nested blocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loops">
+     Loops
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyaedt-specific-guidelines">
+   PyAEDT-specific guidelines
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logging-errors">
+     Logging errors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exception-handling">
+     Exception handling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hard-coding-values">
+     Hard-coding values
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="code-guidelines">
+<h1>Code guidelines<a class="headerlink" href="#code-guidelines" title="Permalink to this heading">#</a></h1>
+<p>All contributors must adhere to the following guidelines to:</p>
+<ol class="arabic simple">
+<li><p>Prevent against common programming errors</p></li>
+<li><p>Limit program complexity</p></li>
+<li><p>Provide an easily readable, understandable, and maintainable product</p></li>
+<li><p>Establish a consistent style</p></li>
+<li><p>Implement an objective basis for code review</p></li>
+</ol>
+<p>To ensure program homogeneity and code stability, be sure to follow
+the guidelines presented herein.</p>
+<section id="python-coding-guidelines">
+<h2>Python coding guidelines<a class="headerlink" href="#python-coding-guidelines" title="Permalink to this heading">#</a></h2>
+<p>The following sections summarize the key points from <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> and how they apply to
+PyAEDT and other PyAnsys modules. PyAnsys libraries will attempt to
+be consistent in style and formatting with the “big three” data science
+libraries: <a class="reference external" href="https://numpy.org/">numpy</a>, <a class="reference external" href="https://www.scipy.org/">scipy</a>, and <a class="reference external" href="https://pandas.pydata.org/">pandas</a>.</p>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<p>Imports should always be placed at the top of the file, just after any
+module comments and docstrings and before module globals and
+constants.  This reduces the likelihood of an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> that might only
+be discovered during runtime.</p>
+<p>Avoid this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For better readability, you should group imports following this order:</p>
+<ol class="arabic simple">
+<li><p>Standard library imports</p></li>
+<li><p>Related third-party imports</p></li>
+<li><p>Local application/library-specific imports</p></li>
+</ol>
+<p>Not recommended:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">uri</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">mymodule</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Recommended:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">uri</span>
+<span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">mymodule</span>
+
+<span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should place imports in separate lines unless they are
+modules from the same package.</p>
+<p>Not recommended:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_module</span>
+<span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_other_module</span>
+
+<span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Recommended:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_module</span><span class="p">,</span> <span class="n">my_other_module</span>
+
+<span class="k">def</span> <span class="nf">compute_logbase8</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should generally avoid using wild cards in imports because doing so
+can cause confusion on which names are present in the namespaces.</p>
+<p>Avoid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package.mymodule</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package.my_module</span> <span class="kn">import</span> <span class="n">myclass</span>
+</pre></div>
+</div>
+</section>
+<section id="indentation-and-line-breaks">
+<h2>Indentation and line breaks<a class="headerlink" href="#indentation-and-line-breaks" title="Permalink to this heading">#</a></h2>
+<p>Proper and consistent indentation is important to producing
+easy-to-read and maintainable code. In Python, use four spaces per
+indentation level and avoid tabs.</p>
+<p>Indentation should be used to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Emphasize the body of a control statement, such as a loop or a select statement.</p></li>
+<li><p>Emphasize the body of a conditional statement.</p></li>
+<li><p>Emphasize a new scope block.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyFirstClass</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;MyFirstClass docstring&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">MySecondClass</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;MySecondClass docstring&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">top_level_function</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Top level function docstring&quot;&quot;&quot;</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+<p>For improved readability, add blank lines or wrapping lines. Two
+blank lines should be added before and after all function and class definitions.</p>
+<p>Inside a class, use a single line before any method definition.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;MyClass docstring&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">first_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;First method docstring&quot;&quot;&quot;</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">second_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Second method docstring&quot;&quot;&quot;</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+<p>Use a blank line to separate logical sections.</p>
+<p>Instead of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+
+    <span class="n">STATEMENTS_A</span>
+
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+
+        <span class="n">STATEMENTS_B</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">STATEMENTS_C</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is a positive single digit.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="n">STATEMENTS_A</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="n">STATEMENTS_B</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">STATEMENTS_C</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is a positive single digit.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is less than zero.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This way, it’s clear when a “paragraph” of code is complete and
+a new section is starting.</p>
+</section>
+<section id="maximum-line-length">
+<h2>Maximum line length<a class="headerlink" href="#maximum-line-length" title="Permalink to this heading">#</a></h2>
+<p>For source code lines, best practice is to keep the length at or below
+79 characters.  For docstrings and comments, best practice is to keep
+the length at or below 72 characters.</p>
+<p>Lines longer than this might not display properly on some terminals and tools
+or might be difficult to follow.  For example, this line is difficult to follow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">employee_hours</span> <span class="o">=</span> <span class="p">[</span><span class="n">schedule</span><span class="o">.</span><span class="n">earliest_hour</span> <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_employees</span> <span class="k">for</span> <span class="n">schedule</span> <span class="ow">in</span> <span class="n">employee</span><span class="o">.</span><span class="n">schedules</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The line can be rewritten as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">employee_hours</span> <span class="o">=</span> <span class="p">[</span><span class="n">schedule</span><span class="o">.</span><span class="n">earliest_hour</span> <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">public_employees</span> <span class="k">for</span> <span class="n">schedule</span> <span class="ow">in</span> <span class="n">employee</span><span class="o">.</span><span class="n">schedules</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Alternatively, instead of writing a list comprehension, you can use a
+classic loop.</p>
+</section>
+<section id="naming-conventions">
+<h2>Naming conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this heading">#</a></h2>
+<p>It is important to use concise and descriptive names for classes,
+methods, functions, and constants for readable and maintainable
+code. Regardless of the programming language, you must follow these
+global rules to determine the correct names:</p>
+<ol class="arabic simple">
+<li><p>Choose descriptive and unambiguous names.</p></li>
+<li><p>Make meaningful distinctions.</p></li>
+<li><p>Use pronounceable names.</p></li>
+<li><p>Use searchable names.</p></li>
+<li><p>Replace magic numbers with named constants.</p></li>
+<li><p>Avoid encodings. Do not append prefixes or type information.</p></li>
+</ol>
+<section id="names-to-avoid">
+<h3>Names to avoid<a class="headerlink" href="#names-to-avoid" title="Permalink to this heading">#</a></h3>
+<p>Do not use the characters <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'O'</span></code> , or <code class="docutils literal notranslate"><span class="pre">'I'</span></code> as
+single-character variable names. In some fonts, these characters are
+indistinguishable from the numerals one and zero.</p>
+</section>
+<section id="package-and-module-naming">
+<h3>Package and module naming<a class="headerlink" href="#package-and-module-naming" title="Permalink to this heading">#</a></h3>
+<p>Use a short, lowercase word or words for module names. Separate words
+with underscores to improve readability.  For example, <code class="docutils literal notranslate"><span class="pre">module.py</span></code> or
+<code class="docutils literal notranslate"><span class="pre">my_module.py</span></code>.</p>
+<p>For a package name, use a short, lowercase word or words.  Avoid
+underscores as these will have to be represented as dashes when
+installing from PyPi.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">package</span>
+</pre></div>
+</div>
+</section>
+<section id="class-naming">
+<h3>Class naming<a class="headerlink" href="#class-naming" title="Permalink to this heading">#</a></h3>
+<p>Use camel case when naming classes.  Do not separate words
+with underscores.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Docstring for MyClass&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="function-and-method-naming">
+<h3>Function and method naming<a class="headerlink" href="#function-and-method-naming" title="Permalink to this heading">#</a></h3>
+<p>Use a lowercase word or words for Python functions or methods. Separate
+words with underscores to improve readability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Docstring for MyClass&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        Methods with double underscores on either side are called</span>
+<span class="sd">        &quot;dunder&quot; methods and are special Python methods.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__private_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method can only be called from ``MyClass``.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">_protected_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method should only be called from ``MyClass``.</span>
+
+<span class="sd">        Protected methods can be called from inherited classes,</span>
+<span class="sd">        unlike private methods, which names are &quot;mangled&quot; to avoid</span>
+<span class="sd">        these methods from being called from inherited classes.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># note how we can call private methods here</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__private_method</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">public_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method can be called external to this class.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-naming">
+<h3>Variable naming<a class="headerlink" href="#variable-naming" title="Permalink to this heading">#</a></h3>
+<p>Use a lowercase single letter, word, or words when naming
+variables. Separate words with underscores to improve readability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Constants are variables that are set at the module level and are used
+by one or more methods within that module. Use an uppercase word or
+words for constants. Separate words with underscores to improve
+readability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.141592653589793</span>
+<span class="n">CONSTANT</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">MY_CONSTANT</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">MY_OTHER_CONSTANT</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>Because PyAEDT is about multiple physics domains, the people reading
+its source code do not have the same background as the person who
+writes it. This is why it is important for this library to have well
+commented and documented source code. Comments that contradict the
+code are worse than no comments. Always make a priority of keeping
+comments up to date with the code.</p>
+<p>Comments should be complete sentences. The first word should be
+capitalized, unless it is an identifier that begins with a lowercase
+letter.</p>
+<p>Here are general guidelines for writing comments:</p>
+<ol class="arabic simple">
+<li><p>Always try to explain yourself in code by making it
+self-documenting with clear variable names.</p></li>
+<li><p>Don’t be redundant.</p></li>
+<li><p>Don’t add obvious noise.</p></li>
+<li><p>Don’t use closing brace comments.</p></li>
+<li><p>Don’t comment out code that is unused. Remove it.</p></li>
+<li><p>Use explanations of intent.</p></li>
+<li><p>Clarify the code.</p></li>
+<li><p>Warn of consequences.</p></li>
+</ol>
+<p>Obvious portions of the source code should not be commented.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># increment the counter</span>
+<span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>However, important portions of the behavior that are not self-apparent
+should include a note from the developer writing it.  Otherwise,
+future developers may remove what they see as unnecessary. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Be sure to reset the object&#39;s cache prior to exporting, otherwise</span>
+<span class="c1"># some portions of the database in memory will not be written.</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">update_cache</span><span class="p">()</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="inline-comments">
+<h3>Inline comments<a class="headerlink" href="#inline-comments" title="Permalink to this heading">#</a></h3>
+<p>Inline comments should be used sparingly. An inline comment is a comment
+on the same line as a statement.</p>
+<p>Inline comments should be separated by two spaces from the statement.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># This is an inline comment</span>
+</pre></div>
+</div>
+<p>Inline comments that state the obvious are distracting. Again, avoid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Increment x</span>
+</pre></div>
+</div>
+<p>Focus on writing self-documenting code and using short, but
+descriptive variable names.</p>
+<p>Rather than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;John Smith&#39;</span>  <span class="c1"># Student Name</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user_name</span> <span class="o">=</span> <span class="s1">&#39;John Smith&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this heading">#</a></h2>
+<p>A docstring is a string literal that occurs as the first statement in
+a module, function, class, or method definition.  A docstring becomes
+the doc special attribute of the object.</p>
+<p>Write docstrings for all public modules, functions, classes, and
+methods. Docstrings are not necessary for non-public methods, but such
+methods should have comments that describe what they do.</p>
+<p>To create a docstring, surround the comments with three double quotes
+on either side.</p>
+<p>For a one-line docstring, keep both the starting and ending <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> on the
+same line. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a docstring.&quot;&quot;&quot;</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>For a multi-line docstring, put the ending <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> on a line by itself.</p>
+<p>PyAEDT follows the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc</a>
+documentation style, which is used by <a class="reference external" href="https://numpy.org/">numpy</a>,
+<a class="reference external" href="https://www.scipy.org/">scipy</a>, <a class="reference external" href="https://pandas.pydata.org/">pandas</a>, and a variety of other Python open
+source projects.  For a full description of the code style, reference
+<a class="reference external" href="https://sphinxdocs.pyansys.com/style.html">PyAnsys sphinxdocs</a>.</p>
+</section>
+<section id="programming-recommendations">
+<h2>Programming recommendations<a class="headerlink" href="#programming-recommendations" title="Permalink to this heading">#</a></h2>
+<p>This section provides some of the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> suggestions for removing
+ambiguity and preserving consistency.  They address some common pitfalls
+when writing Python code.</p>
+<section id="booleans-and-comparisons">
+<h3>Booleans and comparisons<a class="headerlink" href="#booleans-and-comparisons" title="Permalink to this heading">#</a></h3>
+<p>Don’t compare Boolean values to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> using the
+equivalence operator.</p>
+<p>Rather than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">my_bool</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">my_bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>Knowing that empty sequences are evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code>, don’t compare the
+length of these objects but rather consider how they would evaluate
+by using <code class="docutils literal notranslate"><span class="pre">bool(&lt;object&gt;)</span></code>.</p>
+<blockquote>
+<div><p>Avoid:</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;List is empty&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">my_list</span><span class="p">:</span>
+   <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;List is empty&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, use <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code> rather than <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">...</span></code>.</p>
+<p>Rather than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;x exists!&#39;</span>
+</pre></div>
+</div>
+<p>Also, avoid <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x:</span></code> when you mean <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></code>.  This is
+especially important when parsing arguments.</p>
+</section>
+<section id="handling-strings">
+<h3>Handling strings<a class="headerlink" href="#handling-strings" title="Permalink to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code> and <code class="docutils literal notranslate"><span class="pre">.endswith()</span></code> instead of slicing.</p>
+<p>Rather than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;cat&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The word starts with &quot;cat&quot;&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">file_name</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;jpg&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The file is a JPEG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The word starts with &quot;cat&quot;&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;jpg&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The file is a JPEG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-the-windows-registry">
+<h3>Reading the Windows registry<a class="headerlink" href="#reading-the-windows-registry" title="Permalink to this heading">#</a></h3>
+<p>Never read the Windows registry or write to it because this is dangerous and
+makes it difficult to deploy libraries on different environments or operating
+systems.</p>
+<p>Bad practice - Example 1</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sDesktopinstallDirectory</span> <span class="o">=</span> <span class="n">Registry</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s2">&quot;HKEY_LOCAL_MACHINE\Software\Ansoft\ElectronicsDesktop\</span><span class="si">{}</span><span class="s2">\Desktop&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sDesktopVersion</span><span class="p">),</span> <span class="s2">&quot;InstallationDirectory&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bad practice - Example 2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EMInstall</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">Registry</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">Format</span><span class="p">(</span><span class="o">@</span><span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Ansoft\ElectronicsDesktop</span><span class="si">{0}</span><span class="s2">\Desktop&quot;</span><span class="p">,</span> <span class="n">AnsysEmInstall</span><span class="o">.</span><span class="n">DesktopVersion</span><span class="p">),</span> <span class="s2">&quot;InstallationDirectory&quot;</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicated-code">
+<h3>Duplicated code<a class="headerlink" href="#duplicated-code" title="Permalink to this heading">#</a></h3>
+<p>Follow the DRY principle, which states that “Every piece of knowledge
+must have a single, unambiguous, authoritative representation within a
+system.”  Attempt to follow this unless it overly complicates the code.
+For instance, the following example converts Fahrenheit to Kelvin
+twice, which now requires the developer to maintain two separate lines
+that do the same thing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">new_temp</span> <span class="o">=</span> <span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="p">))</span> <span class="o">+</span> <span class="mf">273.15</span>
+
+<span class="n">temp2</span> <span class="o">=</span> <span class="mi">46</span>
+<span class="n">new_temp_k</span> <span class="o">=</span> <span class="p">((</span><span class="n">temp2</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="p">))</span> <span class="o">+</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+<p>Instead, write a simple method that converts Fahrenheit to Kelvin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fahr_to_kelvin</span><span class="p">(</span><span class="n">fahr</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Convert temperature in Fahrenheit to kelvin.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    fahr: int or float</span>
+<span class="sd">        Temperature in Fahrenheit.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    kelvin : float</span>
+<span class="sd">       Temperature in kelvin.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">fahr</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="p">))</span> <span class="o">+</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+<p>Now, you can execute and get the exact same output with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_temp</span> <span class="o">=</span> <span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">new_temp_k</span> <span class="o">=</span> <span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mi">46</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a trivial example, but the approach can be applied for a
+variety of both simple and complex algorithms and workflows.  Another
+advantage of this approach is that you can now implement unit testing
+for this method.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">test_fahr_to_kelvin</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="mf">12.7778</span><span class="p">,</span> <span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mi">55</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Now, not only do you have one line of code to verify, but using a
+testing framework such as <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, you can verify that the method is
+correct.</p>
+</section>
+<section id="nested-blocks">
+<h3>Nested blocks<a class="headerlink" href="#nested-blocks" title="Permalink to this heading">#</a></h3>
+<p>Avoid deeply nested block structures (such as conditional blocks and loops)
+within one single code block. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_something</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">*</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">a</span><span class="o">*</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                <span class="n">c</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_something_else</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                    <span class="c1"># recursive</span>
+                    <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_something</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Aside from the lack of comments, this complex nested validation method
+is difficult to debug and validate with unit testing. It would
+be far better to implement more validation methods and join conditionals.</p>
+<p>For a conditional block, the maximum depth recommended is four. If you
+think you need more for the algorithm, create small functions that are
+reusable and unit-testable.</p>
+</section>
+<section id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">#</a></h3>
+<p>While there is nothing inherently wrong with nested loops, to avoid
+certain pitfalls, avoid having loops with more than two levels. In
+some cases, you can rely on coding mechanisms like list comprehensions
+to avoid nested loops.</p>
+<p>Rather than:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span>
+<span class="go">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</pre></div>
+</div>
+<p>Implement a list comprehension with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span>
+<span class="go">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</pre></div>
+</div>
+<p>If the loop is too complicated for creating a list comprehension,
+consider creating small functions and calling these instead.  For
+example, extract all consonants in a sentence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;This is a sample sentence.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowels</span> <span class="o">=</span> <span class="s1">&#39;aeiou&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonants</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">letter</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">and</span> <span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">consonants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonants</span>
+<span class="go">[&#39;T&#39;, &#39;h&#39;, &#39;s&#39;, &#39;s&#39;, &#39;s&#39;, &#39;m&#39;, &#39;p&#39;, &#39;l&#39;, &#39;s&#39;, &#39;n&#39;, &#39;t&#39;, &#39;n&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p>This is better implemented by creating a simple method to return if a
+letter is a consonant.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">is_consonant</span><span class="p">(</span><span class="n">letter</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;Return True when a letter is a consonant.&quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">vowels</span> <span class="o">=</span> <span class="s1">&#39;aeiou&#39;</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">letter</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">and</span> <span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vowels</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;This is a sample sentence.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonants</span> <span class="o">=</span> <span class="p">[</span><span class="n">letter</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">sentence</span> <span class="k">if</span> <span class="n">is_consonant</span><span class="p">(</span><span class="n">letter</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonants</span>
+<span class="go">[&#39;T&#39;, &#39;h&#39;, &#39;s&#39;, &#39;s&#39;, &#39;s&#39;, &#39;m&#39;, &#39;p&#39;, &#39;l&#39;, &#39;s&#39;, &#39;n&#39;, &#39;t&#39;, &#39;n&#39;, &#39;c&#39;]</span>
+</pre></div>
+</div>
+<p>The advantage of the second approach is it is more readable and better
+documented.  Additionally, while it’s a trivial example, you could
+implement a unit test for <code class="docutils literal notranslate"><span class="pre">is_consonant</span></code>.</p>
+</section>
+</section>
+<section id="pyaedt-specific-guidelines">
+<h2>PyAEDT-specific guidelines<a class="headerlink" href="#pyaedt-specific-guidelines" title="Permalink to this heading">#</a></h2>
+<p>These coding guidelines are specific to PyAEDT.</p>
+<section id="logging-errors">
+<h3>Logging errors<a class="headerlink" href="#logging-errors" title="Permalink to this heading">#</a></h3>
+<p>PyAEDT has an internal logging tool named <code class="docutils literal notranslate"><span class="pre">Messenger</span></code>
+and a log file that is automatically generated in the project
+folder.</p>
+<p>The following examples demonstrate how Messenger is used to
+write both to the internal AEDT message windows and the log file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;This is an error message.&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning message.&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These examples demonstrate how to to write messages only to the log file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;This is an error message.&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning message.&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="exception-handling">
+<h3>Exception handling<a class="headerlink" href="#exception-handling" title="Permalink to this heading">#</a></h3>
+<p>PyAEDT uses a specific decorator,
+<code class="docutils literal notranslate"><span class="pre">&#64;pyaedt_function_handler</span></code>, to handle exceptions caused by
+methods and by the AEDT API. This exception handler decorator
+makes PyAEDT fault tolerant to errors that can occur in any method.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Every method may return a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> in case of success and
+<code class="docutils literal notranslate"><span class="pre">False</span></code> in case of failure.  When a failure occurs, the error
+handler returns information about the error in both the console and
+log file. Here is an example of an error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------------------------------------------------------</span>
+<span class="n">PyAEDT</span> <span class="n">error</span> <span class="n">on</span> <span class="n">method</span> <span class="n">create_box</span><span class="p">:</span>  <span class="n">General</span> <span class="ow">or</span> <span class="n">AEDT</span> <span class="n">error</span><span class="o">.</span> <span class="n">Check</span> <span class="n">again</span>
+<span class="n">the</span> <span class="n">arguments</span> <span class="n">provided</span><span class="p">:</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">dimensions_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">matname</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="o">----------------------------------------------------------------------------------</span>
+
+<span class="p">(</span><span class="o">-</span><span class="mi">2147352567</span><span class="p">,</span> <span class="s1">&#39;Exception occurred.&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2147024381</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;C:\GIT</span><span class="se">\r</span><span class="s2">epos\AnsysAutomation\PyAEDT\Primitives.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1930</span><span class="p">,</span> <span class="ow">in</span> <span class="n">create_box</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">createbox</span><span class="p">(</span><span class="n">vArg1</span><span class="p">,</span> <span class="n">vArg2</span><span class="p">)</span>
+
+<span class="o">************************************************************</span>
+<span class="n">Method</span> <span class="n">Docstring</span><span class="p">:</span>
+
+<span class="n">Create</span> <span class="n">a</span> <span class="n">Box</span>
+
+<span class="n">Parameters</span>
+<span class="o">----------</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="hard-coding-values">
+<h3>Hard-coding values<a class="headerlink" href="#hard-coding-values" title="Permalink to this heading">#</a></h3>
+<p>Do not write hard-coded values to the registry. Instead, use the Configuration service.</p>
+</section>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

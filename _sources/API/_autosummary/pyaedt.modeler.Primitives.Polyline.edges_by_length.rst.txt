@@ -1,0 +1,6 @@
+edges\_by\_length
+=================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.edges_by_length

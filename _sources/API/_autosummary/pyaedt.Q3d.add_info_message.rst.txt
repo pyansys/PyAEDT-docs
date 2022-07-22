@@ -1,0 +1,6 @@
+add\_info\_message
+==================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.add_info_message

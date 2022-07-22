@@ -1,0 +1,6 @@
+intersect
+=========
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.intersect

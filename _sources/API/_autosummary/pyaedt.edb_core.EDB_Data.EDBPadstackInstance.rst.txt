@@ -1,0 +1,97 @@
+﻿pyaedt.edb\_core.EDB\_Data.EDBPadstackInstance
+==============================================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoclass:: EDBPadstackInstance
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EDBPadstackInstance.create_rectangle_in_pad
+      
+      
+      EDBPadstackInstance.delete_padstack_instance
+      
+      
+      EDBPadstackInstance.in_polygon
+      
+      
+      EDBPadstackInstance.in_voids
+      
+      
+      EDBPadstackInstance.parametrize_position
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EDBPadstackInstance.backdrill_bottom
+      
+      
+      EDBPadstackInstance.backdrill_top
+      
+      
+      EDBPadstackInstance.bounding_box
+      
+      
+      EDBPadstackInstance.id
+      
+      
+      EDBPadstackInstance.is_pin
+      
+      
+      EDBPadstackInstance.lower_elevation
+      
+      
+      EDBPadstackInstance.name
+      
+      
+      EDBPadstackInstance.net_name
+      
+      
+      EDBPadstackInstance.padstack_definition
+      
+      
+      EDBPadstackInstance.pin
+      
+      
+      EDBPadstackInstance.pingroups
+      
+      
+      EDBPadstackInstance.placement_layer
+      
+      
+      EDBPadstackInstance.position
+      
+      
+      EDBPadstackInstance.rotation
+      
+      
+      EDBPadstackInstance.start_layer
+      
+      
+      EDBPadstackInstance.stop_layer
+      
+      
+      EDBPadstackInstance.top_bottom_association
+      
+      
+      EDBPadstackInstance.upper_elevation
+      
+   
+   

@@ -1,0 +1,6 @@
+change\_net\_visibility
+=======================
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.change_net_visibility

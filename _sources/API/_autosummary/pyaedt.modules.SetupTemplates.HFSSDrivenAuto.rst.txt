@@ -1,0 +1,6 @@
+﻿HFSSDrivenAuto
+==============
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: HFSSDrivenAuto

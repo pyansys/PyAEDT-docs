@@ -1,0 +1,6 @@
+modeler
+=======
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.modeler

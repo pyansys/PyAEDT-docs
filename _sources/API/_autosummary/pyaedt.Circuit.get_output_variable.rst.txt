@@ -1,0 +1,6 @@
+get\_output\_variable
+=====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.get_output_variable

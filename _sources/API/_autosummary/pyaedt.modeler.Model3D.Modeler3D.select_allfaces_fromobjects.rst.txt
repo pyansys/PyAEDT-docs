@@ -1,0 +1,6 @@
+select\_allfaces\_fromobjects
+=============================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.select_allfaces_fromobjects

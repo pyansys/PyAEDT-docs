@@ -1,0 +1,6 @@
+analyse\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.analyse_nominal

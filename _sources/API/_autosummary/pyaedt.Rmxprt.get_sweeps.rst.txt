@@ -1,0 +1,6 @@
+get\_sweeps
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.get_sweeps

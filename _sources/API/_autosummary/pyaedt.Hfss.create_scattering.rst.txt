@@ -1,0 +1,6 @@
+create\_scattering
+==================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss.create_scattering

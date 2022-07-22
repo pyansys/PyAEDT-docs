@@ -1,0 +1,6 @@
+oreportsetup
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell3d.oreportsetup

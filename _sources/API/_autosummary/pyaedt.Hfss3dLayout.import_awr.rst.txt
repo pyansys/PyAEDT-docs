@@ -1,0 +1,6 @@
+import\_awr
+===========
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.import_awr

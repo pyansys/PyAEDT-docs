@@ -1,0 +1,6 @@
+deactivate\_variable\_statistical
+=================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.deactivate_variable_statistical

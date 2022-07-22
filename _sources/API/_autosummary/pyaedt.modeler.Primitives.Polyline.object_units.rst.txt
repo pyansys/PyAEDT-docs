@@ -1,0 +1,6 @@
+object\_units
+=============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.object_units

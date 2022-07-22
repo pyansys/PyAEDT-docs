@@ -1,0 +1,6 @@
+toggle\_conductor\_type
+=======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.toggle_conductor_type

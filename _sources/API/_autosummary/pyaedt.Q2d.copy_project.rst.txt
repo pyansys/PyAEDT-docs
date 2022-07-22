@@ -1,0 +1,6 @@
+copy\_project
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q2d.copy_project

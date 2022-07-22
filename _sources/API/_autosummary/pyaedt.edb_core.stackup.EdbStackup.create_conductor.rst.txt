@@ -1,0 +1,6 @@
+create\_conductor
+=================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.create_conductor

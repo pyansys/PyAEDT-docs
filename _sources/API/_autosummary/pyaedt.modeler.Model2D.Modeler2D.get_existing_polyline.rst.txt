@@ -1,0 +1,6 @@
+get\_existing\_polyline
+=======================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.get_existing_polyline

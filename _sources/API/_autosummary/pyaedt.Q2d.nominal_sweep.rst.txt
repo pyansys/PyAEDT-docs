@@ -1,0 +1,6 @@
+nominal\_sweep
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.nominal_sweep

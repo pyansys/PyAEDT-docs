@@ -1,0 +1,6 @@
+add\_layer
+==========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBLayers.add_layer

@@ -1,0 +1,6 @@
+delete\_port
+============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.delete_port

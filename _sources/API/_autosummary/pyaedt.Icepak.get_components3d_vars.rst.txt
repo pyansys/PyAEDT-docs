@@ -1,0 +1,6 @@
+get\_components3d\_vars
+=======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.get_components3d_vars

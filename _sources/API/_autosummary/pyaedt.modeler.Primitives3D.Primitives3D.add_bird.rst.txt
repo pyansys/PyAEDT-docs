@@ -1,0 +1,6 @@
+add\_bird
+=========
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.add_bird

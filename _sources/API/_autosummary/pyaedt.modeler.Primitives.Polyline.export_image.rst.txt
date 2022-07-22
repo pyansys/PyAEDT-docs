@@ -1,0 +1,6 @@
+export\_image
+=============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.export_image

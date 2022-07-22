@@ -1,0 +1,37 @@
+﻿pyaedt.modeler.Object3d.VertexPrimitive
+=======================================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoclass:: VertexPrimitive
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      VertexPrimitive.chamfer
+      
+      
+      VertexPrimitive.fillet
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      VertexPrimitive.position
+      
+   
+   

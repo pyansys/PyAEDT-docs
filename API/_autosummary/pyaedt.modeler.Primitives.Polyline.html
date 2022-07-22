@@ -1,0 +1,1138 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.modeler.Primitives.Polyline &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="clone" href="pyaedt.modeler.Primitives.Polyline.clone.html" />
+    <link rel="prev" title="pyaedt.modeler.Primitives.PolylineSegment" href="pyaedt.modeler.Primitives.PolylineSegment.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Primitives.html" accesskey="U">Modeler and  primitives</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.modeler.Primitives.Polyline</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model2D.Modeler2D.html">
+     pyaedt.modeler.Model2D.Modeler2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model3D.Modeler3D.html">
+     pyaedt.modeler.Model3D.Modeler3D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Model3DLayout.Modeler3DLayout.html">
+     pyaedt.modeler.Model3DLayout.Modeler3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerNexxim.html">
+     pyaedt.modeler.Circuit.ModelerNexxim
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerTwinBuilder.html">
+     pyaedt.modeler.Circuit.ModelerTwinBuilder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Circuit.ModelerEmit.html">
+     pyaedt.modeler.Circuit.ModelerEmit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives2D.Primitives2D.html">
+     pyaedt.modeler.Primitives2D.Primitives2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives3D.Primitives3D.html">
+     pyaedt.modeler.Primitives3D.Primitives3D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives3DLayout.Primitives3DLayout.html">
+     pyaedt.modeler.Primitives3DLayout.Primitives3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.PrimitivesNexxim.NexximComponents.html">
+     pyaedt.modeler.PrimitivesNexxim.NexximComponents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.PrimitivesTwinBuilder.TwinBuilderComponents.html">
+     pyaedt.modeler.PrimitivesTwinBuilder.TwinBuilderComponents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.PrimitivesCircuit.CircuitComponents.html">
+     pyaedt.modeler.PrimitivesCircuit.CircuitComponents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.Object3d.html">
+     pyaedt.modeler.Object3d.Object3d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.FacePrimitive.html">
+     pyaedt.modeler.Object3d.FacePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.EdgePrimitive.html">
+     pyaedt.modeler.Object3d.EdgePrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.VertexPrimitive.html">
+     pyaedt.modeler.Object3d.VertexPrimitive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Primitives.PolylineSegment.html">
+     pyaedt.modeler.Primitives.PolylineSegment
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.modeler.Primitives.Polyline
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.clone.html">
+       clone
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.delete.html">
+       delete
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.duplicate_along_line.html">
+       duplicate_along_line
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.duplicate_around_axis.html">
+       duplicate_around_axis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.edges_by_length.html">
+       edges_by_length
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.export_image.html">
+       export_image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces_by_area.html">
+       faces_by_area
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.insert_segment.html">
+       insert_segment
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.largest_face.html">
+       largest_face
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.longest_edge.html">
+       longest_edge
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.mirror.html">
+       mirror
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.move.html">
+       move
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.plot.html">
+       plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.remove_edges.html">
+       remove_edges
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.remove_vertex.html">
+       remove_vertex
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.rotate.html">
+       rotate
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.section.html">
+       section
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.set_crosssection_properties.html">
+       set_crosssection_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.shortest_edge.html">
+       shortest_edge
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.smallest_face.html">
+       smallest_face
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.subtract.html">
+       subtract
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_along_path.html">
+       sweep_along_path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_along_vector.html">
+       sweep_along_vector
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_around_axis.html">
+       sweep_around_axis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.translate.html">
+       translate
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.unite.html">
+       unite
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_x.html">
+       bottom_edge_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_y.html">
+       bottom_edge_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_z.html">
+       bottom_edge_z
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_x.html">
+       bottom_face_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_y.html">
+       bottom_face_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_z.html">
+       bottom_face_z
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bounding_box.html">
+       bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bounding_dimension.html">
+       bounding_dimension
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.color.html">
+       color
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.color_string.html">
+       color_string
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.display_wireframe.html">
+       display_wireframe
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.edges.html">
+       edges
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.end_point.html">
+       end_point
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.face_closest_to_bounding_box.html">
+       face_closest_to_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces.html">
+       faces
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces_on_bounding_box.html">
+       faces_on_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.group_name.html">
+       group_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.id.html">
+       id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.is3d.html">
+       is3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.logger.html">
+       logger
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.m_Editor.html">
+       m_Editor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.mass.html">
+       mass
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.material_name.html">
+       material_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.model.html">
+       model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.name.html">
+       name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.object_type.html">
+       object_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.object_units.html">
+       object_units
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.part_coordinate_system.html">
+       part_coordinate_system
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.points.html">
+       points
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.solve_inside.html">
+       solve_inside
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.start_point.html">
+       start_point
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.surface_material_name.html">
+       surface_material_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_x.html">
+       top_edge_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_y.html">
+       top_edge_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_z.html">
+       top_edge_z
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_x.html">
+       top_face_x
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_y.html">
+       top_face_y
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_z.html">
+       top_face_z
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.touching_objects.html">
+       touching_objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.transparency.html">
+       transparency
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.valid_properties.html">
+       valid_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.vertex_positions.html">
+       vertex_positions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.vertices.html">
+       vertices
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.volume.html">
+       volume
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.Padstack.html">
+     pyaedt.modeler.Object3d.Padstack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.UserDefinedComponent.html">
+     pyaedt.modeler.Object3d.UserDefinedComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.CircuitComponent.html">
+     pyaedt.modeler.Object3d.CircuitComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Object3d.CircuitPins.html">
+     pyaedt.modeler.Object3d.CircuitPins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Components3DLayout.html">
+     pyaedt.modeler.object3dlayout.Components3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Nets3DLayout.html">
+     pyaedt.modeler.object3dlayout.Nets3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Pins3DLayout.html">
+     pyaedt.modeler.object3dlayout.Pins3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Line3dLayout.html">
+     pyaedt.modeler.object3dlayout.Line3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Polygons3DLayout.html">
+     pyaedt.modeler.object3dlayout.Polygons3DLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Circle3dLayout.html">
+     pyaedt.modeler.object3dlayout.Circle3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Rect3dLayout.html">
+     pyaedt.modeler.object3dlayout.Rect3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Points3dLayout.html">
+     pyaedt.modeler.object3dlayout.Points3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.object3dlayout.Point.html">
+     pyaedt.modeler.object3dlayout.Point
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.Modeler.CoordinateSystem.html">
+     pyaedt.modeler.Modeler.CoordinateSystem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.modeler.GeometryOperators.html">
+     pyaedt.modeler.GeometryOperators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-modeler-primitives-polyline">
+<h1>pyaedt.modeler.Primitives.Polyline<a class="headerlink" href="#pyaedt-modeler-primitives-polyline" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.modeler.Primitives.Polyline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.modeler.Primitives.</span></span><span class="sig-name descname"><span class="pre">Polyline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primitives</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover_surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_orient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_topwidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_num_seg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsection_bend_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/modeler/Primitives.html#Polyline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.modeler.Primitives.Polyline" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates and manipulates a polyline.</p>
+<p>The constructor for this class is intended to be called from the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.modeler.Primitives.Primitives.create_polyline()</span></code> method.
+The documentation is provided there.</p>
+<p>The returned Polyline object exposes the methods for manipulating the polyline.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>primitives</strong><span class="classifier"><a class="reference internal" href="pyaedt.modeler.Primitives3D.Primitives3D.html#pyaedt.modeler.Primitives3D.Primitives3D" title="pyaedt.modeler.Primitives3D.Primitives3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.modeler.Primitives3D.Primitives3D</span></code></a></span></dt><dd><p>Pointer to the parent Primitives object.</p>
+</dd>
+<dt><strong>src_object</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>position_list</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>List of positions in the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>segment_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#list" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Define the list of segment types.
+Valid arguments are  <code class="docutils literal notranslate"><span class="pre">&quot;Line&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Arc&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Spline&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AngularArc&quot;</span></code>.
+The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>cover_surface</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>close_surface</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>matname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the material. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>xsection_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Type of the cross-section. Options are <code class="docutils literal notranslate"><span class="pre">&quot;Line&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Circle&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Rectangle&quot;</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">&quot;Isosceles</span> <span class="pre">Trapezoid&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>xsection_orient</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Direction of the normal vector to the width of the cross-section.
+Options are <code class="docutils literal notranslate"><span class="pre">&quot;X&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Y&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Z&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;Auto&quot;</span></code>. The
+default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>xsection_width</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Width or diameter of the cross-section for all types. The default is
+<code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><strong>xsection_topwidth</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Top width of the cross-section for the type <code class="docutils literal notranslate"><span class="pre">&quot;Isosceles</span> <span class="pre">Trapezoid&quot;</span></code> only.
+The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><strong>xsection_height</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> or <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Height of the cross-section for the types <code class="docutils literal notranslate"><span class="pre">&quot;Rectangle&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Isosceles</span>
+<span class="pre">Trapezoid&quot;</span></code> only. The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><strong>xsection_num_seg</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Number of segments in the cross-section surface for the types <code class="docutils literal notranslate"><span class="pre">&quot;Circle&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;Rectangle&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Isosceles</span> <span class="pre">Trapezoid&quot;</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.
+The value must be <code class="docutils literal notranslate"><span class="pre">0</span></code> or greater than <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+</dd>
+<dt><strong>xsection_bend_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Type of the bend. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case the bend type
+is set to <code class="docutils literal notranslate"><span class="pre">&quot;Corner&quot;</span></code>. For the type <code class="docutils literal notranslate"><span class="pre">&quot;Circle&quot;</span></code>, the bend type
+should be set to <code class="docutils literal notranslate"><span class="pre">&quot;Curved&quot;</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.clone.html#pyaedt.modeler.Primitives.Polyline.clone" title="pyaedt.modeler.Primitives.Polyline.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.clone</span></code></a>()</p></td>
+<td><p>Clone a polyline object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.delete.html#pyaedt.modeler.Primitives.Polyline.delete" title="pyaedt.modeler.Primitives.Polyline.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.delete</span></code></a>()</p></td>
+<td><p>Delete the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.duplicate_along_line.html#pyaedt.modeler.Primitives.Polyline.duplicate_along_line" title="pyaedt.modeler.Primitives.Polyline.duplicate_along_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.duplicate_along_line</span></code></a>(vector[, ...])</p></td>
+<td><p>Duplicate the object along a line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.duplicate_around_axis.html#pyaedt.modeler.Primitives.Polyline.duplicate_around_axis" title="pyaedt.modeler.Primitives.Polyline.duplicate_around_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.duplicate_around_axis</span></code></a>(cs_axis[, ...])</p></td>
+<td><p>Duplicate the object around the axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.edges_by_length.html#pyaedt.modeler.Primitives.Polyline.edges_by_length" title="pyaedt.modeler.Primitives.Polyline.edges_by_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.edges_by_length</span></code></a>(length[, ...])</p></td>
+<td><p>Filter edges by length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.export_image.html#pyaedt.modeler.Primitives.Polyline.export_image" title="pyaedt.modeler.Primitives.Polyline.export_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.export_image</span></code></a>([file_path])</p></td>
+<td><p>Export the model to path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces_by_area.html#pyaedt.modeler.Primitives.Polyline.faces_by_area" title="pyaedt.modeler.Primitives.Polyline.faces_by_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.faces_by_area</span></code></a>(area[, area_filter, ...])</p></td>
+<td><p>Filter faces by area.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.insert_segment.html#pyaedt.modeler.Primitives.Polyline.insert_segment" title="pyaedt.modeler.Primitives.Polyline.insert_segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.insert_segment</span></code></a>(position_list[, ...])</p></td>
+<td><p>Add a segment to an existing polyline.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.largest_face.html#pyaedt.modeler.Primitives.Polyline.largest_face" title="pyaedt.modeler.Primitives.Polyline.largest_face"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.largest_face</span></code></a>([n])</p></td>
+<td><p>Return only the face with the greatest area.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.longest_edge.html#pyaedt.modeler.Primitives.Polyline.longest_edge" title="pyaedt.modeler.Primitives.Polyline.longest_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.longest_edge</span></code></a>([n])</p></td>
+<td><p>Return only the edge with the greatest length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.mirror.html#pyaedt.modeler.Primitives.Polyline.mirror" title="pyaedt.modeler.Primitives.Polyline.mirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.mirror</span></code></a>(position, vector)</p></td>
+<td><p>Mirror a selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.move.html#pyaedt.modeler.Primitives.Polyline.move" title="pyaedt.modeler.Primitives.Polyline.move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.move</span></code></a>(vector)</p></td>
+<td><p>Move objects from a list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.plot.html#pyaedt.modeler.Primitives.Polyline.plot" title="pyaedt.modeler.Primitives.Polyline.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.plot</span></code></a>([show])</p></td>
+<td><p>Plot model with PyVista.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.remove_edges.html#pyaedt.modeler.Primitives.Polyline.remove_edges" title="pyaedt.modeler.Primitives.Polyline.remove_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.remove_edges</span></code></a>(edge_id)</p></td>
+<td><p>Remove a vertex from an existing polyline by position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.remove_vertex.html#pyaedt.modeler.Primitives.Polyline.remove_vertex" title="pyaedt.modeler.Primitives.Polyline.remove_vertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.remove_vertex</span></code></a>(position[, abstol])</p></td>
+<td><p>Remove a vertex from an existing polyline by position.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.rotate.html#pyaedt.modeler.Primitives.Polyline.rotate" title="pyaedt.modeler.Primitives.Polyline.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.rotate</span></code></a>(cs_axis[, angle, unit])</p></td>
+<td><p>Rotate the selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.section.html#pyaedt.modeler.Primitives.Polyline.section" title="pyaedt.modeler.Primitives.Polyline.section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.section</span></code></a>(plane[, create_new, ...])</p></td>
+<td><p>Section the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.set_crosssection_properties.html#pyaedt.modeler.Primitives.Polyline.set_crosssection_properties" title="pyaedt.modeler.Primitives.Polyline.set_crosssection_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.set_crosssection_properties</span></code></a>([type, ...])</p></td>
+<td><p>Set the properties of an existing polyline object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.shortest_edge.html#pyaedt.modeler.Primitives.Polyline.shortest_edge" title="pyaedt.modeler.Primitives.Polyline.shortest_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.shortest_edge</span></code></a>([n])</p></td>
+<td><p>Return only the edge with the smallest length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.smallest_face.html#pyaedt.modeler.Primitives.Polyline.smallest_face" title="pyaedt.modeler.Primitives.Polyline.smallest_face"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.smallest_face</span></code></a>([n])</p></td>
+<td><p>Return only the face with the smallest area.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.subtract.html#pyaedt.modeler.Primitives.Polyline.subtract" title="pyaedt.modeler.Primitives.Polyline.subtract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.subtract</span></code></a>(tool_list[, keep_originals])</p></td>
+<td><p>Subtract one or more parts from the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_along_path.html#pyaedt.modeler.Primitives.Polyline.sweep_along_path" title="pyaedt.modeler.Primitives.Polyline.sweep_along_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.sweep_along_path</span></code></a>(sweep_object[, ...])</p></td>
+<td><p>Sweep the selection along a vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_along_vector.html#pyaedt.modeler.Primitives.Polyline.sweep_along_vector" title="pyaedt.modeler.Primitives.Polyline.sweep_along_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.sweep_along_vector</span></code></a>(sweep_vector[, ...])</p></td>
+<td><p>Sweep the selection along a vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.sweep_around_axis.html#pyaedt.modeler.Primitives.Polyline.sweep_around_axis" title="pyaedt.modeler.Primitives.Polyline.sweep_around_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.sweep_around_axis</span></code></a>(cs_axis[, ...])</p></td>
+<td><p>Sweep around an axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.translate.html#pyaedt.modeler.Primitives.Polyline.translate" title="pyaedt.modeler.Primitives.Polyline.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.translate</span></code></a>(vector)</p></td>
+<td><p>Translate the object and return the 3D object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.unite.html#pyaedt.modeler.Primitives.Polyline.unite" title="pyaedt.modeler.Primitives.Polyline.unite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.unite</span></code></a>(object_list)</p></td>
+<td><p>Unite a list of objects with this object.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_x.html#pyaedt.modeler.Primitives.Polyline.bottom_edge_x" title="pyaedt.modeler.Primitives.Polyline.bottom_edge_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_edge_x</span></code></a></p></td>
+<td><p>Bottom edge in the X direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_y.html#pyaedt.modeler.Primitives.Polyline.bottom_edge_y" title="pyaedt.modeler.Primitives.Polyline.bottom_edge_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_edge_y</span></code></a></p></td>
+<td><p>Bottom edge in the X direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_edge_z.html#pyaedt.modeler.Primitives.Polyline.bottom_edge_z" title="pyaedt.modeler.Primitives.Polyline.bottom_edge_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_edge_z</span></code></a></p></td>
+<td><p>Bottom edge in the Z direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_x.html#pyaedt.modeler.Primitives.Polyline.bottom_face_x" title="pyaedt.modeler.Primitives.Polyline.bottom_face_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_face_x</span></code></a></p></td>
+<td><p>Bottom face in the X direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_y.html#pyaedt.modeler.Primitives.Polyline.bottom_face_y" title="pyaedt.modeler.Primitives.Polyline.bottom_face_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_face_y</span></code></a></p></td>
+<td><p>Bottom face in the X direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bottom_face_z.html#pyaedt.modeler.Primitives.Polyline.bottom_face_z" title="pyaedt.modeler.Primitives.Polyline.bottom_face_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bottom_face_z</span></code></a></p></td>
+<td><p>Bottom face in the Z direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bounding_box.html#pyaedt.modeler.Primitives.Polyline.bounding_box" title="pyaedt.modeler.Primitives.Polyline.bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bounding_box</span></code></a></p></td>
+<td><p>Bounding box of a part.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.bounding_dimension.html#pyaedt.modeler.Primitives.Polyline.bounding_dimension" title="pyaedt.modeler.Primitives.Polyline.bounding_dimension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.bounding_dimension</span></code></a></p></td>
+<td><p>Retrieve the dimension array of the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.color.html#pyaedt.modeler.Primitives.Polyline.color" title="pyaedt.modeler.Primitives.Polyline.color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.color</span></code></a></p></td>
+<td><p>Part color as a tuple of integer values for <cite>(Red, Green, Blue)</cite> color values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.color_string.html#pyaedt.modeler.Primitives.Polyline.color_string" title="pyaedt.modeler.Primitives.Polyline.color_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.color_string</span></code></a></p></td>
+<td><p>Color tuple as a string in the format '(Red, Green, Blue)'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.display_wireframe.html#pyaedt.modeler.Primitives.Polyline.display_wireframe" title="pyaedt.modeler.Primitives.Polyline.display_wireframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.display_wireframe</span></code></a></p></td>
+<td><p>Wireframe property of the part.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.edges.html#pyaedt.modeler.Primitives.Polyline.edges" title="pyaedt.modeler.Primitives.Polyline.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.edges</span></code></a></p></td>
+<td><p>Information for each edge in the given part.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.end_point.html#pyaedt.modeler.Primitives.Polyline.end_point" title="pyaedt.modeler.Primitives.Polyline.end_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.end_point</span></code></a></p></td>
+<td><p>List of the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> coordinates for the ending point in the polyline object in the object's coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.face_closest_to_bounding_box.html#pyaedt.modeler.Primitives.Polyline.face_closest_to_bounding_box" title="pyaedt.modeler.Primitives.Polyline.face_closest_to_bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.face_closest_to_bounding_box</span></code></a></p></td>
+<td><p>Return only the face ids of the face closest to the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces.html#pyaedt.modeler.Primitives.Polyline.faces" title="pyaedt.modeler.Primitives.Polyline.faces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.faces</span></code></a></p></td>
+<td><p>Information for each face in the given part.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.faces_on_bounding_box.html#pyaedt.modeler.Primitives.Polyline.faces_on_bounding_box" title="pyaedt.modeler.Primitives.Polyline.faces_on_bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.faces_on_bounding_box</span></code></a></p></td>
+<td><p>Return only the face ids of the faces touching the bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.group_name.html#pyaedt.modeler.Primitives.Polyline.group_name" title="pyaedt.modeler.Primitives.Polyline.group_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.group_name</span></code></a></p></td>
+<td><p>Group the object belongs to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.id.html#pyaedt.modeler.Primitives.Polyline.id" title="pyaedt.modeler.Primitives.Polyline.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.id</span></code></a></p></td>
+<td><p>ID of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.is3d.html#pyaedt.modeler.Primitives.Polyline.is3d" title="pyaedt.modeler.Primitives.Polyline.is3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.is3d</span></code></a></p></td>
+<td><p>Check for if the object is 3D.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.logger.html#pyaedt.modeler.Primitives.Polyline.logger" title="pyaedt.modeler.Primitives.Polyline.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.logger</span></code></a></p></td>
+<td><p>Logger.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.m_Editor.html#pyaedt.modeler.Primitives.Polyline.m_Editor" title="pyaedt.modeler.Primitives.Polyline.m_Editor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.m_Editor</span></code></a></p></td>
+<td><p>Pointer to the oEditor object in the AEDT API.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.mass.html#pyaedt.modeler.Primitives.Polyline.mass" title="pyaedt.modeler.Primitives.Polyline.mass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.mass</span></code></a></p></td>
+<td><p>Object mass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.material_name.html#pyaedt.modeler.Primitives.Polyline.material_name" title="pyaedt.modeler.Primitives.Polyline.material_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.material_name</span></code></a></p></td>
+<td><p>Material name of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.model.html#pyaedt.modeler.Primitives.Polyline.model" title="pyaedt.modeler.Primitives.Polyline.model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.model</span></code></a></p></td>
+<td><p>Part Model/Non-model property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.name.html#pyaedt.modeler.Primitives.Polyline.name" title="pyaedt.modeler.Primitives.Polyline.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.name</span></code></a></p></td>
+<td><p>Name of the object as a string value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.object_type.html#pyaedt.modeler.Primitives.Polyline.object_type" title="pyaedt.modeler.Primitives.Polyline.object_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.object_type</span></code></a></p></td>
+<td><p>Type of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.object_units.html#pyaedt.modeler.Primitives.Polyline.object_units" title="pyaedt.modeler.Primitives.Polyline.object_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.object_units</span></code></a></p></td>
+<td><p>Object units.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.part_coordinate_system.html#pyaedt.modeler.Primitives.Polyline.part_coordinate_system" title="pyaedt.modeler.Primitives.Polyline.part_coordinate_system"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.part_coordinate_system</span></code></a></p></td>
+<td><p>Part coordinate system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.points.html#pyaedt.modeler.Primitives.Polyline.points" title="pyaedt.modeler.Primitives.Polyline.points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.points</span></code></a></p></td>
+<td><p>Polyline Points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.solve_inside.html#pyaedt.modeler.Primitives.Polyline.solve_inside" title="pyaedt.modeler.Primitives.Polyline.solve_inside"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.solve_inside</span></code></a></p></td>
+<td><p>Part solve inside flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.start_point.html#pyaedt.modeler.Primitives.Polyline.start_point" title="pyaedt.modeler.Primitives.Polyline.start_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.start_point</span></code></a></p></td>
+<td><p>List of the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> coordinates for the starting point in the polyline object in the object's coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.surface_material_name.html#pyaedt.modeler.Primitives.Polyline.surface_material_name" title="pyaedt.modeler.Primitives.Polyline.surface_material_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.surface_material_name</span></code></a></p></td>
+<td><p>Surface material name of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_x.html#pyaedt.modeler.Primitives.Polyline.top_edge_x" title="pyaedt.modeler.Primitives.Polyline.top_edge_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_edge_x</span></code></a></p></td>
+<td><p>Top edge in the X direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_y.html#pyaedt.modeler.Primitives.Polyline.top_edge_y" title="pyaedt.modeler.Primitives.Polyline.top_edge_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_edge_y</span></code></a></p></td>
+<td><p>Top edge in the Y direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_edge_z.html#pyaedt.modeler.Primitives.Polyline.top_edge_z" title="pyaedt.modeler.Primitives.Polyline.top_edge_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_edge_z</span></code></a></p></td>
+<td><p>Top edge in the Z direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_x.html#pyaedt.modeler.Primitives.Polyline.top_face_x" title="pyaedt.modeler.Primitives.Polyline.top_face_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_face_x</span></code></a></p></td>
+<td><p>Top face in the X direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_y.html#pyaedt.modeler.Primitives.Polyline.top_face_y" title="pyaedt.modeler.Primitives.Polyline.top_face_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_face_y</span></code></a></p></td>
+<td><p>Top face in the Y direction of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.top_face_z.html#pyaedt.modeler.Primitives.Polyline.top_face_z" title="pyaedt.modeler.Primitives.Polyline.top_face_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.top_face_z</span></code></a></p></td>
+<td><p>Top face in the Z direction of the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.touching_objects.html#pyaedt.modeler.Primitives.Polyline.touching_objects" title="pyaedt.modeler.Primitives.Polyline.touching_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.touching_objects</span></code></a></p></td>
+<td><p>Get the objects that touch one of the vertex, edge midpoint or face of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.transparency.html#pyaedt.modeler.Primitives.Polyline.transparency" title="pyaedt.modeler.Primitives.Polyline.transparency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.transparency</span></code></a></p></td>
+<td><p>Part transparency as a value between 0.0 and 1.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.valid_properties.html#pyaedt.modeler.Primitives.Polyline.valid_properties" title="pyaedt.modeler.Primitives.Polyline.valid_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.valid_properties</span></code></a></p></td>
+<td><p>Valid properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.vertex_positions.html#pyaedt.modeler.Primitives.Polyline.vertex_positions" title="pyaedt.modeler.Primitives.Polyline.vertex_positions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.vertex_positions</span></code></a></p></td>
+<td><p>List of the <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> coordinates for all vertex positions in the polyline object in the object's coordinate system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.vertices.html#pyaedt.modeler.Primitives.Polyline.vertices" title="pyaedt.modeler.Primitives.Polyline.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.vertices</span></code></a></p></td>
+<td><p>Information for each vertex in the given part.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.modeler.Primitives.Polyline.volume.html#pyaedt.modeler.Primitives.Polyline.volume" title="pyaedt.modeler.Primitives.Polyline.volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polyline.volume</span></code></a></p></td>
+<td><p>Object volume.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

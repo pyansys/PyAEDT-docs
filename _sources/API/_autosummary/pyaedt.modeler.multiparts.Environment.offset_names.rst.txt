@@ -1,0 +1,6 @@
+offset\_names
+=============
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Environment.offset_names

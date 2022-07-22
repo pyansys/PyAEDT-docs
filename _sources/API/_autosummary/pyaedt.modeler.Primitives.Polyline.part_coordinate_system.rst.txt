@@ -1,0 +1,6 @@
+part\_coordinate\_system
+========================
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.part_coordinate_system

@@ -1,0 +1,6 @@
+project\_list
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.project_list

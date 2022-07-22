@@ -1,0 +1,6 @@
+add\_new\_objects
+=================
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. automethod:: Primitives2D.add_new_objects

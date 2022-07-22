@@ -1,0 +1,64 @@
+﻿pyaedt.edb\_core.EDB\_Data.EDBPrimitives
+========================================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoclass:: EDBPrimitives
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      EDBPrimitives.area
+      
+      
+      EDBPrimitives.delete
+      
+      
+      EDBPrimitives.is_arc
+      
+      
+      EDBPrimitives.points
+      
+      
+      EDBPrimitives.points_raw
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      EDBPrimitives.is_void
+      
+      
+      EDBPrimitives.layer
+      
+      
+      EDBPrimitives.layer_name
+      
+      
+      EDBPrimitives.net
+      
+      
+      EDBPrimitives.net_name
+      
+      
+      EDBPrimitives.type
+      
+      
+      EDBPrimitives.voids
+      
+   
+   

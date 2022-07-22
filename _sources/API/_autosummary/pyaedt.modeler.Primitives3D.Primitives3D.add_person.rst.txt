@@ -1,0 +1,6 @@
+add\_person
+===========
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.add_person

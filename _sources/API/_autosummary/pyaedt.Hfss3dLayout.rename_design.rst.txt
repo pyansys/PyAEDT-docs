@@ -1,0 +1,6 @@
+rename\_design
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.rename_design

@@ -1,0 +1,6 @@
+nets
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.nets

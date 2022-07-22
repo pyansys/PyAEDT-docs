@@ -1,0 +1,6 @@
+yaw\_name
+=========
+
+.. currentmodule:: pyaedt.modeler.parts
+
+.. autoproperty:: Antenna.yaw_name

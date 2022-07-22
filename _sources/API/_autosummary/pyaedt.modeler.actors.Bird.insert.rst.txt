@@ -1,0 +1,6 @@
+insert
+======
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. automethod:: Bird.insert

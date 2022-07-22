@@ -1,0 +1,6 @@
+export3DModel
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Mechanical.export3DModel

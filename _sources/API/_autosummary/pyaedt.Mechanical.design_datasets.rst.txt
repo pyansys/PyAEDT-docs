@@ -1,0 +1,6 @@
+design\_datasets
+================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.design_datasets

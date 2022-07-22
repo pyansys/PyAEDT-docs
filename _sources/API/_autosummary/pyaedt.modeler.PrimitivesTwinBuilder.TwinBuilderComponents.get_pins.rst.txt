@@ -1,0 +1,6 @@
+get\_pins
+=========
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.get_pins

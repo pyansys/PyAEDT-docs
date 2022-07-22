@@ -1,0 +1,6 @@
+setunassigned\_mats
+===================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.setunassigned_mats

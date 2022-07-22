@@ -1,0 +1,6 @@
+translate
+=========
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.translate

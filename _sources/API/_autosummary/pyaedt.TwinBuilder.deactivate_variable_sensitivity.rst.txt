@@ -1,0 +1,6 @@
+deactivate\_variable\_sensitivity
+=================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.deactivate_variable_sensitivity

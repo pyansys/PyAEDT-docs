@@ -1,0 +1,6 @@
+evaluate\_expression
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.evaluate_expression

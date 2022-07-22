@@ -1,0 +1,6 @@
+available\_variations
+=====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell3d.available_variations

@@ -1,0 +1,6 @@
+name
+====
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: UserDefinedComponent.name

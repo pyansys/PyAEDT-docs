@@ -1,0 +1,6 @@
+close\_desktop
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.close_desktop

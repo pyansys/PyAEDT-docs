@@ -1,0 +1,6 @@
+modeler\_units
+==============
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoattribute:: MultiPartComponent.modeler_units

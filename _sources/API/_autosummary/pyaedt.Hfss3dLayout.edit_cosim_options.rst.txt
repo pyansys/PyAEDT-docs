@@ -1,0 +1,6 @@
+edit\_cosim\_options
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Hfss3dLayout.edit_cosim_options

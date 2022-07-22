@@ -1,0 +1,6 @@
+analysis\_setup
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.analysis_setup

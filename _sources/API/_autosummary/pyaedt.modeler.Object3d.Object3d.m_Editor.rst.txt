@@ -1,0 +1,6 @@
+m\_Editor
+=========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: Object3d.m_Editor

@@ -1,0 +1,6 @@
+get\_siwave\_dc\_setup\_template
+================================
+
+.. currentmodule:: pyaedt.edb_core.siwave
+
+.. automethod:: EdbSiwave.get_siwave_dc_setup_template

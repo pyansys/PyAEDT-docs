@@ -1,0 +1,6 @@
+deactivate\_variable\_statistical
+=================================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell3d.deactivate_variable_statistical

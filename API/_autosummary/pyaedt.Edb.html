@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.Edb &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="add_design_variable" href="pyaedt.Edb.add_design_variable.html" />
+    <link rel="prev" title="EDB editor" href="../CoreEdb.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../CoreEdb.html" accesskey="U">EDB editor</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.Edb</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.Edb
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.add_design_variable.html">
+       add_design_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.arg_with_dim.html">
+       arg_with_dim
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.build_simulation_project.html">
+       build_simulation_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.change_design_variable_value.html">
+       change_design_variable_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.close_edb.html">
+       close_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.create_cutout.html">
+       create_cutout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.create_cutout_on_point_list.html">
+       create_cutout_on_point_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.create_edb.html">
+       create_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.edb_exception.html">
+       edb_exception
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.edb_value.html">
+       edb_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.execute.html">
+       execute
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.export_hfss.html">
+       export_hfss
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.export_maxwell.html">
+       export_maxwell
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.export_q3d.html">
+       export_q3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.export_to_ipc2581.html">
+       export_to_ipc2581
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.get_bounding_box.html">
+       get_bounding_box
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.get_conformal_polygon_from_netlist.html">
+       get_conformal_polygon_from_netlist
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.get_statistics.html">
+       get_statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.import_cadence_file.html">
+       import_cadence_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.import_gds_file.html">
+       import_gds_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.import_layout_pcb.html">
+       import_layout_pcb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.open_edb.html">
+       open_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.open_edb_inside_aedt.html">
+       open_edb_inside_aedt
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.save_edb.html">
+       save_edb
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.save_edb_as.html">
+       save_edb_as
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.solve_siwave.html">
+       solve_siwave
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.write_export3d_option_config_file.html">
+       write_export3d_option_config_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.active_cell.html">
+       active_cell
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.active_layout.html">
+       active_layout
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.cell_names.html">
+       cell_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_components.html">
+       core_components
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_hfss.html">
+       core_hfss
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_nets.html">
+       core_nets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_padstack.html">
+       core_padstack
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_primitives.html">
+       core_primitives
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_siwave.html">
+       core_siwave
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.core_stackup.html">
+       core_stackup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.db.html">
+       db
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.edblib.html">
+       edblib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.logger.html">
+       logger
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Edb.pins.html">
+       pins
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.components.Components.html">
+     pyaedt.edb_core.components.Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.hfss.EdbHfss.html">
+     pyaedt.edb_core.hfss.EdbHfss
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.siwave.EdbSiwave.html">
+     pyaedt.edb_core.siwave.EdbSiwave
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.nets.EdbNets.html">
+     pyaedt.edb_core.nets.EdbNets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.padstack.EdbPadstacks.html">
+     pyaedt.edb_core.padstack.EdbPadstacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.layout.EdbLayout.html">
+     pyaedt.edb_core.layout.EdbLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.stackup.EdbStackup.html">
+     pyaedt.edb_core.stackup.EdbStackup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBLayer.html">
+     pyaedt.edb_core.EDB_Data.EDBLayer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBLayers.html">
+     pyaedt.edb_core.EDB_Data.EDBLayers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBPadProperties.html">
+     pyaedt.edb_core.EDB_Data.EDBPadProperties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBPadstack.html">
+     pyaedt.edb_core.EDB_Data.EDBPadstack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBPadstackInstance.html">
+     pyaedt.edb_core.EDB_Data.EDBPadstackInstance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBComponent.html">
+     pyaedt.edb_core.EDB_Data.EDBComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBNetsData.html">
+     pyaedt.edb_core.EDB_Data.EDBNetsData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.EDB_Data.EDBPrimitives.html">
+     pyaedt.edb_core.EDB_Data.EDBPrimitives
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.edb_core.siwave.SiwaveDCSetupTemplate.html">
+     pyaedt.edb_core.siwave.SiwaveDCSetupTemplate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-edb">
+<h1>pyaedt.Edb<a class="headerlink" href="#pyaedt-edb" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.Edb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.</span></span><span class="sig-name descname"><span class="pre">Edb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edbpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cellname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isreadonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edbversion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isaedtowned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oproject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ppe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/edb.html#Edb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.Edb" title="Permalink to this definition">#</a></dt>
+<dd><p>Provides the EDB application interface.</p>
+<p>This module inherits all objects that belong to EDB.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>edbpath</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Full path to the <code class="docutils literal notranslate"><span class="pre">aedb</span></code> folder. The variable can also contain
+the path to a layout to import. Allowed formats are BRD,
+XML (IPC2581), GDS, and DXF. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+For GDS import, the Ansys control file (also XML) should have the same
+name as the GDS file. Only the file extension differs.</p>
+</dd>
+<dt><strong>cellname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the cell to select. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>isreadonly</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to open EBD in read-only mode when it is
+owned by HFSS 3D Layout. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>edbversion</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Version of EDB to use. The default is <code class="docutils literal notranslate"><span class="pre">&quot;2021.2&quot;</span></code>.</p>
+</dd>
+<dt><strong>isaedtowned</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to launch EDB from HFSS 3D Layout. The
+default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>oproject</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Reference to the AEDT project object.</p>
+</dd>
+<dt><strong>student_version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to open the AEDT student version. The default is <code class="docutils literal notranslate"><span class="pre">False.</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Edb</span></code> object and a new EDB cell.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Edb</span></code> object and open the specified project.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="s2">&quot;myfile.aedb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">Edb</span></code> object from GDS and control files.
+The XML control file resides in the same directory as the GDS file: (myfile.xml).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="s2">&quot;/path/to/file/myfile.gds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.add_design_variable.html#pyaedt.Edb.add_design_variable" title="pyaedt.Edb.add_design_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.add_design_variable</span></code></a>(variable_name, ...)</p></td>
+<td><p>Add a design variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.arg_with_dim.html#pyaedt.Edb.arg_with_dim" title="pyaedt.Edb.arg_with_dim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.arg_with_dim</span></code></a>(Value, sUnits)</p></td>
+<td><p>Format arguments with dimensions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.build_simulation_project.html#pyaedt.Edb.build_simulation_project" title="pyaedt.Edb.build_simulation_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.build_simulation_project</span></code></a>([simulation_setup])</p></td>
+<td><p>Build a ready-to-solve simulation project.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.change_design_variable_value.html#pyaedt.Edb.change_design_variable_value" title="pyaedt.Edb.change_design_variable_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.change_design_variable_value</span></code></a>(...)</p></td>
+<td><p>Change a variable value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.close_edb.html#pyaedt.Edb.close_edb" title="pyaedt.Edb.close_edb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.close_edb</span></code></a>()</p></td>
+<td><p>Close EDB.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.create_cutout.html#pyaedt.Edb.create_cutout" title="pyaedt.Edb.create_cutout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.create_cutout</span></code></a>([signal_list, ...])</p></td>
+<td><p>Create a cutout and save it to a new AEDB file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.create_cutout_on_point_list.html#pyaedt.Edb.create_cutout_on_point_list" title="pyaedt.Edb.create_cutout_on_point_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.create_cutout_on_point_list</span></code></a>(point_list)</p></td>
+<td><p>Create a cutout on a specified shape and save it to a new AEDB file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.create_edb.html#pyaedt.Edb.create_edb" title="pyaedt.Edb.create_edb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.create_edb</span></code></a>([init_dlls])</p></td>
+<td><p>Create EDB.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.edb_exception.html#pyaedt.Edb.edb_exception" title="pyaedt.Edb.edb_exception"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.edb_exception</span></code></a>(ex_value, tb_data)</p></td>
+<td><p>Write the trace stack to AEDT when a Python error occurs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.edb_value.html#pyaedt.Edb.edb_value" title="pyaedt.Edb.edb_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.edb_value</span></code></a>(val)</p></td>
+<td><p>EDB value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.execute.html#pyaedt.Edb.execute" title="pyaedt.Edb.execute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.execute</span></code></a>(func)</p></td>
+<td><p>Execute a function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.export_hfss.html#pyaedt.Edb.export_hfss" title="pyaedt.Edb.export_hfss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.export_hfss</span></code></a>(path_to_output[, net_list, ...])</p></td>
+<td><p>Export EDB to HFSS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.export_maxwell.html#pyaedt.Edb.export_maxwell" title="pyaedt.Edb.export_maxwell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.export_maxwell</span></code></a>(path_to_output[, ...])</p></td>
+<td><p>Export EDB to Maxwell 3D.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.export_q3d.html#pyaedt.Edb.export_q3d" title="pyaedt.Edb.export_q3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.export_q3d</span></code></a>(path_to_output[, net_list, ...])</p></td>
+<td><p>Export EDB to Q3D.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.export_to_ipc2581.html#pyaedt.Edb.export_to_ipc2581" title="pyaedt.Edb.export_to_ipc2581"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.export_to_ipc2581</span></code></a>([ipc_path, units])</p></td>
+<td><p>Create an XML IPC2581 file from the active EDB.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.get_bounding_box.html#pyaedt.Edb.get_bounding_box" title="pyaedt.Edb.get_bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.get_bounding_box</span></code></a>()</p></td>
+<td><p>Get the layout bounding box.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.get_conformal_polygon_from_netlist.html#pyaedt.Edb.get_conformal_polygon_from_netlist" title="pyaedt.Edb.get_conformal_polygon_from_netlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.get_conformal_polygon_from_netlist</span></code></a>([netlist])</p></td>
+<td><p>Return an EDB conformal polygon based on a netlist.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.get_statistics.html#pyaedt.Edb.get_statistics" title="pyaedt.Edb.get_statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.get_statistics</span></code></a>([compute_area])</p></td>
+<td><p>Get the EDBStatistics object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.import_cadence_file.html#pyaedt.Edb.import_cadence_file" title="pyaedt.Edb.import_cadence_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.import_cadence_file</span></code></a>(inputBrd[, WorkDir, ...])</p></td>
+<td><p>Import a board file and generate an <code class="docutils literal notranslate"><span class="pre">edb.def</span></code> file in the working directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.import_gds_file.html#pyaedt.Edb.import_gds_file" title="pyaedt.Edb.import_gds_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.import_gds_file</span></code></a>(inputGDS[, WorkDir, ...])</p></td>
+<td><p>Import a GDS file and generate an <code class="docutils literal notranslate"><span class="pre">edb.def</span></code> file in the working directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.import_layout_pcb.html#pyaedt.Edb.import_layout_pcb" title="pyaedt.Edb.import_layout_pcb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.import_layout_pcb</span></code></a>(input_file, working_dir)</p></td>
+<td><p>Import a board file and generate an <code class="docutils literal notranslate"><span class="pre">edb.def</span></code> file in the working directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.open_edb.html#pyaedt.Edb.open_edb" title="pyaedt.Edb.open_edb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.open_edb</span></code></a>([init_dlls])</p></td>
+<td><p>Open EDB.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.open_edb_inside_aedt.html#pyaedt.Edb.open_edb_inside_aedt" title="pyaedt.Edb.open_edb_inside_aedt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.open_edb_inside_aedt</span></code></a>([init_dlls])</p></td>
+<td><p>Open EDB inside of AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.save_edb.html#pyaedt.Edb.save_edb" title="pyaedt.Edb.save_edb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.save_edb</span></code></a>()</p></td>
+<td><p>Save the EDB file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.save_edb_as.html#pyaedt.Edb.save_edb_as" title="pyaedt.Edb.save_edb_as"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.save_edb_as</span></code></a>(fname)</p></td>
+<td><p>Save the EDB file as another file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.solve_siwave.html#pyaedt.Edb.solve_siwave" title="pyaedt.Edb.solve_siwave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.solve_siwave</span></code></a>()</p></td>
+<td><p>Close EDB and solve it with Siwave.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.write_export3d_option_config_file.html#pyaedt.Edb.write_export3d_option_config_file" title="pyaedt.Edb.write_export3d_option_config_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.write_export3d_option_config_file</span></code></a>(...[, ...])</p></td>
+<td><p>Write the options for a 3D export to a configuration file.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.active_cell.html#pyaedt.Edb.active_cell" title="pyaedt.Edb.active_cell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.active_cell</span></code></a></p></td>
+<td><p>Active cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.active_layout.html#pyaedt.Edb.active_layout" title="pyaedt.Edb.active_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.active_layout</span></code></a></p></td>
+<td><p>Active layout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.cell_names.html#pyaedt.Edb.cell_names" title="pyaedt.Edb.cell_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.cell_names</span></code></a></p></td>
+<td><p>Cell name container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.core_components.html#pyaedt.Edb.core_components" title="pyaedt.Edb.core_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_components</span></code></a></p></td>
+<td><p>Core components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.core_hfss.html#pyaedt.Edb.core_hfss" title="pyaedt.Edb.core_hfss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_hfss</span></code></a></p></td>
+<td><p>Core HFSS.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.core_nets.html#pyaedt.Edb.core_nets" title="pyaedt.Edb.core_nets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_nets</span></code></a></p></td>
+<td><p>Core nets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.core_padstack.html#pyaedt.Edb.core_padstack" title="pyaedt.Edb.core_padstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_padstack</span></code></a></p></td>
+<td><p>Core padstack.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.core_primitives.html#pyaedt.Edb.core_primitives" title="pyaedt.Edb.core_primitives"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_primitives</span></code></a></p></td>
+<td><p>Core primitives.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.core_siwave.html#pyaedt.Edb.core_siwave" title="pyaedt.Edb.core_siwave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_siwave</span></code></a></p></td>
+<td><p>Core SI Wave.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.core_stackup.html#pyaedt.Edb.core_stackup" title="pyaedt.Edb.core_stackup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.core_stackup</span></code></a></p></td>
+<td><p>Core stackup.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.db.html#pyaedt.Edb.db" title="pyaedt.Edb.db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.db</span></code></a></p></td>
+<td><p>Database object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.edblib.html#pyaedt.Edb.edblib" title="pyaedt.Edb.edblib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.edblib</span></code></a></p></td>
+<td><p>EDB library object containing advanced EDB methods not accessible directly from Python.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Edb.logger.html#pyaedt.Edb.logger" title="pyaedt.Edb.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.logger</span></code></a></p></td>
+<td><p>Logger for EDB.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Edb.pins.html#pyaedt.Edb.pins" title="pyaedt.Edb.pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb.pins</span></code></a></p></td>
+<td><p>Pins.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

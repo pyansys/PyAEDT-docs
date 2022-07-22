@@ -1,0 +1,6 @@
+get\_report\_data
+=================
+
+.. currentmodule:: pyaedt.modules.AdvancedPostProcessing
+
+.. automethod:: PostProcessor.get_report_data

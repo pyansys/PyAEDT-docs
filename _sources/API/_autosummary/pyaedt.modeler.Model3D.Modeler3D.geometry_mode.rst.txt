@@ -1,0 +1,6 @@
+geometry\_mode
+==============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. autoproperty:: Modeler3D.geometry_mode

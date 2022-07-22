@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>EDB editor &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyaedt.Edb" href="_autosummary/pyaedt.Edb.html" />
+    <link rel="prev" title="filter" href="_autosummary/pyaedt.aedt_logger.AppFilter.filter.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API documentation</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">EDB editor</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   EDB editor
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.Edb.html">
+     pyaedt.Edb
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.components.Components.html">
+     pyaedt.edb_core.components.Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.hfss.EdbHfss.html">
+     pyaedt.edb_core.hfss.EdbHfss
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.siwave.EdbSiwave.html">
+     pyaedt.edb_core.siwave.EdbSiwave
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.nets.EdbNets.html">
+     pyaedt.edb_core.nets.EdbNets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.html">
+     pyaedt.edb_core.padstack.EdbPadstacks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.layout.EdbLayout.html">
+     pyaedt.edb_core.layout.EdbLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.stackup.EdbStackup.html">
+     pyaedt.edb_core.stackup.EdbStackup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBLayer.html">
+     pyaedt.edb_core.EDB_Data.EDBLayer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBLayers.html">
+     pyaedt.edb_core.EDB_Data.EDBLayers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadProperties.html">
+     pyaedt.edb_core.EDB_Data.EDBPadProperties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadstack.html">
+     pyaedt.edb_core.EDB_Data.EDBPadstack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadstackInstance.html">
+     pyaedt.edb_core.EDB_Data.EDBPadstackInstance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBComponent.html">
+     pyaedt.edb_core.EDB_Data.EDBComponent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBNetsData.html">
+     pyaedt.edb_core.EDB_Data.EDBNetsData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPrimitives.html">
+     pyaedt.edb_core.EDB_Data.EDBPrimitives
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="_autosummary/pyaedt.edb_core.siwave.SiwaveDCSetupTemplate.html">
+     pyaedt.edb_core.siwave.SiwaveDCSetupTemplate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Application.html">
+   AEDT apps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Primitives.html">
+   Modeler and  primitives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#edb-modules">
+   EDB modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#edb-data-classes">
+   EDB data classes
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="edb-editor">
+<h1>EDB editor<a class="headerlink" href="#edb-editor" title="Permalink to this heading">#</a></h1>
+<p>An AEDB database is a folder that contains the database representing any part of a PCB.
+It can be opened and edited using the <code class="docutils literal notranslate"><span class="pre">Edb</span></code> class.</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.Edb.html#pyaedt.Edb" title="pyaedt.Edb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Edb</span></code></a>([edbpath, cellname, isreadonly, ...])</p></td>
+<td><p>Provides the EDB application interface.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
+<span class="c1"># this call returns the Edb Class initialized on 2022 R1</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">myedb</span><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">)</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<section id="edb-modules">
+<h2>EDB modules<a class="headerlink" href="#edb-modules" title="Permalink to this heading">#</a></h2>
+<p>This section lists the core EDB modules for reading and writing information
+to AEDB files.</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.components.Components.html#pyaedt.edb_core.components.Components" title="pyaedt.edb_core.components.Components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">components.Components</span></code></a></p></td>
+<td><p>Manages EDB components and related method accessible from <cite>Edb.core_components</cite> property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.hfss.EdbHfss.html#pyaedt.edb_core.hfss.EdbHfss" title="pyaedt.edb_core.hfss.EdbHfss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hfss.EdbHfss</span></code></a></p></td>
+<td><p>Manages EDB method to configure Hfss setup accessible from <cite>Edb.core_hfss</cite> property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.siwave.EdbSiwave.html#pyaedt.edb_core.siwave.EdbSiwave" title="pyaedt.edb_core.siwave.EdbSiwave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">siwave.EdbSiwave</span></code></a></p></td>
+<td><p>Manages EDB methods related to Siwave Setup accessible from <cite>Edb.core_siwave</cite> property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.nets.EdbNets.html#pyaedt.edb_core.nets.EdbNets" title="pyaedt.edb_core.nets.EdbNets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nets.EdbNets</span></code></a></p></td>
+<td><p>Manages EDB methods for nets management accessible from <cite>Edb.core_nets</cite> property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.padstack.EdbPadstacks.html#pyaedt.edb_core.padstack.EdbPadstacks" title="pyaedt.edb_core.padstack.EdbPadstacks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padstack.EdbPadstacks</span></code></a></p></td>
+<td><p>Manages EDB methods for nets management accessible from <cite>Edb.core_padstack</cite> property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.layout.EdbLayout.html#pyaedt.edb_core.layout.EdbLayout" title="pyaedt.edb_core.layout.EdbLayout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layout.EdbLayout</span></code></a></p></td>
+<td><p>Manages EDB methods for primitives management accessible from <cite>Edb.core_primitives</cite> property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.stackup.EdbStackup.html#pyaedt.edb_core.stackup.EdbStackup" title="pyaedt.edb_core.stackup.EdbStackup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stackup.EdbStackup</span></code></a></p></td>
+<td><p>Manages EDB methods for stackup and material management accessible from <cite>Edb.core_stackup</cite> property.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">myedb</span><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">)</span>
+
+<span class="c1"># this call returns the EdbHfss Class</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_hfss</span>
+
+<span class="c1"># this call returns the Components Class</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_components</span>
+
+<span class="c1"># this call returns the EdbSiwave Class</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_siwave</span>
+
+<span class="c1"># this call returns the EdbPadstacks Class</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span>
+
+<span class="c1"># this call returns the EdbStackup Class</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="edb-data-classes">
+<h2>EDB data classes<a class="headerlink" href="#edb-data-classes" title="Permalink to this heading">#</a></h2>
+<p>These classes are the containers of data read from the EDB file:</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBLayer.html#pyaedt.edb_core.EDB_Data.EDBLayer" title="pyaedt.edb_core.EDB_Data.EDBLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBLayer</span></code></a></p></td>
+<td><p>Manages EDB functionalities for a layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBLayers.html#pyaedt.edb_core.EDB_Data.EDBLayers" title="pyaedt.edb_core.EDB_Data.EDBLayers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBLayers</span></code></a></p></td>
+<td><p>Manages EDB functionalities for all primitive layers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadProperties.html#pyaedt.edb_core.EDB_Data.EDBPadProperties" title="pyaedt.edb_core.EDB_Data.EDBPadProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBPadProperties</span></code></a></p></td>
+<td><p>Manages EDB functionalities for pad properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadstack.html#pyaedt.edb_core.EDB_Data.EDBPadstack" title="pyaedt.edb_core.EDB_Data.EDBPadstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBPadstack</span></code></a></p></td>
+<td><p>Manages EDB functionalities for a padstack.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPadstackInstance.html#pyaedt.edb_core.EDB_Data.EDBPadstackInstance" title="pyaedt.edb_core.EDB_Data.EDBPadstackInstance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBPadstackInstance</span></code></a></p></td>
+<td><p>Manages EDB functionalities for a padstack.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBComponent.html#pyaedt.edb_core.EDB_Data.EDBComponent" title="pyaedt.edb_core.EDB_Data.EDBComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBComponent</span></code></a></p></td>
+<td><p>Manages EDB functionalities for components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBNetsData.html#pyaedt.edb_core.EDB_Data.EDBNetsData" title="pyaedt.edb_core.EDB_Data.EDBNetsData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBNetsData</span></code></a></p></td>
+<td><p>Manages EDB functionalities for a primitives.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.EDB_Data.EDBPrimitives.html#pyaedt.edb_core.EDB_Data.EDBPrimitives" title="pyaedt.edb_core.EDB_Data.EDBPrimitives"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDB_Data.EDBPrimitives</span></code></a></p></td>
+<td><p>Manages EDB functionalities for a primitives.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/pyaedt.edb_core.siwave.SiwaveDCSetupTemplate.html#pyaedt.edb_core.siwave.SiwaveDCSetupTemplate" title="pyaedt.edb_core.siwave.SiwaveDCSetupTemplate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">siwave.SiwaveDCSetupTemplate</span></code></a></p></td>
+<td><p>Siwave DC Settings Data Class.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">myedb</span><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.1&quot;</span><span class="p">)</span>
+
+<span class="c1"># this call returns the EDBLayers Class</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">stackup_layers</span>
+
+<span class="c1"># this call returns the EDBLayer Class</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;TOP&quot;</span><span class="p">]</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

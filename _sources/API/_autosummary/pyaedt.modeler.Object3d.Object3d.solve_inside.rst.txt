@@ -1,0 +1,6 @@
+solve\_inside
+=============
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: Object3d.solve_inside

@@ -1,0 +1,6 @@
+vertices
+========
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.vertices

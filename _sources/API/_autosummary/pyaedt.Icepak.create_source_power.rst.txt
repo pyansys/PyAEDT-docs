@@ -1,0 +1,6 @@
+create\_source\_power
+=====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.create_source_power

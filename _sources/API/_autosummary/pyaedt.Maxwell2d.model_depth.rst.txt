@@ -1,0 +1,6 @@
+model\_depth
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.model_depth

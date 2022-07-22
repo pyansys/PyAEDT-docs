@@ -1,0 +1,6 @@
+analyse\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.analyse_nominal

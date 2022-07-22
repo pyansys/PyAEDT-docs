@@ -1,0 +1,6 @@
+remove\_point
+=============
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.remove_point

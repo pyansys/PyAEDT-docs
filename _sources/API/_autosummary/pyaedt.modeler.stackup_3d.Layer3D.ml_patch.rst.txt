@@ -1,0 +1,6 @@
+ml\_patch
+=========
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. automethod:: Layer3D.ml_patch

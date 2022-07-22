@@ -1,0 +1,6 @@
+odefinition\_manager
+====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Icepak.odefinition_manager

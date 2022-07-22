@@ -1,0 +1,6 @@
+move\_with\_vector
+==================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: FacePrimitive.move_with_vector

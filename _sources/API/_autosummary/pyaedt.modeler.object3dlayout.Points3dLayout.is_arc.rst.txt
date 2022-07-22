@@ -1,0 +1,6 @@
+is\_arc
+=======
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoproperty:: Points3dLayout.is_arc

@@ -1,0 +1,6 @@
+roll\_name
+==========
+
+.. currentmodule:: pyaedt.modeler.multiparts
+
+.. autoproperty:: Environment.roll_name

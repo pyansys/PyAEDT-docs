@@ -1,0 +1,6 @@
+project\_datasets
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.project_datasets

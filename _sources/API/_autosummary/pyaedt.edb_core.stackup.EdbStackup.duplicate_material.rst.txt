@@ -1,0 +1,6 @@
+duplicate\_material
+===================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.duplicate_material

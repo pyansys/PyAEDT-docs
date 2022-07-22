@@ -1,0 +1,6 @@
+solution\_type
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: TwinBuilder.solution_type

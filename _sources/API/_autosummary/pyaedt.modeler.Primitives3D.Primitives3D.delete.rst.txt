@@ -1,0 +1,6 @@
+delete
+======
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.delete

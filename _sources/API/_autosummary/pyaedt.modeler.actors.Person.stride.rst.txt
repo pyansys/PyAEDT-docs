@@ -1,0 +1,6 @@
+stride
+======
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Person.stride

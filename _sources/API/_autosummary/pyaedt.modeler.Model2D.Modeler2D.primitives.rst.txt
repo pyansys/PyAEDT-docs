@@ -1,0 +1,6 @@
+primitives
+==========
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. autoproperty:: Modeler2D.primitives

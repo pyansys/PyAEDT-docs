@@ -1,0 +1,6 @@
+cleanup\_objects
+================
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.cleanup_objects

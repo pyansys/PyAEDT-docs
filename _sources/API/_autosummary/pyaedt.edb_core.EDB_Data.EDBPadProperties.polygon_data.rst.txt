@@ -1,0 +1,6 @@
+polygon\_data
+=============
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadProperties.polygon_data

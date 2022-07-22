@@ -1,0 +1,6 @@
+offset\_x\_name
+===============
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Vehicle.offset_x_name

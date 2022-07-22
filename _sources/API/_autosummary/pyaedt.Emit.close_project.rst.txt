@@ -1,0 +1,6 @@
+close\_project
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Emit.close_project

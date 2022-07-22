@@ -1,0 +1,6 @@
+apply\_icepak\_settings
+=======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.apply_icepak_settings

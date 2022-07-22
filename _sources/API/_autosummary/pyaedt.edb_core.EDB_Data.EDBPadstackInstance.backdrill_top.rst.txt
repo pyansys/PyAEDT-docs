@@ -1,0 +1,6 @@
+backdrill\_top
+==============
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadstackInstance.backdrill_top

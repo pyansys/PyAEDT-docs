@@ -1,0 +1,29 @@
+﻿pyaedt.modeler.GeometryOperators
+================================
+
+.. automodule:: pyaedt.modeler.GeometryOperators
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      GeometryOperators
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,6 @@
+signal\_nets
+============
+
+.. currentmodule:: pyaedt.modeler.Primitives3DLayout
+
+.. autoproperty:: Primitives3DLayout.signal_nets

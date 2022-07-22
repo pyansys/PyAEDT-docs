@@ -1,0 +1,1521 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>pyaedt.Emit &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="activate_variable_optimization" href="pyaedt.Emit.activate_variable_optimization.html" />
+    <link rel="prev" title="working_directory" href="pyaedt.Circuit.working_directory.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >API documentation</a> » </li>
+          <li class="nav-item nav-item-2"><a href="../Application.html" accesskey="U">AEDT apps</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.Emit</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Common.html">
+   Desktop and common classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreEdb.html">
+   EDB editor
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../Application.html">
+   AEDT apps
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Desktop.html">
+     pyaedt.Desktop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Hfss.html">
+     pyaedt.Hfss
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Q3d.html">
+     pyaedt.Q3d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Q2d.html">
+     pyaedt.Q2d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Maxwell2d.html">
+     pyaedt.Maxwell2d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Maxwell3d.html">
+     pyaedt.Maxwell3d
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Icepak.html">
+     pyaedt.Icepak
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Hfss3dLayout.html">
+     pyaedt.Hfss3dLayout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Mechanical.html">
+     pyaedt.Mechanical
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Rmxprt.html">
+     pyaedt.Rmxprt
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.Circuit.html">
+     pyaedt.Circuit
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     pyaedt.Emit
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.activate_variable_optimization.html">
+       activate_variable_optimization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.activate_variable_sensitivity.html">
+       activate_variable_sensitivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.activate_variable_statistical.html">
+       activate_variable_statistical
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.activate_variable_tuning.html">
+       activate_variable_tuning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.add_error_message.html">
+       add_error_message
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.add_info_message.html">
+       add_info_message
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.add_warning_message.html">
+       add_warning_message
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.archive_project.html">
+       archive_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.autosave_disable.html">
+       autosave_disable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.autosave_enable.html">
+       autosave_enable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.change_automatically_use_causal_materials.html">
+       change_automatically_use_causal_materials
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.change_design_settings.html">
+       change_design_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.change_material_override.html">
+       change_material_override
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.change_validation_settings.html">
+       change_validation_settings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.check_beta_option_enabled.html">
+       check_beta_option_enabled
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.clean_proj_folder.html">
+       clean_proj_folder
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.close_desktop.html">
+       close_desktop
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.close_project.html">
+       close_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.copy_design_from.html">
+       copy_design_from
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.copy_project.html">
+       copy_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.create_dataset.html">
+       create_dataset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.create_dataset1d_design.html">
+       create_dataset1d_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.create_dataset1d_project.html">
+       create_dataset1d_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.create_dataset3d.html">
+       create_dataset3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.create_new_project.html">
+       create_new_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.dataset_exists.html">
+       dataset_exists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.deactivate_variable_optimization.html">
+       deactivate_variable_optimization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.deactivate_variable_sensitivity.html">
+       deactivate_variable_sensitivity
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.deactivate_variable_statistical.html">
+       deactivate_variable_statistical
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.deactivate_variable_tuning.html">
+       deactivate_variable_tuning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.delete_design.html">
+       delete_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.delete_project.html">
+       delete_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.delete_separator.html">
+       delete_separator
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.delete_variable.html">
+       delete_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_variation.html">
+       design_variation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.duplicate_design.html">
+       duplicate_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.evaluate_expression.html">
+       evaluate_expression
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.export_design_preview_to_jpg.html">
+       export_design_preview_to_jpg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.export_profile.html">
+       export_profile
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.export_variables_to_csv.html">
+       export_variables_to_csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.generate_temp_project_directory.html">
+       generate_temp_project_directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_evaluated_value.html">
+       get_evaluated_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_module.html">
+       get_module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_oo_name.html">
+       get_oo_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_oo_object.html">
+       get_oo_object
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_oo_properties.html">
+       get_oo_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_oo_property_value.html">
+       get_oo_property_value
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_registry_key_int.html">
+       get_registry_key_int
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.get_registry_key_string.html">
+       get_registry_key_string
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.hidden_variable.html">
+       hidden_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.import_dataset1d.html">
+       import_dataset1d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.import_dataset3d.html">
+       import_dataset3d
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.insert_design.html">
+       insert_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.load_project.html">
+       load_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.read_design_data.html">
+       read_design_data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.read_only_variable.html">
+       read_only_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.release_desktop.html">
+       release_desktop
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.rename_design.html">
+       rename_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.save_project.html">
+       save_project
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.set_active_design.html">
+       set_active_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.set_active_dso_config_name.html">
+       set_active_dso_config_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.set_license_type.html">
+       set_license_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.set_registry_from_file.html">
+       set_registry_from_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.set_registry_key.html">
+       set_registry_key
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.validate_simple.html">
+       validate_simple
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.aedt_version_id.html">
+       aedt_version_id
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.boundaries.html">
+       boundaries
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.couplings.html">
+       couplings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.default_solution_type.html">
+       default_solution_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_datasets.html">
+       design_datasets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_list.html">
+       design_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_name.html">
+       design_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_properties.html">
+       design_properties
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.design_type.html">
+       design_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.desktop_install_dir.html">
+       desktop_install_dir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.existing_analysis_setups.html">
+       existing_analysis_setups
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.layouteditor.html">
+       layouteditor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.library_list.html">
+       library_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.lock_file.html">
+       lock_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.logger.html">
+       logger
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.modeler.html">
+       modeler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.o_component_manager.html">
+       o_component_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.o_maxwell_parameters.html">
+       o_maxwell_parameters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.o_model_manager.html">
+       o_model_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.o_symbol_manager.html">
+       o_symbol_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oanalysis.html">
+       oanalysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oboundary.html">
+       oboundary
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.odefinition_manager.html">
+       odefinition_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.odesign.html">
+       odesign
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.odesktop.html">
+       odesktop
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oeditor.html">
+       oeditor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oexcitation.html">
+       oexcitation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.ofieldsreporter.html">
+       ofieldsreporter
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oimport_export.html">
+       oimport_export
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.omaterial_manager.html">
+       omaterial_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.omatrix.html">
+       omatrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.omeshmodule.html">
+       omeshmodule
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.omodelsetup.html">
+       omodelsetup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.omonitor.html">
+       omonitor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.ooptimetrics.html">
+       ooptimetrics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.ooutput_variable.html">
+       ooutput_variable
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.opadstackmanager.html">
+       opadstackmanager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oproject.html">
+       oproject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oradfield.html">
+       oradfield
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.oreportsetup.html">
+       oreportsetup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.osolution.html">
+       osolution
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.personallib.html">
+       personallib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_datasets.html">
+       project_datasets
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_file.html">
+       project_file
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_list.html">
+       project_list
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_name.html">
+       project_name
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_path.html">
+       project_path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_properies.html">
+       project_properies
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_time_stamp.html">
+       project_time_stamp
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.project_timestamp_changed.html">
+       project_timestamp_changed
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.pyaedt_dir.html">
+       pyaedt_dir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.results_directory.html">
+       results_directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.setup_names.html">
+       setup_names
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.solution_type.html">
+       solution_type
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.src_dir.html">
+       src_dir
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.syslib.html">
+       syslib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.temp_directory.html">
+       temp_directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.toolkit_directory.html">
+       toolkit_directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.userlib.html">
+       userlib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.valid_design.html">
+       valid_design
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.variable_manager.html">
+       variable_manager
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="pyaedt.Emit.working_directory.html">
+       working_directory
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyaedt.TwinBuilder.html">
+     pyaedt.TwinBuilder
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MaterialManagement.html">
+   Material and stackup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Primitives.html">
+   Modeler and  primitives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CoreModules.html">
+   AEDT modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Mesh.html">
+   Mesh operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Setup.html">
+   Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Post.html">
+   Postprocessing
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+
+<nav id="bd-toc-nav">
+    
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="pyaedt-emit">
+<h1>pyaedt.Emit<a class="headerlink" href="#pyaedt-emit" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyaedt.Emit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaedt.</span></span><span class="sig-name descname"><span class="pre">Emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projectname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">designname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setup_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specified_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_graphical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_desktop_session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_on_exit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aedt_process_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyaedt/emit.html#Emit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaedt.Emit" title="Permalink to this definition">#</a></dt>
+<dd><p>Provides the Emit application interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class creates only a skeleton for an empty design.
+It has very limited functionalities, and no methods
+are implemented yet.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>projectname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the project to select or the full path to the project
+or AEDTZ archive to open.  The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case
+an attempt is made to get an active project. If no projects are
+present, an empty project is created.</p>
+</dd>
+<dt><strong>designname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the design to select. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case
+an attempt is made to get an active design. If no designs are
+present, an empty design is created.</p>
+</dd>
+<dt><strong>solution_type</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Solution type to apply to the design. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which
+case the default type is applied.</p>
+</dd>
+<dt><strong>setup_name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Name of the setup to use as the nominal. The default is
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case the active setup is used or nothing is
+used.</p>
+</dd>
+<dt><strong>specified_version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Version of AEDT to use. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, in which case
+the active setup is used or the latest installed version is
+used.</p>
+</dd>
+<dt><strong>non_graphical</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to launch AEDT in non-graphical mode. The default
+is <code class="docutils literal notranslate"><span class="pre">False</span></code>, in which case AEDT is launched in graphical mode.
+This parameter is ignored when a script is launched within AEDT.</p>
+</dd>
+<dt><strong>new_desktop_session</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to launch an instance of AEDT in a new thread, even if
+another instance of the <code class="docutils literal notranslate"><span class="pre">specified_version</span></code> is active on the
+machine.  The default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+<dt><strong>close_on_exit</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to release AEDT on exit. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>student_version</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.12)"><span class="xref std std-ref">bool</span></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Whether to open the AEDT student version. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>machine</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Machine name to which the oDesktop session is to connect to. This
+parameter works only in 2022 R2 and later. The remote server must be
+up and running with the command <cite>“ansysedt.exe -grpcsrv portnum”</cite>.
+If the machine is <cite>“localhost”</cite>, the server starts if it is not present.</p>
+</dd>
+<dt><strong>port</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Port number on which to start the oDesktop communication on an already existing server.
+This parameter is ignored when creating a new server. It works only in 2022 R2 or
+later. The remote server must be up and running with the command <cite>“ansysedt.exe -grpcsrv portnum”</cite>.</p>
+</dd>
+<dt><strong>aedt_process_id</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">optional</span></code></span></dt><dd><p>Process ID for the instance of AEDT to point PyAEDT at. The default is
+<code class="docutils literal notranslate"><span class="pre">None</span></code>. This parameter is only used when <code class="docutils literal notranslate"><span class="pre">new_desktop_session</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Create an instance of Emit and connect to an existing Emit
+design or create a new Emit design if one does not exist.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Emit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Emit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a instance of Emit and link to a project named
+<code class="docutils literal notranslate"><span class="pre">&quot;projectname&quot;</span></code>. If this project does not exist, create one with
+this name.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Emit</span><span class="p">(</span><span class="n">projectname</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an instance of Emit and link to a design named
+<code class="docutils literal notranslate"><span class="pre">&quot;designname&quot;</span></code> in a project named <code class="docutils literal notranslate"><span class="pre">&quot;projectname&quot;</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Emit</span><span class="p">(</span><span class="n">projectname</span><span class="p">,</span><span class="n">designame</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an instance of Emit and open the specified project,
+which is named <code class="docutils literal notranslate"><span class="pre">Myfile.aedt</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Emit</span><span class="p">(</span><span class="s2">&quot;myfile.aedt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.activate_variable_optimization.html#pyaedt.Emit.activate_variable_optimization" title="pyaedt.Emit.activate_variable_optimization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.activate_variable_optimization</span></code></a>(...[, ...])</p></td>
+<td><p>Activate optimization analysis for a variable and optionally set up ranges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.activate_variable_sensitivity.html#pyaedt.Emit.activate_variable_sensitivity" title="pyaedt.Emit.activate_variable_sensitivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.activate_variable_sensitivity</span></code></a>(variable_name)</p></td>
+<td><p>Activate sensitivity analysis for a variable and optionally set up ranges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.activate_variable_statistical.html#pyaedt.Emit.activate_variable_statistical" title="pyaedt.Emit.activate_variable_statistical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.activate_variable_statistical</span></code></a>(variable_name)</p></td>
+<td><p>Activate statitistical analysis for a variable and optionally set up ranges.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.activate_variable_tuning.html#pyaedt.Emit.activate_variable_tuning" title="pyaedt.Emit.activate_variable_tuning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.activate_variable_tuning</span></code></a>(variable_name)</p></td>
+<td><p>Activate tuning analysis for a variable and optionally set up ranges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.add_error_message.html#pyaedt.Emit.add_error_message" title="pyaedt.Emit.add_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.add_error_message</span></code></a>(message_text[, ...])</p></td>
+<td><p>Add a type 0 &quot;Error&quot; message to either the global, active project, or active design level of the message mmanager tree.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.add_info_message.html#pyaedt.Emit.add_info_message" title="pyaedt.Emit.add_info_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.add_info_message</span></code></a>(message_text[, ...])</p></td>
+<td><p>Add a type 0 &quot;Info&quot; message to either the global, active project, or active design level of the message manager tree.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.add_warning_message.html#pyaedt.Emit.add_warning_message" title="pyaedt.Emit.add_warning_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.add_warning_message</span></code></a>(message_text[, ...])</p></td>
+<td><p>Add a type 0 &quot;Warning&quot; message to either the global, active project, or active design level of the message manager tree.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.archive_project.html#pyaedt.Emit.archive_project" title="pyaedt.Emit.archive_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.archive_project</span></code></a>([project_file, ...])</p></td>
+<td><p>Archive the AEDT project and add a message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.autosave_disable.html#pyaedt.Emit.autosave_disable" title="pyaedt.Emit.autosave_disable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.autosave_disable</span></code></a>()</p></td>
+<td><p>Disable autosave in AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.autosave_enable.html#pyaedt.Emit.autosave_enable" title="pyaedt.Emit.autosave_enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.autosave_enable</span></code></a>()</p></td>
+<td><p>Enable autosave in AEDT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.change_automatically_use_causal_materials.html#pyaedt.Emit.change_automatically_use_causal_materials" title="pyaedt.Emit.change_automatically_use_causal_materials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.change_automatically_use_causal_materials</span></code></a>([...])</p></td>
+<td><p>Enable or disable the automatic use of causal materials for lossy dielectrics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.change_design_settings.html#pyaedt.Emit.change_design_settings" title="pyaedt.Emit.change_design_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.change_design_settings</span></code></a>(settings)</p></td>
+<td><p>Set Design Settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.change_material_override.html#pyaedt.Emit.change_material_override" title="pyaedt.Emit.change_material_override"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.change_material_override</span></code></a>([...])</p></td>
+<td><p>Enable or disable the material override in the project.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.change_validation_settings.html#pyaedt.Emit.change_validation_settings" title="pyaedt.Emit.change_validation_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.change_validation_settings</span></code></a>([...])</p></td>
+<td><p>Update the validation design settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.check_beta_option_enabled.html#pyaedt.Emit.check_beta_option_enabled" title="pyaedt.Emit.check_beta_option_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.check_beta_option_enabled</span></code></a>(beta_option_name)</p></td>
+<td><p>Check if a beta option is enabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.clean_proj_folder.html#pyaedt.Emit.clean_proj_folder" title="pyaedt.Emit.clean_proj_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.clean_proj_folder</span></code></a>([directory, name])</p></td>
+<td><p>Delete a project folder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.close_desktop.html#pyaedt.Emit.close_desktop" title="pyaedt.Emit.close_desktop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.close_desktop</span></code></a>()</p></td>
+<td><p>Close AEDT and release it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.close_project.html#pyaedt.Emit.close_project" title="pyaedt.Emit.close_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.close_project</span></code></a>([name, saveproject])</p></td>
+<td><p>Close an AEDT project.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.copy_design_from.html#pyaedt.Emit.copy_design_from" title="pyaedt.Emit.copy_design_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.copy_design_from</span></code></a>(project_fullname, ...)</p></td>
+<td><p>Copy a design from a project into the active design.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.copy_project.html#pyaedt.Emit.copy_project" title="pyaedt.Emit.copy_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.copy_project</span></code></a>(path, dest)</p></td>
+<td><p>Copy the project to another destination.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.create_dataset.html#pyaedt.Emit.create_dataset" title="pyaedt.Emit.create_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.create_dataset</span></code></a>(dsname, xlist, ylist[, ...])</p></td>
+<td><p>Create a dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.create_dataset1d_design.html#pyaedt.Emit.create_dataset1d_design" title="pyaedt.Emit.create_dataset1d_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.create_dataset1d_design</span></code></a>(dsname, xlist, ...)</p></td>
+<td><p>Create a design dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.create_dataset1d_project.html#pyaedt.Emit.create_dataset1d_project" title="pyaedt.Emit.create_dataset1d_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.create_dataset1d_project</span></code></a>(dsname, xlist, ...)</p></td>
+<td><p>Create a project dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.create_dataset3d.html#pyaedt.Emit.create_dataset3d" title="pyaedt.Emit.create_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.create_dataset3d</span></code></a>(dsname, xlist, ylist)</p></td>
+<td><p>Create a 3D dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.create_new_project.html#pyaedt.Emit.create_new_project" title="pyaedt.Emit.create_new_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.create_new_project</span></code></a>(proj_name)</p></td>
+<td><p>Create a project within AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.dataset_exists.html#pyaedt.Emit.dataset_exists" title="pyaedt.Emit.dataset_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.dataset_exists</span></code></a>(name[, is_project_dataset])</p></td>
+<td><p>Check if a dataset exists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.deactivate_variable_optimization.html#pyaedt.Emit.deactivate_variable_optimization" title="pyaedt.Emit.deactivate_variable_optimization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.deactivate_variable_optimization</span></code></a>(...)</p></td>
+<td><p>Deactivate the optimization analysis for a variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.deactivate_variable_sensitivity.html#pyaedt.Emit.deactivate_variable_sensitivity" title="pyaedt.Emit.deactivate_variable_sensitivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.deactivate_variable_sensitivity</span></code></a>(...)</p></td>
+<td><p>Deactivate the sensitivity analysis for a variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.deactivate_variable_statistical.html#pyaedt.Emit.deactivate_variable_statistical" title="pyaedt.Emit.deactivate_variable_statistical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.deactivate_variable_statistical</span></code></a>(...)</p></td>
+<td><p>Deactivate the statistical analysis for a variable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.deactivate_variable_tuning.html#pyaedt.Emit.deactivate_variable_tuning" title="pyaedt.Emit.deactivate_variable_tuning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.deactivate_variable_tuning</span></code></a>(variable_name)</p></td>
+<td><p>Deactivate the tuning analysis for a variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.delete_design.html#pyaedt.Emit.delete_design" title="pyaedt.Emit.delete_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.delete_design</span></code></a>([name, fallback_design])</p></td>
+<td><p>Delete a design from the current project.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.delete_project.html#pyaedt.Emit.delete_project" title="pyaedt.Emit.delete_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.delete_project</span></code></a>(project_name)</p></td>
+<td><p>Delete a project.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.delete_separator.html#pyaedt.Emit.delete_separator" title="pyaedt.Emit.delete_separator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.delete_separator</span></code></a>(separator_name)</p></td>
+<td><p>Delete a separator from either the active project or a design.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.delete_variable.html#pyaedt.Emit.delete_variable" title="pyaedt.Emit.delete_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.delete_variable</span></code></a>(sVarName)</p></td>
+<td><p>Delete a variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.design_variation.html#pyaedt.Emit.design_variation" title="pyaedt.Emit.design_variation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_variation</span></code></a>([variation_string])</p></td>
+<td><p>Generate a string to specify a desired variation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.duplicate_design.html#pyaedt.Emit.duplicate_design" title="pyaedt.Emit.duplicate_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.duplicate_design</span></code></a>(label[, ...])</p></td>
+<td><p>Copy a design to a new name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.evaluate_expression.html#pyaedt.Emit.evaluate_expression" title="pyaedt.Emit.evaluate_expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.evaluate_expression</span></code></a>(expression_string)</p></td>
+<td><p>Evaluate a valid string expression and return the numerical value in SI units.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.export_design_preview_to_jpg.html#pyaedt.Emit.export_design_preview_to_jpg" title="pyaedt.Emit.export_design_preview_to_jpg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.export_design_preview_to_jpg</span></code></a>(filename)</p></td>
+<td><p>Export design preview image to a JPG file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.export_profile.html#pyaedt.Emit.export_profile" title="pyaedt.Emit.export_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.export_profile</span></code></a>(setup_name[, ...])</p></td>
+<td><p>Export a solution profile to a PROF file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.export_variables_to_csv.html#pyaedt.Emit.export_variables_to_csv" title="pyaedt.Emit.export_variables_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.export_variables_to_csv</span></code></a>(filename[, ...])</p></td>
+<td><p>Export design properties, project variables, or both to a CSV file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.generate_temp_project_directory.html#pyaedt.Emit.generate_temp_project_directory" title="pyaedt.Emit.generate_temp_project_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.generate_temp_project_directory</span></code></a>(subdir_name)</p></td>
+<td><p>Generate a unique directory string to save a project to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.get_evaluated_value.html#pyaedt.Emit.get_evaluated_value" title="pyaedt.Emit.get_evaluated_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_evaluated_value</span></code></a>(variable_name[, units])</p></td>
+<td><p>Retrieve the evaluated value of a design property or project variable in SI units if no unit is provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.get_module.html#pyaedt.Emit.get_module" title="pyaedt.Emit.get_module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_module</span></code></a>(module_name)</p></td>
+<td><p>Aedt Module object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.get_oo_name.html#pyaedt.Emit.get_oo_name" title="pyaedt.Emit.get_oo_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_oo_name</span></code></a>(aedt_object[, object_name])</p></td>
+<td><p>Return the Object Oriented AEDT Properties names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.get_oo_object.html#pyaedt.Emit.get_oo_object" title="pyaedt.Emit.get_oo_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_oo_object</span></code></a>(aedt_object, object_name)</p></td>
+<td><p>Return the Object Oriented AEDT Object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.get_oo_properties.html#pyaedt.Emit.get_oo_properties" title="pyaedt.Emit.get_oo_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_oo_properties</span></code></a>(aedt_object, object_name)</p></td>
+<td><p>Return the Object Oriented AEDT Object Properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.get_oo_property_value.html#pyaedt.Emit.get_oo_property_value" title="pyaedt.Emit.get_oo_property_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_oo_property_value</span></code></a>(aedt_object, ...)</p></td>
+<td><p>Return the Object Oriented AEDT Object Properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.get_registry_key_int.html#pyaedt.Emit.get_registry_key_int" title="pyaedt.Emit.get_registry_key_int"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_registry_key_int</span></code></a>(key_full_name)</p></td>
+<td><p>Get the value for the AEDT registry key if one exists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.get_registry_key_string.html#pyaedt.Emit.get_registry_key_string" title="pyaedt.Emit.get_registry_key_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.get_registry_key_string</span></code></a>(key_full_name)</p></td>
+<td><p>Get the value for the AEDT registry key if one exists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.hidden_variable.html#pyaedt.Emit.hidden_variable" title="pyaedt.Emit.hidden_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.hidden_variable</span></code></a>(variable_name[, value])</p></td>
+<td><p>Set the variable to a hidden or unhidden variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.import_dataset1d.html#pyaedt.Emit.import_dataset1d" title="pyaedt.Emit.import_dataset1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset1d</span></code></a>(filename[, dsname, ...])</p></td>
+<td><p>Import a 1D dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.import_dataset3d.html#pyaedt.Emit.import_dataset3d" title="pyaedt.Emit.import_dataset3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.import_dataset3d</span></code></a>(filename[, dsname, ...])</p></td>
+<td><p>Import a 3D dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.insert_design.html#pyaedt.Emit.insert_design" title="pyaedt.Emit.insert_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.insert_design</span></code></a>([design_name, solution_type])</p></td>
+<td><p>Add a design of a specified type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.load_project.html#pyaedt.Emit.load_project" title="pyaedt.Emit.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.load_project</span></code></a>(project_file[, ...])</p></td>
+<td><p>Open an AEDT project based on a project and optional design.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.read_design_data.html#pyaedt.Emit.read_design_data" title="pyaedt.Emit.read_design_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.read_design_data</span></code></a>()</p></td>
+<td><p>Read back the design data as a dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.read_only_variable.html#pyaedt.Emit.read_only_variable" title="pyaedt.Emit.read_only_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.read_only_variable</span></code></a>(variable_name[, value])</p></td>
+<td><p>Set the variable to a read-only or not read-only variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.release_desktop.html#pyaedt.Emit.release_desktop" title="pyaedt.Emit.release_desktop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.release_desktop</span></code></a>([close_projects, ...])</p></td>
+<td><p>Release AEDT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.rename_design.html#pyaedt.Emit.rename_design" title="pyaedt.Emit.rename_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.rename_design</span></code></a>(new_name)</p></td>
+<td><p>Rename the active design.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.save_project.html#pyaedt.Emit.save_project" title="pyaedt.Emit.save_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.save_project</span></code></a>([project_file, overwrite, ...])</p></td>
+<td><p>Save the project and add a message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.set_active_design.html#pyaedt.Emit.set_active_design" title="pyaedt.Emit.set_active_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_active_design</span></code></a>(name)</p></td>
+<td><p>Change the active design to another design.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.set_active_dso_config_name.html#pyaedt.Emit.set_active_dso_config_name" title="pyaedt.Emit.set_active_dso_config_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_active_dso_config_name</span></code></a>([...])</p></td>
+<td><p>Change a specific registry key to a new value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.set_license_type.html#pyaedt.Emit.set_license_type" title="pyaedt.Emit.set_license_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_license_type</span></code></a>([license_type])</p></td>
+<td><p>Change the license type between <code class="docutils literal notranslate"><span class="pre">&quot;Pack&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Pool&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.set_registry_from_file.html#pyaedt.Emit.set_registry_from_file" title="pyaedt.Emit.set_registry_from_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_registry_from_file</span></code></a>(registry_file[, ...])</p></td>
+<td><p>Apply desktop registry settings from an ACT file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.set_registry_key.html#pyaedt.Emit.set_registry_key" title="pyaedt.Emit.set_registry_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.set_registry_key</span></code></a>(key_full_name, key_value)</p></td>
+<td><p>Change a specific registry key to a new value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.validate_simple.html#pyaedt.Emit.validate_simple" title="pyaedt.Emit.validate_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.validate_simple</span></code></a>([logfile])</p></td>
+<td><p>Validate a design.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.aedt_version_id.html#pyaedt.Emit.aedt_version_id" title="pyaedt.Emit.aedt_version_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.aedt_version_id</span></code></a></p></td>
+<td><p>AEDT version.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.boundaries.html#pyaedt.Emit.boundaries" title="pyaedt.Emit.boundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.boundaries</span></code></a></p></td>
+<td><p>Design boundaries and excitations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.couplings.html#pyaedt.Emit.couplings" title="pyaedt.Emit.couplings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.couplings</span></code></a></p></td>
+<td><p>Emit Couplings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.default_solution_type.html#pyaedt.Emit.default_solution_type" title="pyaedt.Emit.default_solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.default_solution_type</span></code></a></p></td>
+<td><p>Default solution type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.design_datasets.html#pyaedt.Emit.design_datasets" title="pyaedt.Emit.design_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_datasets</span></code></a></p></td>
+<td><p>Dictionary of Design Datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.design_list.html#pyaedt.Emit.design_list" title="pyaedt.Emit.design_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_list</span></code></a></p></td>
+<td><p>Design list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.design_name.html#pyaedt.Emit.design_name" title="pyaedt.Emit.design_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_name</span></code></a></p></td>
+<td><p>Design name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.design_properties.html#pyaedt.Emit.design_properties" title="pyaedt.Emit.design_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_properties</span></code></a></p></td>
+<td><p>Design properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.design_type.html#pyaedt.Emit.design_type" title="pyaedt.Emit.design_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.design_type</span></code></a></p></td>
+<td><p>Design type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.desktop_install_dir.html#pyaedt.Emit.desktop_install_dir" title="pyaedt.Emit.desktop_install_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.desktop_install_dir</span></code></a></p></td>
+<td><p>AEDT installation directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.existing_analysis_setups.html#pyaedt.Emit.existing_analysis_setups" title="pyaedt.Emit.existing_analysis_setups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.existing_analysis_setups</span></code></a></p></td>
+<td><p>Existing analysis setups.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.layouteditor.html#pyaedt.Emit.layouteditor" title="pyaedt.Emit.layouteditor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.layouteditor</span></code></a></p></td>
+<td><p>Return the Circuit Layout Editor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.library_list.html#pyaedt.Emit.library_list" title="pyaedt.Emit.library_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.library_list</span></code></a></p></td>
+<td><p>Library list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.lock_file.html#pyaedt.Emit.lock_file" title="pyaedt.Emit.lock_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.lock_file</span></code></a></p></td>
+<td><p>Lock file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.logger.html#pyaedt.Emit.logger" title="pyaedt.Emit.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.logger</span></code></a></p></td>
+<td><p>Logger for the design.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.modeler.html#pyaedt.Emit.modeler" title="pyaedt.Emit.modeler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.modeler</span></code></a></p></td>
+<td><p>Modeler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.o_component_manager.html#pyaedt.Emit.o_component_manager" title="pyaedt.Emit.o_component_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.o_component_manager</span></code></a></p></td>
+<td><p>Component manager object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.o_maxwell_parameters.html#pyaedt.Emit.o_maxwell_parameters" title="pyaedt.Emit.o_maxwell_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.o_maxwell_parameters</span></code></a></p></td>
+<td><p>AEDT Maxwell Parameter Setup Object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.o_model_manager.html#pyaedt.Emit.o_model_manager" title="pyaedt.Emit.o_model_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.o_model_manager</span></code></a></p></td>
+<td><p>Model manager object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.o_symbol_manager.html#pyaedt.Emit.o_symbol_manager" title="pyaedt.Emit.o_symbol_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.o_symbol_manager</span></code></a></p></td>
+<td><p>Aedt Simbol Manager.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.oanalysis.html#pyaedt.Emit.oanalysis" title="pyaedt.Emit.oanalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oanalysis</span></code></a></p></td>
+<td><p>Analysis AEDT Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.oboundary.html#pyaedt.Emit.oboundary" title="pyaedt.Emit.oboundary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oboundary</span></code></a></p></td>
+<td><p>Boundary Object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.odefinition_manager.html#pyaedt.Emit.odefinition_manager" title="pyaedt.Emit.odefinition_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.odefinition_manager</span></code></a></p></td>
+<td><p>Definition Manager Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.odesign.html#pyaedt.Emit.odesign" title="pyaedt.Emit.odesign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.odesign</span></code></a></p></td>
+<td><p>Design.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.odesktop.html#pyaedt.Emit.odesktop" title="pyaedt.Emit.odesktop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.odesktop</span></code></a></p></td>
+<td><p>AEDT instance containing all projects and designs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.oeditor.html#pyaedt.Emit.oeditor" title="pyaedt.Emit.oeditor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oeditor</span></code></a></p></td>
+<td><p>Oeditor Module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.oexcitation.html#pyaedt.Emit.oexcitation" title="pyaedt.Emit.oexcitation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oexcitation</span></code></a></p></td>
+<td><p>Solution Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.ofieldsreporter.html#pyaedt.Emit.ofieldsreporter" title="pyaedt.Emit.ofieldsreporter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.ofieldsreporter</span></code></a></p></td>
+<td><p>Fields reporter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.oimport_export.html#pyaedt.Emit.oimport_export" title="pyaedt.Emit.oimport_export"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oimport_export</span></code></a></p></td>
+<td><p>Import/Export Manager Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.omaterial_manager.html#pyaedt.Emit.omaterial_manager" title="pyaedt.Emit.omaterial_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.omaterial_manager</span></code></a></p></td>
+<td><p>Material Manager Module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.omatrix.html#pyaedt.Emit.omatrix" title="pyaedt.Emit.omatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.omatrix</span></code></a></p></td>
+<td><p>Matrix Object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.omeshmodule.html#pyaedt.Emit.omeshmodule" title="pyaedt.Emit.omeshmodule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.omeshmodule</span></code></a></p></td>
+<td><p>Icepak Mesh Module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.omodelsetup.html#pyaedt.Emit.omodelsetup" title="pyaedt.Emit.omodelsetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.omodelsetup</span></code></a></p></td>
+<td><p>AEDT Model Setup Object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.omonitor.html#pyaedt.Emit.omonitor" title="pyaedt.Emit.omonitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.omonitor</span></code></a></p></td>
+<td><p>AEDT Monitor Object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.ooptimetrics.html#pyaedt.Emit.ooptimetrics" title="pyaedt.Emit.ooptimetrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.ooptimetrics</span></code></a></p></td>
+<td><p>AEDT Optimetrics Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.ooutput_variable.html#pyaedt.Emit.ooutput_variable" title="pyaedt.Emit.ooutput_variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.ooutput_variable</span></code></a></p></td>
+<td><p>AEDT Output Variable Module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.opadstackmanager.html#pyaedt.Emit.opadstackmanager" title="pyaedt.Emit.opadstackmanager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.opadstackmanager</span></code></a></p></td>
+<td><p>AEDT oPadstackManager.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.oproject.html#pyaedt.Emit.oproject" title="pyaedt.Emit.oproject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oproject</span></code></a></p></td>
+<td><p>Project property.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.oradfield.html#pyaedt.Emit.oradfield" title="pyaedt.Emit.oradfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oradfield</span></code></a></p></td>
+<td><p>AEDT Radiation Field Object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.oreportsetup.html#pyaedt.Emit.oreportsetup" title="pyaedt.Emit.oreportsetup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.oreportsetup</span></code></a></p></td>
+<td><p>Report setup.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.osolution.html#pyaedt.Emit.osolution" title="pyaedt.Emit.osolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.osolution</span></code></a></p></td>
+<td><p>Solution Module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.personallib.html#pyaedt.Emit.personallib" title="pyaedt.Emit.personallib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.personallib</span></code></a></p></td>
+<td><p>PersonalLib directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.project_datasets.html#pyaedt.Emit.project_datasets" title="pyaedt.Emit.project_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_datasets</span></code></a></p></td>
+<td><p>Dictionary of Project Datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.project_file.html#pyaedt.Emit.project_file" title="pyaedt.Emit.project_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_file</span></code></a></p></td>
+<td><p>Project name and path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.project_list.html#pyaedt.Emit.project_list" title="pyaedt.Emit.project_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_list</span></code></a></p></td>
+<td><p>Project list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.project_name.html#pyaedt.Emit.project_name" title="pyaedt.Emit.project_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_name</span></code></a></p></td>
+<td><p>Project name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.project_path.html#pyaedt.Emit.project_path" title="pyaedt.Emit.project_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_path</span></code></a></p></td>
+<td><p>Project path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.project_properies.html#pyaedt.Emit.project_properies" title="pyaedt.Emit.project_properies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_properies</span></code></a></p></td>
+<td><p>Project properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.project_time_stamp.html#pyaedt.Emit.project_time_stamp" title="pyaedt.Emit.project_time_stamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_time_stamp</span></code></a></p></td>
+<td><p>Return Project time stamp.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.project_timestamp_changed.html#pyaedt.Emit.project_timestamp_changed" title="pyaedt.Emit.project_timestamp_changed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.project_timestamp_changed</span></code></a></p></td>
+<td><p>Return a bool if time stamp changed or not.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.pyaedt_dir.html#pyaedt.Emit.pyaedt_dir" title="pyaedt.Emit.pyaedt_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.pyaedt_dir</span></code></a></p></td>
+<td><p>PyAEDT directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.results_directory.html#pyaedt.Emit.results_directory" title="pyaedt.Emit.results_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.results_directory</span></code></a></p></td>
+<td><p>Results directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.setup_names.html#pyaedt.Emit.setup_names" title="pyaedt.Emit.setup_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.setup_names</span></code></a></p></td>
+<td><p>Setup names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.solution_type.html#pyaedt.Emit.solution_type" title="pyaedt.Emit.solution_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.solution_type</span></code></a></p></td>
+<td><p>Solution type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.src_dir.html#pyaedt.Emit.src_dir" title="pyaedt.Emit.src_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.src_dir</span></code></a></p></td>
+<td><p>Source directory for Python.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.syslib.html#pyaedt.Emit.syslib" title="pyaedt.Emit.syslib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.syslib</span></code></a></p></td>
+<td><p>SysLib directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.temp_directory.html#pyaedt.Emit.temp_directory" title="pyaedt.Emit.temp_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.temp_directory</span></code></a></p></td>
+<td><p>Path to the temporary directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.toolkit_directory.html#pyaedt.Emit.toolkit_directory" title="pyaedt.Emit.toolkit_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.toolkit_directory</span></code></a></p></td>
+<td><p>Path to the toolkit directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.userlib.html#pyaedt.Emit.userlib" title="pyaedt.Emit.userlib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.userlib</span></code></a></p></td>
+<td><p>UserLib directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.valid_design.html#pyaedt.Emit.valid_design" title="pyaedt.Emit.valid_design"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.valid_design</span></code></a></p></td>
+<td><p>Valid design.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyaedt.Emit.variable_manager.html#pyaedt.Emit.variable_manager" title="pyaedt.Emit.variable_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.variable_manager</span></code></a></p></td>
+<td><p>Variable manager for creating and managing project design and postprocessing variables.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyaedt.Emit.working_directory.html#pyaedt.Emit.working_directory" title="pyaedt.Emit.working_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Emit.working_directory</span></code></a></p></td>
+<td><p>Path to the working directory.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

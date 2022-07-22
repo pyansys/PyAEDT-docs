@@ -1,0 +1,6 @@
+create\_multipole\_debye\_material
+==================================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.create_multipole_debye_material

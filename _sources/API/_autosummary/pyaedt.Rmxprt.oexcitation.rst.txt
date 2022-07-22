@@ -1,0 +1,6 @@
+oexcitation
+===========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.oexcitation

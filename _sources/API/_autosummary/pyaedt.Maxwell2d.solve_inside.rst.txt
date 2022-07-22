@@ -1,0 +1,6 @@
+solve\_inside
+=============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.solve_inside

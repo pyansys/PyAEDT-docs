@@ -1,0 +1,6 @@
+update\_primitives
+==================
+
+.. currentmodule:: pyaedt.edb_core.layout
+
+.. automethod:: EdbLayout.update_primitives

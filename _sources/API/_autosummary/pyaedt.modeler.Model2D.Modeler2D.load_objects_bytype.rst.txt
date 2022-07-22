@@ -1,0 +1,6 @@
+load\_objects\_bytype
+=====================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.load_objects_bytype

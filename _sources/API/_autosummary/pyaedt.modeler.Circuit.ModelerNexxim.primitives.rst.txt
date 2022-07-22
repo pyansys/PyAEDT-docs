@@ -1,0 +1,6 @@
+primitives
+==========
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerNexxim.primitives

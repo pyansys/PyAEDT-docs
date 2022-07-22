@@ -1,0 +1,6 @@
+model\_name
+===========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: CircuitComponent.model_name

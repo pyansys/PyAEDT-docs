@@ -1,0 +1,6 @@
+oimport\_export
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss.oimport_export

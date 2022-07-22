@@ -1,0 +1,6 @@
+fit\_all
+========
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.fit_all

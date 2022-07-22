@@ -1,0 +1,6 @@
+﻿Open
+====
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: Open

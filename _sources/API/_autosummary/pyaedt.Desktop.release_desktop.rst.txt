@@ -1,0 +1,6 @@
+release\_desktop
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Desktop.release_desktop

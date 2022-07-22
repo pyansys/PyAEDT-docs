@@ -1,0 +1,6 @@
+o\_component\_manager
+=====================
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerNexxim.o_component_manager

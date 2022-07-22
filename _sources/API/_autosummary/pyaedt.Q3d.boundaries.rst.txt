@@ -1,0 +1,6 @@
+boundaries
+==========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.boundaries

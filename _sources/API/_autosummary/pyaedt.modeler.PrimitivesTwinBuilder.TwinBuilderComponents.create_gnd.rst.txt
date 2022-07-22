@@ -1,0 +1,6 @@
+create\_gnd
+===========
+
+.. currentmodule:: pyaedt.modeler.PrimitivesTwinBuilder
+
+.. automethod:: TwinBuilderComponents.create_gnd

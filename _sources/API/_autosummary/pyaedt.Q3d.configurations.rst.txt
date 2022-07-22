@@ -1,0 +1,6 @@
+configurations
+==============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.configurations

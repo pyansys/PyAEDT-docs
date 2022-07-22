@@ -1,0 +1,22 @@
+﻿pyaedt.modeler.stackup\_3d.PadstackLayer
+========================================
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. autoclass:: PadstackLayer
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+   
+   
+
+   
+   
+   

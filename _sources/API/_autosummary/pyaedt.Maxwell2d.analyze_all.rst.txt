@@ -1,0 +1,6 @@
+analyze\_all
+============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.analyze_all

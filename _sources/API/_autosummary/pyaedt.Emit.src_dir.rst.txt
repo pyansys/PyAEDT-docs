@@ -1,0 +1,6 @@
+src\_dir
+========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Emit.src_dir

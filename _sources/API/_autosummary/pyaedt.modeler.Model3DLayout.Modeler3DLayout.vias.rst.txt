@@ -1,0 +1,6 @@
+vias
+====
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.vias

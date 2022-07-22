@@ -1,0 +1,6 @@
+find\_new\_objects
+==================
+
+.. currentmodule:: pyaedt.modeler.Primitives3D
+
+.. automethod:: Primitives3D.find_new_objects

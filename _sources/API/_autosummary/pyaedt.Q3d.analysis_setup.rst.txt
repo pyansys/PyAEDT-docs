@@ -1,0 +1,6 @@
+analysis\_setup
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.analysis_setup

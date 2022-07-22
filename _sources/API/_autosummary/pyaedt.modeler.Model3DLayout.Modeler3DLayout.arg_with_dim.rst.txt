@@ -1,0 +1,6 @@
+arg\_with\_dim
+==============
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.arg_with_dim

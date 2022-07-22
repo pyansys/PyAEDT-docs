@@ -1,0 +1,6 @@
+mesh
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.mesh

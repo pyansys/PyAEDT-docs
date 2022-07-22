@@ -1,0 +1,6 @@
+core\_hfss
+==========
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Edb.core_hfss

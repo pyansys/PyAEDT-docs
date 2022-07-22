@@ -1,0 +1,6 @@
+schematic
+=========
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerTwinBuilder.schematic

@@ -1,0 +1,6 @@
+get\_excitations\_name
+======================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Maxwell2d.get_excitations_name

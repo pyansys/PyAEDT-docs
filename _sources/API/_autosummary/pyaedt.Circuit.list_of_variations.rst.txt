@@ -1,0 +1,6 @@
+list\_of\_variations
+====================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.list_of_variations

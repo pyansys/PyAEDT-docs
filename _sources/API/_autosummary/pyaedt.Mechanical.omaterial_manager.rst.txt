@@ -1,0 +1,6 @@
+omaterial\_manager
+==================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Mechanical.omaterial_manager

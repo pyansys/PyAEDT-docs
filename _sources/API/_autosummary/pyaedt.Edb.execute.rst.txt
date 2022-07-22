@@ -1,0 +1,6 @@
+execute
+=======
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Edb.execute

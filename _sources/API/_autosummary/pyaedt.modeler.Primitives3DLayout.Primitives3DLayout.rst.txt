@@ -1,0 +1,131 @@
+﻿pyaedt.modeler.Primitives3DLayout.Primitives3DLayout
+====================================================
+
+.. currentmodule:: pyaedt.modeler.Primitives3DLayout
+
+.. autoclass:: Primitives3DLayout
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Primitives3DLayout.arg_with_dim
+      
+      
+      Primitives3DLayout.change_net_visibility
+      
+      
+      Primitives3DLayout.create_circle
+      
+      
+      Primitives3DLayout.create_line
+      
+      
+      Primitives3DLayout.create_rectangle
+      
+      
+      Primitives3DLayout.create_via
+      
+      
+      Primitives3DLayout.new_padstack
+      
+      
+      Primitives3DLayout.objects_by_layer
+      
+      
+      Primitives3DLayout.objects_by_net
+      
+      
+      Primitives3DLayout.place_3d_component
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      Primitives3DLayout.circles
+      
+      
+      Primitives3DLayout.circles_voids
+      
+      
+      Primitives3DLayout.components
+      
+      
+      Primitives3DLayout.components_3d
+      
+      
+      Primitives3DLayout.defaultmaterial
+      
+      
+      Primitives3DLayout.geometries
+      
+      
+      Primitives3DLayout.lines
+      
+      
+      Primitives3DLayout.lines_voids
+      
+      
+      Primitives3DLayout.logger
+      
+      
+      Primitives3DLayout.model_units
+      
+      
+      Primitives3DLayout.modeler
+      
+      
+      Primitives3DLayout.nets
+      
+      
+      Primitives3DLayout.opadstackmanager
+      
+      
+      Primitives3DLayout.padstacks
+      
+      
+      Primitives3DLayout.pins
+      
+      
+      Primitives3DLayout.polygons
+      
+      
+      Primitives3DLayout.polygons_voids
+      
+      
+      Primitives3DLayout.power_nets
+      
+      
+      Primitives3DLayout.rectangles
+      
+      
+      Primitives3DLayout.rectangles_voids
+      
+      
+      Primitives3DLayout.signal_nets
+      
+      
+      Primitives3DLayout.version
+      
+      
+      Primitives3DLayout.vias
+      
+      
+      Primitives3DLayout.voids
+      
+   
+   

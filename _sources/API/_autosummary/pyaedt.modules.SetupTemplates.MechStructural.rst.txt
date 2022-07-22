@@ -1,0 +1,6 @@
+﻿MechStructural
+==============
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: MechStructural

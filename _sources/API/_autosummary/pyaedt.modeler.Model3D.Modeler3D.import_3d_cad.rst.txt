@@ -1,0 +1,6 @@
+import\_3d\_cad
+===============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.import_3d_cad

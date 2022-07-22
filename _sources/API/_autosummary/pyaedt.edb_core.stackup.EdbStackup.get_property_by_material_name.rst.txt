@@ -1,0 +1,6 @@
+get\_property\_by\_material\_name
+=================================
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.get_property_by_material_name

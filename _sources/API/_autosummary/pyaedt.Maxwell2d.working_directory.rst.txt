@@ -1,0 +1,6 @@
+working\_directory
+==================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.working_directory

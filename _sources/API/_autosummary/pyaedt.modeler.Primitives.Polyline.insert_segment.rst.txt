@@ -1,0 +1,6 @@
+insert\_segment
+===============
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. automethod:: Polyline.insert_segment

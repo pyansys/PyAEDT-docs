@@ -1,0 +1,6 @@
+ooptimetrics
+============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.ooptimetrics

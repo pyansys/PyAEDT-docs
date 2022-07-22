@@ -1,0 +1,6 @@
+version
+=======
+
+.. currentmodule:: pyaedt.modeler.PrimitivesCircuit
+
+.. autoproperty:: CircuitComponents.version

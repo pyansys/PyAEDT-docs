@@ -1,0 +1,6 @@
+pos\_term\_to\_ground
+=====================
+
+.. currentmodule:: pyaedt.edb_core.siwave
+
+.. autoproperty:: SiwaveDCSetupTemplate.pos_term_to_ground

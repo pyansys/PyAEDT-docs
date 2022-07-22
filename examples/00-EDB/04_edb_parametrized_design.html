@@ -1,0 +1,1127 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>EDB: fully parameterized design &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="EDB: plot nets with Matplotlib" href="05_Plot_nets.html" />
+    <link rel="prev" title="EDB: 5G linear array antenna" href="03_5G_antenna_example.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Examples</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">EDB: fully parameterized design</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_EDB_Create_VIA.html">
+   EDB: geometry creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_edb_example.html">
+   EDB: Siwave analysis from EDB setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_edb_to_ipc2581.html">
+   EDB: IPC2581 export
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_5G_antenna_example.html">
+   EDB: 5G linear array antenna
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   EDB: fully parameterized design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_Plot_nets.html">
+   EDB: plot nets with Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_Advanced_EDB.html">
+   EDB: parametric via creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_WPF_Merge_Utility.html">
+   EDB: merge utility
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_CPWG.html">
+   EDB: fully parameterized CPWG design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Configurations.html">
+   General: configuration files
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/HFSS_CoordinateSystem.html">
+   General: coordinate system creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Optimetrics.html">
+   General: optimetrics setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Polyline_Primitives.html">
+   General: polyline creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Advanced_Far_Field.html">
+   HFSS: advanced far field postprocessing
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Array.html">
+   HFSS: component antenna array
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/EDB_in_3DLayout.html">
+   HFSS 3D Layout: PCB and EDB in 3D layout
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Flex_CPWG.html">
+   HFSS: flex cable CPWG
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS3DLayout_Via.html">
+   HFSS 3D Layout: parametric via analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Choke.html">
+   HFSS: choke
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Dipole.html">
+   HFSS: dipole antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Spiral.html">
+   HFSS: spiral inductor
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Machine_learning_applied_to_Patch.html">
+   HFSS: machine learning applied to a patch
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Doppler_Example.html">
+   SBR+: doppler setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Example.html">
+   SBR+: HFSS to SBR+ coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Time_Plot.html">
+   SBR+: HFSS to SBR+ time animation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_NissanLeaf.html">
+   Maxwell 2D: PM synchronous motor transient analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_Transient.html">
+   Maxwell 2D: transient winding analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam3.html">
+   Maxwell 3D: bath plate analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam7.html">
+   Maxwell 3D: asymmetric conductor analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3D_Choke.html">
+   Maxwell 3D: choke setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell_Magnet.html">
+   Maxwell 3D: magnet DC analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Example.html">
+   Circuit: schematic creation and analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Subcircuit_Example.html">
+   Circuit: schematic subcircuit management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Transient.html">
+   Circuit: transient analysis and eye plot
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Create_Netlist.html">
+   Circuit: netlist to schematic iport
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_Example.html">
+   EMIT: antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_HFSS_Example.html">
+   EMIT: HFSS to EMIT coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Reports.html">
+   Circuit: automatic report creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Touchstone_Management.html">
+   Circuit: Touchstone file management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Icepak_Example.html">
+   Icepak: graphic card thermal analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Sherlock_Example.html">
+   Icepack: setup from Sherlock inputs
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_CPWG.html">
+   2D Extractor: CPWG analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_Stripline.html">
+   2D Extractor: stripline analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q3D_Example.html">
+   Q3D Extractor: busbar analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Icepak_Coupling.html">
+   Multiphysics: HFSS-Icepack multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Mechanical.html">
+   Multiphysics: HFSS-Mechanical multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/01-RC_Circuit_Example.html">
+   Twin Builder: RC circuit design anaysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
+   Twin Builder: wiring a rectifier with a capacitor filter
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-object">
+   Import object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-non-graphical-mode">
+   Set non-graphical mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launch-edb">
+   Launch EDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-parameters">
+   Define parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-stackup-layers">
+   Define stackup layers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-padstack-for-signal-via">
+   Create padstack for signal via
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assign-net-names">
+   Assign net names
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#place-signal-vias">
+   Place signal vias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#draw-ground-polygons">
+   Draw ground polygons
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-edb">
+   Plot EDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-edb">
+   Save EDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-edb-in-aedt">
+   Open EDB in AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-wave-ports">
+   Create wave ports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-hfss-simulation-setup">
+   Add HFSS simulation setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#start-hfss-solver">
+   Start HFSS solver
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-00-edb-04-edb-parametrized-design-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="edb-fully-parameterized-design">
+<span id="sphx-glr-examples-00-edb-04-edb-parametrized-design-py"></span><h1>EDB: fully parameterized design<a class="headerlink" href="#edb-fully-parameterized-design" title="Permalink to this heading">#</a></h1>
+<p>This example shows how to use HFSS 3D Layout to create and solve a parametric design.</p>
+<section id="import-object">
+<h2>Import object<a class="headerlink" href="#import-object" title="Permalink to this heading">#</a></h2>
+<p>Import the <code class="docutils literal notranslate"><span class="pre">Hfss3dlayout</span></code> object and initialize it on version 2022 R2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Edb</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</section>
+<section id="set-non-graphical-mode">
+<h2>Set non-graphical mode<a class="headerlink" href="#set-non-graphical-mode" title="Permalink to this heading">#</a></h2>
+<p>Set non-graphical mode. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-edb">
+<h2>Launch EDB<a class="headerlink" href="#launch-edb" title="Permalink to this heading">#</a></h2>
+<p>Launch EDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/tempfile.html#tempfile.gettempdir" title="tempfile.gettempdir" class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-function"><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span></a><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;pcb&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.aedb&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">)</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">Edb</span><span class="p">(</span><span class="n">edbpath</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="n">edbversion</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\pcb_LKRXJC.aedb
+pyaedt info: Logger started on D:\Temp\pyaedt20220722_091734.log
+pyaedt info: Logger is initialized in EDB.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Objects Initialized
+pyaedt info: EDB D:\Temp\pcb_LKRXJC.aedb was created correctly.
+pyaedt info: EDB was initialized.
+</pre></div>
+</div>
+</section>
+<section id="define-parameters">
+<h2>Define parameters<a class="headerlink" href="#define-parameters" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;$ms_width&quot;</span><span class="p">:</span> <span class="s2">&quot;0.4mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$sl_width&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$ms_spacing&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$sl_spacing&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$via_spacing&quot;</span><span class="p">:</span> <span class="s2">&quot;0.5mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$via_diam&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$pad_diam&quot;</span><span class="p">:</span> <span class="s2">&quot;0.6mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$anti_pad_diam&quot;</span><span class="p">:</span> <span class="s2">&quot;0.7mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$pcb_len&quot;</span><span class="p">:</span> <span class="s2">&quot;30mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$pcb_w&quot;</span><span class="p">:</span> <span class="s2">&quot;5mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$x_size&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$y_size&quot;</span><span class="p">:</span> <span class="s2">&quot;1mm&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;$corner_rad&quot;</span><span class="p">:</span> <span class="s2">&quot;0.5mm&quot;</span><span class="p">}</span>
+
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">par_name</span></a> <span class="ow">in</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">:</span>
+    <span class="n">edb</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">par_name</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">params</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">par_name</span></a><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Creating project variable $ms_width.
+pyaedt info: Creating project variable $sl_width.
+pyaedt info: Creating project variable $ms_spacing.
+pyaedt info: Creating project variable $sl_spacing.
+pyaedt info: Creating project variable $via_spacing.
+pyaedt info: Creating project variable $via_diam.
+pyaedt info: Creating project variable $pad_diam.
+pyaedt info: Creating project variable $anti_pad_diam.
+pyaedt info: Creating project variable $pcb_len.
+pyaedt info: Creating project variable $pcb_w.
+pyaedt info: Creating project variable $x_size.
+pyaedt info: Creating project variable $y_size.
+pyaedt info: Creating project variable $corner_rad.
+</pre></div>
+</div>
+</section>
+<section id="define-stackup-layers">
+<h2>Define stackup layers<a class="headerlink" href="#define-stackup-layers" title="Permalink to this heading">#</a></h2>
+<p>Define stackup layers from bottom to top.
+Note that in the stackup definition, layer_type = (0:signal, 1:dielectric).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;35um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;copper&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;diel_3&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;275um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sig_2&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;35um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;copper&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;diel_2&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;275um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sig_1&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;35um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;copper&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;diel_1&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;275um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;FR4_epoxy&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_type&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;thickness&quot;</span><span class="p">:</span> <span class="s2">&quot;35um&quot;</span><span class="p">,</span> <span class="s2">&quot;material&quot;</span><span class="p">:</span> <span class="s2">&quot;copper&quot;</span><span class="p">}]</span>
+
+
+<span class="c1"># Create EDB stackup.</span>
+<span class="c1"># Bottom layer</span>
+
+<span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                          <span class="n">layerType</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;layer_type&quot;</span><span class="p">],</span>
+                                          <span class="n">thickness</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;thickness&quot;</span><span class="p">],</span>
+                                          <span class="n">material</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;material&quot;</span><span class="p">])</span>  <span class="c1"># Insert first layer</span>
+<span class="c1"># All subsequent layers</span>
+
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">edb</span><span class="o">.</span><span class="n">core_stackup</span><span class="o">.</span><span class="n">stackup_layers</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                              <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                              <span class="n">layerType</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;layer_type&quot;</span><span class="p">],</span>
+                                              <span class="n">thickness</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;thickness&quot;</span><span class="p">],</span>
+                                              <span class="n">material</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;material&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="create-padstack-for-signal-via">
+<h2>Create padstack for signal via<a class="headerlink" href="#create-padstack-for-signal-via" title="Permalink to this heading">#</a></h2>
+<p>Create a parameterized padstack for the signal via.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a> <span class="o">=</span> <span class="s2">&quot;automated_via&quot;</span>
+<span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">create_padstack</span><span class="p">(</span>
+            <span class="n">padstackname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a><span class="p">,</span>
+            <span class="n">holediam</span><span class="o">=</span><span class="s2">&quot;$via_diam&quot;</span><span class="p">,</span>
+            <span class="n">paddiam</span><span class="o">=</span><span class="s2">&quot;$pad_diam&quot;</span><span class="p">,</span>
+            <span class="n">antipaddiam</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">startlayer</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span>
+            <span class="n">endlayer</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+            <span class="n">antipad_shape</span><span class="o">=</span><span class="s2">&quot;Bullet&quot;</span><span class="p">,</span>
+            <span class="n">x_size</span><span class="o">=</span><span class="s2">&quot;$x_size&quot;</span><span class="p">,</span>
+            <span class="n">y_size</span><span class="o">=</span><span class="s2">&quot;$y_size&quot;</span><span class="p">,</span>
+            <span class="n">corner_radius</span><span class="o">=</span><span class="s2">&quot;$corner_rad&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Padstack automated_via create correctly
+
+&#39;automated_via&#39;
+</pre></div>
+</div>
+</section>
+<section id="assign-net-names">
+<h2>Assign net names<a class="headerlink" href="#assign-net-names" title="Permalink to this heading">#</a></h2>
+<p># Assign net names. There are only two signal nets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_p</span></a> <span class="o">=</span> <span class="s2">&quot;p&quot;</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_n</span></a> <span class="o">=</span> <span class="s2">&quot;n&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="place-signal-vias">
+<h2>Place signal vias<a class="headerlink" href="#place-signal-vias" title="Permalink to this heading">#</a></h2>
+<p>Place signal vias.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">place_padstack</span><span class="p">(</span>
+            <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="n">definition_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a><span class="p">,</span>
+            <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_p</span></a><span class="p">,</span>
+            <span class="n">via_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span>
+            <span class="n">fromlayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="n">tolayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],)</span>
+
+<span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">place_padstack</span><span class="p">(</span>
+            <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="n">definition_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a><span class="p">,</span>
+            <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_p</span></a><span class="p">,</span>
+            <span class="n">via_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span>
+            <span class="n">fromlayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="n">tolayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],)</span>
+
+<span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">place_padstack</span><span class="p">(</span>
+            <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="n">definition_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a><span class="p">,</span>
+            <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_n</span></a><span class="p">,</span>
+            <span class="n">via_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">rotation</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span>
+            <span class="n">fromlayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="n">tolayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],)</span>
+
+<span class="n">edb</span><span class="o">.</span><span class="n">core_padstack</span><span class="o">.</span><span class="n">place_padstack</span><span class="p">(</span>
+            <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="n">definition_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_via_padstack</span></a><span class="p">,</span>
+            <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_n</span></a><span class="p">,</span>
+            <span class="n">via_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">rotation</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span>
+            <span class="n">fromlayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="n">tolayer</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],)</span>
+
+
+<span class="c1"># ###############################################################################</span>
+<span class="c1"># Draw parameterized traces</span>
+<span class="c1"># ~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="c1"># Draw parameterized traces.</span>
+<span class="c1"># Trace the width and the routing (Microstrip-Stripline-Microstrip).</span>
+<span class="c1"># Applies to both p and n nets.</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">width</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;$ms_width&quot;</span><span class="p">,</span> <span class="s2">&quot;$sl_width&quot;</span><span class="p">,</span> <span class="s2">&quot;$ms_width&quot;</span><span class="p">]</span>                       <span class="c1"># Trace width, n and p</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">route_layer</span></a> <span class="o">=</span> <span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>    <span class="c1"># Routing layer, n and p</span>
+
+<span class="c1"># Define points for three traces in the &quot;p&quot; net</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">points_p</span></a> <span class="o">=</span> <span class="p">[</span>
+           <span class="p">[[</span><span class="s2">&quot;0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len/3-2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len/3-$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">],</span>
+           <span class="p">[[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len/3+$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len/3+2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($sl_width+$sl_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3-2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($sl_width+$sl_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3-$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">],</span>
+           <span class="p">[[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3+$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3+2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">],</span>
+          <span class="p">]</span>
+
+<span class="c1"># Define points for three traces in the &quot;n&quot; net</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">points_n</span></a> <span class="o">=</span> <span class="p">[</span>
+          <span class="p">[[</span><span class="s2">&quot;0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len/3-2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len/3-$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+          <span class="p">],</span>
+          <span class="p">[[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len/3+$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len/3+2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3-2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3-$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$sl_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+          <span class="p">],</span>
+          <span class="p">[[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 + $via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 + 2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing)/2&quot;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s2">&quot;$pcb_len&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width + $ms_spacing)/2&quot;</span><span class="p">],</span>
+          <span class="p">],</span>
+         <span class="p">]</span>
+
+<span class="c1"># Add traces to EDB</span>
+
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">points_p</span></a><span class="p">)):</span>
+    <span class="n">path_p</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">points_p</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">])</span>
+    <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_path</span><span class="p">(</span><span class="n">path_p</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">route_layer</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">],</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">width</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">],</span> <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_p</span></a><span class="p">,</span>
+                                    <span class="n">start_cap_style</span><span class="o">=</span><span class="s2">&quot;Flat&quot;</span><span class="p">,</span> <span class="n">end_cap_style</span><span class="o">=</span><span class="s2">&quot;Flat&quot;</span><span class="p">)</span>
+    <span class="n">path_n</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">points_n</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">])</span>
+    <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_path</span><span class="p">(</span><span class="n">path_n</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">route_layer</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">],</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">width</span></a><span class="p">[</span><a href="https://docs.python.org/dev/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n</span></a><span class="p">],</span> <span class="n">net_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">net_n</span></a><span class="p">,</span>
+                                    <span class="n">start_cap_style</span><span class="o">=</span><span class="s2">&quot;Flat&quot;</span><span class="p">,</span> <span class="n">end_cap_style</span><span class="o">=</span><span class="s2">&quot;Flat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Primitives Updated
+</pre></div>
+</div>
+</section>
+<section id="draw-ground-polygons">
+<h2>Draw ground polygons<a class="headerlink" href="#draw-ground-polygons" title="Permalink to this heading">#</a></h2>
+<p>Draw ground polygons.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gnd_poly</span></a> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;-$pcb_w/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len&quot;</span><span class="p">,</span> <span class="s2">&quot;-$pcb_w/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;$pcb_len&quot;</span><span class="p">,</span> <span class="s2">&quot;$pcb_w/2&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;$pcb_w/2&quot;</span><span class="p">]]</span>
+<span class="n">gnd_shape</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gnd_poly</span></a><span class="p">)</span>
+
+<span class="c1"># Void in ground for traces on the signal routing layer</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">void_poly</span></a> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2-$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3 + $via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2-$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3 + 2*$via_spacing&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 - 2*$via_spacing&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 - $via_spacing&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2-$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;-($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2-$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2+$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 - $via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2+$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;2*$pcb_len/3 - 2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3 + 2*$via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3 + $via_spacing&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2+$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2+$via_spacing/2&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;$pcb_len/3&quot;</span><span class="p">,</span> <span class="s2">&quot;($ms_width+$ms_spacing+$via_spacing+$anti_pad_diam)/2&quot;</span><span class="p">]]</span>
+
+<span class="n">void_shape</span> <span class="o">=</span> <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">void_poly</span></a><span class="p">)</span>
+
+<span class="c1"># Add ground layers</span>
+
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer</span></a> <span class="ow">in</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+
+    <span class="c1"># add void if the layer is the signal routing layer.</span>
+    <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">void</span></a> <span class="o">=</span> <span class="p">[</span><span class="n">void_shape</span><span class="p">]</span> <span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer</span></a><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">route_layer</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="p">[]</span>
+
+    <span class="n">edb</span><span class="o">.</span><span class="n">core_primitives</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">main_shape</span><span class="o">=</span><span class="n">gnd_shape</span><span class="p">,</span>
+                                       <span class="n">layer_name</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer</span></a><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                       <span class="n">voids</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">void</span></a><span class="p">,</span>
+                                       <span class="n">net_name</span><span class="o">=</span><span class="s2">&quot;gnd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plot-edb">
+<h2>Plot EDB<a class="headerlink" href="#plot-edb" title="Permalink to this heading">#</a></h2>
+<p>Plot EDB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_04_edb_parametrized_design_001.png" srcset="../../_images/sphx_glr_04_edb_parametrized_design_001.png" alt="Cell_PZQXWA" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Nets Point Generation time 0.016 seconds
+</pre></div>
+</div>
+</section>
+<section id="save-edb">
+<h2>Save EDB<a class="headerlink" href="#save-edb" title="Permalink to this heading">#</a></h2>
+<p>Save EDB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">edb</span><span class="o">.</span><span class="n">save_edb</span><span class="p">()</span>
+<span class="n">edb</span><span class="o">.</span><span class="n">close_edb</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: EDB file release time: 0.00ms
+
+True
+</pre></div>
+</div>
+</section>
+<section id="open-edb-in-aedt">
+<h2>Open EDB in AEDT<a class="headerlink" href="#open-edb-in-aedt" title="Permalink to this heading">#</a></h2>
+<p>Open EDB in AEDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><span class="n">projectname</span><span class="o">=</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedb_path</span></a><span class="p">,</span> <span class="s2">&quot;edb.def&quot;</span><span class="p">),</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger Started
+pyaedt info: Launching PyAEDT outside AEDT with CPython and PythonNET.
+pyaedt info: AEDT installation Path C:\Program Files\AnsysEM\v222\Win64.
+pyaedt info: Launching AEDT with module PythonNET.
+pyaedt info: Ansoft.ElectronicsDesktop.2022.2 Started with process ID 8924.
+pyaedt info: Logger file D:\Temp\pyaedt20220722_091734.log in use.
+pyaedt info: pyaedt v0.5.9
+pyaedt info: Python version 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]
+pyaedt info: EDB folder D:\Temp\pcb_LKRXJC.aedb\edb.def has been imported to project pcb_LKRXJC
+pyaedt info: Active Design set to Cell_PZQXWA
+pyaedt info: Aedt Objects initialized
+pyaedt info: Variable Manager initialized
+pyaedt info: Design Loaded
+pyaedt info: Successfully loaded project materials !
+pyaedt info: Materials Loaded
+pyaedt info: aedt file load time 0.0
+pyaedt info: Analysis Loaded
+pyaedt info: Loading Modeler.
+pyaedt info: Modeler loaded.
+pyaedt info: EDB loaded.
+pyaedt info: Layers loaded.
+pyaedt info: Primitives loaded.
+pyaedt info: Modeler Loaded
+</pre></div>
+</div>
+</section>
+<section id="create-wave-ports">
+<h2>Create wave ports<a class="headerlink" href="#create-wave-ports" title="Permalink to this heading">#</a></h2>
+<p>Create wave ports:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">create_wave_port_from_two_conductors</span><span class="p">([</span><span class="s2">&quot;line_0&quot;</span><span class="p">,</span> <span class="s2">&quot;line_1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">h3d</span><span class="o">.</span><span class="n">create_wave_port_from_two_conductors</span><span class="p">([</span><span class="s2">&quot;line_4&quot;</span><span class="p">,</span> <span class="s2">&quot;line_5&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Port3:T1&#39;
+</pre></div>
+</div>
+</section>
+<section id="add-hfss-simulation-setup">
+<h2>Add HFSS simulation setup<a class="headerlink" href="#add-hfss-simulation-setup" title="Permalink to this heading">#</a></h2>
+<p>Add HFSS simulation setup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setup</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">create_setup</span><span class="p">()</span>
+<span class="n">h3d</span><span class="o">.</span><span class="n">create_linear_count_sweep</span><span class="p">(</span>
+    <span class="n">setupname</span><span class="o">=</span><span class="n">setup</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;GHz&quot;</span><span class="p">,</span>
+    <span class="n">freqstart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">freqstop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">num_of_freq_points</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span>
+    <span class="n">sweepname</span><span class="o">=</span><span class="s2">&quot;sweep1&quot;</span><span class="p">,</span>
+    <span class="n">sweep_type</span><span class="o">=</span><span class="s2">&quot;Interpolating&quot;</span><span class="p">,</span>
+    <span class="n">interpolation_tol_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interpolation_max_solutions</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+    <span class="n">save_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_q3d_for_dc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Linear count sweep sweep1 has been correctly created.
+
+&lt;pyaedt.modules.SetupTemplates.SweepHFSS3DLayout object at 0x00000182FC6365E0&gt;
+</pre></div>
+</div>
+</section>
+<section id="start-hfss-solver">
+<h2>Start HFSS solver<a class="headerlink" href="#start-hfss-solver" title="Permalink to this heading">#</a></h2>
+<p>Start HFSS solver. Uncomment to solve.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># h3d.analyze_nominal()</span>
+
+<span class="n">h3d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>Note that the ground nets are only connected to each other due
+to the wave ports. The problem with poor grounding can be seen in the
+S-parameters. Try to modify this script to add ground vias and eliminate
+the resonance.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  26.514 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-00-edb-04-edb-parametrized-design-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cbfea4fe47d49b8e21941944c962d776/04_edb_parametrized_design.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">04_edb_parametrized_design.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/96189b5a490f34e455182074dd1df1f0/04_edb_parametrized_design.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">04_edb_parametrized_design.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

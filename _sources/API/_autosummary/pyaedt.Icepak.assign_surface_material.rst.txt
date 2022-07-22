@@ -1,0 +1,6 @@
+assign\_surface\_material
+=========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Icepak.assign_surface_material

@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyaedt.modeler.Model3D &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">pyaedt.modeler.Model3D</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for pyaedt.modeler.Model3D</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>  <span class="c1"># noreorder</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">_retry_ntimes</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
+<span class="kn">from</span> <span class="nn">pyaedt.generic.general_methods</span> <span class="kn">import</span> <span class="n">pyaedt_function_handler</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.Modeler</span> <span class="kn">import</span> <span class="n">GeometryModeler</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.Primitives3D</span> <span class="kn">import</span> <span class="n">Primitives3D</span>
+
+
+<div class="viewcode-block" id="Modeler3D"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.html#pyaedt.modeler.Model3D.Modeler3D">[docs]</a><span class="k">class</span> <span class="nc">Modeler3D</span><span class="p">(</span><span class="n">GeometryModeler</span><span class="p">,</span> <span class="n">Primitives3D</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Provides the Modeler 3D application interface.</span>
+
+<span class="sd">    This class is inherited in the caller application and is accessible through the modeler variable</span>
+<span class="sd">    object. For example, ``hfss.modeler``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    application : :class:`pyaedt.application.Analysis3D.FieldAnalysis3D`</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">    &gt;&gt;&gt; hfss = Hfss()</span>
+<span class="sd">    &gt;&gt;&gt; my_modeler = hfss.modeler</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">application</span><span class="p">):</span>
+        <span class="n">GeometryModeler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">application</span><span class="p">,</span> <span class="n">is3d</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">Primitives3D</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">instance</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">primitives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Primitives.</span>
+
+<span class="sd">        .. deprecated:: 0.4.15</span>
+<span class="sd">            No need to use primitives anymore. You can instantiate primitives methods directly from modeler instead.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pyaedt.modeler.Primitives3D.Primitives3D`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mess</span> <span class="o">=</span> <span class="s2">&quot;The property `primitives` is deprecated.</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">mess</span> <span class="o">+=</span> <span class="s2">&quot; Use `app.modeler` directly to instantiate primitives methods.&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">mess</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="Modeler3D.create_3dcomponent"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.create_3dcomponent.html#pyaedt.modeler.Model3D.Modeler3D.create_3dcomponent">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_3dcomponent</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">component_file</span><span class="p">,</span>
+        <span class="n">component_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">variables_to_include</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">exclude_region</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">object_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">boundaries_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">excitation_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">included_cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a 3D component file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        component_file : str</span>
+<span class="sd">            Full path to the A3DCOMP file.</span>
+<span class="sd">        component_name : str, optional</span>
+<span class="sd">            Name of the component. The default is ``None``.</span>
+<span class="sd">        variables_to_include : list, optional</span>
+<span class="sd">             List of variables to include. The default is ``[]``.</span>
+<span class="sd">        exclude_region : bool, optional</span>
+<span class="sd">             Whether to exclude the region. The default is ``False``.</span>
+<span class="sd">        object_list : list, optional</span>
+<span class="sd">            List of Objects names to export. The default is all objects</span>
+<span class="sd">        boundaries_list : list, optional</span>
+<span class="sd">            List of Boundaries names to export. The default is all boundaries</span>
+<span class="sd">        excitation_list : list, optional</span>
+<span class="sd">            List of Excitation names to export. The default is all excitations</span>
+<span class="sd">        included_cs : list, optional</span>
+<span class="sd">            List of Coordinate Systems to export. The default is all coordinate systems</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            ``True`` when successful, ``False`` when failed.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.Create3DComponent</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Icepak&quot;</span><span class="p">:</span>
+            <span class="n">exclude_region</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">component_name</span><span class="p">:</span>
+            <span class="n">component_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_name</span>
+        <span class="n">dt_string</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S %p %b </span><span class="si">%d</span><span class="s2">, %Y&quot;</span><span class="p">)</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;NAME:CreateData&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ComponentName:=&quot;</span><span class="p">,</span>
+            <span class="n">component_name</span><span class="p">,</span>
+            <span class="s2">&quot;Company:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Company URL:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Model Number:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Help URL:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Version:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Notes:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;IconType:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Owner:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pyaedt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Email:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Date:=&quot;</span><span class="p">,</span>
+            <span class="n">dt_string</span><span class="p">,</span>
+            <span class="s2">&quot;HasLabel:=&quot;</span><span class="p">,</span>
+            <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;IsEncrypted:=&quot;</span><span class="p">,</span>
+            <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;AllowEdit:=&quot;</span><span class="p">,</span>
+            <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;SecurityMessage:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Password:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EditPassword:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PasswordType:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;UnknownPassword&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;HideContents:=&quot;</span><span class="p">,</span>
+            <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;ReplaceNames:=&quot;</span><span class="p">,</span>
+            <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;ComponentOutline:=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">object_list</span><span class="p">:</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="n">object_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_names</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">objs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;Region&quot;</span> <span class="ow">in</span> <span class="n">el</span> <span class="ow">and</span> <span class="n">exclude_region</span><span class="p">:</span>
+                <span class="n">objs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedParts:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;HiddenParts:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="n">activecs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetActiveCoordinateSystem</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">included_cs</span><span class="p">:</span>
+            <span class="n">allcs</span> <span class="o">=</span> <span class="n">included_cs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">allcs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">GetCoordinateSystems</span><span class="p">()</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">allcs</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ReferenceCS:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activecs</span><span class="p">)</span>
+        <span class="n">par_description</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">variables_to_include</span><span class="p">:</span>
+            <span class="n">variables</span> <span class="o">=</span> <span class="n">variables_to_include</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">independent_variable_names</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">_variable_manager</span><span class="o">.</span><span class="n">dependent_variable_names</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IncludedDependentParameters:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span> <span class="o">+</span> <span class="s2">&quot;:=&quot;</span><span class="p">)</span>
+            <span class="n">par_description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ParameterDescription:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">par_description</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;IsLicensed:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;LicensingDllName:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;VendorComponentIdentifier:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;PublicKeyFile:=&quot;</span><span class="p">),</span> <span class="n">arg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">arg2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:DesignData&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">boundaries_list</span><span class="p">:</span>
+            <span class="n">boundaries</span> <span class="o">=</span> <span class="n">boundaries_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">boundaries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boundaries_name</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">boundaries</span><span class="p">:</span>
+            <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Boundaries:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boundaries</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;Icepak&quot;</span><span class="p">:</span>
+            <span class="n">meshregions</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshregions</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">meshregions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Global&quot;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">meshregions</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshRegions:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshregions</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">excitation_list</span><span class="p">:</span>
+                <span class="n">excitations</span> <span class="o">=</span> <span class="n">excitation_list</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">excitations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">excitations</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">design_type</span> <span class="o">==</span> <span class="s2">&quot;HFSS&quot;</span><span class="p">:</span>
+                    <span class="n">exc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get_oo_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">odesign</span><span class="p">,</span> <span class="s2">&quot;Excitations&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">exc</span> <span class="ow">and</span> <span class="n">exc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">excitations</span><span class="p">:</span>
+                        <span class="n">excitations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+            <span class="n">excitations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">excitations</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">excitations</span><span class="p">:</span>
+                <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Excitations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excitations</span><span class="p">)</span>
+        <span class="n">meshops</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshoperations</span><span class="p">]</span>
+        <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;MeshOperations:=&quot;</span><span class="p">),</span> <span class="n">arg2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meshops</span><span class="p">)</span>
+        <span class="n">arg3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NAME:ImageFile&quot;</span><span class="p">,</span> <span class="s2">&quot;ImageFile:=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">_retry_ntimes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oeditor</span><span class="o">.</span><span class="n">Create3DComponent</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">component_file</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Modeler3D.create_coaxial"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.create_coaxial.html#pyaedt.modeler.Model3D.Modeler3D.create_coaxial">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_coaxial</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">startingposition</span><span class="p">,</span>
+        <span class="n">axis</span><span class="p">,</span>
+        <span class="n">innerradius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">outerradius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">dielradius</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span>
+        <span class="n">length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">matinner</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span>
+        <span class="n">matouter</span><span class="o">=</span><span class="s2">&quot;copper&quot;</span><span class="p">,</span>
+        <span class="n">matdiel</span><span class="o">=</span><span class="s2">&quot;teflon_based&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a coaxial.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        startingposition : list</span>
+<span class="sd">            List of ``[x, y, z]`` coordinates for the starting position.</span>
+<span class="sd">        axis : int</span>
+<span class="sd">            Coordinate system AXIS (integer ``0`` for X, ``1`` for Y, ``2`` for Z) or</span>
+<span class="sd">            the :class:`Application.CoordinateSystemAxis` enumerator.</span>
+<span class="sd">        innerradius : float, optional</span>
+<span class="sd">            Inner coax radius. The default is ``1``.</span>
+<span class="sd">        outerradius : float, optional</span>
+<span class="sd">            Outer coax radius. The default is ``2``.</span>
+<span class="sd">        dielradius : float, optional</span>
+<span class="sd">            Dielectric coax radius. The default is ``1.8``.</span>
+<span class="sd">        length : float, optional</span>
+<span class="sd">            Coaxial length. The default is ``10``.</span>
+<span class="sd">        matinner : str, optional</span>
+<span class="sd">            Material for the inner coaxial. The default is ``&quot;copper&quot;``.</span>
+<span class="sd">        matouter : str, optional</span>
+<span class="sd">            Material for the outer coaxial. The default is ``&quot;copper&quot;``.</span>
+<span class="sd">        matdiel : str, optional</span>
+<span class="sd">            Material for the dielectric. The default is ``&quot;teflon_based&quot;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Contains the inner, outer, and dielectric coax as</span>
+<span class="sd">            :class:`pyaedt.modeler.Object3d.Object3d` objects.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.CreateCylinder</span>
+<span class="sd">        &gt;&gt;&gt; oEditor.AssignMaterial</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        This example shows how to create a Coaxial Along X Axis waveguide.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; app = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; position = [0,0,0]</span>
+<span class="sd">        &gt;&gt;&gt; coax = app.modeler.create_coaxial(</span>
+<span class="sd">        ...    position, app.AXIS.X, innerradius=0.5, outerradius=0.8, dielradius=0.78, length=50</span>
+<span class="sd">        ... )</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">outerradius</span> <span class="o">&gt;</span> <span class="n">dielradius</span> <span class="ow">and</span> <span class="n">dielradius</span> <span class="o">&gt;</span> <span class="n">innerradius</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Error in coaxial radius.&quot;</span><span class="p">)</span>
+        <span class="n">inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cylinder</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">startingposition</span><span class="p">,</span> <span class="n">innerradius</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">outer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cylinder</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">startingposition</span><span class="p">,</span> <span class="n">outerradius</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">diel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cylinder</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">startingposition</span><span class="p">,</span> <span class="n">dielradius</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">inner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">diel</span><span class="p">)</span>
+        <span class="n">inner</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="n">matinner</span>
+        <span class="n">outer</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="n">matouter</span>
+        <span class="n">diel</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="n">matdiel</span>
+
+        <span class="k">return</span> <span class="n">inner</span><span class="p">,</span> <span class="n">outer</span><span class="p">,</span> <span class="n">diel</span></div>
+
+<div class="viewcode-block" id="Modeler3D.create_waveguide"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.create_waveguide.html#pyaedt.modeler.Model3D.Modeler3D.create_waveguide">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_waveguide</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">origin</span><span class="p">,</span>
+        <span class="n">wg_direction_axis</span><span class="p">,</span>
+        <span class="n">wgmodel</span><span class="o">=</span><span class="s2">&quot;WG0&quot;</span><span class="p">,</span>
+        <span class="n">wg_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">wg_thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">wg_material</span><span class="o">=</span><span class="s2">&quot;aluminum&quot;</span><span class="p">,</span>
+        <span class="n">parametrize_w</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">parametrize_h</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">create_sheets_on_openings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a standard waveguide and optionally parametrize `W` and `H`.</span>
+
+<span class="sd">        Available models are WG0.0, WG0, WG1, WG2, WG3, WG4, WG5, WG6,</span>
+<span class="sd">        WG7, WG8, WG9, WG9A, WG10, WG11, WG11A, WG12, WG13, WG14,</span>
+<span class="sd">        WG15, WR102, WG16, WG17, WG18, WG19, WG20, WG21, WG22, WG24,</span>
+<span class="sd">        WG25, WG26, WG27, WG28, WG29, WG29, WG30, WG31, and WG32.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        origin : list</span>
+<span class="sd">            List of ``[x, y, z]`` coordinates for the original position.</span>
+<span class="sd">        wg_direction_axis : int</span>
+<span class="sd">            Coordinate system axis (integer ``0`` for X, ``1`` for Y, ``2`` for Z) or</span>
+<span class="sd">            the :class:`Application.CoordinateSystemAxis` enumerator.</span>
+<span class="sd">        wgmodel : str, optional</span>
+<span class="sd">            Waveguide model. The default is ``&quot;WG0&quot;``.</span>
+<span class="sd">        wg_length : float, optional</span>
+<span class="sd">            Waveguide length. The default is ``100``.</span>
+<span class="sd">        wg_thickness : float, optional</span>
+<span class="sd">            Waveguide thickness. The default is ``None``, in which case the</span>
+<span class="sd">            thickness is `wg_height/20`.</span>
+<span class="sd">        wg_material : str, optional</span>
+<span class="sd">            Waveguide material. The default is ``&quot;aluminum&quot;``.</span>
+<span class="sd">        parametrize_w : bool, optional</span>
+<span class="sd">            Whether to parametrize `W`. The default is ``False``.</span>
+<span class="sd">        parametrize_h : bool, optional</span>
+<span class="sd">            Whether to parametrize `H`. The default is ``False``.</span>
+<span class="sd">        create_sheets_on_openings : bool, optional</span>
+<span class="sd">            Whether to create sheets on both openings. The default is ``False``.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the waveguide. The default is ``None``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Tuple of :class:`Object3d &lt;pyaedt.modeler.Object3d.Object3d&gt;`</span>
+<span class="sd">            objects created by the waveguide.</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        &gt;&gt;&gt; oEditor.CreateBox</span>
+<span class="sd">        &gt;&gt;&gt; oEditor.AssignMaterial</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        This example shows how to create a WG9 waveguide.</span>
+
+<span class="sd">        &gt;&gt;&gt; from pyaedt import Hfss</span>
+<span class="sd">        &gt;&gt;&gt; app = Hfss()</span>
+<span class="sd">        &gt;&gt;&gt; position = [0, 0, 0]</span>
+<span class="sd">        &gt;&gt;&gt; wg1 = app.modeler.create_waveguide(position, app.AXIS.,</span>
+<span class="sd">        ...                                    wgmodel=&quot;WG9&quot;, wg_length=2000)</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">WG</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;WG0.0&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">584.2</span><span class="p">,</span> <span class="mf">292.1</span><span class="p">],</span>
+            <span class="s2">&quot;WG0&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">533.4</span><span class="p">,</span> <span class="mf">266.7</span><span class="p">],</span>
+            <span class="s2">&quot;WG1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">457.2</span><span class="p">,</span> <span class="mf">228.6</span><span class="p">],</span>
+            <span class="s2">&quot;WG2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">381</span><span class="p">,</span> <span class="mf">190.5</span><span class="p">],</span>
+            <span class="s2">&quot;WG3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">292.1</span><span class="p">,</span> <span class="mf">146.05</span><span class="p">],</span>
+            <span class="s2">&quot;WG4&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">247.65</span><span class="p">,</span> <span class="mf">123.825</span><span class="p">],</span>
+            <span class="s2">&quot;WG5&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">195.58</span><span class="p">,</span> <span class="mf">97.79</span><span class="p">],</span>
+            <span class="s2">&quot;WG6&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">165.1</span><span class="p">,</span> <span class="mf">82.55</span><span class="p">],</span>
+            <span class="s2">&quot;WG7&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">129.54</span><span class="p">,</span> <span class="mf">64.77</span><span class="p">],</span>
+            <span class="s2">&quot;WG8&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">109.22</span><span class="p">,</span> <span class="mf">54.61</span><span class="p">],</span>
+            <span class="s2">&quot;WG9&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">88.9</span><span class="p">,</span> <span class="mf">44.45</span><span class="p">],</span>
+            <span class="s2">&quot;WG9A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">86.36</span><span class="p">,</span> <span class="mf">43.18</span><span class="p">],</span>
+            <span class="s2">&quot;WG10&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">72.136</span><span class="p">,</span> <span class="mf">34.036</span><span class="p">],</span>
+            <span class="s2">&quot;WG11&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">60.2488</span><span class="p">,</span> <span class="mf">28.4988</span><span class="p">],</span>
+            <span class="s2">&quot;WG11A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">58.166</span><span class="p">,</span> <span class="mf">29.083</span><span class="p">],</span>
+            <span class="s2">&quot;WG12&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">47.5488</span><span class="p">,</span> <span class="mf">22.1488</span><span class="p">],</span>
+            <span class="s2">&quot;WG13&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.386</span><span class="p">,</span> <span class="mf">20.193</span><span class="p">],</span>
+            <span class="s2">&quot;WG14&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">34.8488</span><span class="p">,</span> <span class="mf">15.7988</span><span class="p">],</span>
+            <span class="s2">&quot;WG15&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">28.4988</span><span class="p">,</span> <span class="mf">12.6238</span><span class="p">],</span>
+            <span class="s2">&quot;WR102&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">25.908</span><span class="p">,</span> <span class="mf">12.954</span><span class="p">],</span>
+            <span class="s2">&quot;WG16&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">22.86</span><span class="p">,</span> <span class="mf">10.16</span><span class="p">],</span>
+            <span class="s2">&quot;WG17&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">19.05</span><span class="p">,</span> <span class="mf">9.525</span><span class="p">],</span>
+            <span class="s2">&quot;WG18&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">15.7988</span><span class="p">,</span> <span class="mf">7.8994</span><span class="p">],</span>
+            <span class="s2">&quot;WG19&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">12.954</span><span class="p">,</span> <span class="mf">6.477</span><span class="p">],</span>
+            <span class="s2">&quot;WG20&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.668</span><span class="p">,</span> <span class="mf">4.318</span><span class="p">],</span>
+            <span class="s2">&quot;WG21&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">8.636</span><span class="p">,</span> <span class="mf">4.318</span><span class="p">],</span>
+            <span class="s2">&quot;WG22&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">7.112</span><span class="p">,</span> <span class="mf">3.556</span><span class="p">],</span>
+            <span class="s2">&quot;WG23&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.6896</span><span class="p">,</span> <span class="mf">2.8448</span><span class="p">],</span>
+            <span class="s2">&quot;WG24&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.7752</span><span class="p">,</span> <span class="mf">2.3876</span><span class="p">],</span>
+            <span class="s2">&quot;WG25&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.7592</span><span class="p">,</span> <span class="mf">1.8796</span><span class="p">],</span>
+            <span class="s2">&quot;WG26&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0988</span><span class="p">,</span> <span class="mf">1.5494</span><span class="p">],</span>
+            <span class="s2">&quot;WG27&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.54</span><span class="p">,</span> <span class="mf">1.27</span><span class="p">],</span>
+            <span class="s2">&quot;WG28&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.032</span><span class="p">,</span> <span class="mf">1.016</span><span class="p">],</span>
+            <span class="s2">&quot;WG29&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.651</span><span class="p">,</span> <span class="mf">0.8255</span><span class="p">],</span>
+            <span class="s2">&quot;WG30&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2954</span><span class="p">,</span> <span class="mf">0.6477</span><span class="p">],</span>
+            <span class="s2">&quot;WG31&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0922</span><span class="p">,</span> <span class="mf">0.5461</span><span class="p">],</span>
+            <span class="s2">&quot;WG32&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8636</span><span class="p">,</span> <span class="mf">0.4318</span><span class="p">],</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">wgmodel</span> <span class="ow">in</span> <span class="n">WG</span><span class="p">:</span>
+            <span class="n">wgwidth</span> <span class="o">=</span> <span class="n">WG</span><span class="p">[</span><span class="n">wgmodel</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">wgheight</span> <span class="o">=</span> <span class="n">WG</span><span class="p">[</span><span class="n">wgmodel</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">wg_thickness</span><span class="p">:</span>
+                <span class="n">wg_thickness</span> <span class="o">=</span> <span class="n">wgheight</span> <span class="o">/</span> <span class="mi">20</span>
+            <span class="k">if</span> <span class="n">parametrize_h</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_H&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgheight</span><span class="p">)</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_H&quot;</span>
+                <span class="n">hb</span> <span class="o">=</span> <span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_H + 2*&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgheight</span><span class="p">)</span>
+                <span class="n">hb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgheight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; + 2*&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">parametrize_w</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="p">[</span><span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_W&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgwidth</span><span class="p">)</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_W&quot;</span>
+                <span class="n">wb</span> <span class="o">=</span> <span class="n">wgmodel</span> <span class="o">+</span> <span class="s2">&quot;_W + &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">wg_thickness</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgwidth</span><span class="p">)</span>
+                <span class="n">wb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wgwidth</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; + 2*&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_with_dim</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">wg_direction_axis</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">AXIS</span><span class="o">.</span><span class="n">Z</span><span class="p">:</span>
+                <span class="n">airbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">wg_length</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+
+            <span class="k">elif</span> <span class="n">wg_direction_axis</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">AXIS</span><span class="o">.</span><span class="n">Y</span><span class="p">:</span>
+                <span class="n">airbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">wg_length</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">airbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">wg_length</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">wg_thickness</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">wg_thickness</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+                    <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">wg_thickness</span>
+            <span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">center</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">airbox</span><span class="o">.</span><span class="n">faces</span><span class="p">]</span>
+            <span class="n">xpos</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="n">wg_direction_axis</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">centers</span><span class="p">]</span>
+            <span class="n">mini</span> <span class="o">=</span> <span class="n">xpos</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xpos</span><span class="p">))</span>
+            <span class="n">maxi</span> <span class="o">=</span> <span class="n">xpos</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">xpos</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">create_sheets_on_openings</span><span class="p">:</span>
+                <span class="n">p1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_object_from_face</span><span class="p">(</span><span class="n">airbox</span><span class="o">.</span><span class="n">faces</span><span class="p">[</span><span class="n">mini</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="n">p2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_object_from_face</span><span class="p">(</span><span class="n">airbox</span><span class="o">.</span><span class="n">faces</span><span class="p">[</span><span class="n">maxi</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="n">wgmodel</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">wg_direction_axis</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">AXIS</span><span class="o">.</span><span class="n">Z</span><span class="p">:</span>
+                <span class="n">wgbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">wb</span><span class="p">,</span> <span class="n">hb</span><span class="p">,</span> <span class="n">wg_length</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">wg_direction_axis</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">AXIS</span><span class="o">.</span><span class="n">Y</span><span class="p">:</span>
+                <span class="n">wgbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">wb</span><span class="p">,</span> <span class="n">wg_length</span><span class="p">,</span> <span class="n">hb</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wgbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="p">[</span><span class="n">wg_length</span><span class="p">,</span> <span class="n">wb</span><span class="p">,</span> <span class="n">hb</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">wgbox</span><span class="p">,</span> <span class="n">airbox</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">wgbox</span><span class="o">.</span><span class="n">material_name</span> <span class="o">=</span> <span class="n">wg_material</span>
+
+            <span class="k">return</span> <span class="n">wgbox</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Modeler3D.objects_in_bounding_box"><a class="viewcode-back" href="../../../API/_autosummary/pyaedt.modeler.Model3D.Modeler3D.objects_in_bounding_box.html#pyaedt.modeler.Model3D.Modeler3D.objects_in_bounding_box">[docs]</a>    <span class="nd">@pyaedt_function_handler</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">objects_in_bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">,</span> <span class="n">check_solids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check_sheets</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Given a bounding box checks if objects, sheets and lines are inside it.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bounding_box : list.</span>
+<span class="sd">            List of coordinates of bounding box vertices.</span>
+<span class="sd">        check_solids : bool, optional.</span>
+<span class="sd">            Check solid objects.</span>
+<span class="sd">        check_lines : bool, optional.</span>
+<span class="sd">            Check line objects.</span>
+<span class="sd">        check_sheets : bool, optional.</span>
+<span class="sd">            Check sheet objects.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of :class:`pyaedt.modeler.Object3d`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Bounding box list must have dimension 6.&quot;</span><span class="p">)</span>
+
+        <span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">check_solids</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">solid_objects</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_lines</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_objects</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_sheets</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sheet_objects</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">bounding_box</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">objects</span></div></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

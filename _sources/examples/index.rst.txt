@@ -1,0 +1,1169 @@
+:orphan:
+
+
+
+.. _sphx_glr_examples:
+
+.. _ref_example_gallery:
+
+Examples
+========
+End-to-end examples show how you can use PyAEDT. If PyAEDT is installed
+on your machine, you can download these examples as Python files or Jupyter
+notebooks and run them locally.
+
+.. note::
+    Some examples require additional Python packages.
+
+
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_00-EDB:
+
+EDB examples
+~~~~~~~~~~~~
+These examples use EDB with PyAEDT. You can either use EDB standalone
+or embedded in HFSS 3D Layout in AEDT.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: geometry creation">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_00_EDB_Create_VIA_thumb.png
+     :alt: EDB: geometry creation
+
+     :ref:`sphx_glr_examples_00-EDB_00_EDB_Create_VIA.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/00_EDB_Create_VIA
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: Siwave analysis from EDB setup">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_01_edb_example_thumb.png
+     :alt: EDB: Siwave analysis from EDB setup
+
+     :ref:`sphx_glr_examples_00-EDB_01_edb_example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/01_edb_example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: IPC2581 export">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_02_edb_to_ipc2581_thumb.png
+     :alt: EDB: IPC2581 export
+
+     :ref:`sphx_glr_examples_00-EDB_02_edb_to_ipc2581.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/02_edb_to_ipc2581
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: 5G linear array antenna">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_03_5G_antenna_example_thumb.png
+     :alt: EDB: 5G linear array antenna
+
+     :ref:`sphx_glr_examples_00-EDB_03_5G_antenna_example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/03_5G_antenna_example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: fully parameterized design">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_04_edb_parametrized_design_thumb.png
+     :alt: EDB: fully parameterized design
+
+     :ref:`sphx_glr_examples_00-EDB_04_edb_parametrized_design.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/04_edb_parametrized_design
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: plot nets with Matplotlib">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_05_Plot_nets_thumb.png
+     :alt: EDB: plot nets with Matplotlib
+
+     :ref:`sphx_glr_examples_00-EDB_05_Plot_nets.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/05_Plot_nets
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: parametric via creation">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_06_Advanced_EDB_thumb.png
+     :alt: EDB: parametric via creation
+
+     :ref:`sphx_glr_examples_00-EDB_06_Advanced_EDB.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/06_Advanced_EDB
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use the PyAEDT toolkit to create WPF (Windows Presentation Foundation...">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_07_WPF_Merge_Utility_thumb.png
+     :alt: EDB: merge utility
+
+     :ref:`sphx_glr_examples_00-EDB_07_WPF_Merge_Utility.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/07_WPF_Merge_Utility
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EDB: fully parameterized CPWG design">
+
+.. only:: html
+
+ .. figure:: /examples/00-EDB/images/thumb/sphx_glr_08_CPWG_thumb.png
+     :alt: EDB: fully parameterized CPWG design
+
+     :ref:`sphx_glr_examples_00-EDB_08_CPWG.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/00-EDB/08_CPWG
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_01-Modeling-Setup:
+
+General model and setup examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These examples use PyAEDT to show some general model and simulation
+setup features inside AEDT.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="* HFSS * 2D Extractor and Q3D Extractor * Maxwell * Icepak * Mechanical">
+
+.. only:: html
+
+ .. figure:: /examples/01-Modeling-Setup/images/thumb/sphx_glr_Configurations_thumb.png
+     :alt: General: configuration files
+
+     :ref:`sphx_glr_examples_01-Modeling-Setup_Configurations.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/01-Modeling-Setup/Configurations
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="General: coordinate system creation">
+
+.. only:: html
+
+ .. figure:: /examples/01-Modeling-Setup/images/thumb/sphx_glr_HFSS_CoordinateSystem_thumb.png
+     :alt: General: coordinate system creation
+
+     :ref:`sphx_glr_examples_01-Modeling-Setup_HFSS_CoordinateSystem.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/01-Modeling-Setup/HFSS_CoordinateSystem
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="General: optimetrics setup">
+
+.. only:: html
+
+ .. figure:: /examples/01-Modeling-Setup/images/thumb/sphx_glr_Optimetrics_thumb.png
+     :alt: General: optimetrics setup
+
+     :ref:`sphx_glr_examples_01-Modeling-Setup_Optimetrics.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/01-Modeling-Setup/Optimetrics
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="General: polyline creation">
+
+.. only:: html
+
+ .. figure:: /examples/01-Modeling-Setup/images/thumb/sphx_glr_Polyline_Primitives_thumb.png
+     :alt: General: polyline creation
+
+     :ref:`sphx_glr_examples_01-Modeling-Setup_Polyline_Primitives.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/01-Modeling-Setup/Polyline_Primitives
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_02-HFSS:
+
+HFSS examples
+~~~~~~~~~~~~~
+These examples use PyAEDT to show some end-to-end workflows for HFSS, HFSS 3D Layout,
+and HFSS SBR+. This includes model generation, setup, meshing, and postprocessing.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: advanced far field postprocessing">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_Advanced_Far_Field_thumb.png
+     :alt: HFSS: advanced far field postprocessing
+
+     :ref:`sphx_glr_examples_02-HFSS_Advanced_Far_Field.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/Advanced_Far_Field
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: component antenna array">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_Array_thumb.png
+     :alt: HFSS: component antenna array
+
+     :ref:`sphx_glr_examples_02-HFSS_Array.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/Array
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS 3D Layout: PCB and EDB in 3D layout">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_EDB_in_3DLayout_thumb.png
+     :alt: HFSS 3D Layout: PCB and EDB in 3D layout
+
+     :ref:`sphx_glr_examples_02-HFSS_EDB_in_3DLayout.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/EDB_in_3DLayout
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: flex cable CPWG">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_Flex_CPWG_thumb.png
+     :alt: HFSS: flex cable CPWG
+
+     :ref:`sphx_glr_examples_02-HFSS_Flex_CPWG.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/Flex_CPWG
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS 3D Layout: parametric via analysis">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_HFSS3DLayout_Via_thumb.png
+     :alt: HFSS 3D Layout: parametric via analysis
+
+     :ref:`sphx_glr_examples_02-HFSS_HFSS3DLayout_Via.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/HFSS3DLayout_Via
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: choke">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_HFSS_Choke_thumb.png
+     :alt: HFSS: choke
+
+     :ref:`sphx_glr_examples_02-HFSS_HFSS_Choke.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/HFSS_Choke
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: dipole antenna">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_HFSS_Dipole_thumb.png
+     :alt: HFSS: dipole antenna
+
+     :ref:`sphx_glr_examples_02-HFSS_HFSS_Dipole.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/HFSS_Dipole
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HFSS: spiral inductor">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_HFSS_Spiral_thumb.png
+     :alt: HFSS: spiral inductor
+
+     :ref:`sphx_glr_examples_02-HFSS_HFSS_Spiral.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/HFSS_Spiral
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="- Generate the database - Create the machine learning algorithm - Implement the model in a PyAE...">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_Machine_learning_applied_to_Patch_thumb.png
+     :alt: HFSS: machine learning applied to a patch
+
+     :ref:`sphx_glr_examples_02-HFSS_Machine_learning_applied_to_Patch.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/Machine_learning_applied_to_Patch
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="SBR+: doppler setup">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_SBR_Doppler_Example_thumb.png
+     :alt: SBR+: doppler setup
+
+     :ref:`sphx_glr_examples_02-HFSS_SBR_Doppler_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/SBR_Doppler_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="SBR+: HFSS to SBR+ coupling">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_SBR_Example_thumb.png
+     :alt: SBR+: HFSS to SBR+ coupling
+
+     :ref:`sphx_glr_examples_02-HFSS_SBR_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/SBR_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="SBR+: HFSS to SBR+ time animation">
+
+.. only:: html
+
+ .. figure:: /examples/02-HFSS/images/thumb/sphx_glr_SBR_Time_Plot_thumb.png
+     :alt: SBR+: HFSS to SBR+ time animation
+
+     :ref:`sphx_glr_examples_02-HFSS_SBR_Time_Plot.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-HFSS/SBR_Time_Plot
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_02-Maxwell:
+
+Maxwell examples
+~~~~~~~~~~~~~~~~
+These examples use PyAEDT to show some end-to-end workflows for Maxwell 2D and
+Maxwell 3D. This include model generation, setup, meshing, and postprocessing.
+Examples cover different Maxwell solution types (Eddy Current, Magnetostatic,
+and Transient).
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maxwell 2D: PM synchronous motor transient analysis">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell2D_NissanLeaf_thumb.png
+     :alt: Maxwell 2D: PM synchronous motor transient analysis
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell2D_NissanLeaf.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell2D_NissanLeaf
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The following libraries are required for the advanced postprocessing features used in this exam...">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell2D_Transient_thumb.png
+     :alt: Maxwell 2D: transient winding analysis
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell2D_Transient.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell2D_Transient
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maxwell 3D: bath plate analysis">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell3DTeam3_thumb.png
+     :alt: Maxwell 3D: bath plate analysis
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell3DTeam3.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell3DTeam3
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maxwell 3D: asymmetric conductor analysis">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell3DTeam7_thumb.png
+     :alt: Maxwell 3D: asymmetric conductor analysis
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell3DTeam7.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell3DTeam7
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maxwell 3D: choke setup">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell3D_Choke_thumb.png
+     :alt: Maxwell 3D: choke setup
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell3D_Choke.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell3D_Choke
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maxwell 3D: magnet DC analysis">
+
+.. only:: html
+
+ .. figure:: /examples/02-Maxwell/images/thumb/sphx_glr_Maxwell_Magnet_thumb.png
+     :alt: Maxwell 3D: magnet DC analysis
+
+     :ref:`sphx_glr_examples_02-Maxwell_Maxwell_Magnet.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/02-Maxwell/Maxwell_Magnet
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_03-Circuit:
+
+Circuit examples
+~~~~~~~~~~~~~~~~
+These examples use PyAEDT to show some end-to-end workflows for Circuit and EMIT.
+This include schematic generation, setup, and postprocessing.
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Circuit: schematic creation and analysis">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Circuit_Example_thumb.png
+     :alt: Circuit: schematic creation and analysis
+
+     :ref:`sphx_glr_examples_03-Circuit_Circuit_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Circuit_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Circuit: schematic subcircuit management">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Circuit_Subcircuit_Example_thumb.png
+     :alt: Circuit: schematic subcircuit management
+
+     :ref:`sphx_glr_examples_03-Circuit_Circuit_Subcircuit_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Circuit_Subcircuit_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Circuit: transient analysis and eye plot">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Circuit_Transient_thumb.png
+     :alt: Circuit: transient analysis and eye plot
+
+     :ref:`sphx_glr_examples_03-Circuit_Circuit_Transient.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Circuit_Transient
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Circuit: netlist to schematic iport">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Create_Netlist_thumb.png
+     :alt: Circuit: netlist to schematic iport
+
+     :ref:`sphx_glr_examples_03-Circuit_Create_Netlist.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Create_Netlist
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EMIT: antenna">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_EMIT_Example_thumb.png
+     :alt: EMIT: antenna
+
+     :ref:`sphx_glr_examples_03-Circuit_EMIT_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/EMIT_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="EMIT: HFSS to EMIT coupling">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_EMIT_HFSS_Example_thumb.png
+     :alt: EMIT: HFSS to EMIT coupling
+
+     :ref:`sphx_glr_examples_03-Circuit_EMIT_HFSS_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/EMIT_HFSS_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Circuit: automatic report creation">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Reports_thumb.png
+     :alt: Circuit: automatic report creation
+
+     :ref:`sphx_glr_examples_03-Circuit_Reports.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Reports
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="To provide the advanced postprocessing features needed for this example, Matplotlib and NumPy m...">
+
+.. only:: html
+
+ .. figure:: /examples/03-Circuit/images/thumb/sphx_glr_Touchstone_Management_thumb.png
+     :alt: Circuit: Touchstone file management
+
+     :ref:`sphx_glr_examples_03-Circuit_Touchstone_Management.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/03-Circuit/Touchstone_Management
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_04-Icepak:
+
+Icepak examples
+~~~~~~~~~~~~~~~
+These examples use PyAEDT to show end-to-end workflows for Icepak. This includes
+schematic generation, setup, and thermal postprocessing.
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Icepak: graphic card thermal analysis">
+
+.. only:: html
+
+ .. figure:: /examples/04-Icepak/images/thumb/sphx_glr_Icepak_Example_thumb.png
+     :alt: Icepak: graphic card thermal analysis
+
+     :ref:`sphx_glr_examples_04-Icepak_Icepak_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/04-Icepak/Icepak_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Icepack: setup from Sherlock inputs">
+
+.. only:: html
+
+ .. figure:: /examples/04-Icepak/images/thumb/sphx_glr_Sherlock_Example_thumb.png
+     :alt: Icepack: setup from Sherlock inputs
+
+     :ref:`sphx_glr_examples_04-Icepak_Sherlock_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/04-Icepak/Sherlock_Example
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_05-Q3D:
+
+2D Extractor and Q3D Extractor examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These examples use PyAEDT to show some end-to-end workflows for 2D Extractor and
+Q3D Extractor. This includes model generation, setup, and thermal postprocessing.
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="2D Extractor: CPWG analysis">
+
+.. only:: html
+
+ .. figure:: /examples/05-Q3D/images/thumb/sphx_glr_Q2D_Example_CPWG_thumb.png
+     :alt: 2D Extractor: CPWG analysis
+
+     :ref:`sphx_glr_examples_05-Q3D_Q2D_Example_CPWG.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/05-Q3D/Q2D_Example_CPWG
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="2D Extractor: stripline analysis">
+
+.. only:: html
+
+ .. figure:: /examples/05-Q3D/images/thumb/sphx_glr_Q2D_Example_Stripline_thumb.png
+     :alt: 2D Extractor: stripline analysis
+
+     :ref:`sphx_glr_examples_05-Q3D_Q2D_Example_Stripline.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/05-Q3D/Q2D_Example_Stripline
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Q3D Extractor: busbar analysis">
+
+.. only:: html
+
+ .. figure:: /examples/05-Q3D/images/thumb/sphx_glr_Q3D_Example_thumb.png
+     :alt: Q3D Extractor: busbar analysis
+
+     :ref:`sphx_glr_examples_05-Q3D_Q3D_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/05-Q3D/Q3D_Example
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_06-Multiphysics:
+
+Multiphysics examples
+~~~~~~~~~~~~~~~~~~~~~
+These examples use PyAEDT to create some multiphysics workflows. They might use
+an electromagnetic tool like HFSS or Maxwell and a thermal or structural tool
+like Icepak or Mechanical.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="To provide the advanced postprocessing features needed for this example, Matplotlib, NumPy, and...">
+
+.. only:: html
+
+ .. figure:: /examples/06-Multiphysics/images/thumb/sphx_glr_Hfss_Icepak_Coupling_thumb.png
+     :alt: Multiphysics: HFSS-Icepack multiphysics analysis
+
+     :ref:`sphx_glr_examples_06-Multiphysics_Hfss_Icepak_Coupling.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/06-Multiphysics/Hfss_Icepak_Coupling
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Multiphysics: HFSS-Mechanical multiphysics analysis">
+
+.. only:: html
+
+ .. figure:: /examples/06-Multiphysics/images/thumb/sphx_glr_Hfss_Mechanical_thumb.png
+     :alt: Multiphysics: HFSS-Mechanical multiphysics analysis
+
+     :ref:`sphx_glr_examples_06-Multiphysics_Hfss_Mechanical.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/06-Multiphysics/Hfss_Mechanical
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_examples_07-TwinBuilder:
+
+Twin Builder examples
+~~~~~~~~~~~~~~~~~~~~~
+These examples use PyAEDT to show some end-to-end workflows for Twin Builder.
+This includes schematic generation, setup, and postprocessing.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Twin Builder: RC circuit design anaysis">
+
+.. only:: html
+
+ .. figure:: /examples/07-TwinBuilder/images/thumb/sphx_glr_01-RC_Circuit_Example_thumb.png
+     :alt: Twin Builder: RC circuit design anaysis
+
+     :ref:`sphx_glr_examples_07-TwinBuilder_01-RC_Circuit_Example.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/07-TwinBuilder/01-RC_Circuit_Example
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Twin Builder: wiring a rectifier with a capacitor filter">
+
+.. only:: html
+
+ .. figure:: /examples/07-TwinBuilder/images/thumb/sphx_glr_02-Wiring_A_Rectifier_thumb.png
+     :alt: Twin Builder: wiring a rectifier with a capacitor filter
+
+     :ref:`sphx_glr_examples_07-TwinBuilder_02-Wiring_A_Rectifier.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/07-TwinBuilder/02-Wiring_A_Rectifier
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

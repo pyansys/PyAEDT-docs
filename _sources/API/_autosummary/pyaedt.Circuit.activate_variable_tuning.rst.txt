@@ -1,0 +1,6 @@
+activate\_variable\_tuning
+==========================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.activate_variable_tuning

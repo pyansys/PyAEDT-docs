@@ -1,0 +1,37 @@
+﻿pyaedt.modeler.Object3d.CircuitPins
+===================================
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoclass:: CircuitPins
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+   
+      
+      
+      CircuitPins.connect_to_component
+      
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      
+      CircuitPins.location
+      
+      
+      CircuitPins.net
+      
+   
+   

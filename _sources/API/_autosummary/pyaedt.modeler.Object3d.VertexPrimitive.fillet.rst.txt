@@ -1,0 +1,6 @@
+fillet
+======
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: VertexPrimitive.fillet

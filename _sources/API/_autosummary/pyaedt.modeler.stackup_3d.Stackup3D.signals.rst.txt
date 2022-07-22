@@ -1,0 +1,6 @@
+signals
+=======
+
+.. currentmodule:: pyaedt.modeler.stackup_3d
+
+.. autoproperty:: Stackup3D.signals

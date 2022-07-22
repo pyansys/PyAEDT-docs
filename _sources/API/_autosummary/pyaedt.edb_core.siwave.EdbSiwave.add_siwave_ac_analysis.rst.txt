@@ -1,0 +1,6 @@
+add\_siwave\_ac\_analysis
+=========================
+
+.. currentmodule:: pyaedt.edb_core.siwave
+
+.. automethod:: EdbSiwave.add_siwave_ac_analysis

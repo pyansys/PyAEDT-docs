@@ -1,0 +1,6 @@
+change\_validation\_settings
+============================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.change_validation_settings

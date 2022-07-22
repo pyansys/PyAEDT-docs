@@ -1,0 +1,6 @@
+model
+=====
+
+.. currentmodule:: pyaedt.modeler.object3dlayout
+
+.. autoproperty:: Components3DLayout.model

@@ -1,0 +1,6 @@
+find\_new\_objects
+==================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.find_new_objects

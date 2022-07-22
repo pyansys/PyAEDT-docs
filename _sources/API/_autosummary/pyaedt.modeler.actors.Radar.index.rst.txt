@@ -1,0 +1,6 @@
+index
+=====
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Radar.index

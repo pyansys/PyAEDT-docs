@@ -1,0 +1,6 @@
+add\_hole
+=========
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. automethod:: Padstack.add_hole

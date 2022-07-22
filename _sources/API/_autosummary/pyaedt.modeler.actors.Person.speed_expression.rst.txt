@@ -1,0 +1,6 @@
+speed\_expression
+=================
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. autoproperty:: Person.speed_expression

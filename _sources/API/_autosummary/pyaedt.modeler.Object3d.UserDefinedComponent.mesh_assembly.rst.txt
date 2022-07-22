@@ -1,0 +1,6 @@
+mesh\_assembly
+==============
+
+.. currentmodule:: pyaedt.modeler.Object3d
+
+.. autoproperty:: UserDefinedComponent.mesh_assembly

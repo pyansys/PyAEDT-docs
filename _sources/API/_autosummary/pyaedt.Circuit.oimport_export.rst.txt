@@ -1,0 +1,6 @@
+oimport\_export
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Circuit.oimport_export

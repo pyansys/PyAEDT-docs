@@ -1,0 +1,6 @@
+offset\_x
+=========
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadProperties.offset_x

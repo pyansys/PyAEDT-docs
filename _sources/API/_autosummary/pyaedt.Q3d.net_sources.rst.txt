@@ -1,0 +1,6 @@
+net\_sources
+============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Q3d.net_sources

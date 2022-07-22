@@ -1,0 +1,6 @@
+﻿Matrix
+======
+
+.. currentmodule:: pyaedt.modules.SetupTemplates
+
+.. autodata:: Matrix

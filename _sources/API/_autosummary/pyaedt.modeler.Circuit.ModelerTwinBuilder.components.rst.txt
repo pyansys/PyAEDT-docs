@@ -1,0 +1,6 @@
+components
+==========
+
+.. currentmodule:: pyaedt.modeler.Circuit
+
+.. autoproperty:: ModelerTwinBuilder.components

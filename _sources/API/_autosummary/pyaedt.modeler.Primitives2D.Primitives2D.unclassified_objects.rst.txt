@@ -1,0 +1,6 @@
+unclassified\_objects
+=====================
+
+.. currentmodule:: pyaedt.modeler.Primitives2D
+
+.. autoproperty:: Primitives2D.unclassified_objects

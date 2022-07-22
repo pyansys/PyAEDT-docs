@@ -1,0 +1,6 @@
+load\_hfss
+==========
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.load_hfss

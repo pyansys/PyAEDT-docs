@@ -1,0 +1,6 @@
+rename\_design
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Circuit.rename_design

@@ -1,0 +1,6 @@
+o\_component\_manager
+=====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Hfss3dLayout.o_component_manager

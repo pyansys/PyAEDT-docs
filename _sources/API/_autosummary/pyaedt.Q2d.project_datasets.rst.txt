@@ -1,0 +1,6 @@
+project\_datasets
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.project_datasets

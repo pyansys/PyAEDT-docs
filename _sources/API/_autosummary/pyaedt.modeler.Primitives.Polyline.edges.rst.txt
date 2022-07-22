@@ -1,0 +1,6 @@
+edges
+=====
+
+.. currentmodule:: pyaedt.modeler.Primitives
+
+.. autoproperty:: Polyline.edges

@@ -1,0 +1,6 @@
+position\_in\_app
+=================
+
+.. currentmodule:: pyaedt.modeler.actors
+
+.. automethod:: Radar.position_in_app

@@ -1,0 +1,6 @@
+archive\_project
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Rmxprt.archive_project

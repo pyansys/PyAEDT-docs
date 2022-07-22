@@ -1,0 +1,6 @@
+lines\_voids
+============
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. autoproperty:: Modeler3DLayout.lines_voids

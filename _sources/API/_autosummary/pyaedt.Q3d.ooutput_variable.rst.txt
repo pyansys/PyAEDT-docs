@@ -1,0 +1,6 @@
+ooutput\_variable
+=================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q3d.ooutput_variable

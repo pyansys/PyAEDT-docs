@@ -1,0 +1,6 @@
+change\_clip\_plane\_position
+=============================
+
+.. currentmodule:: pyaedt.modeler.Model3DLayout
+
+.. automethod:: Modeler3DLayout.change_clip_plane_position

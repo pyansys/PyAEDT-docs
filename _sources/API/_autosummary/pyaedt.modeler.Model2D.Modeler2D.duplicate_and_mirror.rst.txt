@@ -1,0 +1,6 @@
+duplicate\_and\_mirror
+======================
+
+.. currentmodule:: pyaedt.modeler.Model2D
+
+.. automethod:: Modeler2D.duplicate_and_mirror

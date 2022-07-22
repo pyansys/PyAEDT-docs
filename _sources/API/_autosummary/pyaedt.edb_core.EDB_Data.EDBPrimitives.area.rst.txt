@@ -1,0 +1,6 @@
+area
+====
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPrimitives.area

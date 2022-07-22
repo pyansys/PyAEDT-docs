@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HFSS 3D Layout: PCB and EDB in 3D layout &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HFSS: flex cable CPWG" href="Flex_CPWG.html" />
+    <link rel="prev" title="HFSS: component antenna array" href="Array.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Examples</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">HFSS 3D Layout: PCB and EDB in 3D layout</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/00_EDB_Create_VIA.html">
+   EDB: geometry creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/01_edb_example.html">
+   EDB: Siwave analysis from EDB setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/02_edb_to_ipc2581.html">
+   EDB: IPC2581 export
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/03_5G_antenna_example.html">
+   EDB: 5G linear array antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/04_edb_parametrized_design.html">
+   EDB: fully parameterized design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/05_Plot_nets.html">
+   EDB: plot nets with Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/06_Advanced_EDB.html">
+   EDB: parametric via creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/07_WPF_Merge_Utility.html">
+   EDB: merge utility
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/08_CPWG.html">
+   EDB: fully parameterized CPWG design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Configurations.html">
+   General: configuration files
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/HFSS_CoordinateSystem.html">
+   General: coordinate system creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Optimetrics.html">
+   General: optimetrics setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Modeling-Setup/Polyline_Primitives.html">
+   General: polyline creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Advanced_Far_Field.html">
+   HFSS: advanced far field postprocessing
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Array.html">
+   HFSS: component antenna array
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   HFSS 3D Layout: PCB and EDB in 3D layout
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Flex_CPWG.html">
+   HFSS: flex cable CPWG
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS3DLayout_Via.html">
+   HFSS 3D Layout: parametric via analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Choke.html">
+   HFSS: choke
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Dipole.html">
+   HFSS: dipole antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_Spiral.html">
+   HFSS: spiral inductor
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Machine_learning_applied_to_Patch.html">
+   HFSS: machine learning applied to a patch
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Doppler_Example.html">
+   SBR+: doppler setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Example.html">
+   SBR+: HFSS to SBR+ coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SBR_Time_Plot.html">
+   SBR+: HFSS to SBR+ time animation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_NissanLeaf.html">
+   Maxwell 2D: PM synchronous motor transient analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_Transient.html">
+   Maxwell 2D: transient winding analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam3.html">
+   Maxwell 3D: bath plate analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam7.html">
+   Maxwell 3D: asymmetric conductor analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3D_Choke.html">
+   Maxwell 3D: choke setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell_Magnet.html">
+   Maxwell 3D: magnet DC analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Example.html">
+   Circuit: schematic creation and analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Subcircuit_Example.html">
+   Circuit: schematic subcircuit management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Transient.html">
+   Circuit: transient analysis and eye plot
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Create_Netlist.html">
+   Circuit: netlist to schematic iport
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_Example.html">
+   EMIT: antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_HFSS_Example.html">
+   EMIT: HFSS to EMIT coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Reports.html">
+   Circuit: automatic report creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Touchstone_Management.html">
+   Circuit: Touchstone file management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Icepak_Example.html">
+   Icepak: graphic card thermal analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Sherlock_Example.html">
+   Icepack: setup from Sherlock inputs
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_CPWG.html">
+   2D Extractor: CPWG analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_Stripline.html">
+   2D Extractor: stripline analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q3D_Example.html">
+   Q3D Extractor: busbar analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Icepak_Coupling.html">
+   Multiphysics: HFSS-Icepack multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Mechanical.html">
+   Multiphysics: HFSS-Mechanical multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/01-RC_Circuit_Example.html">
+   Twin Builder: RC circuit design anaysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
+   Twin Builder: wiring a rectifier with a capacitor filter
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copy-example-into-temporary-folder">
+   Copy example into temporary folder
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-non-graphical-mode">
+   Set non-graphical mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launch-aedt">
+   Launch AEDT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialize-aedt-and-launch-hfss-3d-layout">
+   Initialize AEDT and launch HFSS 3D Layout
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-boundaries">
+   Print boundaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hide-all-nets">
+   Hide all nets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-only-two-nets">
+   Show only two nets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-all-layers">
+   Show all layers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-layer-color">
+   Change layer color
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#disable-component-visibility">
+   Disable component visibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#close-aedt">
+   Close AEDT
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-02-hfss-edb-in-3dlayout-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="hfss-3d-layout-pcb-and-edb-in-3d-layout">
+<span id="sphx-glr-examples-02-hfss-edb-in-3dlayout-py"></span><h1>HFSS 3D Layout: PCB and EDB in 3D layout<a class="headerlink" href="#hfss-3d-layout-pcb-and-edb-in-3d-layout" title="Permalink to this heading">#</a></h1>
+<p>This example shows how to use HFSS 3D Layout combined with EDB to interact with a 3D layout.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">generate_unique_name</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/tempfile.html#tempfile.gettempdir" title="tempfile.gettempdir" class="sphx-glr-backref-module-tempfile sphx-glr-backref-type-py-function"><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span></a><span class="p">()</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmpfold</span></a><span class="p">,</span> <span class="n">generate_unique_name</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">):</span>
+    <a href="https://docs.python.org/dev/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\Example_KUXG89
+</pre></div>
+</div>
+<section id="copy-example-into-temporary-folder">
+<h2>Copy example into temporary folder<a class="headerlink" href="#copy-example-into-temporary-folder" title="Permalink to this heading">#</a></h2>
+<p>Copy an example into the temporary folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Desktop</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">Hfss3dLayout</span>
+<span class="kn">from</span> <span class="nn">pyaedt</span> <span class="kn">import</span> <span class="n">examples</span>
+
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_aedb</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">[:</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;aedt&quot;</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>D:\Temp\PyAEDTExamples\edb/Galileo.aedb\edb.def
+</pre></div>
+</div>
+</section>
+<section id="set-non-graphical-mode">
+<h2>Set non-graphical mode<a class="headerlink" href="#set-non-graphical-mode" title="Permalink to this heading">#</a></h2>
+<p>Set non-graphical mode. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-aedt">
+<h2>Launch AEDT<a class="headerlink" href="#launch-aedt" title="Permalink to this heading">#</a></h2>
+<p>Launch AEDT 2022R2 in graphical mode using SI units.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a> <span class="o">=</span> <span class="s2">&quot;2022.2&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-aedt-and-launch-hfss-3d-layout">
+<h2>Initialize AEDT and launch HFSS 3D Layout<a class="headerlink" href="#initialize-aedt-and-launch-hfss-3d-layout" title="Permalink to this heading">#</a></h2>
+<p>Initialize AEDT and launch HFSS 3D Layout.
+The <code class="docutils literal notranslate"><span class="pre">h3d</span></code> object contains the <a class="reference internal" href="../../API/_autosummary/pyaedt.Edb.html#pyaedt.Edb" title="pyaedt.Edb"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Edb</span></code></a> class query methods.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Desktop</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">desktopVersion</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NewThread</span></a><span class="p">)</span>
+<span class="k">if</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a><span class="p">):</span>
+    <a href="https://docs.python.org/dev/library/os.html#os.remove" title="os.remove" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">remove</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">aedt_file</span></a><span class="p">)</span>
+<span class="n">h3d</span> <span class="o">=</span> <span class="n">Hfss3dLayout</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">targetfile</span></a><span class="p">)</span>
+<span class="n">h3d</span><span class="o">.</span><span class="n">save_project</span><span class="p">(</span><a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">temp_folder</span></a><span class="p">,</span> <span class="s2">&quot;edb_demo.aedt&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger Started
+pyaedt info: Launching PyAEDT outside AEDT with CPython and PythonNET.
+pyaedt info: AEDT installation Path C:\Program Files\AnsysEM\v222\Win64.
+pyaedt info: Launching AEDT with module PythonNET.
+pyaedt info: Ansoft.ElectronicsDesktop.2022.2 Started with process ID 7340.
+pyaedt info: Logger file D:\Temp\pyaedt20220722_091734.log in use.
+pyaedt info: pyaedt v0.5.9
+pyaedt info: Python version 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]
+pyaedt info: EDB folder D:\Temp\PyAEDTExamples\edb/Galileo.aedb\edb.def has been imported to project Galileo
+pyaedt info: Active Design set to Galileo_um
+pyaedt info: Aedt Objects initialized
+pyaedt info: Variable Manager initialized
+pyaedt info: Design Loaded
+pyaedt info: Successfully loaded project materials !
+pyaedt info: Materials Loaded
+pyaedt info: aedt file load time 0.07818722724914551
+pyaedt info: Analysis Loaded
+pyaedt info: Loading Modeler.
+pyaedt info: Modeler loaded.
+pyaedt info: EDB loaded.
+pyaedt info: Layers loaded.
+pyaedt info: Primitives loaded.
+pyaedt info: Modeler Loaded
+pyaedt info: Project edb_demo Saved correctly
+
+True
+</pre></div>
+</div>
+</section>
+<section id="print-boundaries">
+<h2>Print boundaries<a class="headerlink" href="#print-boundaries" title="Permalink to this heading">#</a></h2>
+<p>Print boundaries from the <code class="docutils literal notranslate"><span class="pre">setups`</span></code> object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">boundaries</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</section>
+<section id="hide-all-nets">
+<h2>Hide all nets<a class="headerlink" href="#hide-all-nets" title="Permalink to this heading">#</a></h2>
+<p>Hide all nets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">change_net_visibility</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="show-only-two-nets">
+<h2>Show only two nets<a class="headerlink" href="#show-only-two-nets" title="Permalink to this heading">#</a></h2>
+<p>Show only the two specified nets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">change_net_visibility</span><span class="p">([</span><span class="s2">&quot;A0_GPIO&quot;</span><span class="p">,</span> <span class="s2">&quot;A0_MUX&quot;</span><span class="p">],</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">edb</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">edb</span>
+<span class="n">edb</span><span class="o">.</span><span class="n">core_nets</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="s2">&quot;A0_GPIO&quot;</span><span class="p">,</span> <span class="s2">&quot;A0_MUX&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_EDB_in_3DLayout_001.png" srcset="../../_images/sphx_glr_EDB_in_3DLayout_001.png" alt="Galileo_um" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger is initialized in EDB.
+pyaedt info: EDB Path D:/Temp/Example_KUXG89/edb_demo.aedb
+pyaedt info: EDB Version 2022.2
+pyaedt info: EDB Standalone True
+pyaedt info: Database Opened
+pyaedt info: Cell Galileo_um Opened
+pyaedt info: C:\actions-runner\_work\PyAEDT\PyAEDT\pyaedt\dlls\EDBLib
+pyaedt info: Refreshing the Components dictionary.
+pyaedt info: Objects Initialized
+pyaedt info: Builder was initialized.
+pyaedt info: EDB was initialized.
+pyaedt info: Primitives Updated
+pyaedt info: Nets Point Generation time 3.72 seconds
+</pre></div>
+</div>
+</section>
+<section id="show-all-layers">
+<h2>Show all layers<a class="headerlink" href="#show-all-layers" title="Permalink to this heading">#</a></h2>
+<p>Show all layers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><span class="n">all_signal_layers</span>
+<span class="k">for</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lay</span></a> <span class="ow">in</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">:</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><span class="n">layer_id</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lay</span></a><span class="p">)]</span>
+    <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer</span><span class="o">.</span><span class="n">IsVisible</span></a> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">update_stackup_layer</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="change-layer-color">
+<h2>Change layer color<a class="headerlink" href="#change-layer-color" title="Permalink to this heading">#</a></h2>
+<p>Change the layer color.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><span class="n">layer_id</span><span class="p">(</span><span class="s2">&quot;TOP&quot;</span><span class="p">)]</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">set_layer_color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">fit_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-component-visibility">
+<h2>Disable component visibility<a class="headerlink" href="#disable-component-visibility" title="Permalink to this heading">#</a></h2>
+<p>Disable component visibility for <code class="docutils literal notranslate"><span class="pre">&quot;TOP&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;BOTTOM&quot;</span></code>.
+The <a class="reference internal" href="../../API/_autosummary/pyaedt.modules.LayerStackup.Layer.update_stackup_layer.html#pyaedt.modules.LayerStackup.Layer.update_stackup_layer" title="pyaedt.modules.LayerStackup.Layer.update_stackup_layer"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.modules.LayerStackup.Layer.update_stackup_layer()</span></code></a> method
+applies modifications to the layout.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">top</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><span class="n">layer_id</span><span class="p">(</span><span class="s2">&quot;TOP&quot;</span><span class="p">)]</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">top</span><span class="o">.</span><span class="n">IsVisibleComponent</span></a> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">top</span><span class="o">.</span><span class="n">update_stackup_layer</span><span class="p">()</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="p">[</span><span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layers</span></a><span class="o">.</span><span class="n">layer_id</span><span class="p">(</span><span class="s2">&quot;BOTTOM&quot;</span><span class="p">)]</span>
+<a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bot</span><span class="o">.</span><span class="n">IsVisibleComponent</span></a> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">update_stackup_layer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit all</span>
+<span class="c1"># ~~~~~~~</span>
+<span class="c1"># Fit all so that you can visualize all.</span>
+
+<span class="n">h3d</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">fit_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="close-aedt">
+<h2>Close AEDT<a class="headerlink" href="#close-aedt" title="Permalink to this heading">#</a></h2>
+<p>After the simulaton completes, you can close AEDT or release it using the
+<a class="reference internal" href="../../API/_autosummary/pyaedt.Desktop.release_desktop.html#pyaedt.Desktop.release_desktop" title="pyaedt.Desktop.release_desktop"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyaedt.Desktop.release_desktop()</span></code></a> method.
+All methods provide for saving the project before closing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
+    <span class="n">h3d</span><span class="o">.</span><span class="n">close_project</span><span class="p">()</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Closing the AEDT Project edb_demo
+pyaedt info: Project edb_demo closed correctly
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  15.981 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-hfss-edb-in-3dlayout-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a735a090c9e175dd824a910cc5b4cff8/EDB_in_3DLayout.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">EDB_in_3DLayout.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1b74713048bd4b1d3d081faf3d2b059f/EDB_in_3DLayout.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">EDB_in_3DLayout.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

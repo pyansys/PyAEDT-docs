@@ -1,0 +1,6 @@
+create\_cutout
+==============
+
+.. currentmodule:: pyaedt
+
+.. automethod:: Edb.create_cutout

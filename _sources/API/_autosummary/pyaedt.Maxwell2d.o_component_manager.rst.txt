@@ -1,0 +1,6 @@
+o\_component\_manager
+=====================
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Maxwell2d.o_component_manager

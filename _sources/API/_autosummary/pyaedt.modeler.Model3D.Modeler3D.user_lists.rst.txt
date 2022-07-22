@@ -1,0 +1,6 @@
+user\_lists
+===========
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. autoproperty:: Modeler3D.user_lists

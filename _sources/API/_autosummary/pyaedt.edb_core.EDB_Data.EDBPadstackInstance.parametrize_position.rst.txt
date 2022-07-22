@@ -1,0 +1,6 @@
+parametrize\_position
+=====================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. automethod:: EDBPadstackInstance.parametrize_position

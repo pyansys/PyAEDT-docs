@@ -1,0 +1,6 @@
+ofieldsreporter
+===============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.ofieldsreporter

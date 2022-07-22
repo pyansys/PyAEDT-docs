@@ -1,0 +1,6 @@
+mesh
+====
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Rmxprt.mesh

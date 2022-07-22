@@ -1,0 +1,6 @@
+valid\_design
+=============
+
+.. currentmodule:: pyaedt
+
+.. autoproperty:: Q2d.valid_design

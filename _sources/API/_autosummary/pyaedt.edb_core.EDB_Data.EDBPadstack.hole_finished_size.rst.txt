@@ -1,0 +1,6 @@
+hole\_finished\_size
+====================
+
+.. currentmodule:: pyaedt.edb_core.EDB_Data
+
+.. autoproperty:: EDBPadstack.hole_finished_size

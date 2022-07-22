@@ -1,0 +1,6 @@
+stackup\_limits
+===============
+
+.. currentmodule:: pyaedt.edb_core.stackup
+
+.. automethod:: EdbStackup.stackup_limits

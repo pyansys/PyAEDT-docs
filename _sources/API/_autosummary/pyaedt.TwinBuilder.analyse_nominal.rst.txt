@@ -1,0 +1,6 @@
+analyse\_nominal
+================
+
+.. currentmodule:: pyaedt
+
+.. automethod:: TwinBuilder.analyse_nominal

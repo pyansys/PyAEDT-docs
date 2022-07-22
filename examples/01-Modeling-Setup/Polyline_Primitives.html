@@ -1,0 +1,1098 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>General: polyline creation &#8212; PyAEDT</title>
+    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css\ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    
+        <link href="../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HFSS: advanced far field postprocessing" href="../02-HFSS/Advanced_Far_Field.html" />
+    <link rel="prev" title="General: optimetrics setup" href="Optimetrics.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/User_Guide.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/ClientServer.html">
+  Client-server
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../API/index.html">
+  API documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Code_Guidelines.html">
+  Code guidelines
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../Resources/Contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys/pyaedt" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../index.html">PyAEDT</a> » </li>
+    
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Examples</a> » </li>
+        <li class="nav-item nav-item-this"><a href="">General: polyline creation</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/00_EDB_Create_VIA.html">
+   EDB: geometry creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/01_edb_example.html">
+   EDB: Siwave analysis from EDB setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/02_edb_to_ipc2581.html">
+   EDB: IPC2581 export
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/03_5G_antenna_example.html">
+   EDB: 5G linear array antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/04_edb_parametrized_design.html">
+   EDB: fully parameterized design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/05_Plot_nets.html">
+   EDB: plot nets with Matplotlib
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/06_Advanced_EDB.html">
+   EDB: parametric via creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/07_WPF_Merge_Utility.html">
+   EDB: merge utility
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-EDB/08_CPWG.html">
+   EDB: fully parameterized CPWG design
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Configurations.html">
+   General: configuration files
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HFSS_CoordinateSystem.html">
+   General: coordinate system creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Optimetrics.html">
+   General: optimetrics setup
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   General: polyline creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Advanced_Far_Field.html">
+   HFSS: advanced far field postprocessing
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Array.html">
+   HFSS: component antenna array
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/EDB_in_3DLayout.html">
+   HFSS 3D Layout: PCB and EDB in 3D layout
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Flex_CPWG.html">
+   HFSS: flex cable CPWG
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS3DLayout_Via.html">
+   HFSS 3D Layout: parametric via analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Choke.html">
+   HFSS: choke
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Dipole.html">
+   HFSS: dipole antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/HFSS_Spiral.html">
+   HFSS: spiral inductor
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/Machine_learning_applied_to_Patch.html">
+   HFSS: machine learning applied to a patch
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Doppler_Example.html">
+   SBR+: doppler setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Example.html">
+   SBR+: HFSS to SBR+ coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-HFSS/SBR_Time_Plot.html">
+   SBR+: HFSS to SBR+ time animation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_NissanLeaf.html">
+   Maxwell 2D: PM synchronous motor transient analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell2D_Transient.html">
+   Maxwell 2D: transient winding analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam3.html">
+   Maxwell 3D: bath plate analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3DTeam7.html">
+   Maxwell 3D: asymmetric conductor analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell3D_Choke.html">
+   Maxwell 3D: choke setup
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Maxwell/Maxwell_Magnet.html">
+   Maxwell 3D: magnet DC analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Example.html">
+   Circuit: schematic creation and analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Subcircuit_Example.html">
+   Circuit: schematic subcircuit management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Circuit_Transient.html">
+   Circuit: transient analysis and eye plot
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Create_Netlist.html">
+   Circuit: netlist to schematic iport
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_Example.html">
+   EMIT: antenna
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/EMIT_HFSS_Example.html">
+   EMIT: HFSS to EMIT coupling
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Reports.html">
+   Circuit: automatic report creation
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Circuit/Touchstone_Management.html">
+   Circuit: Touchstone file management
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Icepak_Example.html">
+   Icepak: graphic card thermal analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Icepak/Sherlock_Example.html">
+   Icepack: setup from Sherlock inputs
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_CPWG.html">
+   2D Extractor: CPWG analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q2D_Example_Stripline.html">
+   2D Extractor: stripline analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-Q3D/Q3D_Example.html">
+   Q3D Extractor: busbar analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Icepak_Coupling.html">
+   Multiphysics: HFSS-Icepack multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Multiphysics/Hfss_Mechanical.html">
+   Multiphysics: HFSS-Mechanical multiphysics analysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/01-RC_Circuit_Example.html">
+   Twin Builder: RC circuit design anaysis
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-TwinBuilder/02-Wiring_A_Rectifier.html">
+   Twin Builder: wiring a rectifier with a capacitor filter
+  </a>
+ </li>
+</ul>
+
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   General: polyline creation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perform-required-imports">
+     Perform required imports
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-non-graphical-mode">
+     Set non-graphical mode
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-maxwell-3d-object">
+     Create Maxwell 3D object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clear-existing-objects">
+     Clear existing objects
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-design-variables">
+     Define design variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#input-data">
+     Input data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polyline-primitive-examples">
+   Polyline primitive examples
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-line-primitive">
+     Create line primitive
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-arc-primitive">
+     Create arc primitive
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-spline-primitive">
+     Create spline primitive
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-center-point-arc-primitive">
+     Create center-point arc primitive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compound-polyline-examples">
+   Compound polyline examples
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compound-line-examples">
+   Compound line examples
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-line-segment">
+     Insert line segment
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-compound-line-with-insert-curve">
+     Insert compound line with insert curve
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-compound-line-at-end-of-a-center-point-arc">
+     Insert compound line at end of a center-point arc
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-two-3-point-arcs-forming-a-circle-and-covered">
+     Insert two 3-point arcs forming a circle and covered
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-project">
+     Save project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-01-modeling-setup-polyline-primitives-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="general-polyline-creation">
+<span id="sphx-glr-examples-01-modeling-setup-polyline-primitives-py"></span><h1>General: polyline creation<a class="headerlink" href="#general-polyline-creation" title="Permalink to this heading">#</a></h1>
+<p>This example shows how you can use PyAEDT to create and manipulate polylines.</p>
+<section id="perform-required-imports">
+<h2>Perform required imports<a class="headerlink" href="#perform-required-imports" title="Permalink to this heading">#</a></h2>
+<p>Perform the required imports from PyAEDT and connect to AEDT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pyaedt.maxwell</span> <span class="kn">import</span> <span class="n">Maxwell3d</span>
+<span class="kn">from</span> <span class="nn">pyaedt.modeler.Primitives</span> <span class="kn">import</span> <span class="n">PolylineSegment</span>
+</pre></div>
+</div>
+</section>
+<section id="set-non-graphical-mode">
+<h2>Set non-graphical mode<a class="headerlink" href="#set-non-graphical-mode" title="Permalink to this heading">#</a></h2>
+<p>Set non-graphical mode. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.html#os.getenv" title="os.getenv" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">getenv</span></a><span class="p">(</span><span class="s2">&quot;PYAEDT_NON_GRAPHICAL&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-maxwell-3d-object">
+<h2>Create Maxwell 3D object<a class="headerlink" href="#create-maxwell-3d-object" title="Permalink to this heading">#</a></h2>
+<p>Create a <a class="reference internal" href="../../API/_autosummary/pyaedt.Maxwell3d.html#pyaedt.Maxwell3d" title="pyaedt.Maxwell3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyaedt.Maxwell3d</span></code></a> object and set the unit type to <code class="docutils literal notranslate"><span class="pre">&quot;mm&quot;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span> <span class="o">=</span> <span class="n">Maxwell3d</span><span class="p">(</span>
+    <span class="n">solution_type</span><span class="o">=</span><span class="s2">&quot;Transient&quot;</span><span class="p">,</span> <span class="n">designname</span><span class="o">=</span><span class="s2">&quot;test_polyline_3D&quot;</span><span class="p">,</span> <span class="n">specified_version</span><span class="o">=</span><span class="s2">&quot;2022.2&quot;</span><span class="p">,</span> <span class="n">new_desktop_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="o">=</span><a href="https://docs.python.org/dev/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">non_graphical</span></a><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span><span class="o">.</span><span class="n">model_units</span> <span class="o">=</span> <span class="s2">&quot;mm&quot;</span>
+<span class="n">prim3D</span> <span class="o">=</span> <span class="n">M3D</span><span class="o">.</span><span class="n">modeler</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Logger Started
+pyaedt info: Launching PyAEDT outside AEDT with CPython and PythonNET.
+pyaedt info: AEDT installation Path C:\Program Files\AnsysEM\v222\Win64.
+pyaedt info: Launching AEDT with module PythonNET.
+pyaedt info: Ansoft.ElectronicsDesktop.2022.2 Started with process ID 11100.
+pyaedt info: Logger file D:\Temp\pyaedt20220722_091734.log in use.
+pyaedt info: pyaedt v0.5.9
+pyaedt info: Python version 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]
+pyaedt info: Project Project49 has been created.
+pyaedt info: Added design &#39;test_polyline_3D&#39; of type Maxwell 3D.
+pyaedt info: Aedt Objects initialized
+pyaedt info: Variable Manager initialized
+pyaedt info: Design Loaded
+pyaedt info: Successfully loaded project materials !
+pyaedt info: Materials Loaded
+</pre></div>
+</div>
+</section>
+<section id="clear-existing-objects">
+<h2>Clear existing objects<a class="headerlink" href="#clear-existing-objects" title="Permalink to this heading">#</a></h2>
+<p>Clear any existing objects.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prim3D</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt warning: No objects to delete
+No objects to delete
+
+False
+</pre></div>
+</div>
+</section>
+<section id="define-design-variables">
+<h2>Define design variables<a class="headerlink" href="#define-design-variables" title="Permalink to this heading">#</a></h2>
+<p>Define two design variables as parameters for the polyline objects.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M3D</span><span class="p">[</span><span class="s2">&quot;p1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;100mm&quot;</span>
+<span class="n">M3D</span><span class="p">[</span><span class="s2">&quot;p2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;71mm&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading">#</a></h2>
+<p>Input data. All data for the polyline functions can be entered as either floating point
+values or strings. Floating point values are assumed to be in model units
+(<code class="docutils literal notranslate"><span class="pre">M3D.modeler.model_units</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;-p1&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;-p1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;-p1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="polyline-primitive-examples">
+<h1>Polyline primitive examples<a class="headerlink" href="#polyline-primitive-examples" title="Permalink to this heading">#</a></h1>
+<section id="create-line-primitive">
+<h2>Create line primitive<a class="headerlink" href="#create-line-primitive" title="Permalink to this heading">#</a></h2>
+<p>Create a line primitive. The basic polyline command takes a list of positions
+(<code class="docutils literal notranslate"><span class="pre">[X,</span> <span class="pre">Y,</span> <span class="pre">Z]</span></code> coordinates) and creates a polyline object with one or more
+segments. The supported segment types are <code class="docutils literal notranslate"><span class="pre">Line</span></code>, <code class="docutils literal notranslate"><span class="pre">Arc</span></code> (3 points),
+<code class="docutils literal notranslate"><span class="pre">AngularArc</span></code> (center-point + angle), and <code class="docutils literal notranslate"><span class="pre">Spline</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL01_line&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Created Polyline with name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">prim3D</span><span class="o">.</span><span class="n">objects</span></a><span class="p">[</span><span class="n">P</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Segment types : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">P</span><span class="o">.</span><span class="n">_segment_types</span></a><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;primitive id = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Created Polyline with name: PL01_line
+Segment types : None
+primitive id = 6
+</pre></div>
+</div>
+</section>
+<section id="create-arc-primitive">
+<h2>Create arc primitive<a class="headerlink" href="#create-arc-primitive" title="Permalink to this heading">#</a></h2>
+<p>Create an arc primitive. The parameter <code class="docutils literal notranslate"><span class="pre">position_list</span></code> must contain at
+least three position values. The first three position values are used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">segment_type</span><span class="o">=</span><span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL02_arc&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Created object with id </span><span class="si">{}</span><span class="s2"> and name </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">prim3D</span><span class="o">.</span><span class="n">objects</span></a><span class="p">[</span><span class="n">P</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Created object with id 11 and name PL02_arc.
+</pre></div>
+</div>
+</section>
+<section id="create-spline-primitive">
+<h2>Create spline primitive<a class="headerlink" href="#create-spline-primitive" title="Permalink to this heading">#</a></h2>
+<p>Create a spline primitive. Defining the segment using a <code class="docutils literal notranslate"><span class="pre">PolylineSegment</span></code>
+object allows you to provide additional input parameters for the spine, such
+as the number of points (in this case 4). The parameter <code class="docutils literal notranslate"><span class="pre">position_list</span></code>
+must contain at least four position values.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">segment_type</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="s2">&quot;Spline&quot;</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL03_spline_4pt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-center-point-arc-primitive">
+<h2>Create center-point arc primitive<a class="headerlink" href="#create-center-point-arc-primitive" title="Permalink to this heading">#</a></h2>
+<p>Create a center-point arc primitive. A center-point arc segment is defined
+by a starting point, a center point, and an angle of rotation around the
+center point. The rotation occurs in a plane parallel to the XY, YZ, or ZX
+plane of the active coordinate system. The starting point and the center point
+must therefore have one coordinate value (X, Y, or Z) with the same value.</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">start-point</span></code> and <code class="docutils literal notranslate"><span class="pre">center-point</span></code> have a common Z coordinate, <code class="docutils literal notranslate"><span class="pre">&quot;0mm&quot;</span></code>.
+The curve is therefore rotated in the XY plane with Z = <code class="docutils literal notranslate"><span class="pre">&quot;0mm&quot;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center_point</span></a><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><span class="s2">&quot;30deg&quot;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL04_center_point_arc&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">start_point</span></code> and <code class="docutils literal notranslate"><span class="pre">center_point</span></code> have the same values for the Y and
+Z coordinates, so the plane or rotation could be either XY or ZX.
+For these special cases when the rotation plane is ambiguous, you can specify
+the plane explicitly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center_point</span></a><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><span class="s2">&quot;30deg&quot;</span><span class="p">,</span> <span class="n">arc_plane</span><span class="o">=</span><span class="s2">&quot;XY&quot;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL04_center_point_arc_rot_XY&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">center_point</span></a><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><span class="s2">&quot;30deg&quot;</span><span class="p">,</span> <span class="n">arc_plane</span><span class="o">=</span><span class="s2">&quot;ZX&quot;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL04_center_point_arc_rot_ZX&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compound-polyline-examples">
+<h1>Compound polyline examples<a class="headerlink" href="#compound-polyline-examples" title="Permalink to this heading">#</a></h1>
+<p>You can use a list of points in a single command to create a multi-segment
+polyline.</p>
+<p>By default, if no specification of the type of segments is given, all points
+are connected by line segments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL06_segmented_compound_line&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can specify the segment type with the parameter <code class="docutils literal notranslate"><span class="pre">segment_type</span></code>.
+In this case, you must specify that the four input points in <code class="docutils literal notranslate"><span class="pre">position_list</span></code>
+are to be connected as a <code class="docutils literal notranslate"><span class="pre">&quot;Line&quot;</span></code> segment followed by a 3-point <code class="docutils literal notranslate"><span class="pre">&quot;Arc&quot;</span></code> segment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">segment_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL05_compound_line_arc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">close_surface</span></code> ensures that the polyline starting point and
+ending point are the same. If necessary, you can add an additional line
+segment to achieve this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">close_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL07_segmented_compound_line_closed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">cover_surface=True</span></code> also performs the modeler command
+<code class="docutils literal notranslate"><span class="pre">cover_surface</span></code>. Note that specifying <code class="docutils literal notranslate"><span class="pre">cover_surface=True</span></code> automatically
+results in the polyline being closed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">cover_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SPL01_segmented_compound_line&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="compound-line-examples">
+<h1>Compound line examples<a class="headerlink" href="#compound-line-examples" title="Permalink to this heading">#</a></h1>
+<section id="insert-line-segment">
+<h2>Insert line segment<a class="headerlink" href="#insert-line-segment" title="Permalink to this heading">#</a></h2>
+<p>Insert a line segment starting at vertex 1 <code class="docutils literal notranslate"><span class="pre">[&quot;100mm&quot;,</span> <span class="pre">&quot;0mm&quot;,</span> <span class="pre">&quot;0mm&quot;]</span></code>
+of an existing polyline and ending at some new point <code class="docutils literal notranslate"><span class="pre">[&quot;90mm&quot;,</span> <span class="pre">&quot;20mm&quot;,</span> <span class="pre">&quot;0mm&quot;].</span></code>
+By numerical comparison of the starting point with the existing vertices of the
+original polyline object, it is determined automatically that the segment is
+inserted after the first segment of the original polyline.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">close_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL08_segmented_compound_insert_segment&quot;</span><span class="p">)</span>
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;90mm&quot;</span><span class="p">,</span> <span class="s2">&quot;20mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">]</span>
+
+
+<span class="n">P</span><span class="o">.</span><span class="n">insert_segment</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point</span></a><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="insert-compound-line-with-insert-curve">
+<h2>Insert compound line with insert curve<a class="headerlink" href="#insert-compound-line-with-insert-curve" title="Permalink to this heading">#</a></h2>
+<p>Insert a compound line starting a line segment at vertex 1 <code class="docutils literal notranslate"><span class="pre">[&quot;100mm&quot;,</span> <span class="pre">&quot;0mm&quot;,</span> <span class="pre">&quot;0mm&quot;]</span></code>
+of an existing polyline and end at some new point <code class="docutils literal notranslate"><span class="pre">[&quot;90mm&quot;,</span> <span class="pre">&quot;20mm&quot;,</span> <span class="pre">&quot;0mm&quot;]</span></code>.
+By numerical comparison of the starting point, it is determined automatically
+that the segment is inserted after the first segment of the original polyline.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">test_points</span></a><span class="p">,</span> <span class="n">close_surface</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PL08_segmented_compound_insert_arc&quot;</span><span class="p">)</span>
+
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">vertex_positions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point1</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;90mm&quot;</span><span class="p">,</span> <span class="s2">&quot;20mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point2</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">P</span><span class="o">.</span><span class="n">insert_segment</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point1</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">insert_point2</span></a><span class="p">],</span> <span class="n">segment</span><span class="o">=</span><span class="s2">&quot;Arc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</section>
+<section id="insert-compound-line-at-end-of-a-center-point-arc">
+<h2>Insert compound line at end of a center-point arc<a class="headerlink" href="#insert-compound-line-at-end-of-a-center-point-arc" title="Permalink to this heading">#</a></h2>
+<p>Insert a compound line at the end of a center-point arc (<code class="docutils literal notranslate"><span class="pre">type=&quot;AngularArc&quot;</span></code>).
+This is a special case.</p>
+<p>Step 1: Draw a center-point arc.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a> <span class="o">=</span> <span class="p">[</span><span class="mf">2200.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1200.0</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_1</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">1400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_angle_1</span></a> <span class="o">=</span> <span class="s2">&quot;43.47deg&quot;</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;First_Arc&quot;</span><span class="p">,</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_angle_1</span></a><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_1</span></a><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Step 2: Insert a line segment at the end of the arc with a specified end point.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_of_line_segment</span></a> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">end_point</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end_of_line_segment</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">3600</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">P</span><span class="o">.</span><span class="n">insert_segment</span><span class="p">(</span><span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_of_line_segment</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end_of_line_segment</span></a><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>Step 3: Append a center-point arc segment to the line object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_angle_2</span></a> <span class="o">=</span> <span class="s2">&quot;39.716deg&quot;</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_2</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">3400</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">3800</span><span class="p">]</span>
+
+<span class="n">P</span><span class="o">.</span><span class="n">insert_segment</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end_of_line_segment</span></a><span class="p">],</span>
+    <span class="n">segment</span><span class="o">=</span><span class="n">PolylineSegment</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_2</span></a><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_angle_2</span></a><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>You can use the compound polyline definition to complete all three steps in
+a single step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_point</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">end_of_line_segment</span></a><span class="p">],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">PolylineSegment</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><span class="s2">&quot;43.47deg&quot;</span><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_1</span></a><span class="p">),</span>
+        <span class="n">PolylineSegment</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Line&quot;</span><span class="p">),</span>
+        <span class="n">PolylineSegment</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AngularArc&quot;</span><span class="p">,</span> <span class="n">arc_angle</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_angle_2</span></a><span class="p">,</span> <span class="n">arc_center</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">arc_center_2</span></a><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Compound_Polyline_One_Command&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;pyaedt.modeler.Primitives.Polyline object at 0x000001828F0EFD30&gt;
+</pre></div>
+</div>
+</section>
+<section id="insert-two-3-point-arcs-forming-a-circle-and-covered">
+<h2>Insert two 3-point arcs forming a circle and covered<a class="headerlink" href="#insert-two-3-point-arcs-forming-a-circle-and-covered" title="Permalink to this heading">#</a></h2>
+<p>Insert two 3-point arcs forming a circle and covered.
+Note that the last point of the second arc segment is not defined in
+the position list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span>
+    <span class="n">position_list</span><span class="o">=</span><span class="p">[[</span><span class="mf">34.1004</span><span class="p">,</span> <span class="mf">14.1248</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">27.646</span><span class="p">,</span> <span class="mf">16.7984</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">24.9725</span><span class="p">,</span> <span class="mf">10.3439</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">31.4269</span><span class="p">,</span> <span class="mf">7.6704</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+    <span class="n">segment_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">],</span>
+    <span class="n">cover_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">close_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Rotor_Subtract_25_0&quot;</span><span class="p">,</span>
+    <span class="n">matname</span><span class="o">=</span><span class="s2">&quot;vacuum&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is an example of a complex polyline where the number of points is
+insufficient to populate the requested segments. This results in an
+<code class="docutils literal notranslate"><span class="pre">IndexError</span></code> that PyAEDT catches silently. The return value of the command
+is <code class="docutils literal notranslate"><span class="pre">False</span></code>, which can be caught at the app level.  While this example might
+not be so useful in a Jupyter Notebook, it is important for unit tests.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_points</span></a> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;67.1332mm&quot;</span><span class="p">,</span> <span class="s2">&quot;2.9901mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;65.9357mm&quot;</span><span class="p">,</span> <span class="s2">&quot;2.9116mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;65.9839mm&quot;</span><span class="p">,</span> <span class="s2">&quot;1.4562mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;66mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;99mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;98.788mm&quot;</span><span class="p">,</span> <span class="s2">&quot;6.4749mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;98.153mm&quot;</span><span class="p">,</span> <span class="s2">&quot;12.9221mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;97.0977mm&quot;</span><span class="p">,</span> <span class="s2">&quot;19.3139mm&quot;</span><span class="p">,</span> <span class="s2">&quot;0mm&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+
+
+<a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_segments</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">]</span>
+<span class="n">return_value</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_points</span></a><span class="p">,</span> <span class="n">segment_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_segments</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MDL_Polyline&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">return_value</span>  <span class="c1"># triggers an error at the application error</span>
+</pre></div>
+</div>
+<p>Here is an example that provides more points than the segment list requires.
+This is valid usage. The remaining points are ignored.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_segments</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">]</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">prim3D</span><span class="o">.</span><span class="n">create_polyline</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_points</span></a><span class="p">,</span> <span class="n">segment_type</span><span class="o">=</span><a href="https://docs.python.org/dev/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MDL_segments</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MDL_Polyline&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="save-project">
+<h2>Save project<a class="headerlink" href="#save-project" title="Permalink to this heading">#</a></h2>
+<p>Save the project.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_dir</span></a> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\temp&quot;</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">=</span> <span class="s2">&quot;Polylines&quot;</span>
+<a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a> <span class="o">=</span> <a href="https://docs.python.org/dev/library/os.path.html#os.path.join" title="os.path.join" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_dir</span></a><span class="p">,</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_name</span></a> <span class="o">+</span> <span class="s2">&quot;.aedt&quot;</span><span class="p">)</span>
+
+<span class="n">M3D</span><span class="o">.</span><span class="n">save_project</span><span class="p">(</span><a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">project_file</span></a><span class="p">)</span>
+
+<span class="k">if</span> <a href="https://docs.python.org/dev/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">os</span><span class="o">.</span><span class="n">name</span></a> <span class="o">!=</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
+    <span class="n">M3D</span><span class="o">.</span><span class="n">release_desktop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pyaedt info: Project Polylines Saved correctly
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.224 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modeling-setup-polyline-primitives-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/009b0b396e644019a61af3734d2ced8f/Polyline_Primitives.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">Polyline_Primitives.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3bc5ca3f16a5fe84ca8fc8f574c199b9/Polyline_Primitives.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">Polyline_Primitives.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright (c) 2022 ANSYS, Inc. All rights reserved.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

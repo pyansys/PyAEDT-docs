@@ -1,0 +1,6 @@
+create\_airbox
+==============
+
+.. currentmodule:: pyaedt.modeler.Model3D
+
+.. automethod:: Modeler3D.create_airbox

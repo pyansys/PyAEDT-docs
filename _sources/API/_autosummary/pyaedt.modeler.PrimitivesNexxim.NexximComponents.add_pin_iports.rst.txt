@@ -1,0 +1,6 @@
+add\_pin\_iports
+================
+
+.. currentmodule:: pyaedt.modeler.PrimitivesNexxim
+
+.. automethod:: NexximComponents.add_pin_iports
